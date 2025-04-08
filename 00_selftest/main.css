@@ -1,8 +1,12 @@
-.menu {
+body {
   padding: 50px;
   text-align: center;
 }
 
 .menu > a {
-  padding: 100px;
+  padding: 50px;
+}
+
+.content {
+  margin-top: 30px;
 }
