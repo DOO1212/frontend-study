@@ -42,5 +42,33 @@
    Video loop (반복 재생)
    Video mute (음소거) -->
   
+  <!-- 웹 페이지에서 비디오를 재생하려면 다음을 수행
+    1) YouTube에 동영상 업로드
+    2) 동영상 ID를 기록
+    3) <iframe> 요소 정의
+    4) src속성에 YouTube URL 지정
+    5) width 및 height 속성을 사용하여 플레이어의 크기를 지정
+    6) URL에 다른 매개변수를 추가(아래 참조)
+  -->
+  <!-- Inline Frame(인라인태그): HTML 문서 내에 다른 문서를 삽입(웹 페이지 내에 웹 페이지를 표시) -->
+  <iframe src="https://www.youtube.com/embed/RxXFPTHyJsI?si=TkF6w38qBQWFYMfX" width="300" height="300" frameborder="0"></iframe>
+
+  <!-- 유튜브 자동재생 + 음소거 -->
+  <iframe src="https://www.youtube.com/embed/RxXFPTHyJsI?si=TkF6w38qBQWFYMfX&autoplay=1&mute=1" width="300" height="300" frameborder="0"></iframe>
+
+  <!-- 유튜브 재생목록
+    playlist: 재생할 비디오의 목록 (쉼표로 구분) -->
+  <iframe src="https://www.youtube.com/embed/RxXFPTHyJsI?si=TkF6w38qBQWFYMfX&playlist=RxXFPTHyJsI,Bp1ix8mosgM" width="300" height="300" frameborder="0"></iframe>
+
+  <!-- 유튜브 반복재생 (플레이리스트 있어야함)
+    loop=0: 한번 재생 (기본값)
+    loop=1: 무한 재생 -->
+
+  <!-- playlist 필수 작성 -->
+
+  <!-- 유튜브 컨트롤 
+    controls=0: 플레이어 컨트롤 표시 안함
+    controls=1: 플레이어 컨트롤 표시 (기본값) -->
+
 </body>
 </html>
