@@ -98,8 +98,8 @@ $ git init
 $ git status
 # git 프로젝트의 파일 상태를 확인
 
-$ git config --global user.name 'YOUR_NAME'
-$ git config --global user.email 'YOUR_EMAIL'
+$ git config --global user.name 'NAME'
+$ git config --global user.email 'EMAIL'
 # 사용자 정보
 ## 커밋(버전 생성)을 위한 정보 등록
 
