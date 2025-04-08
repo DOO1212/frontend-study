@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <!-- image(인라인태그): 이미지 삽입 -->
+  <!-- 샘플 이미지 제공 서비스
+   https://picsum.photos/300/200 -->
+  
+  <img src="https://picsum.photos/300/200" alt="샘플">
+  
+  <!-- Audio(인라인태그): 오디오 콘텐츠 삽입 및 재생
+   HTML에서 지원하는 포맷: MP3, WAV, OGG -->
+
+  <audio src="Wildlife.mp4" controls></audio>
+
+  <!-- 브라우저마다 또는 브라우저버전에 따라서 지원하는 확장자가 달라 정상동작 하지 않을 수 있음
+   Source(태그): 대체 파일 지정 -->
+  <audio controls>
+    <source src="Wildlife.mp4" type="audio/mpeg">
+  </audio>
+  
+  <!-- Audio 태그의 속성들
+   audio controls (플레이어 생성)
+   audio autoplay (자동 재생)
+   audio loop (반복 재생)
+   audio mute (음소거) -->
+
+   <!-- Video(인라인태그): 비디오 콘텐츠 삽입 및 재생
+    HTML에서 지원하는 포맷: MP4, WebM, OGG -->
+  <video width="300" height="300" controls>
+    <source src="Wildlife.mp4" type="video/mp4"> 
+  </video>
+
+  <!-- Video 태그의 속성들
+   Video controls (플레이어 생성)
+   Video autoplay (자동 재생)
+   Video loop (반복 재생)
+   Video mute (음소거) -->
+  
+</body>
+</html>
