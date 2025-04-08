@@ -34,8 +34,20 @@
   <div> Hello World! </div>
 
   <!-- 화면에 이미지 출력하기 -->
+  <!-- alt(alternative)는 이미지가 출력되지 못하는 경우 대신 출력할 텍스트 (대체 텍스트)
+       + 이미지 경로가 잘못 됐거나 네트워크가 불안정하거나 등 이미지 대신 화면에 나올 글자
+       + 웹 접근성과 관련 (스크린 리더가 alt 텍스트를 읽어줌) -->
+  <!-- 상대경로 / 절대경로를 사용하여 이미지 출력하기 -->
   <img src="logo.png" alt="로고1">
   <img src="/02_test/logo.png" alt="로고2">
+
+  <!-- CSS로 배경 이미지 넣기 -->
+  <div class="logo"></div>
+
+  <!-- 페이지를 나누고 연결하기 (링크걸기) -->
+  <!-- href(Hypertext Reference): 다른 페이지로 이동할 수 있는 참조가 되는 경로를 입력 -->
+  <a href="https://www.naver.com"> NAVER </a>
+  <a href="../02_test/about/about.html"> About </a>
 
 </body>
 </html>
