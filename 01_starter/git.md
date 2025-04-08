@@ -86,17 +86,17 @@ git merge는 그걸 merge(병합)하라는 뜻
 $ git --version
 # 버전 확인
 
-$ git init
-# 현재 프로젝트에서 변경사항 추적(버전 관리)을 시작
-
-$ git status
-# git 프로젝트의 파일 상태를 확인
-
 $ git clone + github주소
 # 원격 저장소에서 프로젝트 가져오기 (복제)
 
 $ git remote add origin + github주소
 # origin이란 별칭으로 원격 저장소를 연결
+
+$ git init
+# 현재 프로젝트에서 변경사항 추적(버전 관리)을 시작
+
+$ git status
+# git 프로젝트의 파일 상태를 확인
 
 $ git config --global user.name 'YOUR_NAME'
 $ git config --global user.email 'YOUR_EMAIL'
