@@ -3,6 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    /* 모든 span 태그에 적용됨 */
+    /* span {
+      color: red;
+    } */
+
+    /* class를 의미하는 . */
+    .red {
+      color: red;
+    }
+
+    /* id를 의미하는 # */
+    #abc {
+      color: blue;
+    }
+  </style>
   <title>Document</title>
 </head>
 <body>
@@ -15,6 +32,43 @@
   <!-- HTML 전역(global) 속성: 모든 태그에서 사용 가능한 속성 -->
   <!-- title: 요소의 설명 (마우스 커서를 올리면 지정한 설명이 나타남) -->
   <a href="http://naver.com" target="_blank" title="네이버로 이동"> NAVER </a>
+
+  <!-- style: 요소에 직접 스타일 적용(인라인 스타일) -->
+   <span style="color: blue;"> 파랑색 </span><br>
+
+  <!-- class: 요소를 지칭하는 중복 가능한 이름
+   선택자로 class를 지칭하여 CSS로 스타일 지정 또는 JS로 DOM 조작(제어) -->
+  <span>동해물과</span> <span class="red">백두산이</span> 마르고 닳도록
+   하느님이 보우하사 <span class="red">우리나라</span> 만세<br>
+
+  <!-- id: 요소를 지칭하는 중복 불가한(고유한) 이름 (하나의 웹 문서 내에 1개만 존재)
+    고유하기때문에 중요한 요소를 조금 더 쉽게 찾을 수 있음
+    class보다 사용 빈도가 낮음 -->
+  <span id="abc">동해물과</span> <span class="red">백두산이</span> 마르고 닳도록
+  하느님이 보우하사 <span class="red">우리나라</span> 만세<br>
+
+  <!-- data-: 요소에 데이터를 저장하는 용도(사용자 정의 속성을 만듦)
+   JS에서 이 속성에 저장한 데이터를 꺼내서 이용 가능
+   사용법: data-원하는 이름 작명="데이터"
+   input처럼 value속성을 지원하는 요소가 아닐 때 유용 -->
+   <div data-fruit-name="apple"> 사과 </div>
+   <div data-fruit-name="banana"> 바나나 </div>
+
+   <script>
+    // div 태그를 모두 찾아서 elements 라는 이름의 저장 공간(그릇)에 담아라
+    const elements = document.querySelectorAll('div');
+    console.log(elements);
+
+    // 찾은 요소들을 하나씩 반복해서 el에 다시 담고
+    elements.forEach(el => {
+      console.log(el);
+      // el안에 dataset안에 작명한 이름으로 접근
+      // console.log(el.dataset.fruit-name); //실행 안됨
+      console.log(el.dataset.fruitName); //JS 표기법
+      
+    });
+
+   </script>
   
 </body>
 </html>
