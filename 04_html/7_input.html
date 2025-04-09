@@ -28,6 +28,7 @@
 
   <!-- 입력할 값의 힌트 -->
   <input type="text" placeholder="이름을 입력하세요!"><br>
+  
   <!-- 마우스 이동시(포커스) 사라지는 힌트 -->
   <input type="text" placeholder="이름을 입력하세요!" class="hidden"><br>
 
@@ -42,25 +43,30 @@
 
   <!-- 체크 박스 (중복 선택) -->
   <input type="checkbox"> Apple
-  <input type="checkbox"> Banana<br>
+  <input type="checkbox"> Banana <br>
 
   <!-- 값을 미리 체크 -->
   <input type="checkbox"> Apple
-  <input type="checkbox" checked> Banana<br>
+  <input type="checkbox" checked> Banana <br>
 
   <!-- 라디오 버튼 (한개만 선택) -->
   <label><input type="radio" name="fruits"> Apple </label>
   <label><input type="radio" name="fruits"> Banana </label><br>
 
   <!-- label 바인딩 방법 (체크박스와 요소 묶는 법)(label 한개당 요소 한개) -->
-  <!-- 1. label 요소 내부에 input 요소를 배치 (추천) -->
-  <label><input type="checkbox"> Apple </label>
-  <label><input type="checkbox"> Banana </label><br>
+  <!-- 1. label 요소 내부에 input 요소를 배치 -->
+  <label>
+    <input type="checkbox"> Apple
+  </label>
+  <label>
+    <input type="checkbox"> Banana
+  </label><br>
+  
   <!-- 2. for 속성이 input 요소의 id 속성과 같아야 함 -->
-  <input type="checkbox" id="apple">
   <label for="apple"> Apple </label>
-  <input type="checkbox" id="Banana">
-  <label for="Banana"> Banana </label><br>
+  <input type="checkbox" id="apple">
+  <label for="Banana"> Banana </label>
+  <input type="checkbox" id="Banana"><br>
 
   <!-- label 사용 이점(웹 접근성과 관련)
    1. 매우 작은 영역(예: 확인란)을 클릭하는 데 어려움이 있는 사용자
@@ -70,48 +76,69 @@
   <!-- input 종류 (w3school) -->
   <!-- input button -->
   <input type="button" value="닫기">
+  
   <!-- button type (요소 내부에 텍스트 뿐만 아니라 다른 태그를 넣을 수 있음) (추천)-->
   <button type="button"> 닫기 </button><br>
+  
   <!-- 색상 선택 도구(Color Picker) -->
-  <label for="favcolor"> 색상 선택 </label>
-  <input type="color" id="favcolor" value="#ff0000"><br>
+  <label for=""> 색상 선택:
+    <input type="color" value="#ff0000">
+  </label><br>
+  
   <!-- 날짜 -->
-  <label for="birthday"> 생일: </label>
-  <input type="date" id="birthday"><br>
+  <label for=""> 생일:
+    <input type="date">
+  </label><br>
+  
   <!-- 시간 -->
-  <label for="time"> 시간: </label>
-  <input type="time" id="time"><br>
+  <label for=""> 시간:
+    <input type="time">
+  </label><br>
+  
   <!-- 날짜 + 시간 -->
-  <label for="birthdaytime"> 생일(날짜/시간): </label>
-  <input type="datetime-local" id="birthdaytime"><br>
+  <label for=""> 생일(날짜/시간):
+    <input type="datetime-local">
+  </label><br>
+  
   <!-- 이메일: submit 할때 자동으로 이메일 형식 유효성 검사를 해줌 -->
   <form action="">
-  <label for="email"> 이메일: </label>
-  <input type="email" id="email">
+  <label for=""> 이메일:
+    <input type="email">
+  </label>
   <button type="submit"> 가입 </button>
   </form>
-  <!-- 파일 첨부 (한개) -->
-  <label for="myfile"> 파일 선택: </label>
-  <input type="file" id="myfile"><br>
-  <!-- 파일 첨부 (여러개) -->
-  <label for="myfiles"> 파일 선택: </label>
-  <input type="file" id="myfiles" multiple><br>
+  
+  <!-- 파일첨부 (한개) -->
+  <label for=""> 파일 선택:
+    <input type="file">
+  </label><br>
+  
+  <!-- 파일첨부 (여러개) -->
+  <label for=""> 파일 선택:
+    <input type="file" multiple>
+  </label><br>
+  
   <!-- 범위 선택 (기본값 0~100) -->
-  <label for="volume"> 음량(0~100): </label>
-  <input type="range" id="volume"><br>
-  <!-- 비밀번호 -->
-  <label for="pwd"> 비밀번호: </label>
-  <input type="password" id="pwd" maxlength="10"><br>
-  <!-- 셀렉트 박스 (콤보 박스)
+  <label for=""> 음량(0~100):
+    <input type="range">
+  </label><br>
+  
+  <!-- password -->
+  <label> 비밀번호:
+     <input type="password" maxlength="12">
+  </label><br>
+  
+  <!-- select box (combo box)
    value: 서버로 전송되는 선택한 항목의 실제값
    selected: 항목을 미리 선택 -->
-  <label for="cars"> 차량 선택: </label>
-  <select id="cars">
+  <label for=""> 차량 선택:
+  <select id="">
     <option value=""> 선택 </option>
     <option value="volvo"> volvo </option>
     <option value="benz"> benz </option>
     <option value="audi" selected> audi </option>
-  </select><br>
+  </select>
+  </label><br>
 
   <!-- 여러 줄 입력 -->
   <p><label for="multi"> 여러 줄 텍스트 입력: </label></p>
