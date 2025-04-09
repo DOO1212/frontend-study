@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    table {
+      /* cell간에 경계를 합치는 속성 */
+      border-collapse: collapse;
+    }
+
+    td {
+      /* 선(테두리): 두께 종류 색상 */
+      border: 1px solid black;
+      padding: 10px;
+    }
+  </style>
+
+  <title>Document</title>
+</head>
+<body>
+
+  <!-- table: 표, 행(row)과 열(col)로 구성
+   주로 게시판, 표 형태의 목록, 장바구니 또는
+   실제 엑셀이나 구글 시트 같은 '표 형태'가 필요한 경우에만 사용
+   table로 레이아웃 작업을 하면 안됨! (레이아웃은 CSS로 해야함) -->
+  
+  <table>
+  <!-- table row: 하나의 행 -->  
+    <tr>
+  <!-- tabel data: 하나의 열 -->
+      <td> A </td>
+      <td> B </td>
+    </tr>
+    <tr>
+      <td> C </td>
+      <td> D </td>
+    </tr>
+  </table>
+  
+</body>
+</html>

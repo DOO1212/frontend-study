@@ -102,14 +102,30 @@
   <!-- 비밀번호 -->
   <label for="pwd"> 비밀번호: </label>
   <input type="password" id="pwd" maxlength="10"><br>
-  <!-- 셀렉트 박스 (콤보 박스) -->
-   <label for="cars"> 차량 선택: </label>
-   <select id="cars">
+  <!-- 셀렉트 박스 (콤보 박스)
+   value: 서버로 전송되는 선택한 항목의 실제값
+   selected: 항목을 미리 선택 -->
+  <label for="cars"> 차량 선택: </label>
+  <select id="cars">
     <option value=""> 선택 </option>
     <option value="volvo"> volvo </option>
     <option value="benz"> benz </option>
     <option value="audi" selected> audi </option>
-   </select>
+  </select><br>
+
+  <!-- 여러 줄 입력 -->
+  <p><label for="multi"> 여러 줄 텍스트 입력: </label></p>
+  <textarea id="multi" cols="30" rows="6"></textarea><br>
+  <textarea id="multi" cols="30" rows="6" spellcheck="false"></textarea><br>
+  <textarea id="multi" cols="30" rows="6" style="resize:none;"></textarea><br>
+
+  <!-- form(동기식(멈추고작업), 비동기식(멈추지않고개별작업(추천))): 사용자가 작성한 내용을 서버로 전송
+   어떤 서버 경로인지 / 어떤 방식(get,post)인지 -->
+  <form action="/login" method="post">
+    <input type="text" name="id">
+    <input type="password" name="pwd">
+    <button type="submit"> 로그인 </button>
+  </form>
   
 </body>
 </html>
