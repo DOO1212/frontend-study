@@ -3,6 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- 스크롤 이동을 부드럽게 만들기 -->
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    span{
+      color: red;
+    }
+    
+    div{
+      color: red;
+      background-color: black;
+    }
+  </style>
+
   <title>Document</title>
 </head>
 <body>
@@ -18,7 +35,7 @@
     <li> 오렌지 </li>
   </ul>
 
-  <!-- Ordered List(블록태그): 순서가 있는 목록 (사용 잘 안함) -->
+  <!-- Ordered List(블록태그)(ol): 순서가 있는 목록 (사용 잘 안함) -->
   <ol>
     <li> 사과 </li>
     <li> 딸기 </li>
@@ -28,28 +45,98 @@
 
   <!-- 메뉴 구조 만들기 실습 -->
   <!-- 메인 메뉴 - 서브 메뉴 -->
-  <!-- <li></li> 사이에 <ul></ul> -->
+  <!-- <li></li> 사이에 <ul><li></li></ul> -->
   <ul>
     <li><a href="#"> 메인 메뉴1 </a></li>
+
     <li><a href="#"> 메인 메뉴2 </a>
     <ul>
-      <li><a href=""> 서브 메뉴2-1 </a></li>
-      <li><a href=""> 서브 메뉴2-2 </a>
+      <li><a href="#"> 서브 메뉴2-1 </a></li>
+      <li><a href="#"> 서브 메뉴2-2 </a>
       <ul>
-        <li><a href=""> 서브 메뉴 2-2-1 </a></li>
-        <li><a href=""> 서브 메뉴 2-2-2 </a></li>
+        <li><a href="#"> 서브 메뉴 2-2-1 </a></li>
+        <li><a href="#"> 서브 메뉴 2-2-2 </a></li>
       </ul>
       </li>
     </ul>
     </li>
+
     <li><a href="#"> 메인 메뉴3 </a></li>
+
     <li><a href="#"> 메인 메뉴4 </a>
     <ul>
-      <li><a href=""> 서브 메뉴 4-1 </a></li>
-      <li><a href=""> 서브 메뉴 4-2 </a></li>
+      <li><a href="#"> 서브 메뉴 4-1 </a></li>
+      <li><a href="#"> 서브 메뉴 4-2 </a></li>
     </ul>
     </li>
   </ul>
+
+  <!-- Anchor(인라인태그)(a): 페이지를 이동하는 하이퍼링크를 지정, 닻(닻을 내린다) -->
+  <!-- target 속성은 링크된 페이지를 어디에 표시할지 타겟 지정
+   _self: 현재탭 (기본값)
+   _blank: 새로운 탭 -->
+  <a href="https://naver.com"> NAVER </a>
+  <a href="https://google.com" target="_blank"> GOOGLE </a>
+
+  <!-- 임시 태그 (#) -->
+  <a href="#"> 임시 태그 </a>
+  <!-- 해당 #id 영역으로 이동 -->
+  <a href="#intro"> INTRO </a>
+  <a href="#guide"> GUIDE </a>
+
+  <!-- 임시태그 이동 테스트 -->
+  <h2 id="intro"> INTRO </h2>
   
+  <p style="height:300px;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique reprehenderit ex sunt,
+     necessitatibus atque sint iste magni quos natus inventore. Harum,
+     velit obcaecati! Impedit, ipsa! Repellat deserunt sed reiciendis sunt!</p>
+  <p style="height:300px;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique reprehenderit ex sunt,
+     necessitatibus atque sint iste magni quos natus inventore. Harum,
+     velit obcaecati! Impedit, ipsa! Repellat deserunt sed reiciendis sunt!</p>
+  <p style="height:300px;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique reprehenderit ex sunt,
+     necessitatibus atque sint iste magni quos natus inventore. Harum,
+     velit obcaecati! Impedit, ipsa! Repellat deserunt sed reiciendis sunt!</p>
+  
+  <h2 id="guide"> GUIDE </h2>
+
+  <p style="height:300px;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique reprehenderit ex sunt,
+    necessitatibus atque sint iste magni quos natus inventore. Harum,
+    velit obcaecati! Impedit, ipsa! Repellat deserunt sed reiciendis sunt!</p>
+ <p style="height:300px;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique reprehenderit ex sunt,
+    necessitatibus atque sint iste magni quos natus inventore. Harum,
+    velit obcaecati! Impedit, ipsa! Repellat deserunt sed reiciendis sunt!</p>
+ <p style="height:300px;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique reprehenderit ex sunt,
+    necessitatibus atque sint iste magni quos natus inventore. Harum,
+    velit obcaecati! Impedit, ipsa! Repellat deserunt sed reiciendis sunt!</p>
+
+  <!-- span(인라인태그): 글자 영역 구분을 위해 사용 (주로 글자에 스타일 적용할 때) -->
+  <p> <span>동해물과</span> 백두산이 마르고 닳도록 </p>
+  
+  <!-- span을 div로 변경
+   div는 글자를 다루는데 적합하지 않음 -->
+  <p> <div>동해물과</div> 백두산이 마르고 닳도록 </p>
+
+  <!-- break(인라인)(br): 줄바꿈
+   HTML에서 엔터키로 줄바꿈 하는 것은 띄어쓰기 1개로 처리됨 -->
+   <p>
+    동해물과 백두산이
+
+
+    마르고     닳도록
+   </p>
+   
+   <p>
+    동해물과 백두산이<br>
+
+
+    마르고     닳도록
+   </p>
+
+   <!-- (참고) HTML 특수문자 (HTML Entities)
+    &lt; : <
+    &gt; : >
+    &nbsp; : 띄어쓰기
+    &copy; : ⓒ -->
+
 </body>
 </html>
