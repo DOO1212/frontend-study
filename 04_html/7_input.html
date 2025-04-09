@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    /* : : 가상 클래스 선택자, :: : 가상 요소 선택자 */
+    .hidden:focus::placeholder {
+      color: transparent;
+    }
+  </style>
+
+  <title>Document</title>
+</head>
+<body>
+
+  <!-- Input(인라인태그-블록태그): 데이터를 입력받는 요소
+   인라인-블록: 기본적인 특징은 인라인요소와 동일
+   + 블록 요소처럼 가로/세로 길이와 상하/좌우 여백을 모두 지정 가능 -->
+
+  <!-- Type 속성: 입력받을 데이터 타입을 지정 -->
+  <!-- 일반 텍스트 -->
+  <input type="text"><br>
+
+  <!-- 값을 미리 입력 -->
+  <input type="text" value="DOO"><br>
+
+  <!-- 입력할 값의 힌트 -->
+  <input type="text" placeholder="이름을 입력하세요!"><br>
+  <!-- 마우스 이동시(포커스) 사라지는 힌트 -->
+  <input type="text" placeholder="이름을 입력하세요!" class="hidden"><br>
+
+  <!-- 비활성화: 수정 불가 / Tab키로 선택(focus) 불가 / submit(전송) 불가 -->
+  <input type="text" value="disabled test" disabled><br>
+
+  <!-- 읽기 전용: 수정 불가 / Tab키로 선택(focus) 가능 / submit(전송) 가능 -->
+  <input type="text" value="readonly test" readonly><hr>
+
+
+
+  <!-- 체크 박스 -->
+  <input type="checkbox"> Apple
+  <input type="checkbox"> Banana<br>
+
+  <!-- label 바인딩 방법 (체크박스와 요소 묶는법) -->
+  <!-- 1. label 요소 내부에 input 요소를 배치 -->
+  <label><input type="checkbox"> Apple </label>
+  <label><input type="checkbox"> Banana </label><br>
+  <!-- 2. for 속성이 input 요소의 id 속성과 같아야 함 -->
+  <input type="checkbox" id="apple">
+  <label for="apple"> Apple </label>
+  <input type="checkbox" id="Banana">
+  <label for="Banana"> Banana </label>
+   
+  
+</body>
+</html>
