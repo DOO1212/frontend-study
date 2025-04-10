@@ -1,0 +1,64 @@
+<!-- 지금까지 배운 선택자를 활용해 다음 문장에 나온 조건에 맞게 선택자를 작성해 보세요.
+  
+  1. p 태그를 모두 선택합니다.
+    p
+  2. id 속성의 값이 title인 태그를 선택합니다.
+    #title
+  3. class 속성의 값이 box이면서 div인 태그를 선택합니다.
+    div.box
+  4. section 태그의 하위에 있는 모든 div 태그를 선택합니다.
+    section div
+  5. label 태그와 인접한 형제 관계인 input 태그를 선택합니다.
+    label + input
+  6. 링크 대상 경로가 https://www.naver.com인 a 태그의 하위에 있는 span 태그를 모두 선택합니다.
+    [href="https://www.google.com"] span
+    a[href="https://www.naver.com"] span -->
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  
+</head>
+<body>
+  <section class="intro">
+    <h2>회사 소개</h2>
+    <p>소개1</p>
+    <p>소개2</p>
+    <p>소개3</p>
+    <p>소개4</p>
+    <p>소개5</p>
+  </section>
+
+  <section class="main-contents">
+    <h2 id="title">메인 콘텐츠</h1>
+    <div>이미지 슬라이드 영역</div>
+    <div>SNS 영역</div>
+  </section>
+
+  <div class="box">
+    <p>사과</p>
+    <p>바나나</p>
+    <p>망고</p>
+  </div>
+
+  <section class="box">
+    <h2>과일 목록</h2>
+    <p>수박</p>
+    <p>메론</p>
+    <p>복숭아</p>
+  </section>
+
+  <label for="userId">아이디:</label>
+  <input type="text" id="userId">
+
+  <a href="https://www.naver.com">
+    <span>NAVER</span>
+  </a>
+  <a href="https://www.google.com">
+    <span>Google</span>
+  </a>
+</body>
+</html>
