@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    /* 1. 어떠한 행동을 했을 때 동작하는 가상 클래스 선택자 */
+    /* 선택자:hover (마우스 커서가 올라가 있는 동안 선택) */
+    a:hover {
+      color: red;
+    }
+
+    /* Quiz 마우스 커서가 올라가면 가로 300px, 배경색 roryalblue로 변경 */
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: orange;
+
+    /* 전환 효과 (천천히) */
+    transition: 1s;
+    }
+    .box:hover {
+      width: 300px;
+      background-color: royalblue;
+    }
+
+    /* 선택자:active (마우스 클릭하고 있는 동안 선택)
+       모바일에서 :hover 대신에 꼼수로 사용
+       (공유) 버튼을 누르는 효과를 줄 때 잘 활용한 예시(보통은 버튼 색상만 변경): https://codepen.io/jooing/pen/jOMybXY */
+    a:active {
+      color: lime;
+    }
+
+    /* 선택자:focus (요소가 포커스(활성화)되면 선택)
+       HTML 대화형(interactive) 요소에 사용 가능
+       Tab키로 확인 가능
+       예: input, a, button, label, select, textarea 등 */
+    input:focus {
+      background-color: orange;
+    }
+
+    /* 2. 특정한 요소를 선택하는 가상 클래스 선택자 */
+    /* 선택자:first-child (첫번째 자식 요소)
+       선택자:last-child (마지막 자식 요소 */
+    /* div가 3번째 자식이라 선택 안됨 (뒤에서부터 앞으로 조건 시작 (만약의 성질을 가지고 있음))
+       first-child가 div라면 */
+    .fruits div:first-child {
+      color: red;
+    }
+    .fruits h3:last-child {
+      color:red;
+    }
+  </style>
+</head>
+<body>
+
+  <a href="https://naver.com"> NAVER </a>
+
+  <div class="box"></div>
+
+  <input type="text">
+
+  <div class="fruits">
+    <span> 딸기 </span>
+    <span> 수박 </span>
+    <div> 오렌지 </div>
+    <p> 망고 </p>
+    <h3> 사과 </h3>
+  </div>
+  
+</body>
+</html>
