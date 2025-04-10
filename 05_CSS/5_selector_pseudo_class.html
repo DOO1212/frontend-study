@@ -46,12 +46,50 @@
        선택자:last-child (마지막 자식 요소 */
     /* div가 3번째 자식이라 선택 안됨 (뒤에서부터 앞으로 조건 시작 (만약의 성질을 가지고 있음))
        first-child가 div라면 */
-    .fruits div:first-child {
+    /* .fruits div:first-child {
       color: red;
-    }
-    .fruits h3:last-child {
+    } */
+    /* .fruits h3:last-child {
       color:red;
-    }
+    } */
+
+    /* 선택자 *:nth-child(n) (n번째 자식 요소) */
+    /* .fruits *:nth-child(2) {
+      color: red;
+    } */
+
+    /* .fruits *:nth-child(2n) {
+      color: red;
+    } 짝수 */
+    
+    /* .fruits *:nth-child(even) {
+      color: red;
+    } 짝수 */
+
+    /* .fruits *:nth-child(2n+1) {
+      color: red;
+    } 홀수 */
+
+    /* .fruits *:nth-child(odd) {
+      color: red;
+    } 홀수 */
+
+    /* .fruits *:nth-child(n+2) {
+      color: red;
+    } 2 이상 */
+
+    /* .fruits *:nth-child(-n+3) {
+      color: red;
+    } 앞에 3개만 */
+
+    /* .fruits *:not(:nth-child(n+4)) {
+      color: red;
+    } 앞에 3개만 */
+
+    /* 선택자 *:not(s) (선택자 s를 제외) */
+    /* .fruits *:not(span, h3){
+      color: red;
+    } span, h3 제외 */
   </style>
 </head>
 <body>

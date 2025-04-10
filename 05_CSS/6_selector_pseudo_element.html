@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+  /* 가상 요소 선택자: HTML에 가상의 요소를 생성 또는 제어 가능 */
+  /* 선택자::before, 선택자::after
+     반드시 CSS의 Content 속성과 같이 사용 */
+  .box {
+    width: 100px;
+    height: 100px;
+    background-color: orange;
+  }
+
+  /* 선택자::before (요소의 "내부" 앞에 내용 삽입) */
+  .box::before {
+    content: "앞!";
+  }
+
+  /* 선택자::after (요소의 "내부" 뒤에 내용 삽입) */
+  .box::after {
+    content: "뒤!";
+  }
+
+  /* 꼭 텍스트가 아니어도 됨!
+     그래도 content 속성은 ""로 값을 비우더라도 입력은 해야함 */
+  .box::after {
+    content: ""; /* ""는 필수 속성 */
+    width: 10px;
+    height: 30px;
+    background-color: royalblue;
+  
+  /* ::before, ::after 가상 요소는 인라인 요소(글자)(가로/세로 길이 조절 불가) */
+    display: block;
+  }
+
+  /* 활용하면 HTML 구조 추가와 class 추가 없이 제어 가능 */
+
+  /* ::placeholder, ::-webkit-scrollbar */
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    Content!
+  </div>
+  
+</body>
+</html>
