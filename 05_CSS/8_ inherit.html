@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <!-- 스타일 상속: 해당 요소와 하위 요소까지 스타일 적용 -->
+  <style>
+    .animal {
+      color: red;
+    }
+
+  /* 상속이 가능한 CSS 속성은 대부분 글자와 관련
+     개발자 도구에서 상속 받은 스타일 확인 가능
+     w3school에서 속성 검색후 'Inherited: ' 확인 */
+
+  /* 상속을 이용한 기본(공통) 스타일 작업 */
+  body {
+    font-family: '글씨체';
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #333;
+  }
+
+  /* 강제 상속: 자동으로 상속되지 않는 CSS 속성을 강제로 상속하는 방법 */
+  .parent {
+    width: 300px;
+    height: 400px;
+    background-color: red;
+  }
+  .child {
+    width: 100px;
+    /* height: 200px; */
+    height: inherit;
+    /* background-color: orange; */
+    background-color: inherit;
+    position: fixed;
+    top: 100px;
+    right: 100px;
+  }
+
+  /* (참고) 모든 CSS 속성과 HTML 요소에 사용
+  예: 버튼의 경우 font-size를 상속 받아도 버튼 기본 스타일 때문에
+  적용이 안됨 -> inherit로 강제 상속 */
+  button {
+    font-size: inherit;
+  }
+
+  </style>
+
+</head>
+<body>
+
+  <div class="parent">
+    <div class="child"></div>
+  </div>
+
+</body>
+</html>
