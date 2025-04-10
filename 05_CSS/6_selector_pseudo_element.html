@@ -7,14 +7,43 @@
 
   <style>
   /* 가상 요소 선택자: HTML에 가상의 요소를 생성 또는 제어 가능 */
-  /* 가상으로 만든 요소의 선택자 */
+  /* 가상 요소 */
   /* 선택자::before, 선택자::after
      반드시 CSS의 Content 속성과 같이 사용 */
   .box {
     width: 100px;
     height: 100px;
     background-color: orange;
+
+  /* 내용이 크기를 넘었을 때 스크롤바 생성 */
+    overflow: auto;
   }
+
+  /* (참고) 커스텀 스크롤바 만들기 */
+  /* 스크롤바 너비 */
+  .custom-scroll::-webkit-scrollbar {
+      width: 6px;
+    }
+
+  /* 스크롤바 트랙 */
+  .custom-scroll::-webkit-scrollbar-track {
+      background-color: #f1f1f1;
+      border-radius: 3px;
+    }
+  
+  /* 스크롤바 핸들 */
+  .custom-scroll::-webkit-scrollbar-thumb {
+      background-color: #f1f1f1;
+      border-radius: 3px;
+    }
+
+  /* 스크롤바 hover */
+  .custom-scroll::-webkit-scrollbar-thumb:hover {
+    background-color: #aaa;
+  }
+
+  /* 그 외 스크롤바 선택자
+     https://www.w3schools.com/howto/howto_css_custom_scrollbar.asp */
 
   /* 선택자::before (요소의 "내부" 앞에 내용 삽입) */
   .box::before {
@@ -41,6 +70,38 @@
   /* 활용하면 HTML 구조 추가와 class 추가 없이 제어 가능 */
 
   /* ::placeholder, ::-webkit-scrollbar */
+
+  .menu {
+    list-style: none;
+    display: flex;
+  }
+
+  .menu li {
+    position: relative;
+  }
+
+  .menu li + li::before {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 12px;
+    background-color: #555;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+  }
+
+  .menu li a {
+    text-decoration: none;
+    color: #656565;
+    padding: 0 15px;
+  }
+
+  .menu li a:hover {
+    color: black;
+    text-decoration: underline;
+  }
   </style>
 </head>
 <body>
@@ -48,6 +109,29 @@
   <div class="box">
     Content!
   </div>
+
+  <!-- (참고) 커스텀 스크롤바 만들기 -->
+  <div class="box custom-scroll">
+    content!
+    content!
+    content!
+    content!
+    content!
+    content!
+    content!
+    content!
+    content!
+    content!
+  </div>
+
+  <!-- (참고) 메뉴 항목 사이에 세로바 넣기 -->
+  <ul class="menu">
+    <li><a href="#"> 회사소개 </a></li>
+    <li><a href="#"> 인재채용 </a></li>
+    <li><a href="#"> 제휴제안 </a></li>
+    <li><a href="#"> 이용약관 </a></li>
+    <li><a href="#"> 고객센터 </a></li>
+  </ul>
   
 </body>
 </html>
