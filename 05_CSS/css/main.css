@@ -1,0 +1,10 @@
+/* import 방식: CSS 내에서 다른 CSS파일을 가져와 연결 */
+/* main.css 파일의 해석이 끝나고 가져옴(해석 속도 느림, 권장X) */
+/* css 파일 맨위에 위치해야 함 */
+/* @import url("./box.css"); */
+
+div {
+  color:blue;
+  font-size: 50px;
+  text-decoration: underline;
+}

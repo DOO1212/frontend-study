@@ -147,7 +147,8 @@
   <textarea id="multi" cols="30" rows="6" style="resize:none;"></textarea><br>
 
   <!-- form(동기식(멈추고작업), 비동기식(멈추지않고개별작업(추천))): 사용자가 작성한 내용을 서버로 전송
-   어떤 서버 경로인지 / 어떤 방식(get,post)인지 -->
+   어떤 서버 경로인지 / 어떤 방식(get,post)인지
+   name 속성: 서버로 전달할 때 유니크하게 구분하기 위한 이름 -->
   <form action="/login" method="post">
     <input type="text" name="id">
     <input type="password" name="pwd">
