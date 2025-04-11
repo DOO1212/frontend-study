@@ -1,27 +1,1602 @@
-[05_CSS\4_selector_combinator.html]
-복합 선택자: 기본선택자를 조합해서 사용하는 선택자 */
- 1. 일치 선택자: 동시에 만족하는 요소를 선택 */
+01_starter\git.md
+1. 커밋 메시지 룰과 작성법
+첫번째 라인: 제목(필수)
+두번째 라인: 공란
+세번째 라인부터: 내용 작성, 무엇을 왜(선택)
+마지막 라인: 꼬리말(#이슈 넘버)(선택)
 
-span.orange {
-  color: red;
-  }  */
+작성팁: 최대한 구체적으로 작성, 개인적인 팁으로 주간 보고에 그대로 쓸 정도로 작성
+참고 자료: https://github.com/RomuloOliveira/commit-messages-guide/blob/master/README_ko-KR.md
 
- span.orange.red.abc {
-   color: red;
-   }  여러개 같이 사용도 가능 *
- 2. 자식 선택자: 자식 요소를 선택 */
- ul > .orange {
-  color: red;
-  } *
- 3. 하위 (후손, 자손) 선택자: 하위 요소(자식 포함)를 선택 / 띄어쓰기로 사용
-   가장 많이 사용 */
- div .orange {
-   color: red;
-   }  *
- 4. 인접 형제 선택자: 인접한 "다음" 형제요소 "하나"만 선택 */
- .orange + li {
-   color: red;
-   }
+# ---------------- (예시) ----------------
+fix: Safari에서 모달을 띄웠을 때 스크롤 이슈 수정
 
------------------------------------------------------------
+모바일 사파리에서 Carousel 모달을 띄웠을 때,
+모달 밖의 상하 스크롤이 움직이는 이슈 수정.
+
+resolves: #1137
+# ----------------------------------------
+
+2. 커밋 전에 diff 확인하기! 매우 좋은 습관!!
+명령어로 git diff 인데 솔직히 보기 좀 불편함
+git difftool 쓰면 VIM 에디터로 보여줌
+
+3. 왜 굳이 git add -> commit 두 단계에 걸쳐서 하는지?
+변경된 모든 파일을 한번에 다 기록할 필요는 없음
+버전을 여러 개로 나눠서 만들고 싶은 경우
+1) git add로 기록할 파일을 고르고
+2) git commit으로 버전 생성(기록 완료)
+
+4. 언제, 얼마나 commit 하는게 좋을까?
+ctrl + s 누르는 것 처럼 5초마다 습관적으로 할 필요는 없고 
+간단한 기능을 하나 추가할 때 마다 commit 하면 됨
+
+예를 들어 회원가입 기능을 만든다고 하면 
+- 회원가입 폼 레이아웃 UI를 만들면 commit 하고 
+- 입력한 이메일이 형식에 맞는지 검증하는 기능(유효성 검사)을 만들면 commit 하고 
+- 서버에 데이터를 전송하는 기능을 만들면 commit 하고 
+
+대충 이렇게 작은 작업 하나를 마쳤으면 commit 하는게 좋음
+물론 3개 다 만들고 commit 하는 사람들도 있음
+중요한건 하루 1개 이상 커밋을 할 것! (좋은 습관)
+
+5. CLI 명령어 기반 VS GUI 툴 비교
+명령어는 모든 기능 사용 가능한 반면 GUI 툴은 툴 자체에 구현된 기능만 쓸 수 있음
+
+6. git push -u origin main
+-u 옵션은 방금 입력한 주소를 기억해라
+그 다음부터는 주소를 입력하지 않고 git push만 입력해도 됨
+
+7. git remote -v
+원격저장소 정보를 보고 싶을 때
+
+8. git clone https://원격저장소주소 [DIR]: 대상 폴더를 입력(생략하면 현재 폴더)
+원격 저장소에 올린 프로젝트를 내 로컬에 복제(1번만 하면 됨)
+클론 시 remote 설정은 이미 되어 있으므로 안 해도 됨!!
+
+9. git pull 원격저장소주소(origin)
+원격 저장소에 있는 모든 브랜치 내용을 가져와서 로컬 저장소에 합치라는 뜻
+이걸 해주면 로컬이 최신 상태가 되기 때문에 이제 git push가 가능함
+항상 최신 사항이 있으면 git pull을 먼저 하고 나서 그 위에 작업하는 습관이 좋음
+
+git pull origin main
+특정 브랜치(main)만 가져올 수 있음
+
+(중요) 작업하기 전에 git pull을 받아서 항상 최신 상태로 만들어놓고 작업 시작!!
+
+(참고로) git pull 명령어는 git fetch + git merge 를 합친 것
+git fetch는 원격 저장소의 최신 내용(commit)을 받아오는 것
+git merge는 그걸 merge(병합)하라는 뜻
+그래서 git pull 할 때 팀원 2명이서 같은 파일을 건드리고 있을 경우 merge conflict이 날 수 있음
+
+10. 저장소에 올리지 않을 파일들은 .gitignore
+설정 파일이나 빌드 산출물, 기타 라이브러리 파일들 등 
+불필요한 파일들은 올리지 않는 것이 좋음
+.gitignore 파일을 만들어서 올리지 않을 폴더나 파일을 명시하면 됨
+그러면 git에서 해당 폴더랑 파일을 무시함
+
+(Homework) 오늘의 과제:
+1) VS Code 단축키 정리한 것 받아가기
+2) 파일 만들거나 파일 내용 수정하면서 commit 여러 번 해보기
+중간중간 git status, git log 명령어도 사용해보기
+3) 집에 가서 오늘 수업한 저장소를 복제하여 이어서 commit 여러 번 해보기
+4) 학원에 도착하면 최신 내용으로 pull 받기
+
+-------------------------------------------------------------------
+
+01_starter\index.html
+$ git --version
+# 버전 확인
+
+$ git clone + github주소
+# 원격 저장소에서 프로젝트 가져오기 (복제)
+
+$ git remote add origin + github주소
+# origin이란 별칭으로 원격 저장소를 연결
+
+$ git init
+# 현재 프로젝트에서 변경사항 추적(버전 관리)을 시작
+
+$ git status
+# git 프로젝트의 파일 상태를 확인
+
+$ git config --global user.name 'NAME'
+$ git config --global user.email 'EMAIL'
+# 사용자 정보
+## 커밋(버전 생성)을 위한 정보 등록
+
+$ git config --global --list
+# 구성 확인
+## Q키를 눌러서 종료
+
+$ git add index.html
+# 변경사항을 추적할 특정 파일(index.html)을 지정
+$ git add .
+# 모든 파일의 변경사항을 추적하도록 지정
+
+$ git commit -m '프로젝트 이름'
+# 메시지(-m)와 함께 버전을 생성
+
+$ git push origin main (git push)
+# origin이란 별칭의 main 원격 저장소로 버전 내역 전송
+$ git pull origin main (git pull)
+# origin이란 별칭의 main 원격 저장소로 버전 내역 수신
+
+-------------------------------------------------
+
+<!-- 기본 설정(ctrl + ,) : font size = 편한대로 / tab size = 2 / 테마 편한대로 -->
+<!-- ! + Enter 또는 Tab 키 입력으로 html 기본구조 자동 완성 -->
+<!-- lang 지정 사용자 정의 속성 추가 - 명령 팔레트 (F1 또는 ctrl + shift + p) 에서 setting 검색
+ "emmet.variables": {
+ "lang": "ko" -->
+
+<!-- 메뉴 한글화 - Extensions - Korean 검색 (권장X) -->
+<!-- 코드 정렬 기능(alt + shift + f) (권장X) -->
+<!-- 태그 이름을 한번에 변경(Settings - Linked Editing 체크) -->
+<!-- 브라우저 출력(Extensions - Live Server 설치) (alt + l + o) -->
+<!-- github 편의성 향상(Extensions - Git Graph 설치) -->
+<!-- 외부에서 접속 가능 (AWS 등 호스팅 서버 업로드) -->
+
+<!-- (Git 배우고 복사해 갈 것!) -->
+<!-- VS Code 단축키 정리
+1) 사이드 바 열고 닫기: ctrl + b
+2) 빠른 열기(파일이나 기호 검색): ctrl + p
+3) 모든 명령 표시(명령 팔레트): ctrl + shift + p 또는 F1
+4) 탭 닫기: ctrl + w, 모든 탭 닫기: ctrl + k + w
+5) 검색: ctrl + f, 프로젝트 전체 검색: ctrl + shift + f
+6) 바꾸기: ctrl + h
+7) 라인 이동: alt + up/down
+8) 라인 복사: ctrl + c 또는 alt + shift + up/down
+9) 들여쓰기: tab, 내어쓰기: shift + tab
+10) 이전/다음 탭 열기: ctrl + PgUp/PgDn 또는 ctrl + tab
+11) 편집기 분할: ctrl + \ 또는 ctrl + alt + left/right
+12) 다중 선택: ctrl + d 또는 ctrl + alt + up/down 또는 alt + 마우스 클릭/드래그
+13) 라인 삭제: ctrl + shift + k
+14) 주석: ctrl + / -->
+
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <span> Hello World! </span>
+  <div> Hello World! </div>
+  <div> Hello World! </div>
+  <div> Hello World! </div>
+  <div> Hello World! </div>
+  <div> Hello World! </div>
+  <div> Hello World! </div>
+
+</body>
+
+</html>
+
+-----------------------------------------------------
+
+03_reset\index.html
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- (중요) CSS를 넣는 위치에 주의!!
+   우리가 추가적으로 작성하는 main.css 보다 먼저 동작할 수 있게 앞에 작성
+   쉽게 생각하면 도화지를 백지로 만들어놓고 그림을 그린다고 생각하면 됨 -->
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css">
+   
+   <link rel="stylesheet" href="/03_reset/main.css">
+  
+   <title>Document</title>
+  
+</head>
+<body>
+  
+  <div></div>
+
+  <!-- Emmet(코드 자동 완성 기능이 내장됨) -->
+  <!-- div.logo -->
+  <div class="logo"></div>
+
+  <!-- div#logo -->
+  <div id="logo"></div>
+
+  <!-- div>ul>li*4{$} -->
+  <div>
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+    </ul>
+  </div>
+
+</body>
+</html>
+
+  <!-- 브라우저 스타일 초기화 
+   크롬 브라우저에서 HTML 요소에 기본적으로 넣어주는 스타일 값이 존재
+   브라우저 마다 조금씩 다른 결과물이 나올 수 있음
+   (예: 색상 또는 <input>, <button> 같은 태그는 브라우저마다 기본 디자인이 다름)
+
+   브라우저에서 기본적으로 제공하는 CSS 스타일을 초기화하고 작업을 시작하는 것이 좋음
+   구글에 reset.css cdn 검색 -> css 파일의 원격 주소를 복사해서 사용
+
+   (자매품) normalize.css - 최대한 기본 제공 스타일을 살리면서 브라우저간 차이를 맞춰줌
+   https://github.com/necolas/normalize.css
+
+   (또는) 개발자가 직접 필요한 것만 골라서 작성하기도 함!
+
+   (참고) 파일명.min.확장자
+   min(Minify의 약어) 키워드는 파일이 난독화나 경량화 되었다는 것을 의미(쉽게 말해 압축 버전)
+   우리가 외부에서 가져와 사용하는 플러그인, 라이브러리 등을 직접 수정할 상황은 매우 드물기 때문에 
+   굳이 원본을 사용할 필요가 없음 -->
+
+   -----------------------------------------------------
+
+   04_html\5_multimedia.html
+   <!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <!-- image(인라인태그): 이미지 삽입 -->
+  <!-- 샘플 이미지 제공 서비스
+   https://picsum.photos/300/200 -->
+  
+  <img src="https://picsum.photos/300/200" alt="샘플">
+  
+  <!-- Audio(인라인태그): 오디오 콘텐츠 삽입 및 재생
+   HTML에서 지원하는 포맷: MP3, WAV, OGG -->
+
+  <audio src="Wildlife.mp4" controls></audio>
+
+  <!-- 브라우저마다 또는 브라우저버전에 따라서 지원하는 확장자가 달라 정상동작 하지 않을 수 있음
+   Source(태그): 대체 파일 지정 -->
+  <audio controls>
+    <source src="Wildlife.mp4" type="audio/mpeg">
+  </audio>
+  
+  <!-- Audio 태그의 속성들
+   audio controls (플레이어 생성)
+   audio autoplay (자동 재생)
+   audio loop (반복 재생)
+   audio mute (음소거) -->
+
+   <!-- Video(인라인태그): 비디오 콘텐츠 삽입 및 재생
+    HTML에서 지원하는 포맷: MP4, WebM, OGG -->
+  <video width="300" height="300" controls>
+    <source src="Wildlife.mp4" type="video/mp4"> 
+  </video>
+
+  <!-- Video 태그의 속성들
+   Video controls (플레이어 생성)
+   Video autoplay (자동 재생)
+   Video loop (반복 재생)
+   Video mute (음소거) -->
+  
+  <!-- 웹 페이지에서 비디오를 재생하려면 다음을 수행
+    1) YouTube에 동영상 업로드
+    2) 동영상 ID를 기록
+    3) <iframe> 요소 정의
+    4) src속성에 YouTube URL 지정
+    5) width 및 height 속성을 사용하여 플레이어의 크기를 지정
+    6) URL에 다른 매개변수를 추가(아래 참조)
+  -->
+  <!-- Inline Frame(인라인태그): HTML 문서 내에 다른 문서를 삽입(웹 페이지 내에 웹 페이지를 표시) -->
+  <iframe src="https://www.youtube.com/embed/RxXFPTHyJsI?si=TkF6w38qBQWFYMfX" width="300" height="300" frameborder="0"></iframe>
+
+  <!-- 유튜브 자동재생 + 음소거 -->
+  <iframe src="https://www.youtube.com/embed/RxXFPTHyJsI?si=TkF6w38qBQWFYMfX&autoplay=1&mute=1" width="300" height="300" frameborder="0"></iframe>
+
+  <!-- 유튜브 재생목록 (쉼표로 구분) -->
+  <iframe src="https://www.youtube.com/embed/RxXFPTHyJsI?si=TkF6w38qBQWFYMfX&playlist=RxXFPTHyJsI,Bp1ix8mosgM" width="300" height="300" frameborder="0"></iframe>
+
+  <!-- 유튜브 반복재생 (플레이리스트 있어야함)
+    loop=0: 한번 재생 (기본값)
+    loop=1: 무한 재생 -->
+
+  <!-- 유튜브 컨트롤 
+    controls=0: 플레이어 컨트롤 표시 안함
+    controls=1: 플레이어 컨트롤 표시 (기본값) -->
+
+</body>
+</html>
+
+------------------------------------------------------
+
+04_html\6_list.html
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- 스크롤 이동을 부드럽게 만들기 -->
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    span{
+      color: red;
+    }
+
+    .yellow {
+      color: yellow;
+      background-color: black;
+    }
+    
+    div{
+      color: red;
+      background-color: black;
+    }
+  </style>
+
+  <title>Document</title>
+</head>
+<body>
+
+  <!-- list 요소는 주로 메뉴나 탭 목록 등 목록을 만들 때 쓰임 -->
+  <!-- Unordered List(블록태그)(ul): 순서가 필요없는 목록 -->
+  <!-- List Item(블록태그)(li): 목록 내의 각 항목 -->
+  <!-- ul li 조합은 고정, 사이에는 아무것도 올 수 없음 -->
+  <ul>
+    <li> 사과 </li>
+    <li> 딸기 </li>
+    <li> 수박 </li>
+    <li> 오렌지 </li>
+  </ul>
+
+  <!-- Ordered List(블록태그)(ol): 순서가 있는 목록 (사용 잘 안함) -->
+  <ol>
+    <li> 사과 </li>
+    <li> 딸기 </li>
+    <li> 수박 </li>
+    <li> 오렌지 </li>
+  </ol>
+
+  <!-- 메뉴 구조 만들기 실습 -->
+  <!-- 메인 메뉴 - 서브 메뉴 -->
+  <!-- <li></li> 사이에 <ul><li></li></ul> -->
+  <ul>
+    <li><a href="#"> 메인 메뉴1 </a></li>
+
+    <li><a href="#"> 메인 메뉴2 </a>
+    <ul>
+      <li><a href="#"> 서브 메뉴2-1 </a></li>
+      <li><a href="#"> 서브 메뉴2-2 </a>
+      <ul>
+        <li><a href="#"> 서브 메뉴 2-2-1 </a></li>
+        <li><a href="#"> 서브 메뉴 2-2-2 </a></li>
+      </ul>
+      </li>
+    </ul>
+    </li>
+
+    <li><a href="#"> 메인 메뉴3 </a></li>
+
+    <li><a href="#"> 메인 메뉴4 </a>
+    <ul>
+      <li><a href="#"> 서브 메뉴 4-1 </a></li>
+      <li><a href="#"> 서브 메뉴 4-2 </a></li>
+    </ul>
+    </li>
+  </ul>
+
+  <!-- Anchor(인라인태그)(a): 페이지를 이동하는 하이퍼링크를 지정, 닻(닻을 내린다) -->
+  <!-- target 속성은 링크된 페이지를 어디에 표시할지 타겟 지정
+   _self: 현재탭 (기본값)
+   _blank: 새로운 탭 -->
+  <a href="https://naver.com"> NAVER </a>
+  <a href="https://google.com" target="_blank"> GOOGLE </a>
+
+  <!-- 임시 태그 (#) -->
+  <a href="#"> 임시 태그 </a>
+  <!-- 해당 #id 영역으로 이동 -->
+  <a href="#intro"> INTRO </a>
+  <a href="#guide"> GUIDE </a>
+
+  <!-- 임시태그 이동 테스트 -->
+  <h2 id="intro"> INTRO </h2>
+  
+  <p style="height:300px;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique reprehenderit ex sunt,
+     necessitatibus atque sint iste magni quos natus inventore. Harum,
+     velit obcaecati! Impedit, ipsa! Repellat deserunt sed reiciendis sunt!</p>
+  <p style="height:300px;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique reprehenderit ex sunt,
+     necessitatibus atque sint iste magni quos natus inventore. Harum,
+     velit obcaecati! Impedit, ipsa! Repellat deserunt sed reiciendis sunt!</p>
+  <p style="height:300px;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique reprehenderit ex sunt,
+     necessitatibus atque sint iste magni quos natus inventore. Harum,
+     velit obcaecati! Impedit, ipsa! Repellat deserunt sed reiciendis sunt!</p>
+  
+  <h2 id="guide"> GUIDE </h2>
+
+  <p style="height:300px;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique reprehenderit ex sunt,
+    necessitatibus atque sint iste magni quos natus inventore. Harum,
+    velit obcaecati! Impedit, ipsa! Repellat deserunt sed reiciendis sunt!</p>
+ <p style="height:300px;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique reprehenderit ex sunt,
+    necessitatibus atque sint iste magni quos natus inventore. Harum,
+    velit obcaecati! Impedit, ipsa! Repellat deserunt sed reiciendis sunt!</p>
+ <p style="height:300px;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique reprehenderit ex sunt,
+    necessitatibus atque sint iste magni quos natus inventore. Harum,
+    velit obcaecati! Impedit, ipsa! Repellat deserunt sed reiciendis sunt!</p>
+
+  <!-- span(인라인태그): 글자 영역 구분을 위해 사용 (주로 글자에 스타일 적용할 때) -->
+  <p> <span>동해물과</span> 백두산이 마르고 닳도록 </p>
+  
+  <!-- span을 div로 변경
+   div는 글자를 다루는데 적합하지 않음 -->
+  <p> <div>동해물과</div> 백두산이 마르고 닳도록 </p>
+
+  <!-- break(인라인)(br): 줄바꿈
+   HTML에서 엔터키로 줄바꿈 하는 것은 띄어쓰기 1개로 처리됨 -->
+   <p>
+    동해물과 백두산이
+
+
+    마르고     닳도록
+   </p>
+   
+   <p>
+    동해물과 백두산이<br>
+
+
+    마르고     닳도록
+   </p>
+
+   <!-- (참고) HTML 특수문자 (HTML Entities)
+    &lt; : <
+    &gt; : >
+    &amp; : &
+    &quot; : "
+    &apos; : '
+    &nbsp; : 띄어쓰기
+    &copy; : ⓒ -->
+
+    <!-- Horizontal Rule (블록태그)(수평줄)(hr) -->
+
+    <!-- Quiz -->
+    <h3>Quiz: p, span, br을 이용하여 아래와 같이 출력하기</h3>
+    <p>동해물과 백두산이 마르고 닳도록<br>
+    하느님이 보우하사 <span class="yellow">우리나라</span> 만세</p>
+
+</body>
+</html>
+
+--------------------------------------------------------
+
+04_html\7_input.html
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    /* : : 가상 클래스 선택자, :: : 가상 요소 선택자 */
+    .hidden:focus::placeholder {
+      color: transparent;
+    }
+  </style>
+
+  <title>Document</title>
+</head>
+<body>
+
+  <!-- Input(인라인태그-블록태그): 데이터를 입력받는 요소
+   인라인-블록: 기본적인 특징은 인라인요소와 동일
+   + 블록 요소처럼 가로/세로 길이와 상하/좌우 여백을 모두 지정 가능 -->
+
+  <!-- Type 속성: 입력받을 데이터 타입을 지정 -->
+  <!-- 일반 텍스트 -->
+  <input type="text"><br>
+
+  <!-- 값을 미리 입력 -->
+  <input type="text" value="DOO"><br>
+
+  <!-- 입력할 값의 힌트 -->
+  <input type="text" placeholder="이름을 입력하세요!"><br>
+  
+  <!-- 마우스 이동시(포커스) 사라지는 힌트 -->
+  <input type="text" placeholder="이름을 입력하세요!" class="hidden"><br>
+
+  <!-- 비활성화: 수정 불가 / Tab키로 선택(focus) 불가 / submit(전송) 불가 -->
+  <input type="text" value="disabled test" disabled><br>
+
+  <!-- 읽기 전용: 수정 불가 / Tab키로 선택(focus) 가능 / submit(전송) 가능 -->
+  <input type="text" value="readonly test" readonly><hr>
+
+
+
+
+  <!-- 체크 박스 (중복 선택) -->
+  <input type="checkbox"> Apple
+  <input type="checkbox"> Banana <br>
+
+  <!-- 값을 미리 체크 -->
+  <input type="checkbox"> Apple
+  <input type="checkbox" checked> Banana <br>
+
+  <!-- 라디오 버튼 (한개만 선택) -->
+  <label><input type="radio" name="fruits"> Apple </label>
+  <label><input type="radio" name="fruits"> Banana </label><br>
+
+  <!-- label 바인딩 방법 (체크박스와 요소 묶는 법)(label 한개당 요소 한개) -->
+  <!-- 1. label 요소 내부에 input 요소를 배치 -->
+  <label>
+    <input type="checkbox"> Apple
+  </label>
+  <label>
+    <input type="checkbox"> Banana
+  </label><br>
+  
+  <!-- 2. for 속성이 input 요소의 id 속성과 같아야 함 -->
+  <label for="apple"> Apple </label>
+  <input type="checkbox" id="apple">
+  <label for="Banana"> Banana </label>
+  <input type="checkbox" id="Banana"><br>
+
+  <!-- label 사용 이점(웹 접근성과 관련)
+   1. 매우 작은 영역(예: 확인란)을 클릭하는 데 어려움이 있는 사용자
+   - 사용자가 요소 내의 텍스트를 클릭하면 <label> 입력이 토글되기 때문 (히트 영역이 증가함)
+   2. 스크린 리더 사용자(사용자가 요소에 초점을 맞추면 label을 소리내어 읽음) -->
+
+  <!-- input 종류 (w3school) -->
+  <!-- input button -->
+  <input type="button" value="닫기">
+  
+  <!-- button type (요소 내부에 텍스트 뿐만 아니라 다른 태그를 넣을 수 있음) (추천)-->
+  <button type="button"> 닫기 </button><br>
+  
+  <!-- 색상 선택 도구(Color Picker) -->
+  <label for=""> 색상 선택:
+    <input type="color" value="#ff0000">
+  </label><br>
+  
+  <!-- 날짜 -->
+  <label for=""> 생일:
+    <input type="date">
+  </label><br>
+  
+  <!-- 시간 -->
+  <label for=""> 시간:
+    <input type="time">
+  </label><br>
+  
+  <!-- 날짜 + 시간 -->
+  <label for=""> 생일(날짜/시간):
+    <input type="datetime-local">
+  </label><br>
+  
+  <!-- 이메일: submit 할때 자동으로 이메일 형식 유효성 검사를 해줌 -->
+  <form action="">
+  <label for=""> 이메일:
+    <input type="email">
+  </label>
+  <button type="submit"> 가입 </button>
+  </form>
+  
+  <!-- 파일첨부 (한개) -->
+  <label for=""> 파일 선택:
+    <input type="file">
+  </label><br>
+  
+  <!-- 파일첨부 (여러개) -->
+  <label for=""> 파일 선택:
+    <input type="file" multiple>
+  </label><br>
+  
+  <!-- 범위 선택 (기본값 0~100) -->
+  <label for=""> 음량(0~100):
+    <input type="range">
+  </label><br>
+  
+  <!-- password -->
+  <label> 비밀번호:
+     <input type="password" maxlength="12">
+  </label><br>
+  
+  <!-- select box (combo box)
+   value: 서버로 전송되는 선택한 항목의 실제값
+   selected: 항목을 미리 선택 -->
+  <label for=""> 차량 선택:
+  <select id="">
+    <option value=""> 선택 </option>
+    <option value="volvo"> volvo </option>
+    <option value="benz"> benz </option>
+    <option value="audi" selected> audi </option>
+  </select>
+  </label><br>
+
+  <!-- 여러 줄 입력 -->
+  <p><label for="multi"> 여러 줄 텍스트 입력: </label></p>
+  <textarea id="multi" cols="30" rows="6"></textarea><br>
+  <textarea id="multi" cols="30" rows="6" spellcheck="false"></textarea><br>
+  <textarea id="multi" cols="30" rows="6" style="resize:none;"></textarea><br>
+
+  <!-- form(동기식(멈추고작업), 비동기식(멈추지않고개별작업(추천))): 사용자가 작성한 내용을 서버로 전송
+   어떤 서버 경로인지 / 어떤 방식(get,post)인지
+   name 속성: 서버로 전달할 때 유니크하게 구분하기 위한 이름 -->
+  <form action="/login" method="post">
+    <input type="text" name="id">
+    <input type="password" name="pwd">
+    <button type="submit"> 로그인 </button>
+  </form>
+  
+</body>
+</html>
+
+------------------------------------------------------
+
+04_html\8_table.html
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    table {
+      /* cell간에 경계를 합치는 속성 */
+      border-collapse: collapse;
+    }
+
+    td, th {
+      /* 선(테두리): 두께 종류 색상 */
+      border: 1px solid black;
+      padding: 10px;
+    }
+    
+  </style>
+
+  <title>Document</title>
+</head>
+<body>
+
+  <!-- table: 표, 행(row)과 열(col)로 구성
+   주로 게시판, 표 형태의 목록, 장바구니 또는
+   실제 엑셀이나 구글 시트 같은 '표 형태'가 필요한 경우에만 사용
+   table로 레이아웃 작업을 하면 안됨! (레이아웃은 CSS로 해야함) -->
+  
+  <table>
+  <!-- table row: 하나의 행 -->  
+    <tr>
+  <!-- tabel data: 하나의 열 -->
+      <td> A </td>
+      <td> B </td>
+    </tr>
+    <tr>
+      <td> C </td>
+      <td> D </td>
+    </tr>
+  </table>
+
+  <!-- thead, tbody, tfoot (추천X)-->
+   <table>
+    <!-- table header: 머리글 행은 이 안에 -->
+     <thead>
+      <tr>
+        <!-- table header: 타이틀(제목) -->
+         <th> HEAD 1 </th>
+         <th> HEAD 2 </th>
+         <th> HEAD 3 </th>
+      </tr>
+     </thead>
+    <!-- table body: 본문글 행은 이 안에 -->
+     <tbody>
+      <tr>
+        <td> 사람1 </td>
+        <td> 사람2 </td>
+        <td> 사람3 </td>
+      </tr>
+      <tr>
+        <td> 고니 </td>
+        <td> 피터 </td>
+        <td> 앨리스 </td>
+      </tr>
+      <tr>
+        <td> 16 </td>
+        <td> 25 </td>
+        <td> 36 </td>
+      </tr>
+     </tbody>
+    <!-- table footer: 바닥글 행은 이 안에 -->
+     <tfoot>
+      <tr>
+        <td> END 1 </td>
+        <td> END 2 </td>
+        <td> END 3 </td>
+      </tr>
+     </tfoot>
+   </table>
+
+  <!-- colspan, rowspan: 셀 병합(merge)(범위를 설정) -->
+  <table> 
+  <tr>
+    <td colspan="2"> 1 </td>
+    <!-- <td> 2 </td> -->
+    <td> 3 </td>
+   </tr>
+   <tr>
+    <td> 4 </td>
+    <td> 5 </td>
+    <td rowspan="2"> 6 </td>
+   </tr>
+   <tr>
+    <td> 7 </td>
+    <td> 8 </td>
+    <!-- <td> 9 </td> -->
+   </tr>
+  </table>
+
+  <!-- Quiz -->
+  <table>
+    <tr>
+      <td> 1 </td>
+      <td colspan="2"> 2 </td>
+      <!-- <td> 3 </td> -->
+      <td> 4 </td>
+    </tr>
+    <tr>
+      <td rowspan="3"> 5 </td>
+      <td> 6 </td>
+      <td> 7 </td>
+      <td> 8 </td>
+    </tr>
+    <tr>
+      <!-- <td> 9 </td> -->
+      <td> 10 </td>
+      <td rowspan="2" colspan="2"> 11 </td>
+      <!-- <td> 12 </tdrow> -->
+    </tr>
+    <tr>
+      <!-- <td> 13 </td> -->
+      <td> 14 </td>
+      <!-- <td> 15 </td> -->
+      <!-- <td> 16 </td> -->
+    </tr>
+  </table>
+
+</body>
+</html>
+
+--------------------------------------------------------
+
+04_html\9_attribute.html
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    /* 모든 span 태그에 적용됨 */
+    /* span {
+      color: red;
+    } */
+
+    /* class를 의미하는 . */
+    .red {
+      color: red;
+    }
+
+    /* id를 의미하는 # */
+    #abc {
+      color: blue;
+    }
+  </style>
+  <title>Document</title>
+</head>
+<body>
+
+  <!-- 태그마다 사용 가능한 속성이 정해져 있음(w3school) -->
+  <img src="https://picsum.photos/150" alt="샘플">
+  <!-- img 태그에 href 속성은 동작 안함 -->
+  <img href="https://picsum.photos/150" alt="샘플">
+
+  <!-- HTML 전역(global) 속성: 모든 태그에서 사용 가능한 속성 -->
+  <!-- title: 요소의 설명 (마우스 커서를 올리면 지정한 설명이 나타남) -->
+  <a href="http://naver.com" target="_blank" title="네이버로 이동"> NAVER </a>
+
+  <!-- style: 요소에 직접 스타일 적용(인라인 스타일) -->
+   <span style="color: blue;"> 파랑색 </span><br>
+
+  <!-- class: 요소를 지칭하는 중복 가능한 이름
+   선택자로 class를 지칭하여 CSS로 스타일 지정 또는 JS로 DOM 조작(제어) -->
+  <span>동해물과</span> <span class="red">백두산이</span> 마르고 닳도록
+   하느님이 보우하사 <span class="red">우리나라</span> 만세<br>
+
+  <!-- id: 요소를 지칭하는 중복 불가한(고유한) 이름 (하나의 웹 문서 내에 1개만 존재)
+    고유하기때문에 중요한 요소를 조금 더 쉽게 찾을 수 있음
+    class보다 사용 빈도가 낮음 -->
+  <span id="abc">동해물과</span> <span class="red">백두산이</span> 마르고 닳도록
+  하느님이 보우하사 <span class="red">우리나라</span> 만세<br>
+
+  <!-- data-: 요소에 데이터를 저장하는 용도(사용자 정의 속성을 만듦)
+   JS에서 이 속성에 저장한 데이터를 꺼내서 이용 가능
+   사용법: data-원하는 이름 작명="데이터"
+   input처럼 value속성을 지원하는 요소가 아닐 때 유용 -->
+   <div data-fruit-name="apple"> 사과 </div>
+   <div data-fruit-name="banana"> 바나나 </div>
+
+   <script>
+    // div 태그를 모두 찾아서 elements 라는 이름의 저장 공간(그릇)에 담아라
+    const elements = document.querySelectorAll('div');
+    console.log(elements);
+
+    // 찾은 요소들을 하나씩 반복해서 el에 다시 담고
+    elements.forEach(el => {
+      console.log(el);
+      // el안에 dataset안에 작명한 이름으로 접근
+      // console.log(el.dataset.fruit-name); //실행 안됨
+      console.log(el.dataset.fruitName); //JS 표기법
+      
+    });
+
+   </script>
+  
+</body>
+</html>
+
+--------------------------------------------------------
+
+04_html\10_semantic.html
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 시맨틱 태그(블록 요소): 의미론적인, 의미가 있는 태그(HTML5에서 등장)
+    div 처럼 어떠한 기능도 없음(즉, 시각적으로 어떠한 변화도 없음) 
+    HTML 코딩할 때는 의미와 구조에 집중(스타일은 CSS에서) -->
+
+  <!-- 1. header: 
+    웹 사이트 전체에 대한 중요한 정보가 표현되는 영역
+    최상단이나 좌측에 위치
+    로고, 제목, 검색, 메뉴와 같은 요소들을 포함 -->
+<header>
+  <h1>
+    <a href="#">프론트엔드 개발 첫 걸음</a>
+  </h1>
+</header>
+
+  <!-- 3. nav: 
+    웹 사이트의 주요 탐색 링크 영역을 구분하는데 사용
+    내비게이션 역할(메뉴, 목차)에 해당되는 정보가 이 곳에 담김
+    보통 header 안에 들어가거나 header 밑에 위치하기도 함 -->
+<nav>
+  <ul>
+    <li><a href="#html">HTML5</a></li>
+    <li><a href="#css">CSS3</a></li>
+    <li><a href="#js">JavaScript</a></li>
+    <li><a href="#react">React</a></li>
+  </ul>
+</nav>
+
+  <!-- 6. main: (다른 시맨틱 태그에 비해 잘 안쓰임)
+    메인 콘텐츠 영역을 의미, 웹 페이지의 가장 핵심적인 주요 내용이 들어감
+    본문의 전체 또는 일부를 묶음
+    article, aside, footer, header, nav 태그의 하위에 들어갈 수 없음 -->
+  <main>
+  
+  <!-- 5. section: 
+   문서의 구획을 정의, 관련 있는 내용들을 묶어 하나의 영역으로 구분할 때 사용
+   아니면 어떤 특정한 역할로 정의하기 애매한 것들은 섹션으로 묶어줌
+   (*W3C 정의: 섹션은 일반적으로 제목이 있는 콘텐츠(=article)들의 주제별 그룹입니다. 예를 들어 챕터)
+  
+   (참고) heading 태그 미사용 시 warning 발생
+  
+   예: 네이버 메인 한 페이지 안에서 '뉴스스탠드', '쇼핑' 처럼 논리적으로 내용 영역을 구분할 때 사용하면 됨
+   또는 버거킹 등 직접 예시 보여주기 -->
+  <section>
+    <h2>Frontend 기본</h2>
+    
+  <!-- 4. article: (다른 시맨틱 태그에 비해 잘 안쓰임)
+   글, 기사라는 뜻, 하나의 본문 글(독립적인 콘텐츠)을 의미 
+   독립적으로 사용될 수 있는 영역을 구분할 때 사용
+  
+   예: 네이버에서 로그인, 날씨, 증시 영역 -->
+  <article id="html">
+
+    <h3>HTML5 학습</h3>
+    <p> Lorem ipsum dolor sit amet consectetur adipisicing elit.<br>
+        Nemo quia reiciendis ipsa nostrum impedit autem? </p>
+    <p> Lorem ipsum dolor sit amet consectetur adipisicing elit.<br>
+        Nemo quia reiciendis ipsa nostrum impedit autem? </p>
+  </article>
+      
+  <article id="css">
+    <h3>CSS3 학습</h3>
+    <p> Lorem ipsum dolor sit amet consectetur adipisicing elit.<br>
+        Nemo quia reiciendis ipsa nostrum impedit autem? </p>
+    <p> Lorem ipsum dolor sit amet consectetur adipisicing elit.<br>
+        Nemo quia reiciendis ipsa nostrum impedit autem? </p>
+  </article>
+      
+  <article id="js">
+    <h3>JavaScript 학습</h3>
+    <p> Lorem ipsum dolor sit amet consectetur adipisicing elit.<br>
+        Nemo quia reiciendis ipsa nostrum impedit autem? </p>
+    <p> Lorem ipsum dolor sit amet consectetur adipisicing elit.<br>
+        Nemo quia reiciendis ipsa nostrum impedit autem? </p>
+  </article>
+  </section>
+  
+  <section>
+    <h2>Frontend 고급</h2>
+    <article id="react">
+      <h3>React 학습</h3>
+      <p> Lorem ipsum dolor sit amet consectetur adipisicing elit.<br>
+          Nemo quia reiciendis ipsa nostrum impedit autem? </p>
+      <p> Lorem ipsum dolor sit amet consectetur adipisicing elit.<br>
+          Nemo quia reiciendis ipsa nostrum impedit autem? </p>
+    </article>
+  </section>
+  </main>
+
+  <!-- 2. footer: 웹 사이트에 대한 부가적인 설명이 들어오는 영역
+    일반적으로 최하단에 위치
+    저작권 정보, 연락처, 사이트 맵 등의 요소들을 포함 -->
+  <footer>
+    <ul>
+      <li><a href="#">회사소개</a></li>
+      <li><a href="#">개인정보 보호정책</a></li>
+    </ul>
+  </footer>
+
+  <!-- 7. aside: (다른 시맨틱 태그에 비해 잘 안쓰임)
+    웹 페이지 안에서 주력 내용이나 독립적인 내용으로 보기 어려운 영역
+    주로 사이드 영역
+    article 태그나 section 태그로 영역을 구분할 수 없을 때 사용
+
+    예: 네이버 메인이나 네이버 검색 후 오른쪽 영역 -->
+
+</body>
+</html>
+
+-----------------------------------------------------
+
+05_CSS\2_declare.html
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- 외부 스타일 시트 (링크 방식)
+   main.css를 통째로 가져오는 방식 -->
+  <link rel="stylesheet" href="css/main.css">
+
+  <!-- 병렬 동작 확인 테스트용 (Network탭 확인) -->
+  <link rel="stylesheet" href="css/box.css">
+
+  <!-- 내부 스타일 시트 (내장 방식)
+   장점: 별도의 CSS 파일을 만들지 않고 바로 적용 가능
+   단점: CSS 내용이 많아질 경우 HTML 내부 코드가 복잡해지고,
+   여러 HTML 문서에서 같은 스타일이 반복될 경우 문서마다 반복 작성
+   수정할 때도 문서마다 찾아다니면서 모두 수정해야 하므로 비효율적(유지보수에 안좋음) -->
+  <style>
+    div {
+      color: red;
+      margin: 20px;
+    }
+  </style>
+
+  <title>Document</title>
+
+</head>
+<body>
+
+  <!-- 인라인 스타일 (인라인 방식)
+   장점: 선택자 없이 해당 요소에 직접 스타일 작성하므로 편리함
+   단점: 우선순위가 제일 높아 스타일을 덮어쓸 수 없음(남발하면 유지보수에 안좋음) -->
+  <div style="color: green;" class="box"> DOO </div>
+  
+</body>
+</html>
+
+-----------------------------------------------------
+
+05_CSS\3_selector_basic.html
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    /* 기본 선택자 4가지 */
+
+    /* 전체 -> 태그 -> 클래스 -> 아이디 순으로 기억 (우선 순위와 관련)
+       오른쪽으로 갈수록 더 구체적인(명확한) 선택 */
+
+    /* 1. 전체 선택자: 모든 요소(태그)를 선택
+      사용 예
+    - 단독: 스타일 초기화 작업이나 color, font-size, font-family 등 공통 스타일을 적용할 때
+    - 복합: 어떤 범위 안에 모든 요소를 선택할 때 */
+    
+    /* * {
+      margin: 0;
+      padding: 0;
+      color: red;
+    } */
+
+    /* 2. 태그 선택자: 태그 이름으로 선택
+    li {
+      color: red;
+    } */
+
+    /* 3. 클래스 선택자: class 속성의 값으로 선택 */
+    /* .orange {
+      color: red;
+    } */
+
+    /* 4. 아이디 선택자: id 속성의 값으로 선택 */
+    #orange {
+      color: red;
+    }
+        
+  </style>
+</head>
+<body>
+
+  <div>
+    <ul>
+      <li> 사과 </li>
+      <li> 딸기 </li>
+      <li id="orange" class="orange"> 오렌지 </li>
+    </ul>
+    <div> 당근 </div>
+    <p> 토마토 </p>
+    <span class="orange"> 오렌지 </span>  
+  </div>
+  
+</body>
+</html>
+
+------------------------------------------------------
+
+05_CSS\4_selector_combinator.html
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    /* 복합 선택자: 기본선택자를 조합해서 사용하는 선택자 */
+    /* 1. 일치 선택자: 동시에 만족하는 요소를 선택 */
+    /* span.orange {
+       color: red;
+       }  */
+    
+    /* span.orange.red.abc {
+       color: red;
+       }  여러개 같이 사용도 가능 */
+
+    /* 2. 자식 선택자: 자식 요소를 선택 */
+    /* ul > .orange {
+      color: red;
+      } */
+
+    /* 3. 하위 (후손, 자손) 선택자: 하위 요소(자식 포함)를 선택 / 띄어쓰기로 사용
+       가장 많이 사용 */
+    /* div .orange {
+       color: red;
+       }  */
+
+    /* 4. 인접 형제 선택자: 인접한 "다음" 형제요소 "하나"만 선택 */
+    /* .orange + li {
+       color: red;
+       } */
+
+    /* 5. 일반 형제 선택자: 다음 형제 요소 "모두"를 선택
+       사용 빈도는 낮지만 간혹 다음 형제 요소들 중에 특정 요소를 고를 때 유용 */
+       /* .orange ~ li {
+        color: red;
+       } */
+      
+       /* .orange ~ .apple {
+        color: red;
+       }     */
+  </style>
+</head>
+<body>
+
+  <div>
+    <ul>
+      <li> 사과 </li>
+      <li> 딸기 </li>
+      <li class="orange"> 오렌지 </li>
+    </ul>
+    <div> 당근 </div>
+    <p> 토마토 </p>
+    <span class="orange red abc"> 오렌지 </span>  
+  </div>
+
+  <span class="orange"> 오렌지 </span>
+
+  <ul>
+    <li> 딸기 </li>
+    <li> 수박 </li>
+    <li class="orange"> 오렌지 </li>
+    <li> 망고 </li>
+    <li class="apple"> 사과 </li>
+  </ul>
+
+  <!-- (참고) input, button이 반복되는 경우 그 사이를 떨어뜨릴 때 (인접 형제 선택자) -->
+  <!-- input {
+        display: block;
+       }
+       
+       input + input {
+        margin-top: 10px;
+       }
+       
+       button + button {
+        margin-left: 16px;
+       } -->
+  <input type="text">
+  <input type="text">
+  <input type="text">
+  <button type="button"> 버튼 </button>
+  <button type="button"> 버튼 </button>
+  <button type="button"> 버튼 </button>
+  
+</body>
+</html>
+
+-----------------------------------------------------
+
+05_CSS\5_selector_pseudo_class.html
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    /* 1. 어떠한 행동을 했을 때 동작하는 가상 클래스 선택자 */
+    /* 가상 클래스 */
+    /* 선택자:hover (마우스 커서가 올라가 있는 동안 선택) */
+    a:hover {
+      color: red;
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: orange;
+
+    /* 전환 효과 (천천히) */
+    transition: 1s;
+    }
+    
+     /* Quiz 마우스 커서가 올라가면 가로 300px, 배경색 roryalblue로 변경 */
+    .box:hover {
+      width: 300px;
+      background-color: royalblue;
+    }
+
+    /* 선택자:active (마우스 클릭하고 있는 동안 선택)
+       모바일에서 :hover 대신에 꼼수로 사용
+       (공유) 버튼을 누르는 효과를 줄 때 잘 활용한 예시(보통은 버튼 색상만 변경): https://codepen.io/jooing/pen/jOMybXY */
+    a:active {
+      color: lime;
+    }
+
+    /* 선택자:focus (요소가 포커스(활성화)되면 선택)
+       HTML 대화형(interactive) 요소에 사용 가능
+       Tab키로 확인 가능
+       예: input, a, button, label, select, textarea 등 */
+    input:focus {
+      background-color: orange;
+    }
+
+    /* 2. 특정한 요소를 선택하는 가상 클래스 선택자 */
+    /* 선택자:first-child (첫번째 자식 요소)
+       선택자:last-child (마지막 자식 요소 */
+    /* div가 3번째 자식이라 선택 안됨 (뒤에서부터 앞으로 조건 시작 (만약의 성질을 가지고 있음))
+       first-child가 div라면 */
+    /* .fruits div:first-child {
+      color: red;
+    } */
+    /* .fruits h3:last-child {
+      color:red;
+    } */
+
+    /* 선택자 *:nth-child(n) (n번째 자식 요소) */
+    /* .fruits *:nth-child(2) {
+      color: red;
+    } */
+
+    /* .fruits *:nth-child(2n) {
+      color: red;
+    } 짝수 */
+    
+    /* .fruits *:nth-child(even) {
+      color: red;
+    } 짝수 */
+
+    /* .fruits *:nth-child(2n+1) {
+      color: red;
+    } 홀수 */
+
+    /* .fruits *:nth-child(odd) {
+      color: red;
+    } 홀수 */
+
+    /* .fruits *:nth-child(n+2) {
+      color: red;
+    } 2 이상 */
+
+    /* .fruits *:nth-child(-n+3) {
+      color: red;
+    } 앞에 3개만 */
+
+    /* .fruits *:not(:nth-child(n+4)) {
+      color: red;
+    } 앞에 3개만 */
+
+    /* 선택자 *:not(s) (선택자 s를 제외) */
+    /* .fruits *:not(span, h3){
+      color: red;
+    } span, h3 제외 */
+  </style>
+</head>
+<body>
+
+  <a href="https://naver.com"> NAVER </a>
+
+  <div class="box"></div>
+
+  <input type="text">
+
+  <div class="fruits">
+    <span> 딸기 </span>
+    <span> 수박 </span>
+    <div> 오렌지 </div>
+    <p> 망고 </p>
+    <h3> 사과 </h3>
+  </div>
+  
+</body>
+</html>
+
+----------------------------------------------------
+
+05_CSS\6_selector_pseudo_element.html
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+  /* 가상 요소 선택자: HTML에 가상의 요소를 생성 또는 제어 가능 */
+  /* 가상 요소 */
+  /* 선택자::before, 선택자::after
+     반드시 CSS의 Content 속성과 같이 사용 */
+  .box {
+    width: 100px;
+    height: 100px;
+    background-color: orange;
+
+  /* 내용이 크기를 넘었을 때 스크롤바 생성 */
+    overflow: auto;
+  }
+
+  /* (참고) 커스텀 스크롤바 만들기 */
+  /* 스크롤바 너비 */
+  .custom-scroll::-webkit-scrollbar {
+      width: 6px;
+    }
+
+  /* 스크롤바 트랙 */
+  .custom-scroll::-webkit-scrollbar-track {
+      background-color: #f1f1f1;
+      border-radius: 3px;
+    }
+  
+  /* 스크롤바 핸들 */
+  .custom-scroll::-webkit-scrollbar-thumb {
+      background-color: #f1f1f1;
+      border-radius: 3px;
+    }
+
+  /* 스크롤바 hover */
+  .custom-scroll::-webkit-scrollbar-thumb:hover {
+    background-color: #aaa;
+  }
+
+  /* 그 외 스크롤바 선택자
+     https://www.w3schools.com/howto/howto_css_custom_scrollbar.asp */
+
+  /* 선택자::before (요소의 "내부" 앞에 내용 삽입) */
+  .box::before {
+    content: "앞!";
+  }
+
+  /* 선택자::after (요소의 "내부" 뒤에 내용 삽입) */
+  .box::after {
+    content: "뒤!";
+  }
+
+  /* 꼭 텍스트가 아니어도 됨!
+     그래도 content 속성은 ""로 값을 비우더라도 입력은 해야함 */
+  .box::after {
+    content: ""; /* ""는 필수 속성 */
+    width: 10px;
+    height: 30px;
+    background-color: royalblue;
+  
+  /* ::before, ::after 가상 요소는 인라인 요소(글자)(가로/세로 길이 조절 불가) */
+    display: block;
+  }
+
+  /* 활용하면 HTML 구조 추가와 class 추가 없이 제어 가능 */
+
+  /* ::placeholder, ::-webkit-scrollbar */
+
+  .menu {
+    list-style: none;
+    display: flex;
+  }
+
+  .menu li {
+    position: relative;
+  }
+
+  .menu li + li::before {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 12px;
+    background-color: #555;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+  }
+
+  .menu li a {
+    text-decoration: none;
+    color: #656565;
+    padding: 0 15px;
+  }
+
+  .menu li a:hover {
+    color: black;
+    text-decoration: underline;
+  }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    Content!
+  </div>
+
+  <!-- (참고) 커스텀 스크롤바 만들기 -->
+  <div class="box custom-scroll">
+    content!
+    content!
+    content!
+    content!
+    content!
+    content!
+    content!
+    content!
+    content!
+    content!
+  </div>
+
+  <!-- (참고) 메뉴 항목 사이에 세로바 넣기 -->
+  <ul class="menu">
+    <li><a href="#"> 회사소개 </a></li>
+    <li><a href="#"> 인재채용 </a></li>
+    <li><a href="#"> 제휴제안 </a></li>
+    <li><a href="#"> 이용약관 </a></li>
+    <li><a href="#"> 고객센터 </a></li>
+  </ul>
+  
+</body>
+</html>
+
+------------------------------------------------------
+
+05_CSS\7_selector_attr.html
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    /* 속성 선택자: HTML의 속성과 값으로 요소 선택, [] 기호 사용 */
+    /* [disabled] {
+      color: red;
+    } */
+
+    /* [type] {
+      color: red;
+      background-color: orange;
+    } */
+    /* [type="password"] {
+      color: red;
+      background-color: orange;
+    } */
+
+    [value="GONI"] {
+      color: red;
+      background-color: orange;
+    }
+
+    /* Quiz */
+    [data-fruit-name="banana"] {
+      color: red;
+    }
+  </style>
+
+</head>
+<body>
+
+  <input type="text" value="DOO">
+  <input type="password" value="1234">
+  <input type="text" value="ABCD" disabled>
+  <span data-fruit-name="apple"> 사과 </span>
+  <span data-fruit-name="banana"> 바나나 </span>
+  
+</body>
+</html>
+
+------------------------------------------------
+
+05_CSS\8_ inherit.html
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <!-- 스타일 상속: 해당 요소와 하위 요소까지 스타일 적용 -->
+  <style>
+    .animal {
+      color: red;
+    }
+
+  /* 상속이 가능한 CSS 속성은 대부분 글자와 관련
+     개발자 도구에서 상속 받은 스타일 확인 가능
+     w3school에서 속성 검색후 'Inherited: ' 확인 */
+
+  /* 상속을 이용한 기본(공통) 스타일 작업 */
+  body {
+    font-family: '글씨체';
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #333;
+  }
+
+  /* 강제 상속: 자동으로 상속되지 않는 CSS 속성을 강제로 상속하는 방법 */
+  .parent {
+    width: 300px;
+    height: 400px;
+    background-color: red;
+  }
+  .child {
+    width: 100px;
+    /* height: 200px; */
+    height: inherit;
+    /* background-color: orange; */
+    background-color: inherit;
+    position: fixed;
+    top: 100px;
+    right: 100px;
+  }
+
+  /* (참고) 모든 CSS 속성과 HTML 요소에 사용
+  예: 버튼의 경우 font-size를 상속 받아도 버튼 기본 스타일 때문에
+  적용이 안됨 -> inherit로 강제 상속 */
+  button {
+    font-size: inherit;
+  }
+
+  </style>
+
+</head>
+<body>
+
+  <div class="parent">
+    <div class="child"></div>
+  </div>
+
+</body>
+</html>
+
+---------------------------------------------------
+
+05_CSS\9_priority.html
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    /* body(상속) -> *(전체) -> 태그 -> 클래스 -> 아이디 -> 인라인 -> !important */
+    /* 개발자 도구로 확인 (우선순위 점수가 높은 순으로 표시됨) */
+
+    /* !important: 최우선 순위
+       되도록 사용 지양 / 나중에 스타일을 바꾸려고 할 때 수정이 어려울 수 있음
+       이 스타일이 무조건 적용되어야 하거나 절대 변경되서는 안될때 사용 */
+    div {
+      color: red !important;
+    }
+    
+    #hello {
+      color: yellow;
+    }
+
+    /* 선택자를 여러개 사용하여 명확하게 선택하면 우선순위 점수가 올라감 */
+    div.hello {
+      color: green;
+    }
+    
+    /* 점수가 같으면 가장 마지막에 해석된 스타일이 적용 */
+    .hello {
+      color: orange;
+    }
+    
+    div {
+      color:royalblue;
+    }
+    
+    * {
+      color: darkblue;
+    }
+
+    /* 상속은 브라우저 기본 스타일보다도 우선순위가 낮음 */
+    body {
+      color: violet;
+    }
+  </style>
+
+</head>
+<body>
+
+  <div id="hello"
+       class="hello"
+       style="color: olive;">
+
+    Hello World!
+  </div>
+  
+</body>
+</html>
+
+-----------------------------------------------------
 
