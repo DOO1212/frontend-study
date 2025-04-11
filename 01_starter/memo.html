@@ -1279,3 +1279,458 @@ VS Code 단축키 정리
 
 -----------------------------------------------------
 
+05_CSS\10_box_model.html
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    .container-1 {
+      /* width: auto;
+      height: auto; 기본값*/
+      
+      width: 100px;
+      height: 100px;
+      background-color: orange;
+    }
+
+    /* 인라인태그는 가로/세로 길이 지정 X
+       레이아웃을 작업하는 용도가 아님. 글자를 제어하는 용도 */
+    span {
+      width: 100px;
+      height: 100px;
+      background-color: orange;
+    }
+
+    .parent-1 {
+      /* width: 300px; */
+      /* max-width: 1000px; */
+      /* min-width: 1000px; */
+      height: 200px;
+      background-color: royalblue;
+    }
+
+    .child-1 {
+      /* max-width: 300px; */
+      /* min-width: 400px; */
+      height: 100px;
+      background-color: orange;
+    }
+
+    /* root만 바꿔주면 rem을 쓴 곳은 한번에 다 바뀜 */
+    html {
+      font-size: 20px;
+    }
+
+    .parent-2 {
+      width: 300px;
+      height: 200px;
+      background-color: royalblue;
+    }
+
+    .child-2 {
+      /* width: 100px; */
+      /* width: 50%; */
+      /* width: 10em; */
+      /* font-size: 10px; */
+      /* width: 10rem; */
+      /* width: 50vw; */
+      /* height: 50vh; */
+      height: 100px;
+      background-color: orange;
+    }
+
+    .container-2 .item {
+      width: 100px;
+      height: 100px;
+      background-color: orange;
+      border: 4px solid red;
+    }
+
+    
+    .container-2 .item:first-child {
+      /* 일반적인 경우는 잘 사용하지 않음
+       간혹 요소 배치 시 사용 */
+      /* margin: -50px; */
+      
+      /* margin: 10px; 상하좌우*/
+      /* margin: 10px 20px; 상하 좌우*/
+      /* margin: 10px 20px 30px; 상 좌우 하 */
+      /* margin: 10px 20px 30px 40px; 상 우 하 좌*/
+      /* margin-bottom: 20px; */
+
+      /* (참고) "가로 길이를 갖는" 블록 요소의 수평 가운데 정렬 */
+      margin: 0 auto;
+    }
+
+    .container-2 .item:last-child {
+      /* 내부 여백 지정 시 요소의 전체 크기가 커짐
+         즉 width, height는 content의 크기 */
+      /* padding: 10px; 상하좌우 */
+      /* padding: 10px 20px; 상하 좌우 */
+      /* padding: 10px 20px 30px; 상 좌우 하 */
+      /* padding: 10px 20px 30px 40px; 상 우 하 좌 */
+    }
+
+    .container-3 .item {
+      width: 100px;
+      height: 100px;
+      background-color: orange;
+    }
+
+    .container-3 .item:nth-child(1) {
+      /* 실선 */
+      /* padding과 마찬가지로 요소의 전체 크기가 커짐 */
+      border: 10px solid gray;
+      /* (참고) 지정된 색상 값이 없으면 요소의 글꼴 색상이 적용 */
+      color:blue;
+    }
+
+    .container-3 .item:nth-child(2) {
+      /* 파선 */
+      border: 10px dashed #ff0000;
+    }
+
+    .container-3 .item:nth-child(3) {
+      /* 점선 */
+      /* border: 10px dotted rgb(0, 0, 255); */
+      /* border: 10px dotted rgba(0, 0, 255, 0.1); 투명도 */
+      border: 10px dotted #0000ff;
+    }
+
+    .container-4 {
+      width: 200px;
+      height: 200px;
+      background-color: orange;
+      margin: 20px;
+      /* border-radius: 0 20px; */
+      /* border-radius: 0 20px 30px; */
+      /* border-radius: 0 20px 30px 40px; */
+
+      /* (참고) 원 만들기 (최대가 50%)
+         요소의 길이가 바뀌면 같이 수정해야하는 문제 */
+      /* border-radius: 50px; */
+      /* Quiz 상대 단위를 쓰면 해결 */
+      border-radius: 50%;
+    }
+
+    .container-5 {
+      width: 100px;
+      height: 100px;
+      background-color: orange;
+    }
+
+    .container-5.compare {
+      /* border로 인해 요소의 크기가 10px 증가 */
+      border: 5px solid red;
+      /* padding으로 인해 요소의 크기가 40px 증가 */
+      padding: 20px;
+      /* = 요소의 크기가 150 x 150 으로 늘어남
+        만약 요소의 크기를 100px로 유지하고 싶다면
+        늘어난 50px만큼 빼줘야 함 */
+    
+      /* 가로/세로 계산에 padding과 border 값도 포함해서
+         자동으로 content 영역이 줄어듦 */
+      /* 요소에 padding과 border 값이 추가될 때 지정한 크기보다
+         커지는 것을 방지 */
+      box-sizing: border-box;
+    }
+  </style>
+
+</head>
+<body>
+
+  <!-- 자주 사용하는 CSS 단위
+  1.px(픽셀)(자주사용) 
+    디바이스가 표현할 수 있는 화면의 점
+    1920 x 1080 해상도에서 1920, 1080 숫자들이 가로, 세로에 들어가는 픽셀의 수를 의미
+  2.%(상대적 백분율)(자주사용)
+    특정 값을 기준으로 몇 퍼센트의 크기를 가지는지 표현하는 상대 단위
+  3.em(요소의 글꼴 크기)
+    요소 자신의 글꼴 크기를 기준으로 하는 상대 단위
+    예를 들어 요소의 글꼴 크기가 10px이면 1em은 10px을 의미
+  4.rem(root-em, 루트 요소의 글꼴 크기)
+    루트(최상위) 요소(html)의 글꼴 크기를 기준으로 하는 상대 단위
+    루트의 글꼴 크기 기본값은 16px이므로 1rem은 16px을 의미
+  5.vw(뷰포트의 가로 너비의 백분율)
+    예를 들어 뷰포트의 가로가 1920px인 경우 10vw는 192px
+    브라우저 창 크기 조절 시 상대적으로 바뀜
+  6.vh(뷰포트의 세로 높이의 백분율)
+    예를 들어 뷰포트의 세로가 1080px인 경우 10vh는 108px 
+    브라우저 창 크기 조절 시 상대적으로 바뀜
+  
+  *(참고) 뷰포트의 크기는 스크롤까지 포함임 -->
+  
+  <h4> 1-1. width, height 실습 </h4>
+  <div class="container-1"> Hello </div>
+  <span> Hello </span>
+
+  <h4> 1-2. max-width, max-height 실습 </h4>
+  <div class="parent-1">
+    <div class="child-1"></div>
+  </div>
+
+  <h4> CSS 단위 실습 </h4>
+  <div class="parent-2">
+    <div class="child-2"></div>
+  </div>
+
+  <h4> margin, padding 실습 </h4>
+  <div class="container-2">
+    <div class="item"></div>
+    <div class="item"></div>
+  </div>
+
+  <h4> border 실습 </h4>
+  <div class="container-3">
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+  </div>
+
+  <h4> border-radius 실습 </h4>
+  <div class="container-4"></div>
+
+  <h5> box-sizing 실습 </h5>
+  <div class="container-5 compare"> Hello </div>  
+  <div class="container-5"> Hello </div>  
+  
+</body>
+</html>
+
+<!-- (정리) Quiz
+  Q1: width와 height 속성의 역할은?
+  A1: 가로 너비 / 세로 높이
+
+  Q2: width와 height 속성의 기본값은?
+  A2: auto; (블록 요소와 인라인 요소에 따라 auto 값의 특성이 달라진다는 것이 중요)
+
+  Q3: max-width와 max-height 속성의 기본값은?
+  A3: none; (최대치 제한 없음)
+
+  Q4: min-width와 min-height 속성의 기본값은?
+  A4: 0; (최소치 제한 없음)(0에는 따로 단위를 붙일 필요가 없음)
+
+  Q5: em 단위의 기준은?
+  A5: 해당 요소의 글꼴 크기
+
+  Q6: 0px과 0vw 중 더 큰 값은?
+  A6: 같다 (0px, 0em, 0rem, 0vw = 0)
+
+  Q7: margin 속성의 역할은?
+  A7: 요소의 외부 여백
+
+  Q8: margin: 40px 30px 20px;
+      위 코드에서 30px은 어느 방향을 의미하는가?
+  A8: 좌우
+
+  Q9: margin: 20px 10px;
+      위 코드에서 20px은 어느 방향을 의미하는가?
+  A9: 상하
+
+  Q10: padding 속성의 역할은?
+  A10: 요소의 내부 여백
+
+  Q11: padding: 20px 10px 40px 30px;
+      위 코드에서 30px은 어느 방향을 의미하는가?
+  A11: 좌
+  
+  Q12: padding 속성의 특징은?
+  A12: 크기가 커짐
+
+  Q13: border 속성의 특징은?
+  A13: 테두리 선이 들어가면 요소의 크기가 커짐
+
+  Q14: 두께 2px, 종류 실선, 색상 빨강의 테두리 선을 코드로 작성하시오!
+  A14: border: 2px solid red;
+
+  Q15: 요소의 모서리를 둥글게 깎기 위한 속성은?
+  A15: border-radius
+
+  Q16: width: 100px; padding: 20px; border: 1px solid red;
+      위 코드가 지정된 요소의 실제 가로 너비는?
+  A16: 142px
+
+  Q17: width: 100px; padding: 20px; border: 1px solid red; box-sizing: border-box;
+      위 코드가 지정된 요소의 실제 가로 너비는?
+  A17: 100px
+
+  Q18: box-sizing 속성의 기본값은?
+  A18: content-box -->
+
+---------------------------------------------------------------------------------
+
+05_CSS\11_overflow.html
+
+  <!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    /* 내용이 넘친 요소의 부모 영역에 명시 */
+    .parent {
+      width: 200px;
+      height: 150px;
+      background-color: royalblue;
+      margin: 20px;
+      padding: 20px;
+      
+      /* 기본값 */
+      /* overflow: visible; */
+
+      /* 넘친 내용을 잘라냄(숨김) */
+      /* overflow: hidden; */
+
+      /* 무조건 스크롤바 생성 (잘안씀) */
+      /* overflow: scroll; */
+
+      /* 넘친 내용이 있을 경우에만 스크롤바 생성 */
+      /* overflow: auto; */
+
+      /* X, Y 개별 지정 */
+      /* overflow: hidden scroll; 속성: X Y */
+      overflow-x: auto;
+    }
+
+    .child {
+      width: 300px;
+      height: 100px;
+      background-color: orange;
+    }
+  </style>
+
+</head>
+<body>
+
+  <div class="parent">
+    <div class="child"></div>
+  </div>
+  
+</body>
+</html>
+
+<!-- (정리) Quiz
+ Q1: 요소 넘침을 잘라낼 때 사용하는 속성과 값은?
+ A : overflow: hidden;
+ 
+ Q2: overflow 속성의 기본값은?
+ A : visible; -->
+
+ ---------------------------------------------------------------------------------
+
+ 05_CSS\12_display.html
+
+ <!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    /* display: 요소의 화면 출력(보여짐) 특성
+       각 요소에 이미 기본값이 있고 수정도 가능
+       
+       예) block, inline, inline-block 등 */
+
+    /* inline 요소를 block 또는 inline-block 요소로
+       바꾸는 행위를 많은 경우에 하게됨
+       
+       display: inline-block (block 요소를 가지면서 가로배치됨)
+       display: block (block 요소로 인해 세로배치됨)
+       
+       예) a태그(버튼용), img태그(사진 밑에 여백이 생길 경우) */
+    
+    span {
+      width: 120px;
+      height: 30px;
+      background-color: royalblue;
+      color: white;
+
+      /* 가로/세로 길이 지정을 위해 보여짐 특성 바꿔보기 */
+      display: block;
+
+      /* 요소의 숨김처리
+         화면에서 요소를 일시적으로 혹은 영구적으로 사라지게 하는 목적으로 자주 사용
+         
+         예) 모달창, 메뉴, 탭 메뉴 항목) */
+      /* display: none; */
+    }
+
+    /* 모달창 */
+    #modal {
+      width: 300px;
+      height: 200px;
+      border: 1px solid lightgray;
+      border-radius: 6px;
+      background-color: whitesmoke;
+      text-align: center;
+      padding: 10px 20px;
+
+      /* (참고) display VS visibility */
+      /* display: none; 영역까지 사라짐 */
+      /* visibility: hidden; 영역은 남아있음 */
+
+    }
+
+    .parent {
+      width: 100px;
+      height: 100px;
+      padding: 30px;
+      background-color: royalblue;
+    }
+
+    .child {
+      width: 200px;
+      height: 100px;
+      background-color: orange;
+    
+      /* 0과 1사이의 소수를 사용하여 투명도를 지정
+         (소수점에서 앞의 정수 부분은 생략 가능)
+         opacity: .5; */
+      opacity: 0.5;
+    }
+
+  </style>
+
+</head>
+<body>
+
+  <span> Hello World! </span>
+  
+</body>
+
+<!-- 예시:
+팝업창(Popup) - 고등학교 회원가입 디지털 원패스
+모달창(Modal) - 네이버 바이브, 패스트캠퍼스 -->
+
+<!-- (참고) 팝업창(Popup) VS 모달창(Modal)
+1. 팝업창(Popup):
+현재 열려있는 브라우저 페이지에서 또 다른 브라우저 페이지를 띄우는 것
+브라우저에서 이 창을 열기/닫기로 제어할 수 있음
+그러나 브라우저에서 팝업창을 차단한 경우 보이지 않는 점이 있음
+
+2. 모달창(Modal):
+기존의 브라우저 페이지 위에 새로운 창이 아닌 레이어를 까는 것
+모달창은 제거를 하지 않고도 페이지를 이동하면 자연히 사라짐
+기존의 페이지와 부모-자식 관계를 갖으며, 브라우저의 새 창 제어 옵션에는 전혀 영향을 받지 않음
+
+3. 정리:
+팝업창의 경우 웹 시작과 동시에 공지, 프로모션, 주의사항, 안내문 등으로 띄우는 경우가 많음
+(현재 의도하는 목적과 상관없이 뜨는 창에 주로 쓰임)
+
+모달창의 경우 중간 중간 사용자에게 요구되는 사항에 맞게 보여주는 경우가 많음 
+(다음 스텝으로 넘어가기 위한 필요에 의해 사용되는 창에 주로 쓰임)
+
+또 다른 차이는 팝업창은 사용자가 원할 경우 브라우저의 옵션을 통해 열지 않도록 강제할 수 있는 기능이 있음
+그렇기 때문에 반드시 노출해야하는 부분은 모달창을 사용하는 것이 좋음 -->
+
+---------------------------------------------------------------------------------
+
