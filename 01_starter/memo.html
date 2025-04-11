@@ -1,4 +1,5 @@
 01_starter\git.md
+
 1. 커밋 메시지 룰과 작성법
 첫번째 라인: 제목(필수)
 두번째 라인: 공란
@@ -8,14 +9,14 @@
 작성팁: 최대한 구체적으로 작성, 개인적인 팁으로 주간 보고에 그대로 쓸 정도로 작성
 참고 자료: https://github.com/RomuloOliveira/commit-messages-guide/blob/master/README_ko-KR.md
 
-# ---------------- (예시) ----------------
+---------------- (예시) ----------------
 fix: Safari에서 모달을 띄웠을 때 스크롤 이슈 수정
 
 모바일 사파리에서 Carousel 모달을 띄웠을 때,
 모달 밖의 상하 스크롤이 움직이는 이슈 수정.
 
 resolves: #1137
-# ----------------------------------------
+----------------------------------------
 
 2. 커밋 전에 diff 확인하기! 매우 좋은 습관!!
 명령어로 git diff 인데 솔직히 보기 좀 불편함
@@ -24,8 +25,8 @@ git difftool 쓰면 VIM 에디터로 보여줌
 3. 왜 굳이 git add -> commit 두 단계에 걸쳐서 하는지?
 변경된 모든 파일을 한번에 다 기록할 필요는 없음
 버전을 여러 개로 나눠서 만들고 싶은 경우
-1) git add로 기록할 파일을 고르고
-2) git commit으로 버전 생성(기록 완료)
+1. git add로 기록할 파일을 고르고
+2. git commit으로 버전 생성(기록 완료)
 
 4. 언제, 얼마나 commit 하는게 좋을까?
 ctrl + s 누르는 것 처럼 5초마다 습관적으로 할 필요는 없고 
@@ -76,15 +77,16 @@ git merge는 그걸 merge(병합)하라는 뜻
 그러면 git에서 해당 폴더랑 파일을 무시함
 
 (Homework) 오늘의 과제:
-1) VS Code 단축키 정리한 것 받아가기
-2) 파일 만들거나 파일 내용 수정하면서 commit 여러 번 해보기
-중간중간 git status, git log 명령어도 사용해보기
-3) 집에 가서 오늘 수업한 저장소를 복제하여 이어서 commit 여러 번 해보기
-4) 학원에 도착하면 최신 내용으로 pull 받기
+1. VS Code 단축키 정리한 것 받아가기
+2. 파일 만들거나 파일 내용 수정하면서 commit 여러 번 해보기
+.간중간 git status, git log 명령어도 사용해보기
+3. 집에 가서 오늘 수업한 저장소를 복제하여 이어서 commit 여러 번 해보기
+4. 학원에 도착하면 최신 내용으로 pull 받기
 
 -------------------------------------------------------------------
 
 01_starter\index.html
+
 $ git --version
 # 버전 확인
 
@@ -124,58 +126,38 @@ $ git pull origin main (git pull)
 
 -------------------------------------------------
 
-<!-- 기본 설정(ctrl + ,) : font size = 편한대로 / tab size = 2 / 테마 편한대로 -->
-<!-- ! + Enter 또는 Tab 키 입력으로 html 기본구조 자동 완성 -->
-<!-- lang 지정 사용자 정의 속성 추가 - 명령 팔레트 (F1 또는 ctrl + shift + p) 에서 setting 검색
+기본 설정(ctrl + ,) : font size = 편한대로 / tab size = 2 / 테마 편한대로
+
+! + Enter 또는 Tab 키 입력으로 html 기본구조 자동 완성
+
+lang 지정 사용자 정의 속성 추가 - 명령 팔레트 (F1 또는 ctrl + shift + p) 에서 setting 검색
  "emmet.variables": {
- "lang": "ko" -->
+ "lang": "ko"
+ }
 
-<!-- 메뉴 한글화 - Extensions - Korean 검색 (권장X) -->
-<!-- 코드 정렬 기능(alt + shift + f) (권장X) -->
-<!-- 태그 이름을 한번에 변경(Settings - Linked Editing 체크) -->
-<!-- 브라우저 출력(Extensions - Live Server 설치) (alt + l + o) -->
-<!-- github 편의성 향상(Extensions - Git Graph 설치) -->
-<!-- 외부에서 접속 가능 (AWS 등 호스팅 서버 업로드) -->
+메뉴 한글화 - Extensions - Korean 검색 (권장X)
+코드 정렬 기능(alt + shift + f) (권장X)
+태그 이름을 한번에 변경(Settings - Linked Editing 체크)
+브라우저 출력(Extensions - Live Server 설치) (alt + l + o)
+github 편의성 향상(Extensions - Git Graph 설치)
+외부에서 접속 가능 (AWS 등 호스팅 서버 업로드)
 
-<!-- (Git 배우고 복사해 갈 것!) -->
-<!-- VS Code 단축키 정리
-1) 사이드 바 열고 닫기: ctrl + b
-2) 빠른 열기(파일이나 기호 검색): ctrl + p
-3) 모든 명령 표시(명령 팔레트): ctrl + shift + p 또는 F1
-4) 탭 닫기: ctrl + w, 모든 탭 닫기: ctrl + k + w
-5) 검색: ctrl + f, 프로젝트 전체 검색: ctrl + shift + f
-6) 바꾸기: ctrl + h
-7) 라인 이동: alt + up/down
-8) 라인 복사: ctrl + c 또는 alt + shift + up/down
-9) 들여쓰기: tab, 내어쓰기: shift + tab
-10) 이전/다음 탭 열기: ctrl + PgUp/PgDn 또는 ctrl + tab
-11) 편집기 분할: ctrl + \ 또는 ctrl + alt + left/right
-12) 다중 선택: ctrl + d 또는 ctrl + alt + up/down 또는 alt + 마우스 클릭/드래그
-13) 라인 삭제: ctrl + shift + k
-14) 주석: ctrl + / -->
-
-<!DOCTYPE html>
-<html lang="ko">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-
-<body>
-
-  <span> Hello World! </span>
-  <div> Hello World! </div>
-  <div> Hello World! </div>
-  <div> Hello World! </div>
-  <div> Hello World! </div>
-  <div> Hello World! </div>
-  <div> Hello World! </div>
-
-</body>
-
-</html>
+(Git 배우고 복사해 갈 것!)
+VS Code 단축키 정리
+1. 사이드 바 열고 닫기: ctrl + b
+2. 빠른 열기(파일이나 기호 검색): ctrl + p
+3. 모든 명령 표시(명령 팔레트): ctrl + shift + p 또는 F1
+4. 탭 닫기: ctrl + w, 모든 탭 닫기: ctrl + k + w
+5. 검색: ctrl + f, 프로젝트 전체 검색: ctrl + shift + f
+6. 바꾸기: ctrl + h
+7. 라인 이동: alt + up/down
+8. 라인 복사: ctrl + c 또는 alt + shift + up/down
+9. 들여쓰기: tab, 내어쓰기: shift + tab
+10. 이전/다음 탭 열기: ctrl + PgUp/PgDn 또는 ctrl + tab
+11. 편집기 분할: ctrl + \ 또는 ctrl + alt + left/right
+12. 다중 선택: ctrl + d 또는 ctrl + alt + up/down 또는 alt + 마우스 클릭/드래그
+13. 라인 삭제: ctrl + shift + k
+14. 주석: ctrl + /
 
 -----------------------------------------------------
 
@@ -293,8 +275,8 @@ $ git pull origin main (git pull)
     3) <iframe> 요소 정의
     4) src속성에 YouTube URL 지정
     5) width 및 height 속성을 사용하여 플레이어의 크기를 지정
-    6) URL에 다른 매개변수를 추가(아래 참조)
-  -->
+    6) URL에 다른 매개변수를 추가(아래 참조)-->
+
   <!-- Inline Frame(인라인태그): HTML 문서 내에 다른 문서를 삽입(웹 페이지 내에 웹 페이지를 표시) -->
   <iframe src="https://www.youtube.com/embed/RxXFPTHyJsI?si=TkF6w38qBQWFYMfX" width="300" height="300" frameborder="0"></iframe>
 
@@ -324,9 +306,11 @@ $ git pull origin main (git pull)
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 
-  <!-- 스크롤 이동을 부드럽게 만들기 -->
+  
   <style>
+    /* 스크롤 이동을 부드럽게 만들기 */
     html {
       scroll-behavior: smooth;
     }
@@ -346,7 +330,6 @@ $ git pull origin main (git pull)
     }
   </style>
 
-  <title>Document</title>
 </head>
 <body>
 
