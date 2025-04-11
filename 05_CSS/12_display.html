@@ -10,6 +10,12 @@
        각 요소에 이미 기본값이 있고 수정도 가능
        
        예) block, inline, inline-block 등 */
+
+    /* inline 요소를 block 또는 inline-block 요소로
+       바꾸는 행위를 많은 경우에 하게됨
+       
+       예) a태그(버튼용), img태그(사진 밑에 여백이 생길 경우) */
+    
     span {
       width: 120px;
       height: 30px;
@@ -35,14 +41,31 @@
       background-color: whitesmoke;
       text-align: center;
       padding: 10px 20px;
+
+      /* (참고) display VS visibility */
+      /* display: none; 영역까지 사라짐 */
+      /* visibility: hidden; 영역은 남아있음 */
+
     }
 
-    /* inline 요소를 block 또는 inline-block 요소로
-       바꾸는 행위를 많은 경우에 하게됨
-       
-       예) a태그(버튼용), img태그(사진 밑에 여백이 생길 경우) */
+    .parent {
+      width: 100px;
+      height: 100px;
+      padding: 30px;
+      background-color: royalblue;
+    }
 
+    .child {
+      width: 200px;
+      height: 100px;
+      background-color: orange;
     
+      /* 0과 1사이의 소수를 사용하여 투명도를 지정
+         (소수점에서 앞의 정수 부분은 생략 가능)
+         opacity: .5; */
+      opacity: 0.5;
+    }
+
   </style>
 
 </head>
@@ -53,8 +76,55 @@
   <!-- (참고) 모달창을 숨기거나 보일 때 -->
   <div id="modal"> 모달창 </div>
 
-  <button type="button"> 열기 </button>
-  <button type="button"> 닫기 </button>
+  <button type="button" onclick="showModal()"> 열기 </button>
+  <button type="button" onclick="hideModal()"> 닫기 </button>
+
+  <div class="parent">
+    <div class="child"></div>
+  </div>
+
+  <script>
+    // 함수(=기능)
+    function showModal() {
+      document.getElementById("modal").style.display = "block";
+    }
+    
+    function hideModal() {
+      document.getElementById("modal").style.display = "none";  
+    }
+  </script>
   
 </body>
 </html>
+
+<!-- Quiz
+Q1: HTML <a></a>에 가로 너비를 지정하기 위해 사용해야 하는 속성과 값은?
+A : display: block;
+ 
+Q2: opacity 속성의 기본값은?
+A : 1 (불투명) -->
+
+<!-- 예시:
+팝업창(Popup) - 고등학교 회원가입 디지털 원패스
+모달창(Modal) - 네이버 바이브, 패스트캠퍼스 -->
+
+<!-- (참고) 팝업창(Popup) VS 모달창(Modal)
+1. 팝업창(Popup):
+현재 열려있는 브라우저 페이지에서 또 다른 브라우저 페이지를 띄우는 것
+브라우저에서 이 창을 열기/닫기로 제어할 수 있음
+그러나 브라우저에서 팝업창을 차단한 경우 보이지 않는 점이 있음
+
+2. 모달창(Modal):
+기존의 브라우저 페이지 위에 새로운 창이 아닌 레이어를 까는 것
+모달창은 제거를 하지 않고도 페이지를 이동하면 자연히 사라짐
+기존의 페이지와 부모-자식 관계를 갖으며, 브라우저의 새 창 제어 옵션에는 전혀 영향을 받지 않음
+
+3. 정리:
+팝업창의 경우 웹 시작과 동시에 공지, 프로모션, 주의사항, 안내문 등으로 띄우는 경우가 많음
+(현재 의도하는 목적과 상관없이 뜨는 창에 주로 쓰임)
+
+모달창의 경우 중간 중간 사용자에게 요구되는 사항에 맞게 보여주는 경우가 많음 
+(다음 스텝으로 넘어가기 위한 필요에 의해 사용되는 창에 주로 쓰임)
+
+또 다른 차이는 팝업창은 사용자가 원할 경우 브라우저의 옵션을 통해 열지 않도록 강제할 수 있는 기능이 있음
+그렇기 때문에 반드시 노출해야하는 부분은 모달창을 사용하는 것이 좋음 -->
