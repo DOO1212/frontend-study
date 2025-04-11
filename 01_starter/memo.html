@@ -180,6 +180,7 @@ $ git pull origin main (git pull)
 -----------------------------------------------------
 
 03_reset\index.html
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -240,8 +241,9 @@ $ git pull origin main (git pull)
 
    -----------------------------------------------------
 
-   04_html\5_multimedia.html
-   <!DOCTYPE html>
+04_html\5_multimedia.html
+
+<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
@@ -316,6 +318,7 @@ $ git pull origin main (git pull)
 ------------------------------------------------------
 
 04_html\6_list.html
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -477,6 +480,7 @@ $ git pull origin main (git pull)
 --------------------------------------------------------
 
 04_html\7_input.html
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -775,6 +779,7 @@ $ git pull origin main (git pull)
 --------------------------------------------------------
 
 04_html\9_attribute.html
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -853,6 +858,7 @@ $ git pull origin main (git pull)
 --------------------------------------------------------
 
 04_html\10_semantic.html
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -973,6 +979,7 @@ $ git pull origin main (git pull)
 -----------------------------------------------------
 
 05_CSS\2_declare.html
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -1014,6 +1021,7 @@ $ git pull origin main (git pull)
 -----------------------------------------------------
 
 05_CSS\3_selector_basic.html
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -1074,6 +1082,7 @@ $ git pull origin main (git pull)
 ------------------------------------------------------
 
 05_CSS\4_selector_combinator.html
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -1168,10 +1177,126 @@ $ git pull origin main (git pull)
 
 05_CSS\5_selector_pseudo_class.html
 
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    /* 1. 어떠한 행동을 했을 때 동작하는 가상 클래스 선택자 */
+    /* 가상 클래스 */
+    /* 선택자:hover (마우스 커서가 올라가 있는 동안 선택) */
+    a:hover {
+      color: red;
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: orange;
+
+    /* 전환 효과 (천천히) */
+    transition: 1s;
+    }
+    
+     /* Quiz 마우스 커서가 올라가면 가로 300px, 배경색 roryalblue로 변경 */
+    .box:hover {
+      width: 300px;
+      background-color: royalblue;
+    }
+
+    /* 선택자:active (마우스 클릭하고 있는 동안 선택)
+       모바일에서 :hover 대신에 꼼수로 사용
+       (공유) 버튼을 누르는 효과를 줄 때 잘 활용한 예시(보통은 버튼 색상만 변경): https://codepen.io/jooing/pen/jOMybXY */
+    a:active {
+      color: lime;
+    }
+
+    /* 선택자:focus (요소가 포커스(활성화)되면 선택)
+       HTML 대화형(interactive) 요소에 사용 가능
+       Tab키로 확인 가능
+       예: input, a, button, label, select, textarea 등 */
+    input:focus {
+      background-color: orange;
+    }
+
+    /* 2. 특정한 요소를 선택하는 가상 클래스 선택자 */
+    /* 선택자:first-child (첫번째 자식 요소)
+       선택자:last-child (마지막 자식 요소 */
+   
+    /* div가 3번째 자식이라 선택 안됨 (뒤에서부터 앞으로 조건 시작 (만약의 성질을 가지고 있음)) */
+    /* first-child가 div라면 */
+    /* .fruits div:first-child {
+      color: red;
+    } */
+    /* .fruits h3:last-child {
+      color:red;
+    } */
+
+    /* 선택자 선택자:nth-child(n) (n번째 자식 요소) */
+    /* .fruits 선택자:nth-child(2) {
+      color: red;
+    } */
+
+    /* .fruits 선택자:nth-child(2n) {
+      color: red;
+    } 짝수 */
+    
+    /* .fruits 선택자:nth-child(even) {
+      color: red;
+    } 짝수 */
+
+    /* .fruits 선택자:nth-child(2n+1) {
+      color: red;
+    } 홀수 */
+
+    /* .fruits 선택자:nth-child(odd) {
+      color: red;
+    } 홀수 */
+
+    /* .fruits 선택자:nth-child(n+2) {
+      color: red;
+    } 2 이상 */
+
+    /* .fruits 선택자:nth-child(-n+3) {
+      color: red;
+    } 앞에 3개만 */
+
+    /* .fruits 선택자:not(:nth-child(n+4)) {
+      color: red;
+    } 앞에 3개만 */
+
+    /* 선택자 선택자:not(s) (선택자 s를 제외) */
+    /* .fruits 선택자:not(span, h3){
+      color: red;
+    } span, h3 제외 */
+  </style>
+</head>
+<body>
+
+  <a href="https://naver.com"> NAVER </a>
+
+  <div class="box"></div>
+
+  <input type="text">
+
+  <div class="fruits">
+    <span> 딸기 </span>
+    <span> 수박 </span>
+    <div> 오렌지 </div>
+    <p> 망고 </p>
+    <h3> 사과 </h3>
+  </div>
+  
+</body>
+</html>
 
 ----------------------------------------------------
 
 05_CSS\6_selector_pseudo_element.html
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -1313,6 +1438,7 @@ $ git pull origin main (git pull)
 ------------------------------------------------------
 
 05_CSS\7_selector_attr.html
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -1361,6 +1487,7 @@ $ git pull origin main (git pull)
 ------------------------------------------------
 
 05_CSS\8_ inherit.html
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -1426,6 +1553,7 @@ $ git pull origin main (git pull)
 ------------------------------------------------------------------
 
 05_CSS\9_priority.html
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
