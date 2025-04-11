@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    /* 내용이 넘친 요소의 부모 영역에 명시 */
+    .parent {
+      width: 200px;
+      height: 150px;
+      background-color: royalblue;
+      margin: 20px;
+      padding: 20px;
+      
+      /* 기본값 */
+      /* overflow: visible; */
+
+      /* 넘친 내용을 잘라냄(숨김) */
+      /* overflow: hidden; */
+
+      /* 무조건 스크롤바 생성 (잘안씀) */
+      /* overflow: scroll; */
+
+      /* 넘친 내용이 있을 경우에만 스크롤바 생성 */
+      /* overflow: auto; */
+
+      /* X, Y 개별 지정 */
+      /* overflow: hidden scroll; 속성: X Y */
+      overflow-x: auto;
+    }
+
+    .child {
+      width: 300px;
+      height: 100px;
+      background-color: orange;
+    }
+  </style>
+
+</head>
+<body>
+
+  <div class="parent">
+    <div class="child"></div>
+  </div>
+  
+</body>
+</html>
+
+<!-- (정리) Quiz
+ Q1: 요소 넘침을 잘라낼 때 사용하는 속성과 값은?
+ A : overflow: hidden;
+ 
+ Q2: overflow 속성의 기본값은?
+ A : visible; -->
