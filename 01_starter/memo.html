@@ -163,17 +163,7 @@ VS Code 단축키 정리
 
 03_reset\index.html
 
-<head>
-  
-  <!-- (중요) CSS를 넣는 위치에 주의!!
-   우리가 추가적으로 작성하는 main.css 보다 먼저 동작할 수 있게 앞에 작성
-   쉽게 생각하면 도화지를 백지로 만들어놓고 그림을 그린다고 생각하면 됨 -->
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css">
-  
-</head>
 <body>
-  
-  <div></div>
 
   <!-- Emmet(코드 자동 완성 기능이 내장됨) -->
   <!-- div.logo -->
@@ -193,7 +183,6 @@ VS Code 단축키 정리
   </div>
 
 </body>
-</html>
 
   <!-- 브라우저 스타일 초기화 
    크롬 브라우저에서 HTML 요소에 기본적으로 넣어주는 스타일 값이 존재
@@ -291,22 +280,8 @@ VS Code 단축키 정리
       scroll-behavior: smooth;
     }
 
-    span{
-      color: red;
-    }
-
-    .yellow {
-      color: yellow;
-      background-color: black;
-    }
-    
-    div{
-      color: red;
-      background-color: black;
-    }
   </style>
 
-</head>
 <body>
 
   <!-- list 요소는 주로 메뉴나 탭 목록 등 목록을 만들 때 쓰임 -->
@@ -319,14 +294,6 @@ VS Code 단축키 정리
     <li> 수박 </li>
     <li> 오렌지 </li>
   </ul>
-
-  <!-- Ordered List(블록태그)(ol): 순서가 있는 목록 (사용 잘 안함) -->
-  <ol>
-    <li> 사과 </li>
-    <li> 딸기 </li>
-    <li> 수박 </li>
-    <li> 오렌지 </li>
-  </ol>
 
   <!-- 메뉴 구조 만들기 실습 -->
   <!-- 메인 메뉴 - 서브 메뉴 -->
@@ -387,10 +354,10 @@ VS Code 단축키 정리
   <p style="height:300px;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique reprehenderit ex sunt,
     necessitatibus atque sint iste magni quos natus inventore. Harum,
     velit obcaecati! Impedit, ipsa! Repellat deserunt sed reiciendis sunt!</p>
- <p style="height:300px;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique reprehenderit ex sunt,
+  <p style="height:300px;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique reprehenderit ex sunt,
     necessitatibus atque sint iste magni quos natus inventore. Harum,
     velit obcaecati! Impedit, ipsa! Repellat deserunt sed reiciendis sunt!</p>
- <p style="height:300px;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique reprehenderit ex sunt,
+  <p style="height:300px;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique reprehenderit ex sunt,
     necessitatibus atque sint iste magni quos natus inventore. Harum,
     velit obcaecati! Impedit, ipsa! Repellat deserunt sed reiciendis sunt!</p>
 
@@ -403,35 +370,16 @@ VS Code 단축키 정리
 
   <!-- break(인라인)(br): 줄바꿈
    HTML에서 엔터키로 줄바꿈 하는 것은 띄어쓰기 1개로 처리됨 -->
-   <p>
-    동해물과 백두산이
+  <!-- Horizontal Rule (블록태그)(수평줄)(hr) -->
 
-
-    마르고     닳도록
-   </p>
-   
-   <p>
-    동해물과 백두산이<br>
-
-
-    마르고     닳도록
-   </p>
-
-   <!-- (참고) HTML 특수문자 (HTML Entities)
-    &lt; : <
-    &gt; : >
-    &amp; : &
-    &quot; : "
-    &apos; : '
-    &nbsp; : 띄어쓰기
-    &copy; : ⓒ -->
-
-    <!-- Horizontal Rule (블록태그)(수평줄)(hr) -->
-
-    <!-- Quiz -->
-    <h3>Quiz: p, span, br을 이용하여 아래와 같이 출력하기</h3>
-    <p>동해물과 백두산이 마르고 닳도록<br>
-    하느님이 보우하사 <span class="yellow">우리나라</span> 만세</p>
+  <!-- (참고) HTML 특수문자 (HTML Entities)
+   &lt; : <
+   &gt; : >
+   &amp; : &
+   &quot; : "
+   &apos; : '
+   &nbsp; : 띄어쓰기
+   &copy; : ⓒ -->
 
 </body>
 
@@ -446,7 +394,6 @@ VS Code 단축키 정리
     }
   </style>
 
-</head>
 <body>
 
   <!-- Input(인라인태그-블록태그): 데이터를 입력받는 요소
@@ -904,40 +851,6 @@ VS Code 단축키 정리
 
 -----------------------------------------------------
 
-05_CSS\2_declare.html
-  
-  <!-- 외부 스타일 시트 (링크 방식)
-   main.css를 통째로 가져오는 방식 -->
-  <link rel="stylesheet" href="css/main.css">
-
-  <!-- 병렬 동작 확인 테스트용 (Network탭 확인) -->
-  <link rel="stylesheet" href="css/box.css">
-
-  <!-- 내부 스타일 시트 (내장 방식)
-   장점: 별도의 CSS 파일을 만들지 않고 바로 적용 가능
-   단점: CSS 내용이 많아질 경우 HTML 내부 코드가 복잡해지고,
-   여러 HTML 문서에서 같은 스타일이 반복될 경우 문서마다 반복 작성
-   수정할 때도 문서마다 찾아다니면서 모두 수정해야 하므로 비효율적(유지보수에 안좋음) -->
-  <style>
-    div {
-      color: red;
-      margin: 20px;
-    }
-  </style>
-
-</head>
-<body>
-
-  <!-- 인라인 스타일 (인라인 방식)
-   장점: 선택자 없이 해당 요소에 직접 스타일 작성하므로 편리함
-   단점: 우선순위가 제일 높아 스타일을 덮어쓸 수 없음(남발하면 유지보수에 안좋음) -->
-  <div style="color: green;" class="box"> DOO </div>
-  
-</body>
-</html>
-
------------------------------------------------------
-
 05_CSS\3_selector_basic.html
 
   <style>
@@ -973,22 +886,6 @@ VS Code 단축키 정리
     }
         
   </style>
-</head>
-<body>
-
-  <div>
-    <ul>
-      <li> 사과 </li>
-      <li> 딸기 </li>
-      <li id="orange" class="orange"> 오렌지 </li>
-    </ul>
-    <div> 당근 </div>
-    <p> 토마토 </p>
-    <span class="orange"> 오렌지 </span>  
-  </div>
-  
-</body>
-</html>
 
 ------------------------------------------------------
 
@@ -1031,7 +928,7 @@ VS Code 단축키 정리
         color: red;
        }     */
   </style>
-</head>
+
 <body>
 
   <div>
@@ -1067,15 +964,8 @@ VS Code 단축키 정리
        button + button {
         margin-left: 16px;
        } -->
-  <input type="text">
-  <input type="text">
-  <input type="text">
-  <button type="button"> 버튼 </button>
-  <button type="button"> 버튼 </button>
-  <button type="button"> 버튼 </button>
   
 </body>
-</html>
 
 -----------------------------------------------------
 
@@ -1170,7 +1060,7 @@ VS Code 단축키 정리
       color: red;
     } span, h3 제외 */
   </style>
-</head>
+
 <body>
 
   <a href="https://naver.com"> NAVER </a>
@@ -1188,7 +1078,6 @@ VS Code 단축키 정리
   </div>
   
 </body>
-</html>
 
 ----------------------------------------------------
 
@@ -1365,7 +1254,6 @@ VS Code 단축키 정리
   <span data-fruit-name="banana"> 바나나 </span>
   
 </body>
-</html>
 
 ------------------------------------------------
 
@@ -1416,7 +1304,6 @@ VS Code 단축키 정리
 
   </style>
 
-</head>
 <body>
 
   <div class="parent">
@@ -1424,7 +1311,6 @@ VS Code 단축키 정리
   </div>
 
 </body>
-</html>
 
 ------------------------------------------------------------------
 
@@ -1469,7 +1355,6 @@ VS Code 단축키 정리
     }
   </style>
 
-</head>
 <body>
 
   <div id="hello"
@@ -1480,7 +1365,6 @@ VS Code 단축키 정리
   </div>
   
 </body>
-</html>
 
 -----------------------------------------------------
 
