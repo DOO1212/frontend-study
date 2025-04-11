@@ -1224,41 +1224,41 @@ $ git pull origin main (git pull)
       color:red;
     } */
 
-    /* 선택자 *:nth-child(n) (n번째 자식 요소) */
+    /* 선택자 선택자:nth-child(n) (n번째 자식 요소) */
     /* .fruits *:nth-child(2) {
       color: red;
     } */
 
-    /* .fruits *:nth-child(2n) {
+    /* .fruits 선택자:nth-child(2n) {
       color: red;
     } 짝수 */
     
-    /* .fruits *:nth-child(even) {
+    /* .fruits 선택자:nth-child(even) {
       color: red;
     } 짝수 */
 
-    /* .fruits *:nth-child(2n+1) {
+    /* .fruits 선택자:nth-child(2n+1) {
       color: red;
     } 홀수 */
 
-    /* .fruits *:nth-child(odd) {
+    /* .fruits 선택자:nth-child(odd) {
       color: red;
     } 홀수 */
 
-    /* .fruits *:nth-child(n+2) {
+    /* .fruits 선택자:nth-child(n+2) {
       color: red;
     } 2 이상 */
 
-    /* .fruits *:nth-child(-n+3) {
+    /* .fruits 선택자:nth-child(-n+3) {
       color: red;
     } 앞에 3개만 */
 
-    /* .fruits *:not(:nth-child(n+4)) {
+    /* .fruits 선택자:not(:nth-child(n+4)) {
       color: red;
     } 앞에 3개만 */
 
-    /* 선택자 *:not(s) (선택자 s를 제외) */
-    /* .fruits *:not(span, h3){
+    /* 선택자 선택자:not(s) (선택자 s를 제외) */
+    /* .fruits 선택자:not(span, h3){
       color: red;
     } span, h3 제외 */
   </style>
