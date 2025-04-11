@@ -1627,13 +1627,6 @@ VS Code 단축키 정리
 
  05_CSS\12_display.html
 
- <!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-
   <style>
     /* display: 요소의 화면 출력(보여짐) 특성
        각 요소에 이미 기본값이 있고 수정도 가능
@@ -1649,67 +1642,26 @@ VS Code 단축키 정리
        예) a태그(버튼용), img태그(사진 밑에 여백이 생길 경우) */
     
     span {
-      width: 120px;
-      height: 30px;
-      background-color: royalblue;
-      color: white;
-
       /* 가로/세로 길이 지정을 위해 보여짐 특성 바꿔보기 */
       display: block;
 
       /* 요소의 숨김처리
          화면에서 요소를 일시적으로 혹은 영구적으로 사라지게 하는 목적으로 자주 사용
-         
-         예) 모달창, 메뉴, 탭 메뉴 항목) */
-      /* display: none; */
-    }
 
-    /* 모달창 */
-    #modal {
-      width: 300px;
-      height: 200px;
-      border: 1px solid lightgray;
-      border-radius: 6px;
-      background-color: whitesmoke;
-      text-align: center;
-      padding: 10px 20px;
+         예) 모달창, 메뉴, 탭 메뉴 항목) */
+      display: none;
 
       /* (참고) display VS visibility */
       /* display: none; 영역까지 사라짐 */
       /* visibility: hidden; 영역은 남아있음 */
-
-    }
-
-    .parent {
-      width: 100px;
-      height: 100px;
-      padding: 30px;
-      background-color: royalblue;
-    }
-
-    .child {
-      width: 200px;
-      height: 100px;
-      background-color: orange;
     
       /* 0과 1사이의 소수를 사용하여 투명도를 지정
-         (소수점에서 앞의 정수 부분은 생략 가능)
-         opacity: .5; */
+         (소수점에서 앞의 정수 부분은 생략 가능) */
+      opacity: .5; */
       opacity: 0.5;
     }
 
   </style>
-
-</head>
-<body>
-
-  <span> Hello World! </span>
-  
-</body>
-
-<!-- 예시:
-팝업창(Popup) - 고등학교 회원가입 디지털 원패스
-모달창(Modal) - 네이버 바이브, 패스트캠퍼스 -->
 
 <!-- (참고) 팝업창(Popup) VS 모달창(Modal)
 1. 팝업창(Popup):
