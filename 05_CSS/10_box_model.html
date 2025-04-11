@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    .container-1 {
+      /* width: auto;
+      height: auto; 기본값*/
+      
+      width: 100px;
+      height: 100px;
+      background-color: orange;
+    }
+
+    /* 인라인태그는 가로/세로 길이 지정 X
+       레이아웃을 작업하는 용도가 아님. 글자를 제어하는 용도 */
+    span {
+      width: 100px;
+      height: 100px;
+      background-color: orange;
+    }
+
+    .parent-1 {
+      /* width: 300px; */
+      /* max-width: 1000px; */
+      /* min-width: 1000px; */
+      height: 200px;
+      background-color: royalblue;
+    }
+
+    .child-1 {
+      /* max-width: 300px; */
+      /* min-width: 400px; */
+      height: 100px;
+      background-color: orange;
+    }
+  </style>
+
+</head>
+<body>
+
+  <!-- 자주 사용하는 CSS 단위
+  1.px(픽셀)(자주사용): 
+    디바이스가 표현할 수 있는 화면의 점
+    1920 x 1080 해상도에서 1920, 1080 숫자들이 가로, 세로에 들어가는 픽셀의 수를 의미
+  2.%(상대적 백분율)(자주사용):
+    특정 값을 기준으로 몇 퍼센트의 크기를 가지는지 표현하는 상대 단위
+  3.em(요소의 글꼴 크기):
+    요소 자신의 글꼴 크기를 기준으로 하는 상대 단위
+    예를 들어 요소의 글꼴 크기가 10px이면 1em은 10px을 의미
+  4.rem(root-em, 루트 요소의 글꼴 크기):
+    루트(최상위) 요소(html)의 글꼴 크기를 기준으로 하는 상대 단위
+    루트의 글꼴 크기 기본값은 16px이므로 1rem은 16px을 의미
+  5.vw(뷰포트의 가로 너비의 백분율):
+    예를 들어 뷰포트의 가로가 1920px인 경우 10vw는 192px
+    브라우저 창 크기 조절 시 상대적으로 바뀜
+  6.vh(뷰포트의 세로 높이의 백분율):
+    예를 들어 뷰포트의 세로가 1080px인 경우 10vh는 108px 
+    브라우저 창 크기 조절 시 상대적으로 바뀜
+  
+  *(참고) 뷰포트의 크기는 스크롤까지 포함임 -->
+  
+  <h4> 1-1. width, height 실습 </h4>
+  <div class="container-1"> Hello </div>
+  <span> Hello </span>
+
+  <h4> 1-2. max-width, max-height 실습 </h4>
+  <div class="parent-1">
+    <div class="child-1"></div>
+  </div>
+  
+</body>
+</html>
