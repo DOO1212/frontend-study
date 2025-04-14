@@ -10,12 +10,19 @@
       width: 800px;
       height: 550px;
       background-color: plum;
+
+      position: relative;
     }
     
     .parent {
       width: 600px;
       height: 350px;
       background-color: royalblue;
+
+      /* 부모 요소에 위치 기준을 만들어줌
+         (참고) absolute나 fixed를 쓰게 되면 일반 배치 흐름에서 벗어나
+         레이아웃 구조가 무너지기 때문에 무난한 relative 를 주로 사용 */
+      position: relative;
     }
     
     .child-1 {
@@ -28,12 +35,45 @@
       width: 350px;
       height: 250px;
       background-color: coral;
+
+      /* absolute: 상위 요소중 위치기준이 존재하는
+         가장 가까운 요소를 기준으로 배치
+         요소가 붕 뜨면서 일반 배치 흐름에서 벗어남
+         상위에 위치 기준 요소가 없으면 최상위루트(html)
+         까지 찾아 올라감(뷰포트가 기준이됨) */
+      position: absolute;
+      bottom: 30px;
+      right: 60px;
     }
 
     .child-3 {
       width: 250px;
       height: 300px;
       background-color: red;
+    }
+
+    /* 정리: 보통 absolute를 사용해서 배치를 한다면 해당 요소의 부모 요소에 relative를 지정 */
+    
+    .wrapper {
+      width: 800px;
+      height: 400px;
+      background-color: royalblue;
+      position: relative;
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: lightgreen;
+      
+      /* absolute일때 상하/좌우 가운데 정렬 */
+      position: absolute;      
+      top: 0;
+      bottom: 0;
+      margin: auto 0;
+      left: 0;
+      right: 0;
+      margin: auto;
     }
   </style>
 
@@ -46,6 +86,11 @@
     <div class="child-2"> 2 </div>
     <div class="child-3"> 3 </div>
   </div>
+  </div>
+
+  <!-- Tip! absolute가 적용된 요소의 수평,수직 가운데 배치 -->
+  <div class="wrapper">
+    <div class="box"></div>
   </div>
   
 </body>

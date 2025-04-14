@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+
+    body {
+      height: 3000px;
+    }
+
+    .grandparent {
+      width: 800px;
+      height: 550px;
+      background-color: plum;
+    }
+    
+    .parent {
+      width: 600px;
+      height: 350px;
+      background-color: royalblue;
+    }
+    
+    .child-1 {
+      width: 250px;
+      height: 150px;
+      background-color: orange;
+    }
+
+    .child-2 {
+      width: 350px;
+      height: 250px;
+      background-color: coral;
+
+      /* fixed는 뷰포트를 기준으로 배치(화면을 스크롤해도
+         요소의 위치가 고정됨) */
+      position: fixed;
+      bottom: 30px;
+      right: 60px;
+    }
+
+    .child-3 {
+      width: 250px;
+      height: 300px;
+      background-color: red;
+    }
+
+    /* 보통 고정된 header, 광고배너, 최근 본 상품, 최상단이동버튼을
+       만드는데 주로사용 */
+  </style>
+
+</head>
+<body>
+
+  <div class="grandparent">
+  <div class="parent">
+    <div class="child-1"> 1 </div>
+    <div class="child-2"> 2 </div>
+    <div class="child-3"> 3 </div>
+  </div>
+  </div>
+  
+</body>
+</html>
