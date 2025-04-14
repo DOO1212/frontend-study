@@ -5,11 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 
+  <!-- /* 이미지 가운데 정렬 2가지
+   1) 부모에 text-align: center;
+   2) "가로 길이를 갖는 블록 요소"에 margin: 0 auto; -->
+
+  <!-- body { 
+   width: 450px;
+   text-align: center;
+   margin: 0 auto; -->
+
   <style>
+    .profile {
+      text-align: center;
+    }
     .profile img {
+      /* (참고) img는 인라인 요소이지만 인라인-블록처럼 동작 */
       width: 150px;
-      display: block;
-      margin: 0 auto;
+      border-radius: 100px;
     }
 
     .title {
@@ -18,6 +30,7 @@
 
     .content {
       text-align: center;
+      font-weight: bold;
     }
     
     .content span {
@@ -31,6 +44,8 @@
       text-align: center;
       line-height: 60px;
       margin: 0 auto;
+      border-radius: 10px;
+      box-shadow: 5px 10px 0 black;
     }
 
     .box p {
