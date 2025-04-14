@@ -24,7 +24,62 @@
       line-height: 100px;
     }
 
+    .text-green { color: #00ff00 }
+    .text-blue { color: rgb(0, 0, 255) }
+    .text-black-50 { color: rgba(0, 0, 0, 0.5) }
     
+    .text-center { text-align: center; }
+    .text-left { text-align: left; }
+    .text-right { text-align: right; }
+
+    .text-underline { text-decoration: underline; }
+    .text-line-through { text-decoration: line-through; }
+
+    .text-indent-50px { text-indent: 50px; }
+    .text-indent--2em { text-indent: -2em; }
+
+    /* 그 외 텍스트 속성들 */
+    .ls-3px { letter-spacing: 3px; }
+    .ls-2px { letter-spacing: 2px; }
+    .ls--1px { letter-spacing: -1px; }
+
+    .ws-30px { word-spacing: 30px; }
+
+    .white-space-nowrap { white-space: nowrap; }
+    .white-space-pre { white-space: pre; }
+
+    p.wrapper {
+      width: 140px;
+      border: 1px solid #000;
+    }
+    .word-break-keep-all { word-break: keep-all; }
+    .word-break-break-all { word-break: break-all; }
+
+    /* (참고) 넘치는 텍스트에 말 줄임표(...) 만들기 */
+    div.box {
+      border: 1px solid #000;
+      width: 150px;
+
+      /* 말 줄임표를 만드는 CSS 패턴 */
+      /* 한줄일때 */
+      white-space: nowrap; /* 줄바꿈 안함 */ 
+      overflow: hidden; /* 넘친 부분 숨기기 */
+      text-overflow: ellipsis; /* 넘쳐서 숨긴 부분을 줄임표로 표시 */
+    }
+
+    /* 두줄 이상일때 */
+    div.box-multiline {
+      border: 1px solid #000;
+      width: 300px;
+      display: -webkit-box; /* 해당 영역을 box 형태로 관리 */
+      -webkit-box-orient: vertical; /* 영역 박스 안의 내용을 세로로 배치 */
+      -webkit-line-clamp: 2; /* 영역 박스 안 내용의 최대 라인수 */
+      line-clamp: 2;
+      overflow: hidden;
+    }
+
+    /* (참고) 웹사이트 can i use? - 웹 프론트 기술의 브라우저 지원을 알 수 있다 */
+
   </style>
 
 </head>
@@ -38,7 +93,7 @@
   <p class="text-blue">이것은 텍스트입니다, rgb(0, 0, 255).</p>
   <p class="text-black-50">이것은 텍스트입니다, rgba(0, 0, 0, 0.5).</p>
 
-  <h1>text-align: 텍스트 정렬</h1>
+  <h1>text-align: 텍스트 수평 정렬</h1>
   <div class="text-center">
     <h2>text-align: center:</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam at erat pulvinar, at pulvinar felis blandit. Vestibulum volutpat tellus diam, consequat gravida libero rhoncus ut.</p>
@@ -108,5 +163,27 @@
   <p class="wrapper word-break-break-all">Thisissomeveryveryverylong word. This text will break at any character.</p>
   <p class="wrapper word-break-break-all">이것은매우매우매우매우매우긴 단어입니다. 이 텍스트는 문자 단위로 줄바꿈 됩니다.</p>
   
+  <!-- (참고) 넘치는 텍스트에 말 줄임표(...) 만들기 -->
+  <!-- 한줄일때 -->
+  <h1> text-overflow: overflow된 내용을 어떻게 보일지 지정 </h1>
+  <h2> ellipsis: 생략(...) </h2>
+  <div class="box"> 이것은 매우 긴 제목입니다. </div>
+
+  <!-- 두줄 이상일때 -->
+   <h2> 두줄 이상일 때 </h2>
+   <div class="box-multiline">
+    이것은 매우 긴 설명입니다. 이것은 매우 긴 설명입니다.
+    이것은 매우 긴 설명입니다. 이것은 매우 긴 설명입니다. 
+   </div>
 </body>
 </html>
+
+<!-- (정리) Quiz
+  Q1: 문자를 수평 정렬하는 속성은?
+  A1: text-align
+
+  Q2: 문자를 들여쓰는 속성은?
+  A2: text-indent
+
+  Q3: text-decoration 속성의 기본값은?
+  A3: none; -->
