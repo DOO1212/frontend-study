@@ -6,6 +6,12 @@
   <title>Document</title>
 
   <style>
+    .grandparent {
+      width: 800px;
+      height: 550px;
+      background-color: plum;
+    }
+    
     .parent {
       width: 600px;
       height: 350px;
@@ -22,12 +28,6 @@
       width: 350px;
       height: 250px;
       background-color: coral;
-
-      /* relative: 요소 자기 자신이 기준(원래 위치 기준)
-         배치 전 자리는 빈자리가 됨 */
-      position: relative;
-      top: 30px;
-      left: 60px;
     }
 
     .child-3 {
@@ -40,10 +40,12 @@
 </head>
 <body>
 
+  <div class="grandparent">
   <div class="parent">
     <div class="child-1"> 1 </div>
     <div class="child-2"> 2 </div>
     <div class="child-3"> 3 </div>
+  </div>
   </div>
   
 </body>
