@@ -9,8 +9,12 @@ header {
   list-style: none;
 }
 
-.submenu ul {
+.submenu {
   display: flex;
+}
+
+.submenu ul li {
+  justify-content: flex-end;
 }
 
 .menu {
