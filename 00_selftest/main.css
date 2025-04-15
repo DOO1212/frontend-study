@@ -5,16 +5,40 @@ body {
 header {
   width: 80%;
   height: 100px;
-  background-color: orange;
+  background-color: whitesmoke;
   list-style: none;
+  display: flex;
+  position: relative;
+  margin: 0 auto;
+  padding: 20px;
+  font-size: 14px;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding-top: 20px;
+}
+
+.logo {
+  background-image: url("https://www.starbucks.co.kr/common/img/common/logo.png");
+  display: block;
+  height: 100px;
+  background-repeat: no-repeat;
+}
+
+.top a {
+  text-indent: -20000px;
 }
 
 .submenu {
-  display: flex;
+  position: absolute;
+  right: 50px;  
 }
 
-.submenu ul li {
-  justify-content: flex-end;
+.submenu ul {
+  display: flex;
 }
 
 .menu {
