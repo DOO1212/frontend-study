@@ -10,8 +10,28 @@
     body {
       width: 100%;
       text-align: center;
-      margin: 0 auto;
       background-color: rgb(216, 216, 216);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      height: 80px;
+      background-color: white;
+      padding: 0 30px;
+    }
+
+    .menu {
+      display: flex;
+    }
+
+    .menu li {
+      list-style: none;
+      padding-top: 10px;
+    }
+
+    li + li {
+      margin-left: 20px;
     }
 
     .main-background {
@@ -79,26 +99,6 @@
       margin: 200px auto;
     }
 
-    .nav-container {
-      display: flex;
-      justify-content: space-between;
-      height: 80px;
-      background-color: white;
-      padding: 0 30px;
-    }
-
-    .menu {
-      display: flex;
-    }
-
-    .menu li {
-      list-style: none;
-      padding-top: 10px;
-    }
-
-    li + li {
-      margin-left: 20px;
-    }
   </style>
 </head>
 <body>
