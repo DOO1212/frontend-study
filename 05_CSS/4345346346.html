@@ -1,0 +1,33 @@
+display: flex;
+
+// 줄 방향
+flex-direction: row (기본값)   (좌-우)
+		            row-reverse   (우-좌)
+		            column        (위 -아래)
+		            column-revers (아래-위)
+
+// 줄 묶음
+flex-wrap: nowrap (기본값) (줄묶음없음)
+	         wrap           (여러줄로 묶음)
+
+// 요소 전체를 정렬
+justify-content: flex-start (기본값) (요소 전체를 시작점으로 정렬)
+		             center             (요소 전체를 가운데 정렬)
+		             flex-end           (요소 전체를 끝점으로 정렬)
+                 space-between      (요소 전체를 "사이에" 동일한 간격 유지)
+                 space-around       (요소 전체를 "바깥에" 동일한 간격 유지)
+                 space-evenly       (요소 전체를 "사이와 바깥에" 동일한 간격 유지)
+
+
+// 요소 내용을 정렬 (자주사용O)
+align-items: stretch (기본값) (요소를 교차축으로 늘림)
+		         flex-start	     (요소를 각줄의 시작점으로 정렬)  // 위
+		         center          (요소를 각줄의 가운데정렬)      // 중앙
+		         flex-end        (요소를 각줄의 끝점으로 정렬)   // 아래
+
+// (자주사용X)
+align-content: stretch (기본값) (요소를 시작점으로 정렬)
+		           flex-start      (요소를 시작점으로 정렬)
+		           center          (요소를 가운데정렬)
+		           flex-end        (요소를 끝점으로 정렬)
+
