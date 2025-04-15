@@ -27,6 +27,7 @@
       color: white;
       font-size: 40px;
       padding-top: 50px;
+      margin-top: 0;
 
       /* (참고) 마진 상쇄 현상
          박스들의 테두리가 겹치면 margin이 합쳐짐
@@ -44,7 +45,6 @@
     }
 
     .main-content {
-      top: 200px;
       color: white;
     }
 
@@ -78,9 +78,40 @@
       width: 80%;
       margin: 200px auto;
     }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      height: 80px;
+      background-color: white;
+      padding: 0 30px;
+    }
+
+    .menu {
+      display: flex;
+    }
+
+    .menu li {
+      list-style: none;
+      padding-top: 10px;
+    }
+
+    li + li {
+      margin-left: 20px;
+    }
   </style>
 </head>
 <body>
+
+  <nav class="nav-container">
+    <h1> Shoes Shop </h1>
+
+    <ul class="menu">
+      <li class="menu-item"> Products </li>
+      <li class="menu-item"> Services </li>
+    </ul>
+  </nav>
+
   <div class="main-background">
     <h4 class="main-title">Buy our excellent shoes!</h4>
     <p class="main-content">
