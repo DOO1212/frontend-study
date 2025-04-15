@@ -8,51 +8,56 @@
 
   <style>
     body {
-      max-width: 100%;
+      width: 100%;
       text-align: center;
       margin: 0 auto;
-      background-color: rgb(158, 158, 158);
+      background-color: rgb(216, 216, 216);
     }
 
     .main-background {
       position: relative;
-      height: 700px;
+      height: 500px;
       background-image: url("shoes.jpg");
       background-size: cover;
       background-repeat: no-repeat;
-      background-position: 10px;
+      background-position: center;
     }
 
     .main-background .main-title {
       color: white;
       font-size: 40px;
-      position: absolute;
-      top: 80px;
-      left: 0;
-      right: 0;
-      margin: auto;
+      padding-top: 50px;
+
+      /* (참고) 마진 상쇄 현상
+         박스들의 테두리가 겹치면 margin이 합쳐짐
+         (박스가 내부에서 겹치든 외부에서 겹치든 상관없이) 마진을 하나로 합쳐주고
+         둘다 마진이 있으면 둘중에 더 큰 마진을 하나만 적용
+         1. 박스 2개가 부모-자식 관계로 위쪽 테두리가 겹친 상태
+         2. 박스 2개가 형제 관계로 위,아래 테두리가 겹친 상태
+         = 마진 상쇄 피하기
+         1. 테두리가 안붙게 살짝 떨어뜨림(꼼수)
+         padding: 0.1px;
+         2. 패딩 사용하기(권장)
+         padding-top: 50px;  */
+      /* 각 전체 테두리 내부 여백을 줄때는 padding
+         내부 컨텐츠끼리 띄울때는 margin */
     }
 
     .main-content {
-      position: absolute;
       top: 200px;
-      left: 0;
-      right: 0;
-      margin: auto;
       color: white;
     }
 
     .main-button {
-      position: absolute;
-      top: 400px;
-      left: 0;
-      right: 0;
-      margin: auto;
+      margin-top: 50px;
       width: 200px;
       height: 50px;
       border-radius: 10px;
-      border-style: none;
+      border: none;
       font-size: large;
+      
+      /* 누를 수 있는 요소는 커서 모양을 포인터로 */
+      cursor: pointer;
     }
 
     .main-button:hover {
@@ -60,12 +65,9 @@
     }
 
     .sub-description {
-      position: absolute;
-      top: 600px;
-      left: 0;
-      right: 0;
-      margin: auto;
-      width: 700px;
+      position: relative;
+      margin: 100px auto 0 auto;
+      width: 80%;
       background-color: white;
       border-radius: 30px;
       z-index: 1;
@@ -73,10 +75,8 @@
     }
 
     .history {
-      position: relative;
-      top: 120px;
       width: 80%;
-      margin: 0 auto;
+      margin: 200px auto;
     }
   </style>
 </head>
