@@ -6,31 +6,92 @@
   <title>Document</title>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css">
-  <link rel="stylesheet" href="main.css">
+  <style>
+  body {
+  text-align: center;
+  }
+
+  header {
+    width: 80%;
+    height: 100px;
+    background-color: whitesmoke;
+    list-style: none;
+    display: flex;
+    position: relative;
+    margin: 0 auto;
+    padding: 20px;
+    font-size: 14px;
+  }
+
+  .top {
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    width: 100%;
+    padding-top: 30px;
+  }
+
+  .logo {
+    background-image: url("https://www.starbucks.co.kr/common/img/common/logo.png");
+    display: block;
+    height: 100px;
+    background-repeat: no-repeat;
+  }
+
+  .top a {
+    text-indent: -20000;
+  }
+  
+  .submenu {
+    position: absolute;
+    right: 70px;
+  }
+  
+  .submenu ul {
+    display: flex;
+  }
+  
+  .menu {
+  }
+  
+  .menu ul {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .menu ul li {
+    list-style: none;
+  }
+  li + li {
+    margin-left: 20px;
+  }
+  </style>
 
 </head>
 <body>
 
   <header>
 
-    <div class="submenu">
-      <ul>
-        <li> Sign In </li>
-        <li> My Starbucks </li>
-        <li> Customer Service & Ideas </li>
-        <li> Find a Store </li>
-      </ul>
-    </div>
+    
 
     <div class="top">
-      <div style="flex-grow: 1;">
+      <div>
         <a href="index.html" class="logo"> LOGO </a>
       </div>
 
-      <div class="empty" style="flex-grow: 2;"></div>
+      <div></div>
       
-      <div class="menu" style="flex-grow: 1; margin-left: auto; ">
-        <ul>
+      <div>
+        <div class="submenu">
+          <ul>
+            <li> Sign In </li>
+            <li> My Starbucks </li>
+            <li> Customer Service & Ideas </li>
+            <li> Find a Store </li>
+          </ul>
+        </div>
+        <div>
+        <ul
           <li> COFFEE </li>
           <li> MENU </li>
           <li> STORE </li>
