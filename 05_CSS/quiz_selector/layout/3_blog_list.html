@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    /* 기본(공통) 스타일은 앞부분에 작성 */
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+    }
+    
+    ul {
+      list-style: none;
+      display: block;
+    }
+
+    li {
+      display: block;
+      text-align: center;
+    }
+
+    li a {
+      font-size: 30px;
+      color: black;
+      background-color: rgb(190, 190, 190);
+      text-decoration: none;
+      border-radius: 5px;
+      display: block;
+      width: 100px;
+    }
+
+    a {
+
+    }
+
+    .navbar {
+      display: flex;
+    }
+
+    li + li {
+      margin-left: 30px;
+    }
+
+    .logo {
+      width: 100px;
+      border-radius: 50%;
+    }
+
+    .content-header {
+      display: flex;
+    }
+
+    .blog-name p {
+      font-size: 20px;
+      margin-left: 20px;
+    }
+
+  </style>
+
+</head>
+<body>
+
+  <!-- Tip! 레이아웃을 만드는 기본
+   무엇을 만들든 레이아웃은 항상 수평(행)으로 자른 후
+   박스부터 만들고 시작, 그리고 이 박스들을 전부 <div>로 구현
+   (시맨틱 태그도 최대한 활용), 그리고 이 안에 글 넣고 그림 넣고 하면 끝!
+   
+   <div>는 블록 요소이기 때문에 수직으로 배치됨
+   좌우로 나란히 배치하고 싶으면 float(비추), inline-block(쏘쏘), flexbox(강추) -->
+  
+  <!-- navbar -->
+  <nav>
+    <ul class="navbar">
+      <li><a href="#"> 영화 </a></li>
+      <li><a href="#"> 맛집 </a></li>
+      <li><a href="#"> IT </a></li>
+      <li><a href="#"> 컴퓨터 </a></li>
+    </ul>
+  </nav>
+  
+  <!-- blog list item -->
+  <div class="container">
+    <div class="blog-list-item">
+      <div class="blog-content">
+        <div class="content-header">
+          <!-- 프로필 이미지 -->
+          <img src="logo.png" class="logo" alt="로고">
+          <!-- 작성자, 시간 -->
+           <div class="blog-name">
+            <p> 두현 </p>
+           </div>
+           <div class="">
+  
+           </div>
+        </div>
+        <div class="content-body">
+          <!-- 글 제목, 글 내용 -->
+          <h4> 초밥초밥초밥 </h4>
+            <p> 초밥은 기본적으로 고급요리입니다. 하지만 재료, 초밥요리사의 기술, 가게 위치 등에 따라, 가격은 식당마다 크게 차이가 납니다. 저렴하게 먹을 수 있는 초밥집도 있기 때문에 우선 구루나비에서 식당별 평균가격을 확인해 보세요. 대부분의 초밥집에서는 10개 정도를 담은 세트 이외에는 가격이 표시되지 않습니다. 지갑사정이 불안한 경우에는 먼저 예산을 말해두세요. </p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="blog-img">
+      <img src="https://gurunavi.com/ko/japanfoodie/article/sushi/img/sushi_09.jpg" alt="샘플">
+    </div>
+  </div>
+
+</body>
+</html>
