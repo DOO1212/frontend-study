@@ -7,81 +7,82 @@
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css">
   <style>
-  body {
-  text-align: center;
+  * {
+    box-sizing: border-box;
   }
 
-  header {
-    width: 80%;
-    height: 100px;
-    background-color: whitesmoke;
-    list-style: none;
-    display: flex;
-    position: relative;
+  body {
+    max-width: 80%;
     margin: 0 auto;
-    padding: 20px;
-    font-size: 14px;
   }
 
   .top {
+    position: relative;
     display: flex;
-    justify-content:space-around;
-    align-items: center;
-    width: 100%;
-    padding-top: 30px;
+    justify-content: space-between;
+    margin: 0 auto;
+    background-color: royalblue;
   }
 
-  .logo {
-    background-image: url("https://www.starbucks.co.kr/common/img/common/logo.png");
-    display: block;
-    height: 100px;
-    background-repeat: no-repeat;
-  }
-
-  .top a {
-    text-indent: -20000;
-  }
-  
-  .submenu {
-    position: absolute;
-    right: 70px;
-  }
-  
   .submenu ul {
     display: flex;
   }
-  
-  .menu {
-  }
-  
-  .menu ul {
+
+  .mainmenu ul {
     display: flex;
-    justify-content: flex-end;
   }
-  
-  .menu ul li {
-    list-style: none;
+
+  .menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
+
+  .top {
+    padding: 20px 40px;
+    color: whitesmoke;
+  }
+
+  .logo {
+    background-image: url(https://www.starbucks.co.kr/common/img/common/logo.png);
+    padding: 40px;
+    background-repeat: no-repeat;    
+  }
+
+  .blind {
+    position: absolute; /* 레이아웃에 영향을 주지 않도록 설정*/
+    width: 1px; /* 최소한의 크기로 조절 */
+    height: 1px; /* 최소한의 크기로 조절 */
+    margin: -1px; /* 화면에 나타나지 않도록 설정*/
+    overflow: hidden; /* overflow된 콘텐츠 숨김 */
+    clip-path: polygon(0 0, 0 0, 0 0); /* 클리핑 범위를 모두 0으로 지정해 요소를 숨김 */
+  }
+
+  .submenu {
+    align-self: flex-end;
+  }
+
   li + li {
-    margin-left: 20px;
+    margin-left: 30px;
   }
+
   </style>
 
 </head>
 <body>
 
   <header>
-
-    
-
     <div class="top">
-      <div>
-        <a href="index.html" class="logo"> LOGO </a>
+
+      <div class="logo">
+        <div>
+          <a href="index.html">
+            <span class="blind"> logo </span>
+          </a>
+        </div>
       </div>
 
-      <div></div>
-      
-      <div>
+      <div class="menu">
         <div class="submenu">
           <ul>
             <li> Sign In </li>
@@ -90,8 +91,9 @@
             <li> Find a Store </li>
           </ul>
         </div>
-        <div>
-        <ul
+        
+        <div class="mainmenu">
+        <ul>
           <li> COFFEE </li>
           <li> MENU </li>
           <li> STORE </li>
@@ -100,8 +102,10 @@
           <li> CORPORATE SALES </li>
           <li> WHAT'S NEW </li>
         </ul>
+        </div>
       </div>
     </div>
+    
 
   </header>
 
