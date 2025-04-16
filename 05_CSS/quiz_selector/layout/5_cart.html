@@ -4,8 +4,133 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+
+  <style>
+    /* 공통 스타일 */
+    /* * {
+      box-sizing: border-box;
+    } */
+
+    table {
+      border-collapse: collapse;
+    }
+
+    .cart-background {
+      width: 100%;
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 20px 40px 20px 40px;
+      background-color: rgb(142, 167, 240);  
+    }
+
+    .cart-list {
+      min-width: 100%;
+      margin: 0 auto;
+      background-color: white;
+      border-radius: 10px;
+    }
+
+    .inner {
+      text-align:left
+    }
+
+    .tr1, .tr2, .tr3 {
+      text-align: center;
+    }
+
+    .tr4 {
+      text-align: end;
+    }
+
+    img {
+      width: 50px;
+      height: 40px;
+    }
+
+    tr {
+      border-bottom: 2px solid rgb(142, 167, 240);
+    }
+
+    tr td {
+      padding: 10px 20px;
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .td1 {
+      text-align: left;
+      width: 200%;
+    }
+
+    .buy input {
+      background-color: rgb(233, 151, 57);
+      outline: none;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px 10px 20px;
+      font-size: 20px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .tr1 td {
+        font-weight: bold;
+      }
+  </style>
+
 </head>
 <body>
+
+  <div class="cart-background">
+    <!-- 가운데 정렬을 위한 div -->
+    <div class="inner">
+      <h2> 장바구니 </h2>
+      <table class="cart-list">
+        <!-- 4 x 5 -->
+        <tr class="tr1">
+          <td>  </td>
+          <td> ITEM </td>
+          <td> AMOUNT </td>
+          <td> PRICE </td>
+          <td> TOTAL </td>
+        </tr>
+
+        <tr class="tr2">
+          <td> <img src="item1.png" alt="카메라"> </td>
+          <td class="td1"> 카메라 </td>
+          <td> 1 </td>
+          <td> 100,000 </td>
+          <td> 100,000 </td>
+        </tr>
+         
+        <tr class="tr3">
+          <td> <img src="item2.png" alt="신발"> </td>
+          <td class="td1"> 신발신발신발 </td>
+          <td> 2 </td>
+          <td> 59,000 </td>
+          <td> 118,000 </td>
+        </tr>
+
+        <tr class="tr4">
+          <td colspan="5"> 주문금액 218,000원 </td>
+        </tr>
+      </table>
+
+      <footer>
+        <div class="continue">
+          <h3> <a href="#"> 계속 쇼핑하기 </a></h3>
+        </div>
+          
+        <div class="buy">
+          <input type="button" value="구매하기" class="buy-1">
+        </div>
+      </footer>
+    </div>
+  </div>
   
 </body>
 </html>
