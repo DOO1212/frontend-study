@@ -16,9 +16,9 @@ header {
 
 .top {
   display: flex;
-  justify-content: space-between;
+  justify-content:space-around;
   width: 100%;
-  padding-top: 20px;
+  padding-top: 30px;
 }
 
 .logo {
@@ -34,7 +34,7 @@ header {
 
 .submenu {
   position: absolute;
-  right: 50px;  
+  right: 70px;
 }
 
 .submenu ul {
@@ -42,7 +42,6 @@ header {
 }
 
 .menu {
-  width: 10%;
 }
 
 .menu ul {
