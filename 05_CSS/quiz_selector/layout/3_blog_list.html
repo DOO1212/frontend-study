@@ -32,6 +32,7 @@
       border-radius: 5px;
       display: block;
       width: 100px;
+      padding: 5px;
     }
 
     a {
@@ -40,11 +41,13 @@
 
     .navbar {
       display: flex;
+      justify-content: flex-end;
+      column-gap: 20px;
     }
 
-    li + li {
-      margin-left: 30px;
-    }
+    /* li + li {
+      margin-left: 20px;
+    } */
 
     .logo {
       width: 100px;
@@ -60,7 +63,7 @@
       margin-left: 20px;
     }
 
-    .blog-name {
+    .blog-content {
       flex: 8;
     }
 
@@ -68,13 +71,9 @@
       flex: 2;
     }
 
-    .blog-img img {
-      height: 200px;
-    }
-
     .time {
       margin-left: 10px;
-      margin-top: -10px;
+      margin-top: -15px;
     }
 
   </style>
@@ -112,10 +111,10 @@
           <div>
             <div class="blog-name">
               <p> 두현 </p>
-             </div>
-             <div class="time">
-              <p> 1시간 전 </p>
-             </div>
+            </div>
+            <div class="time">
+             <p> 1시간 전 </p>
+            </div>
           </div>
         </div>
         <div class="content-body">

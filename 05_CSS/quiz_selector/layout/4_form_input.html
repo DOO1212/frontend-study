@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    .text-input {
+      width: 120px;
+      padding: 6px 10px;
+      font-size: 20px;
+      border: 2px solid #ccc;
+      border-radius: 6px;
+      outline: none;
+    }
+
+    .text-input:focus {
+      border-color: royalblue;
+    }
+
+    .form-background {
+      width: 100%;
+      background-color: black;
+      padding: 20px;
+    }
+
+    .form-container {
+      width: 80%;
+      max-width: 600px;
+      height: 95%;
+      background-color: white;
+      margin: 0 auto;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    #email {
+      outline: none;
+      transition: 1s;
+    }
+
+    .box12 {
+      display: flex;
+      column-gap: 30px;
+    }
+
+    #firstname,#lastname {
+      width: 100%;
+      transition: 1s;
+    }
+
+    .form-container [type="text"] {
+      margin-bottom: 5px;
+      font-size: 18px;
+    }
+
+    .box3 {
+      display: flex;
+      margin-top: 20px;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .box3-2 input {
+      background-color: royalblue;
+      border-style: none;
+      border-radius: 5px;
+      padding: 15px 30px;
+      cursor: pointer;
+    }
+
+    label.box3-2 input[type=button] {
+      outline: none;
+      transition: 1s;
+    }
+
+    label.box3-2 input[type=button]:hover {
+      background-color: orange;
+    }
+
+    .form-container [type="text"] {
+      width: 100%;
+      height: 40px;
+      outline: none;
+    }
+
+    .messageclass {
+      height: 30px;
+    }
+
+    #message {
+      width: 100%;
+      height: 40px;
+      overflow: auto;
+      resize: none;
+      outline: none;
+      transition: 1s;
+    }
+
+    .box1 {
+      flex: 1;
+    }
+
+    .box2 {
+      flex: 1;
+    }
+
+    #email:focus {
+      border-color: royalblue;
+      background-color: aquamarine;
+    }
+    #firstname:focus {
+      border-color: royalblue;
+      background-color: aquamarine;
+    }
+    #lastname:focus {
+      border-color: royalblue;
+      background-color: aquamarine;
+    }
+    #message:focus {
+      border-color: royalblue;
+      background-color: aquamarine;
+    }
+
+    #agree {
+      width: 15px;
+      height: 15px;
+      margin-right: 10px;
+    }
+
+  </style>
+
+</head>
+<body>
+
+  <h2> 연습 </h2>
+  <form>
+    <input type="text">
+    <input type="text" class="text-input">
+    <button type="submit"> 전송 </button><br>
+
+    <!-- input 태그 쓸때 label태그도 같이 사용(권장) -->
+    <p>
+    <label for="name"> 너의 이름은 </label>
+    </p>
+    <input type="text" id="name" class="text-input">
+
+    <!-- <label> 너의 이름은
+         <input type="text" id="name" class="text-input">
+         </label> -->
+  </form>
+
+  <h2> 실전 </h2>
+  <div class="form-background">
+    <div class="form-container">
+      <form>
+        <h3> Contact Us </h3>
+
+        <p> <label for="email"> Your Email </label> </p>
+        <input type="text" id="email" class="emailclass" placeholder="email@example.com">
+
+        <!-- firstname lastname -->
+        <div class="box12">
+        <div class="box1">
+        <p> <label for="firstname"> First Name </label> </p>
+        <input type="text" id="firstname" class="firstnameclass">
+        </div>
+
+        <div class="box2">
+        <p> <label for="lastname"> Last Name </label> </p>
+        <input type="text" id="lastname" class="lastnameclass">
+        </div>
+        </div>
+
+        <!-- message agree -->
+        <div class="box2-1">
+        <p> <label for="message"> Message </label> </p>
+        <textarea name="text" id="message" class="messageclass"></textarea>
+        </div>
+
+        <div class="box3">
+        <label class="box3-1">
+        <input type="checkbox" name="" id="agree"> Agree
+        </label>
+
+        <label class="box3-2">
+        <input type="button" value="SEND">
+        </label>
+        </div>
+
+      </form>
+    </div>
+  </div>
+  
+</body>
+</html>

@@ -28,10 +28,6 @@ header {
   background-repeat: no-repeat;
 }
 
-.top a {
-  text-indent: -20000px;
-}
-
 .submenu {
   position: absolute;
   right: 70px;
