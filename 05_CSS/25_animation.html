@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 
+  <!-- 구글 머티리얼 아이콘 -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+  <!-- https://animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
   <style>
     .btn {
       padding: 15px 20px;
@@ -63,6 +69,48 @@
     .shake-shake {
       animation: shake-hard 0.4s;
     }
+
+    .material-symbols-outlined {
+      font-size: 100px;
+      cursor: pointer;
+      color: cornflowerblue;
+    }
+
+    .turn:hover {
+      animation: turn 1s;
+      /* 애니메이션이 끝났을 때 마지막 상태 유지 */
+      animation-fill-mode: forwards;
+    }
+
+    @keyframes turn {
+      0% { transform: rotate(0deg); }
+      25% { transform: rotate(-15deg); }
+      100% { transform: rotate(45deg); }
+    }
+
+    .spin {
+      animation: spin 2s infinite linear;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(-360deg); }
+    }
+
+    .animate__fadeOut {
+      animation-duration: 0.2s;
+      animation-iteration-count:infinite;
+    }
+
+    .opacity {
+      animation: opacity 0.2s infinite;
+    }
+    
+    @keyframes opacity {
+      0% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+
   </style>
 </head>
 <body>
@@ -77,6 +125,16 @@
     <input type="text" id="age">
     <button type="button" onclick="shakeModal()"> 등록 </button>
   </div>
+
+  <h2> turn 애니메이션 만들기 </h2>
+  <span class="material-symbols-outlined turn"> add </span>
+
+  <h2> spin 애니메이션 만들기 </h2>
+  <span class="material-symbols-outlined spin"> sync </span>
+
+  <h1 class="animate__animated animate__fadeOut"> 반짝반짝 </h1>
+
+  <h1 class="opacity"> 반짝반짝 </h1>
 
   <script>
     const modalEl = document.querySelector('#modal');
