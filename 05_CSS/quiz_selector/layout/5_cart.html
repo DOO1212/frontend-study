@@ -7,20 +7,17 @@
 
   <style>
     /* 공통 스타일 */
-    /* * {
+    * {
       box-sizing: border-box;
-    } */
+    }
 
     table {
       border-collapse: collapse;
     }
 
     .cart-background {
-      width: 100%;
-      max-width: 700px;
-      margin: 0 auto;
       padding: 20px 40px 20px 40px;
-      background-color: rgb(142, 167, 240);  
+      background-color: lightsteelblue;  
     }
 
     .cart-list {
@@ -31,7 +28,9 @@
     }
 
     .inner {
-      text-align:left
+      text-align:left;
+      max-width: 700px;
+      margin: 0 auto;
     }
 
     .tr1, .tr2, .tr3 {
@@ -48,18 +47,11 @@
     }
 
     tr {
-      border-bottom: 2px solid rgb(142, 167, 240);
+      border-bottom: 2px solid lightsteelblue;
     }
 
     tr td {
       padding: 10px 20px;
-    }
-
-    footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-top: 20px;
     }
 
     .td1 {
@@ -68,7 +60,7 @@
     }
 
     .buy input {
-      background-color: rgb(233, 151, 57);
+      background-color: lightsalmon;
       outline: none;
       border: none;
       border-radius: 5px;
@@ -79,8 +71,19 @@
     }
 
     .tr1 td {
-        font-weight: bold;
-      }
+      font-weight: bold;
+    }
+
+    footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    }
+
+    .buy-1:active {
+      background-color: royalblue;
+    }
   </style>
 
 </head>
