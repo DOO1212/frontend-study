@@ -79,33 +79,53 @@
       width: 200px;
       height: 100px;
       background-color: royalblue;
-
-      /* 원근법 추가2 */
-      perspective: 250px;
     }
-
-    .container-2 .item-2 {
+    .container-2 .card {
       width: 100px;
       height: 100px;
-      background-color: orange;
       font-size: 30px;
-      /* text-align: center;
-      line-height: 100px; 세로 정렬 */
 
+      /* 원근법 추가2 - 속성 사용(관찰 대상의 부모에 적용) */
+      perspective: 250px;
+    }
+    
+    .container-2 .card .front, 
+    .container-2 .card .back {
+      /* Quiz: 정중앙 정렬 방법(2가지) */
+      /* 1) 글자 속성 */
+      /* text-align: center;
+      line-height: 100px; */
+
+      /* 2) 플렉스 */
       display: flex;
       justify-content: center;
       align-items: center;
 
-      /* 원근법 추가1 - 함수 사용 (관찰 대상에 적용) */
-      /* transform: perspective(250px) rotateY(45deg); */
-      /* 원근법 추가2 - 속성 사용 (관찰 대상의 부모에 적용) */
-      /* transform: rotateY(45deg); */
+      /* 뒷면 보임 여부 */
       transition: 1s;
       backface-visibility: hidden;
-    }
 
-    .container-2 .item-2:hover {
+      position: absolute;
+    }
+    .container-2 .card .front {
+      background-color: orange;
+    }
+    .container-2 .card .back {
+      background-color: coral;
+    }
+    .container-2 .card .front {
+      transform: rotateY(0deg); /* 명시적으로 작성(생략 가능) */
+    }
+    .container-2 .card:hover .front {
+      /* 원근법 추가1 - 함수 사용(관찰 대상에 적용) */
+      /* transform: perspective(250px) rotateY(180deg); */
       transform: rotateY(180deg);
+    }
+    .container-2 .card .back {
+      transform: rotateY(-180deg);
+    }
+    .container-2 .card:hover .back {
+      transform: rotateY(0deg);
     }
 
   </style>
@@ -134,9 +154,12 @@
   <h2> skew: </h2>
   <div class="skew"> Hello World! </div>
 
-  <h2> perspective & backface-visibility: </h2>
+  <h2>perspective & backface-visibility:</h2>
   <div class="container-2">
-    <div class="item-2"> 앞면 </div>
+    <div class="card">
+      <div class="front">앞면</div>
+      <div class="back">뒷면</div>
+    </div>
   </div>
   
 </body>

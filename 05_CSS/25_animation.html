@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    .btn {
+      padding: 15px 20px;
+      font-size: 20px;
+      background-color: skyblue;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .btn-shake:hover {
+      animation: shake 1s;
+    }
+
+    .btn-shake-hard:hover {
+      animation: shake-hard 1s infinite;
+    }
+
+    /* CSS @ketframes Rule: 애니메이션 코드를 설정 */
+    @keyframes shake {
+      /* 애니메이션이 진행되는 과정을 선택해서 지정
+         0-100%
+         from (0%와 동일)
+         to (100%와 동일) */
+      0% { transform: rotate(0deg); }
+      25% { transform: rotate(-8deg); }
+      50% { transform: rotate(8deg); }
+      75% { transform: rotate(-8deg); }
+      100% { transform: rotate(0deg); }
+    }
+
+    @keyframes shake-hard {
+      0% { transform: translate(1px, 1px) rotate(0deg); }
+      10% { transform: translate(-1px, -2px) rotate(-1deg); }
+      20% { transform: translate(-2px, 0px) rotate(1deg); }
+      30% { transform: translate(2px, 2px) rotate(0deg); }
+      40% { transform: translate(1px, -1px) rotate(1deg); }
+      50% { transform: translate(-1px, 2px) rotate(-1deg); }
+      60% { transform: translate(-2px, 1px) rotate(0deg); }
+      70% { transform: translate(2px, 1px) rotate(-1deg); }
+      80% { transform: translate(-1px, -1px) rotate(1deg); }
+      90% { transform: translate(1px, 2px) rotate(0deg); }
+      100% { transform: translate(1px, -2px) rotate(-1deg); }
+    }
+
+    #modal {
+      width: 300px;
+      height: 200px;
+      border: 1px solid lightgray;
+      border-radius: 6px;
+      background-color: whitesmoke;
+      padding: 20px;
+    }
+
+    .shake-shake {
+      animation: shake-hard 0.4s;
+    }
+  </style>
+</head>
+<body>
+
+  <h2> shake 애니메이션 만들기 </h2>
+  <button type="button" class="btn btn-shake"> 흔들흔들 </button>
+  <button type="button" class="btn btn-shake-hard"> 바들바들 </button>
+
+  <h2> 애니메이션을 이용한 창 흔들기 </h2>
+  <div id="modal">
+    <label for="age"> 나이: </label>
+    <input type="text" id="age">
+    <button type="button" onclick="shakeModal()"> 등록 </button>
+  </div>
+
+  <script>
+    const modalEl = document.querySelector('#modal');
+    const ageInputEl = document.querySelector('#age');
+
+    function shakeModal() {
+      // 유효성 검사
+      console.log(ageInputEl.value);
+      if (ageInputEl.value === '') {
+        modalEl.classList.add('shake-shake');
+
+        setTimeout(function () {
+          modalEl.classList.remove('shake-shake');
+        }, 500); // 지정한 시간(0.5초) 뒤에 기능을 실행해라
+      }
+    }
+  </script>
+  
+</body>
+</html>
