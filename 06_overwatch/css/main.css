@@ -2,10 +2,21 @@
    CSS 코드가 길어지면 선택자 찾기가 어렵기에
    모든 CSS 코드는 HTML 구조에 맞춰 작성하기에 좋음 */
 
+body {
+  background-image: url("../images/bg.jpg");
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.container {
+  padding: 50px 0;
+}
+
 .container .heroes {
   display: flex;
   flex-wrap: wrap;
-  background-color: orange;
+  /* background-color: orange; */
   justify-content: center;
   max-width: 700px;
   margin: 0 auto;
@@ -19,4 +30,83 @@
   background-color: #555;
   border: 3px solid white;
   transform: skew(-14deg);
+  border-radius: 10px;
+  overflow: hidden;
+  
+  /* Quiz 확대 효과를 자연스럽게 전환 효과 추가
+     transform(0.1s)
+     background-color(0.6s) */
+  transition: transform 0.1s, background-color 0.6s;
+  
+  /* border 사용으로 요소의 크기가 커지는 것을 방지 */
+  box-sizing: border-box;
+}
+
+/* Quiz .hero에 마우스 올렸을 때 배경색(#ff9c00) 변경 및 확대 1.5배 */
+.container .heroes .hero:hover {
+  background-color: #ff9c00;
+  
+  /* trnasform: scale(1.5); transform 속성을 덮어쓰면서 기울임이 없어짐 */
+  transform: skewX(-14deg) scale(1.5);
+
+  /* 다음형제보다 위에 쌓일 수 있도록 z-index 추가 */
+  /* position 값이 없어도 flex item이라 사용 가능  */
+  z-index: 1;
+}
+
+.container .heroes .hero .image {
+  width: 140%;
+  height: 100%;
+  background-position: center;
+  /* background-size: cover; */
+  background-size: 90px;
+  background-repeat: no-repeat;
+  transform: skew(14deg) translateX(-16px);
+}
+
+.container .heroes .hero:nth-child(1) .image { background-image: url("../images/hero1.png"); }
+.container .heroes .hero:nth-child(2) .image { background-image: url("../images/hero2.png"); }
+.container .heroes .hero:nth-child(3) .image { background-image: url("../images/hero3.png"); }
+.container .heroes .hero:nth-child(4) .image { background-image: url("../images/hero4.png"); }
+.container .heroes .hero:nth-child(5) .image { background-image: url("../images/hero5.png"); }
+.container .heroes .hero:nth-child(6) .image { background-image: url("../images/hero6.png"); }
+.container .heroes .hero:nth-child(7) .image { background-image: url("../images/hero7.png"); }
+.container .heroes .hero:nth-child(8) .image { background-image: url("../images/hero8.png"); }
+.container .heroes .hero:nth-child(9) .image { background-image: url("../images/hero9.png"); }
+.container .heroes .hero:nth-child(10) .image { background-image: url("../images/hero10.png"); }
+
+.container .heroes .hero:nth-child(11) .image { background-image: url("../images/hero11.png"); }
+.container .heroes .hero:nth-child(12) .image { background-image: url("../images/hero12.png"); }
+.container .heroes .hero:nth-child(13) .image { background-image: url("../images/hero13.png"); }
+.container .heroes .hero:nth-child(14) .image { background-image: url("../images/hero14.png"); }
+.container .heroes .hero:nth-child(15) .image { background-image: url("../images/hero15.png"); }
+.container .heroes .hero:nth-child(16) .image { background-image: url("../images/hero16.png"); }
+.container .heroes .hero:nth-child(17) .image { background-image: url("../images/hero17.png"); }
+.container .heroes .hero:nth-child(18) .image { background-image: url("../images/hero18.png"); }
+.container .heroes .hero:nth-child(19) .image { background-image: url("../images/hero19.png"); }
+.container .heroes .hero:nth-child(20) .image { background-image: url("../images/hero20.png"); }
+
+.container .heroes .hero:nth-child(21) .image { background-image: url("../images/hero21.png"); }
+.container .heroes .hero:nth-child(22) .image { background-image: url("../images/hero22.png"); }
+.container .heroes .hero:nth-child(23) .image { background-image: url("../images/hero23.png"); }
+.container .heroes .hero:nth-child(24) .image { background-image: url("../images/hero24.png"); }
+.container .heroes .hero:nth-child(25) .image { background-image: url("../images/hero25.png"); }
+.container .heroes .hero:nth-child(26) .image { background-image: url("../images/hero26.png"); }
+.container .heroes .hero:nth-child(27) .image { background-image: url("../images/hero27.png"); }
+.container .heroes .hero:nth-child(28) .image { background-image: url("../images/hero28.png"); }
+.container .heroes .hero:nth-child(29) .image { background-image: url("../images/hero29.png"); }
+.container .heroes .hero:nth-child(30) .image { background-image: url("../images/hero30.png"); }
+
+.container .heroes .hero:nth-child(31) .image { background-image: url("../images/hero31.png"); }
+.container .heroes .hero:nth-child(32) .image { background-image: url("../images/hero32.png"); }
+
+.container .logo {
+  max-width: 300px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.container .logo img {
+  /* 부모 요소 가로 너비의 100%(300px)보다 커질 수 없음 */
+  width: 100%;
 }
