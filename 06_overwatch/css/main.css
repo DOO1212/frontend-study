@@ -1,0 +1,22 @@
+/* (중요)
+   CSS 코드가 길어지면 선택자 찾기가 어렵기에
+   모든 CSS 코드는 HTML 구조에 맞춰 작성하기에 좋음 */
+
+.container .heroes {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: orange;
+  justify-content: center;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.container .heroes .hero {
+  width: 80px;
+  height: 84px;
+  margin: 4px;
+  background-color: #555;
+  border: 3px solid white;
+  transform: skew(-14deg);
+}

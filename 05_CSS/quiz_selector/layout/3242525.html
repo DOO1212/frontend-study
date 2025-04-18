@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+  <style>
+    .container {
+      background-color: steelblue;
+      max-width: 30%;
+      min-width: 300px;
+      min-height: 200px;
+      padding: 10px;
+    }
+
+    .container div {
+      padding: 6px 0;
+    }
+
+    .material-symbols-outlined {
+      position: absolute;
+      translate: -30px 3px;
+      color: grey;
+    }
+
+    input {
+      padding: 5px;
+    }
+
+    .id, .pw {
+      display: flex;
+    }
+
+    .id-1 {
+      flex: 1;
+      translate: 40px;
+    }
+
+    .id-2 {
+      flex: 4;
+      text-align: center;
+    }
+
+    .pw-1 {
+      flex: 1;
+      translate: 35px;
+    }
+
+    .pw-2 {
+      flex: 4;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    [type="text"] {
+      cursor: pointer;
+    }
+
+    [type="button"] {
+      width: 50%;
+      height: 30px;
+      background-color: turquoise;
+      cursor: pointer;
+    }
+
+    .con {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+      /* 뷰포트의 크기만큼 가득 채우려면 100%가 아님 주의 (max 100vh) */
+      height: 80vh;
+    }
+
+    .login, .sign {
+      display: block;
+      margin: 0 auto 20px auto;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="con">
+
+    <div class="container">
+      <div class="id">
+        <div class="id-1">
+          <span> ID </span>
+        </div>
+
+        <div class="id-2">
+        <input type="text" placeholder="비밀번호">
+        </div>
+      </div>
+
+      <div class="pw">
+        <div class="pw-1">
+          <span> PW </span>
+        </div> 
+
+        <div class="pw-2">
+        <input type="text" placeholder="아이디">
+        <span class="material-symbols-outlined"> visibility </span>
+        </div>
+      </div>
+
+        <button type="button" class="login"> 로그인 </button>
+        <button type="button" class="sign"> 회원가입 </button>
+
+    </div>
+  </div>
+  
+</body>
+</html>

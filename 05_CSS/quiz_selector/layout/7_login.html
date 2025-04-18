@@ -5,110 +5,108 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 
+  <!-- 구글 머티리얼 아이콘 -->
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 
   <style>
-    .container {
-      background-color: steelblue;
-      max-width: 30%;
-      min-width: 300px;
-      min-height: 200px;
-      padding: 10px;
+    * {
+      box-sizing: border-box;
     }
 
-    .container div {
-      padding: 6px 0;
-    }
-
-    .material-symbols-outlined {
-      position: absolute;
-      translate: -30px 3px;
-      color: grey;
-    }
-
-    input {
-      padding: 5px;
-    }
-
-    .id, .pw {
-      display: flex;
-    }
-
-    .id-1 {
-      flex: 1;
-      translate: 40px;
-    }
-
-    .id-2 {
-      flex: 4;
-      text-align: center;
-    }
-
-    .pw-1 {
-      flex: 1;
-      translate: 35px;
-    }
-
-    .pw-2 {
-      flex: 4;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    [type="text"] {
+    .form-input {
+      width: 100%;
+      outline: none;
+      border: none;
       cursor: pointer;
     }
 
-    [type="button"] {
-      width: 50%;
-      height: 30px;
-      background-color: turquoise;
+    .btn {
+      width: 100%;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 17px;
+      font-weight: 700;
       cursor: pointer;
     }
+    .btn-login {
+      background-color: #09aa5c;
+      margin-top: 40px;
+    }
+    .btn-join {
+      border: 1px solid #09aa5c;
+      color: #09aa5c;
+      background-color: #fff;
+      margin-top: 10px;
+    }
 
-    .con {
+    .login-background {
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 80vh;
+      /* 뷰포트의 높이만큼 가득 채우려면 100%가 아님에 주의! */
+      height: 100vh;
+    }
+    .login-container {
+      width: 460px;
+      border: 1px solid #e1e3e5;
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .login-container .id-box,
+    .login-container .pw-box {
+      height: 60px;
+      padding: 27px 15px 8px;
+      border: 1px solid #c5ccd2;
+      position: relative;
+    }
+    .login-container .id-box {
+      border-radius: 8px 8px 0 0;
+    }
+    .login-container .pw-box {
+      border-top: 0;
+      border-radius: 0 0 8px 8px;
+    }
+    .login-container .text-label {
+      position: absolute;
+      bottom: 18px;
+      left: 15px;
+      color: rgba(0, 0, 0, .5);
+      transition: 0.3s;
     }
 
-    .login, .sign {
-      display: block;
-      margin: 0 auto 20px auto;
+    /* div는 focus 불가 */
+    .form-input:focus + .text-label {
+      font-size: 12px;
+      bottom: 30px;
     }
+
+    .login-container .icon-eye {
+      position: absolute;
+      top: 18px;
+      right: 15px;
+      cursor: pointer;
+    }
+    
 
   </style>
 </head>
 <body>
-  <div class="con">
-    <div class="container">
-      <div class="id">
-        <div class="id-1">
-          <span> ID </span>
-        </div>
-
-        <div class="id-2">
-        <input type="text" placeholder="비밀번호">
-        </div>
+  <div class="login-background">
+    <div class="login-container">
+      <div class="id-box">
+        <input type="text" id="id" class="form-input">
+        <label for="id" class="text-label">아이디 또는 전화번호</label>
+      </div>
+      <div class="pw-box">
+        <input type="password" id="pw" class="form-input">
+        <label for="pw" class="text-label">비밀번호</label>
+        <span class="material-symbols-outlined icon-eye">visibility</span>
       </div>
 
-      <div class="pw">
-        <div class="pw-1">
-          <span> PW </span>
-        </div> 
-
-        <div class="pw-2">
-        <input type="text" placeholder="아이디">
-        <span class="material-symbols-outlined"> visibility </span>
-        </div>
-      </div>
-
-        <button type="button" class="login"> 로그인 </button>
-        <button type="button" class="sign"> 회원가입 </button>
-
+      <button type="button" class="btn btn-login">로그인</button>
+      <button type="button" class="btn btn-join">회원가입</button>
     </div>
   </div>
-  
 </body>
 </html>
