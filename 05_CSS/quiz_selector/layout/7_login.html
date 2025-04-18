@@ -13,6 +13,7 @@
       max-width: 30%;
       min-width: 300px;
       min-height: 200px;
+      padding: 10px;
     }
 
     .container div {
@@ -51,6 +52,11 @@
     .pw-2 {
       flex: 4;
       text-align: center;
+      margin-bottom: 20px;
+    }
+
+    [type="text"] {
+      cursor: pointer;
     }
 
     [type="button"] {
@@ -68,13 +74,13 @@
     }
 
     .login, .sign {
-      text-align: center;
+      display: block;
+      margin: 0 auto 20px auto;
     }
 
   </style>
 </head>
 <body>
-  
   <div class="con">
     <div class="container">
       <div class="id">
@@ -98,13 +104,9 @@
         </div>
       </div>
 
-      <div class="login">
-        <button type="button"> 로그인 </button>
-      </div>
+        <button type="button" class="login"> 로그인 </button>
+        <button type="button" class="sign"> 회원가입 </button>
 
-      <div class="sign">
-        <button type="button"> 회원가입 </button>
-      </div>
     </div>
   </div>
   
