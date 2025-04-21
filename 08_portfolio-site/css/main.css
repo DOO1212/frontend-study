@@ -1,0 +1,82 @@
+/* 공통 */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+  overflow-x: hidden;
+}
+
+/* 영문에만 적용할 폰트 */
+.font-en {
+  font-family: "Open Sans", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+header {
+  background-color: #fff;
+  border-bottom: 1px solid #c8c8c8;
+  box-shadow: 0 2px 8px rgba(204, 204, 204, .8); /* 수평 수직 블러 */
+  
+  /* 고정된 헤더 만들기
+     fixed가 되면 width의 기준이 부모 요소가 아니라 뷰포트가 되면서 기준이 끊기고, 내용에 맞춰서 최소한으로 축소됨 */
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 9;
+}
+
+header > .inner {
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .logo img {
+  /* 이미지는 가로 너비만 지정하면 세로 높이는 비율에 맞춰 정해짐 */
+  width: 40px;
+}
+
+header nav ul {
+  display: flex;
+}
+
+header nav ul li {
+  padding: 10px 20px;
+  font-weight: 700;
+}
+
+header nav ul li a {
+  position: relative;
+}
+
+header nav ul li a:hover {
+  color: #9b30ff;
+  /* text-shadow: 1px 1px 5px #9b30ff; */
+}
+
+header nav ul li a::before {
+  content: "";
+  display: block;
+  width: 0; /* 초기에는 밑줄이 없도록 0으로 설정 */
+  height: 1px;
+  background-color: #9b30ff;
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  transition: width 0.5s;
+}
+
+header nav ul li a:hover::before {
+  width: 100%;
+}
+
