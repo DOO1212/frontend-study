@@ -60,6 +60,10 @@
       border: 1px solid #c5ccd2;
       position: relative;
     }
+    .login-container .id-box.focused,
+    .login-container .pw-box.focused {
+      border: 2px solid #09aa5c
+    }
     .login-container .id-box {
       border-radius: 8px 8px 0 0;
     }
@@ -101,12 +105,58 @@
       <div class="pw-box">
         <input type="password" id="pw" class="form-input">
         <label for="pw" class="text-label">비밀번호</label>
-        <span class="material-symbols-outlined icon-eye">visibility</span>
+        <span class="material-symbols-outlined icon-eye">visibility_off</span>
       </div>
 
       <button type="button" class="btn btn-login">로그인</button>
       <button type="button" class="btn btn-join">회원가입</button>
     </div>
   </div>
+
+  <script>
+    const inputEls = document.querySelectorAll('input.form-input');
+    const eyeIcon = document.querySelector('.icon-eye');
+    const pwInput = document.getElementById('pw');
+    
+    inputEls.forEach(function (put) {
+      const parentEl = put.parentElement;
+      console.log(parentEl);
+      
+      put.addEventListener('focus', function () {
+        parentEl.classList.add('focused');        
+      });
+
+      // 포커스 해제(blur)
+      put.addEventListener('blur', function () {
+        parentEl.classList.remove('focused');        
+      });
+
+      put.addEventListener('change', function () {
+        console.log('change 이벤트 발생!');
+        console.log(put.value);
+        
+        if (put.value) {
+          parentEl.classList.add('on');
+        } else {
+          parentEl.classList.remove('on');
+        }
+      });
+
+      put.addEventListener('input', function () {
+        console.log('input 이벤트 발생!');       
+      });
+    });
+
+    eyeIcon.addEventListener('click', function () {
+      if (pwInput.type === 'password') {
+        pwInput.type = 'text';
+        eyeIcon.textContent = 'visibility';
+      } else {
+        pwInput.type = 'password';
+        eyeIcon.textContent = 'visibility_off';
+      }
+    });
+  </script>
+
 </body>
 </html>

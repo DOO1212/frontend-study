@@ -12,7 +12,7 @@ console.log(boxEl);
 // 실제 이벤트가 발생하면 연결된 함수(Handler)를 실행
 
 boxEl.addEventListener('click', function () {
-  console.log('Click!');
+  console.log('click!');
 
   // classList 속성: HTML 요소의 class 속성에 대한 제어 명령이 포함
   // 추가하기

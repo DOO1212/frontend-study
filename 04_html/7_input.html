@@ -119,9 +119,22 @@
   </label><br>
   
   <!-- 범위 선택 (기본값 0~100) -->
-  <label for=""> 음량(0~100):
-    <input type="range">
-  </label><br>
+  <label for=""> 음량(0~10):</label>
+  <input type="range" id="volume" min="0" max="100" step="1">
+  <span id="volumeValue"></span>
+  <br>
+
+  <script>
+    
+    const vol1 = document.querySelector('#volume');
+    const vol2 = document.querySelector('#volumeValue');
+    
+    vol2.textContent = vol1.value;
+    vol1.addEventListener('input', function () {
+      vol2.textContent = vol1.value;
+    })
+    
+  </script>
   
   <!-- password -->
   <label> 비밀번호:
@@ -154,6 +167,8 @@
     <input type="password" name="pwd">
     <button type="submit"> 로그인 </button>
   </form>
+
+  
   
 </body>
 </html>
