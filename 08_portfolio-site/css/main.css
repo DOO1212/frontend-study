@@ -21,6 +21,18 @@ a {
   color: inherit;
 }
 
+.inner {
+  /* 최대값만 제한 = 반응형 */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.animate-flash {
+  animation-name: flash;
+  animation-duration: 0.5s;
+  animation-iteration-count: 2;
+}
+
 header {
   background-color: #fff;
   border-bottom: 1px solid #c8c8c8;
@@ -80,3 +92,30 @@ header nav ul li a:hover::before {
   width: 100%;
 }
 
+/* VISUAL */
+.visual {
+  /* (중요) 헤더가 fixed가 되어 일반 배치 흐름에서 벗어날때
+     fixed 헤더 다음에 오는 요소(예: 섹션)는 헤더의 높이만큼
+     외부 여백 추가 필요 */
+  margin-top: 60px;
+  width: 100%;
+  background-color: #000;
+  color: #fff;
+}
+
+.visual > .inner {
+  height: calc(100vh - 60px);
+  font-size: 70px;
+  display: flex;
+  align-items: center;
+}
+
+.visual > .inner .purple {
+  color: #9b30ff;
+}
+
+/* 애니메이션 정의는 맨 마지막에 */
+@keyframes flash {
+  0%, 50%, 100% { opacity: 1;}
+  25%, 75% { opacity: 0;}
+}
