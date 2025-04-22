@@ -5,22 +5,25 @@
 
 .html {
   /* 스크롤 이동을 부드럽게 */
-  scroll-behavior: smooth;
-}
-
-body {
-  background-color: #333;
+  scroll-behavior:smooth
 }
 
 img {
   display: block;
 }
 
+body {
+  background-color: #333;
+}
+
+/* header */
+/* 메뉴 */
 .top {
-  position: relative;
   width: 100%;
+  position: fixed;
   z-index: 9;
   background-color: #333;
+  padding: 40px;
 }
 
 .top .menu ul li a {
@@ -28,13 +31,16 @@ img {
   color: #c9c9c9;
 }
 
+/* 헤더 내용 */
 .name {
-  width: 100%;
+  height: 600px;
   position: relative;
   background-color: #333;
   display: flex;
   justify-content: end;
-  align-items: center;
+  align-items:end;
+  padding: 40px;
+
 }
 
 .menu ul li + li {
@@ -47,51 +53,95 @@ img {
   height: 100px;
 }
 
+/* article */
+
 .introduce {
-  background-color: #00eeff;
-  display: flex;
-  align-items: center;
-  height: 500px;
-  border-radius: 20px;
-}
-
-.introduce > div {
-  width: 95%;
-  position: relative;
-  display: flex;
-  background-color: #fff;
+  width: 90%;
+  height: 1000px;
+  background-color: rgb(0, 200, 200);
+  padding: 70px 30px;
+  border-radius: 10px;
   margin: 0 auto;
-
 }
 
-.introduce .profile {
+.introduce-1 {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 50%;
-  height: 100%;
-}
-
-.profile {
-  width: 100%;
-  height: 100%;
-  background-color: #fff;
+  column-gap: 10px;
+  overflow: hidden;
 }
 
 .image {
-  background-color: #fff;
-  width: 100%;
   height: 50%;
-}
-
-.self {
-  background-color: #fff;
-  width: 80%;
-  height: 50%;
-  padding: 20px;
 }
 
 .image img {
-  width: 50%;
-  border-bottom: 3px solid #333;
+  height: 100%;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+.introduce-2 {
+  flex: 1;
+}
+
+.profile {
+  flex: 2;
+}
+
+.self {
+  margin-top: 40px;
+}
+
+.introduce-2, .profile {
+  height: 500px;
+  border: 2px solid #333 ;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.png {
+  display: flex;
+}
+
+h3 {
+  font-size: 30px;
+  line-height: 40px;
+}
+
+.png img {
+  width: 80px;
+  margin-right: 10px;
+}
+
+
+
+/* 애니메이션 */
+.menu > ul {
+  animation: leftright 1s;
+}
+
+.name > div {
+  animation: rightleft 1s;
+}
+
+
+
+
+
+
+
+/* 애니메이션 */
+@keyframes leftright {
+  0% { transform: translate(-200px); }
+}
+
+@keyframes rightleft {
+  0% { transform: translate(200px); }
 }
