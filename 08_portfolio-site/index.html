@@ -20,12 +20,20 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
 
+  <!-- Swiper.css -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
+  <script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
   <!-- 구글 머티리얼 아이콘 연결 -->
   <!-- 구글에서 제공하는 아이콘, 글자처럼 취급 가능한 장점 -->
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
   
   <!-- main.css -->
   <link rel="stylesheet" href="css/main.css">
+
+  <!-- scroll magic cdn -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js" integrity="sha512-8E3KZoPoZCD+1dgfqhPbejQBnQfBXe8FuwL4z/c8sTrgeDMFEnoyTlH3obB4/fV+6Sg0a0XF+L/6xS4Xx1fUEg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <!-- main.js -->
   <script defer src="js/main.js"></script>
@@ -61,42 +69,42 @@
     <div class="inner">
       <h1 class="font-en">
         <span class="animate-flash" style="animation-delay: 0.04s;">반</span>
-          <span class="animate-flash" style="animation-delay: 0.26s;">짝</span>
-          <span class="animate-flash" style="animation-delay: 0.08s;">반</span>
-          <span class="animate-flash" style="animation-delay: 0.02s;">짝</span>
-          &nbsp;
-          <span class="animate-flash purple" style="animation-delay: 0.26s;">빛</span>
-          <span class="animate-flash purple" style="animation-delay: 0.06s;">나</span>
-          <span class="animate-flash purple" style="animation-delay: 0.14s;">는</span>
-          <br>
-          <span class="animate-flash" style="animation-delay: 0.06s;">F</span>
-          <span class="animate-flash" style="animation-delay: 0.28s;">u</span>
-          <span class="animate-flash" style="animation-delay: 0.12s;">l</span>
-          <span class="animate-flash" style="animation-delay: 0.15s;">l</span>
-          &nbsp;
-          <span class="animate-flash" style="animation-delay: 0.02s;">S</span>
-          <span class="animate-flash" style="animation-delay: 0.22s;">t</span>
-          <span class="animate-flash" style="animation-delay: 0.17s;">a</span>
-          <span class="animate-flash" style="animation-delay: 0.19s;">c</span>
-          <span class="animate-flash" style="animation-delay: 0.20s;">k</span>
-          &nbsp;
-          <span class="animate-flash purple" style="animation-delay: 0.11s;">D</span>
-          <span class="animate-flash purple" style="animation-delay: 0.18s;">e</span>
-          <span class="animate-flash purple" style="animation-delay: 0.05s;">v</span>
-          <span class="animate-flash purple" style="animation-delay: 0.06s;">e</span>
-          <span class="animate-flash purple" style="animation-delay: 0.09s;">l</span>
-          <span class="animate-flash purple" style="animation-delay: 0.24s;">o</span>
-          <span class="animate-flash purple" style="animation-delay: 0.28s;">p</span>
-          <span class="animate-flash purple" style="animation-delay: 0.14s;">e</span>
-          <span class="animate-flash purple" style="animation-delay: 0.25s;">r</span>
-          <br>
-          <span class="animate-flash purple" style="animation-delay: 0.10s;">김</span>
-          <span class="animate-flash purple" style="animation-delay: 0.16s;">재</span>
-          <span class="animate-flash purple" style="animation-delay: 0.24s;">현</span>
-          <span class="animate-flash" style="animation-delay: 0.12s;">입</span>
-          <span class="animate-flash" style="animation-delay: 0.15s;">니</span>
-          <span class="animate-flash" style="animation-delay: 0.05s;">다</span>
-          <span class="animate-flash" style="animation-delay: 0.13s;">.</span>
+        <span class="animate-flash" style="animation-delay: 0.26s;">짝</span>
+        <span class="animate-flash" style="animation-delay: 0.08s;">반</span>
+        <span class="animate-flash" style="animation-delay: 0.02s;">짝</span>
+        &nbsp;
+        <span class="animate-flash purple" style="animation-delay: 0.26s;">빛</span>
+        <span class="animate-flash purple" style="animation-delay: 0.06s;">나</span>
+        <span class="animate-flash purple" style="animation-delay: 0.14s;">는</span>
+        <br>
+        <span class="animate-flash" style="animation-delay: 0.06s;">F</span>
+        <span class="animate-flash" style="animation-delay: 0.28s;">u</span>
+        <span class="animate-flash" style="animation-delay: 0.12s;">l</span>
+        <span class="animate-flash" style="animation-delay: 0.15s;">l</span>
+        &nbsp;
+        <span class="animate-flash" style="animation-delay: 0.02s;">S</span>
+        <span class="animate-flash" style="animation-delay: 0.22s;">t</span>
+        <span class="animate-flash" style="animation-delay: 0.17s;">a</span>
+        <span class="animate-flash" style="animation-delay: 0.19s;">c</span>
+        <span class="animate-flash" style="animation-delay: 0.20s;">k</span>
+        &nbsp;
+        <span class="animate-flash purple" style="animation-delay: 0.11s;">D</span>
+        <span class="animate-flash purple" style="animation-delay: 0.18s;">e</span>
+        <span class="animate-flash purple" style="animation-delay: 0.05s;">v</span>
+        <span class="animate-flash purple" style="animation-delay: 0.06s;">e</span>
+        <span class="animate-flash purple" style="animation-delay: 0.09s;">l</span>
+        <span class="animate-flash purple" style="animation-delay: 0.24s;">o</span>
+        <span class="animate-flash purple" style="animation-delay: 0.28s;">p</span>
+        <span class="animate-flash purple" style="animation-delay: 0.14s;">e</span>
+        <span class="animate-flash purple" style="animation-delay: 0.25s;">r</span>
+        <br>
+        <span class="animate-flash purple" style="animation-delay: 0.10s;">김</span>
+        <span class="animate-flash purple" style="animation-delay: 0.16s;">재</span>
+        <span class="animate-flash purple" style="animation-delay: 0.24s;">현</span>
+        <span class="animate-flash" style="animation-delay: 0.12s;">입</span>
+        <span class="animate-flash" style="animation-delay: 0.15s;">니</span>
+        <span class="animate-flash" style="animation-delay: 0.05s;">다</span>
+        <span class="animate-flash" style="animation-delay: 0.13s;">.</span>
       </h1>
     </div>
   </section>
@@ -134,7 +142,7 @@
   </section>
 
   <!-- SKILL -->
-  <section id="skill" class="skill">
+  <section id="skill" class="skill scroll-spy">
     <div class="inner">
       <h2 class="title font-en">SKILL</h2>
       <ul class="skill__list">
@@ -196,6 +204,60 @@
         </li>
       </ul>
     </div>
+  </section>
+
+  <!-- PROJECT -->
+  <section id="project" class="project font-en">
+    <div class="inner">
+      <h2 class="title">PROJECT</h2>
+      <div class="port">
+        <div class="port__img">
+          
+            <!-- Slider main container -->
+            <div class="swiper">
+              <!-- Additional required wrapper -->
+              <div class="swiper-wrapper">
+                <!-- Slides -->
+                <div class="swiper-slide">
+                  <img src="images/work_1.jpg" alt="">
+                </div>
+                <div class="swiper-slide">
+                  <img src="images/work_2.jpg" alt="">
+                </div>
+              
+                <div class="swiper-slide">
+                  <img src="images/work_3.jpg" alt="">
+                </div>
+              </div>
+            
+              <!-- If we need pagination -->
+              <div class="swiper-pagination"></div>
+            
+              <!-- If we need navigation buttons -->
+              <div class="swiper-button-prev"></div>
+              <div class="swiper-button-next"></div>
+            </div>
+               
+        </div>
+        
+        
+        <div class="port__text">
+            <h3>프로젝트명</h3>
+            <ul>
+              <li><span>주요 기능 : </span>주요 기능 설명</li>
+              <li><span>적용 기술 : </span>HTML, CSS, JS, React, Java, Spring Boot</li>
+              <li><span>GitHub : </span>깃허브 주소</li>
+              <li><span>URL : </span>배포 주소</li>
+            </ul>
+            <div class="btn-group">
+              <a href="javascript:void(0)" class="btn">README</a>
+              <a href="javascript:void(0)" class="btn">모달</a>
+            </div>
+        </div>
+      </div>
+    
+    </div>
+  
   </section>
 </body>
 </html>

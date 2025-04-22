@@ -3,73 +3,85 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>DOO HYEON</title>
 
-  <!-- 파비콘(favicon.ico)은 프로젝트 폴더의 취상위 경로에 포함시키면 자동 적용
-  최상위 경로에 없거나, ico가 아닌 별도 파일을 가진 경우에는 <link>로 적용 -->
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <!-- 파비콘(favicon.ico)은 프로젝트 폴더의 최상위 경로에 포함시키면 자동 적용
+    최상위 경로에 없거나, ico가 아닌 별도 파일을 가진 경우에는 <link>로 적용 -->
+  <link rel="icon" href="favicon.ico">
   <!-- (참고) 파비콘 만들기: https://iconifier.net -->
 
+  <!-- reset.css -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css">
-  <link rel="stylesheet" href="css/main.css">
-  <script defer src="js/main.js"></script>
-
+  
   <!-- 구글 웹폰트 연결 -->
-  <!-- 경량화된 오픈 라이센스 폰트, 한글 지원하는지 확인 및 필요한 굵기 선택 후 연결 -->
+  <!-- 경량화된 오픈 라이선스 폰트, 한글 지원하는지 확인 및 필요한 굵기 선택 후 연결 -->
   <!-- 한글: Noto Sans Korean, 영문: Open Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-  
-  <!-- 구글 머티리얼 아이콘 연결 -->
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 
+  <!-- 구글 머티리얼 아이콘 연결 -->
+  <!-- 구글에서 제공하는 아이콘, 글자처럼 취급 가능한 장점 -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  
+  <!-- main.css -->
+  <link rel="stylesheet" href="css/main.css">
+
+  <!-- scroll magic cdn -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js" integrity="sha512-8E3KZoPoZCD+1dgfqhPbejQBnQfBXe8FuwL4z/c8sTrgeDMFEnoyTlH3obB4/fV+6Sg0a0XF+L/6xS4Xx1fUEg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <!-- main.js -->
+  <script defer src="js/main.js"></script>
 </head>
 <body>
 
+  <!-- HEADER -->
   <header>
     <div class="top">
       <nav class="menu">
         <ul>
-          <li><a href="#"></a>ABOUT</li>
-          <li><a href="#"></a>CONTACT</li>
+          <li><a href="#main">ABOUT</a></li>
+          <li><a href="#introduce">INTRODUCE</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <article class="main">
+  <!-- ARTICLE -->
+  <article id="main" class="main">
     <div class="name">
       
       <div>
-
-        
+        <h1>안녕하세요!</h1>
         <h1>KO DOO HYEON</h1>
+        <h1>포트폴리오 사이트입니다</h1>
       </div>
 
     </div>
     
-    
-    
-    
-    
-    
-    
-    
-    
-    <div class="profile">
-      <div class="image">
-        <img src="" alt="">
-      </div>
-
-      <div class="self">
-        <!-- <h3>안녕하세요</h3><br> -->
-        <!-- <h3></h3>두현's 홈피입니다</h3> -->
-      </div>
-    </div>
-
-    <div class="introduce">
-      
+    <div id="introduce" class="introduce">
+      <div>
+        <div class="profile">
+            <div class="image">
+              <img src="images/KakaoTalk_20250414_121208196.jpg" alt="">
+            </div>
+          
+            <div class="self">
+              <h3>안녕하세요</h3><br>
+              <h3></h3>두현's 홈피입니다</h3>
+            </div>
+          </div>
+        
+          <div class="a">
+            <div>
+              <h3>이름: 고두현</h3>
+              <h3>나이: </h3>
+              <h3>25.04 ~ 25.10 자바/스프링 개발 부트캠프</h3>
+            
+            </div>
+          
+          </div>
+      </div>    
     </div>
   </article>
 

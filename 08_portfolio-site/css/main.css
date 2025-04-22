@@ -57,6 +57,40 @@ img {
   display: block;
 }
 
+/* 버튼과 같이 여러 곳에서 반복 사용되는 요소를 공통 스타일로 작업하면, 매번 다시 작성할 필요가 없음 */
+.btn {
+  width: 120px;
+  padding: 10px;
+  display: block; /* a, span 같은 인라인 요소를 버튼으로 사용할 수도 있으니 블록으로 지정 */
+  border: 2px solid #333;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.btn:hover {
+  background-color: #333;
+  color: #fff;
+}
+.btn.btn--purple {
+  color: #9b30ff;
+  border-color: #9b30ff;
+}
+.btn.btn--purple:hover {
+  color: #fff;
+  background-color: #9b30ff;
+}
+.btn.btn--brown {
+  color: #592b18;
+  border-color: #592b18;
+}
+.btn.btn--brown:hover {
+  color: #fff;
+  background-color: #592b18;
+}
+
 .animate-flash {
   animation-name: flash;
   animation-duration: 0.5s;
@@ -202,28 +236,98 @@ header nav ul li a:hover::after {
   background-color: #000;
   color: #fff;
 }
-
 .skill .title::after {
   background-color: #fff;
 }
-
 .skill .skill__list {
   display: flex;
   justify-content: space-evenly;
   text-align: center;
 }
+/* 하위 선택자가 아닌 자식 선택자 쓴 것에 유의! */
+.skill .skill__list > li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
+  /* 방법1: position */
+  /* position: relative;
+  top: 100px; */
+  /* 방법2: transform */
+  transform: translateY(100px);
+
+  opacity: 0;
+  transition: 1s;
+}
+.skill.show .skill__list > li {
+  /* 방법1: position */
+  /* top: 0; */
+  /* 방법2: transform */
+  transform: translateY(0);
+
+  opacity: 1;
+}
+.skill .skill__list > li:nth-child(1) { transition-delay: 0.2s; }
+.skill .skill__list > li:nth-child(2) { transition-delay: 0.4s; }
+.skill .skill__list > li:nth-child(3) { transition-delay: 0.6s; }
+.skill .skill__list > li:nth-child(4) { transition-delay: 0.8s; }
+.skill .skill__list > li:nth-child(5) { transition-delay: 1s; }
 .skill .skill__list li div {
   width: 50px;
   height: 40px;
   background-color: #9b30ff;
   border-radius: 50%;
   transform: rotate(-20deg);
+  transition: 0.5s;
 }
-
 .skill .skill__list li:hover div {
   transform: rotate(0deg);
 }
+.skill .skill__list li div p {
+  font-weight: bold;
+  font-size: 30px;
+  letter-spacing: -2px;
+}
+.skill .skill__list li h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 30px 0 20px;
+}
+
+/* PROJECT */
+.project {
+  padding: 150px 0;
+}
+.project .port {
+  display: flex;
+  margin: 20px 0;
+}
+.project .port .port__img,
+.project .port .port__text {
+  width: 50%;
+  height: 400px;
+}
+.project .port .port__text {
+  padding: 30px;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.project .port .port__text h3 {
+  font-size: 20px;
+  font-weight: 800;
+}
+.project .port .port__text li {
+  line-height: 1.8;
+}
+.project .port .port__text li span {
+  font-weight: bold;
+}
+
+
+
+
 
 /* 애니메이션 정의는 맨 마지막에 */
 @keyframes flash {
