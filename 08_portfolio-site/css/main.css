@@ -1,6 +1,11 @@
-/* 공통 */
+/* COMMON */
 * {
   box-sizing: border-box;
+}
+
+html {
+  /* 스크롤 이동을 부드럽게 */
+  scroll-behavior: smooth;
 }
 
 body {
@@ -9,6 +14,9 @@ body {
   line-height: 1.6;
   color: #333;
   overflow-x: hidden;
+
+  /* 테스트용 */
+  /* height: 3000px; */
 }
 
 /* 영문에만 적용할 폰트 */
@@ -22,100 +30,208 @@ a {
 }
 
 .inner {
-  /* 최대값만 제한 = 반응형 */
+  /* 고정 길이=고정형 */
+  /* width: 1200px; */
+  /* 최대값만 제한=반응형 */
   max-width: 1200px;
   margin: 0 auto;
+}
+
+.title {
+  font-size: 50px;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 50px;
+}
+.title::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 2px;
+  background-color: #333;
+  margin: 24px auto 0;
+}
+
+img {
+  /* 이미지가 인라인 요소라서 발생하는 문자 기준선(baseline) 아래의 공간을 제거하기 위해 */
+  display: block;
 }
 
 .animate-flash {
   animation-name: flash;
   animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(.43,.19,.02,1);
   animation-iteration-count: 2;
 }
 
+/* HEADER */
 header {
   background-color: #fff;
   border-bottom: 1px solid #c8c8c8;
-  box-shadow: 0 2px 8px rgba(204, 204, 204, .8); /* 수평 수직 블러 */
-  
-  /* 고정된 헤더 만들기
-     fixed가 되면 width의 기준이 부모 요소가 아니라 뷰포트가 되면서 기준이 끊기고, 내용에 맞춰서 최소한으로 축소됨 */
-  position: fixed;
+  box-shadow: 0 2px 8px rgba(204, 204, 204, .8);
+
+  /* 고정된 헤더 만들기 */
+  /* fixed가 되면 width의 기준이 부모 요소가 아니라 뷰포트가 되면서 기준이 끊겨버리고, 내용에 맞춰 최소한으로 축소됨 */
   width: 100%;
+  position: fixed;
   top: 0;
   z-index: 9;
 }
-
 header > .inner {
   height: 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
 header .logo img {
-  /* 이미지는 가로 너비만 지정하면 세로 높이는 비율에 맞춰 정해짐 */
   width: 40px;
+  /* 가로 너비만 지정하면 세로 높이는 비율에 맞춰 정해짐 */
 }
-
 header nav ul {
   display: flex;
 }
-
 header nav ul li {
   padding: 10px 20px;
   font-weight: 700;
 }
-
-header nav ul li a {
+/* header nav ul li a {
   position: relative;
-}
-
+} */
 header nav ul li a:hover {
   color: #9b30ff;
+  /* 또는 */
   /* text-shadow: 1px 1px 5px #9b30ff; */
 }
-
-header nav ul li a::before {
+header nav ul li a::after {
   content: "";
   display: block;
   width: 0; /* 초기에는 밑줄이 없도록 0으로 설정 */
   height: 1px;
   background-color: #9b30ff;
-  position: absolute;
+  /* position: absolute;
   bottom: -2px;
-  left: 0;
+  left: 0; */
   transition: width 0.5s;
 }
-
-header nav ul li a:hover::before {
+header nav ul li a:hover::after {
   width: 100%;
 }
 
 /* VISUAL */
 .visual {
-  /* (중요) 헤더가 fixed가 되어 일반 배치 흐름에서 벗어날때
-     fixed 헤더 다음에 오는 요소(예: 섹션)는 헤더의 높이만큼
-     외부 여백 추가 필요 */
+  /* (중요)
+    헤더가 fixed 되어 일반 배치 흐름에서 벗어남
+    fixed 헤더 다음에 오는 요소(예: 섹션)는 헤더의 높이만큼 외부 여백 추가 필요 
+  */
   margin-top: 60px;
   width: 100%;
   background-color: #000;
   color: #fff;
 }
-
 .visual > .inner {
   height: calc(100vh - 60px);
   font-size: 70px;
   display: flex;
   align-items: center;
 }
-
 .visual > .inner .purple {
   color: #9b30ff;
 }
 
+/* ABOUT */
+.about {
+  padding: 150px 0;
+}
+.about > .inner {
+  position: relative;
+}
+.about .about__wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.about .about__wrapper .about__img {
+  width: 40%;
+}
+.about .about__wrapper .about__img img {
+  width: 100%;
+  border-radius: 50%;
+  box-shadow: 5px 5px 20px 5px rgba(0, 0, 0, 0.1);
+}
+.about .about__wrapper .about__text {
+  width: 40%;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.about .about__wrapper .about__text .slogan {
+  font-size: 35px;
+  font-weight: bold;
+}
+.about .about__wrapper .about__text h3 {
+  font-size: 20px;
+  font-weight: 600;
+}
+.about .about__wrapper .about__text h4 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.about .about__wrapper .about__text li {
+  line-height: 1.8;
+}
+.about .about__btn {
+  position: absolute;
+  bottom: -30px;
+  right: 30px;
+}
+/* .about .about__btn a {
+  display: flex;
+  align-items: center;
+} */
+.about .about__btn img {
+  display: inline;
+  vertical-align: middle;
+  width: 28px;
+  margin-right: 10px;
+}
+
+/* SKILL */
+.skill {
+  padding: 150px 0;
+  background-color: #000;
+  color: #fff;
+}
+
+.skill .title::after {
+  background-color: #fff;
+}
+
+.skill .skill__list {
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+}
+
+.skill .skill__list li div {
+  width: 50px;
+  height: 40px;
+  background-color: #9b30ff;
+  border-radius: 50%;
+  transform: rotate(-20deg);
+}
+
+.skill .skill__list li:hover div {
+  transform: rotate(0deg);
+}
+
 /* 애니메이션 정의는 맨 마지막에 */
 @keyframes flash {
-  0%, 50%, 100% { opacity: 1;}
-  25%, 75% { opacity: 0;}
+  0%, 50%, 100% { 
+    opacity: 1;
+  }
+
+  25%, 75% {
+    opacity: 0;
+  }
 }

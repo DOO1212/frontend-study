@@ -2,8 +2,14 @@
   box-sizing: border-box;
 }
 
-body {
+.html {
+  /* 스크롤 이동을 부드럽게 */
+  scroll-behavior: smooth;
+}
 
+.top {
+  position: fixed;
+  z-index: 9;
 }
 
 .name {
@@ -37,8 +43,6 @@ body {
   max-height: 40%;
   background-color: #3eb6be;
 }
-
-
 
 .profile {
   background-color: #fff;

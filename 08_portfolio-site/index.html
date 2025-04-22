@@ -3,49 +3,59 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>고두현 포트폴리오</title>
+  <title>김재현 포트폴리오</title>
 
-  <!-- 파비콘(favicon.ico)은 프로젝트 폴더의 취상위 경로에 포함시키면 자동 적용
-       최상위 경로에 없거나, ico가 아닌 별도 파일을 가진 경우에는 <link>로 적용 -->
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <!-- 파비콘(favicon.ico)은 프로젝트 폴더의 최상위 경로에 포함시키면 자동 적용
+    최상위 경로에 없거나, ico가 아닌 별도 파일을 가진 경우에는 <link>로 적용 -->
+  <link rel="icon" href="favicon.ico">
   <!-- (참고) 파비콘 만들기: https://iconifier.net -->
 
+  <!-- reset.css -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css">
-  <link rel="stylesheet" href="css/main.css">
-  <script defer src="js/main.js"></script>
-
+  
   <!-- 구글 웹폰트 연결 -->
-  <!-- 경량화된 오픈 라이센스 폰트, 한글 지원하는지 확인 및 필요한 굵기 선택 후 연결 -->
+  <!-- 경량화된 오픈 라이선스 폰트, 한글 지원하는지 확인 및 필요한 굵기 선택 후 연결 -->
   <!-- 한글: Noto Sans Korean, 영문: Open Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-  
-  <!-- 구글 머티리얼 아이콘 연결 -->
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 
+  <!-- 구글 머티리얼 아이콘 연결 -->
+  <!-- 구글에서 제공하는 아이콘, 글자처럼 취급 가능한 장점 -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  
+  <!-- main.css -->
+  <link rel="stylesheet" href="css/main.css">
+
+  <!-- main.js -->
+  <script defer src="js/main.js"></script>
 </head>
 <body>
+  <!-- 폰트 테스트 -->
+  <!-- <span>헬로 월드!</span>
+  <span class="font-en">Hello world!</span> -->
 
   <!-- HEADER -->
   <header id="header">
-   <div class="inner">
-     <!-- 로고 -->
-     <a href="index.html" class="logo">
-       <!-- 본인의 로고를 이미지로 제작 시 기존 파일과 교체, 만약 텍스트로 넣을거면 img 요소 제거하고 텍스트 입력 -->
-       <img src="images/logo.png" alt="">
-     </a>
-     <nav class="font-en">
-       <ul>
-         <li><a href="#">ABOUT</a></li>
-         <li><a href="#">SKILL</a></li>
-         <li><a href="#">PROJECT</a></li>
-         <li><a href="#">CONTACT</a></li>
-       </ul>
-     </nav>
-   </div>
+    <div class="inner">
+      <!-- 로고 -->
+      <a href="index.html" class="logo">
+        <!-- 본인의 로고를 이미지로 제작 시 기존 파일과 교체, 만약 텍스트로 넣을거면 img 요소 제거하고 텍스트 입력 -->
+        <img src="images/logo.png" alt="로고">
+      </a>
+
+      <!-- 메뉴 -->
+      <nav class="font-en">
+        <ul>
+          <li><a href="#about">ABOUT</a></li>
+          <li><a href="#skill">SKILL</a></li>
+          <li><a href="#project">PROJECT</a></li>
+          <li><a href="#contact">CONTACT</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
-  
+
   <!-- VISUAL -->
   <section class="visual">
     <div class="inner">
@@ -80,8 +90,8 @@
           <span class="animate-flash purple" style="animation-delay: 0.14s;">e</span>
           <span class="animate-flash purple" style="animation-delay: 0.25s;">r</span>
           <br>
-          <span class="animate-flash purple" style="animation-delay: 0.10s;">고</span>
-          <span class="animate-flash purple" style="animation-delay: 0.16s;">두</span>
+          <span class="animate-flash purple" style="animation-delay: 0.10s;">김</span>
+          <span class="animate-flash purple" style="animation-delay: 0.16s;">재</span>
           <span class="animate-flash purple" style="animation-delay: 0.24s;">현</span>
           <span class="animate-flash" style="animation-delay: 0.12s;">입</span>
           <span class="animate-flash" style="animation-delay: 0.15s;">니</span>
@@ -90,6 +100,102 @@
       </h1>
     </div>
   </section>
-   
+
+  <!-- ABOUT -->
+  <section id="about" class="about">
+    <div class="inner">
+      <h2 class="title font-en">ABOUT</h2>
+      <div class="about__wrapper">
+        <div class="about__img">
+          <!-- 본인 프로필 이미지 넣기 -->
+          <img src="" alt="프로필">
+        </div>
+        <div class="about__text">
+          <!-- 본인 슬로건, 이름(생년월일), 학력 또는 교육 사항 등 작성 -->
+          <strong class="slogan font-en">Simple is Best</strong>
+          <h3 class="font-en">Kim Jae Hyun (1999.10.15)</h3>
+          <div>
+            <h4 class="font-en">EDUCATION</h4>
+            <ul>
+              <li>10.03 ~ 12.02 OO학교 OO과 졸업</li>
+              <li>25.04 ~ 25.10 클라우드(AWS)활용 자바/스프링 개발 부트캠프 수료</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 연락처 버튼 -->
+      <div class="about__btn font-en">
+        <a href="#contact">
+          <img src="images/icon/icon_contact.png" alt="연락처">CONTACT
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILL -->
+  <section id="skill" class="skill">
+    <div class="inner">
+      <h2 class="title font-en">SKILL</h2>
+      <ul class="skill__list">
+        <!-- 스킬 추가하려면 li 요소 복사 붙여넣기 -->
+        <li>
+          <div class="font-en">
+            <p>Java</p>
+          </div>
+          <h3 class="font-en">Java<br>Programing</h3>
+          <ul>
+            <li>객체지향</li>
+            <li>파일 입출력</li>
+            <li>JDBC</li>
+          </ul>
+        </li>
+        <li>
+          <div class="font-en">
+            <p>Html</p>
+          </div>
+          <h3 class="font-en">HTML5</h3>
+          <ul>
+            <li>웹페이지 구조 설계</li>
+            <li>시맨틱 태그</li>
+          </ul>
+        </li>
+        <li>
+          <div class="font-en">
+            <p>Css</p>
+          </div>
+          <h3 class="font-en">CSS3</h3>
+          <ul>
+            <li>웹페이지 레이아웃 설계</li>
+            <li>웹페이지 디자인</li>
+            <li>반응형 제작</li>
+          </ul>
+        </li>
+        <li>
+          <div class="font-en">
+            <p>Js</p>
+          </div>
+          <h3 class="font-en">JavaScript</h3>
+          <ul>
+            <li>DOM 조작, 제어</li>
+            <li>이벤트 처리</li>
+            <li>비동기 통신</li>
+          </ul>
+        </li>
+        <li>
+          <div class="font-en">
+            <p>React</p>
+          </div>
+          <h3 class="font-en">React JS</h3>
+          <ul>
+            <li>SPA 개발</li>
+            <li>전역 상태 관리</li>
+            <li>클라이언트 라우팅</li>
+            <li>CSR 방식 앱개발</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </section>
 </body>
 </html>
