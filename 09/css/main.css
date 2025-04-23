@@ -13,7 +13,7 @@ img {
 }
 
 body {
-  background-color: #333;
+  background-color: #797979;
 }
 
 /* header */
@@ -22,7 +22,7 @@ body {
   width: 100%;
   position: fixed;
   z-index: 9;
-  background-color: #333;
+  background-color: #797979;
   padding: 40px;
 }
 
@@ -35,7 +35,7 @@ body {
 .name {
   height: 600px;
   position: relative;
-  background-color: #333;
+  background-color: #797979;
   display: flex;
   justify-content: end;
   align-items:end;
@@ -94,7 +94,7 @@ body {
 
 .introduce-2, .profile {
   height: 500px;
-  border: 2px solid #333 ;
+  border: 2px solid #797979 ;
   border-radius: 10px;
   padding: 20px;
   background-color: #fff;

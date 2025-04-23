@@ -36,3 +36,77 @@ const swiper = new Swiper('.project .swiper', {
     prevEl: '.project .swiper-button-prev',
   },
 });
+
+// 모달창 띄우기
+const modalBtn = document.querySelector('.project .btn-modal');
+const modalEl = document.querySelector('#modal');
+const closeBtn = document.querySelector('#modal .btn-close');
+
+// Quiz: modalBtn 누르면 모달창이 뜨고 closeBtn 누르면 닫히도록 만들기
+// style 속성: JS로 CSS 스타일을 제어할 수 있는 속성
+// 예시: 요소.style.CSS속성 = "";
+modalBtn.addEventListener('click', function () {
+  modalEl.style.display = 'flex';
+});
+
+visualViewport.addEventListener('click', function (event) {
+    modalEl.style.display = 'none';
+});
+
+// closeBtn.addEventListener('mousemove', function () {
+//   modalEl.style.display = 'none';
+// });
+
+// closeBtn.addEventListener('click', myFunction);
+
+// function myFunction() {
+//   this.style.display = 'none';
+// }
+
+// 모달창 이미지 변경
+const imageModalBtnList = document.querySelectorAll('.project .btn-modal-image');
+const imageModalEl = document.querySelector('#imageModal');
+const imageCloseBtn = document.querySelector('#imageModal .btn-close');
+const imageEl = document.querySelector('#imageModal img');
+
+imageModalBtnList.forEach(function (imageModalBtn, index) {
+  imageModalBtn.addEventListener('click', function () {
+    imageEl.src = imageModalBtn.dataset.imageSrc;
+    imageModalEl.style.display = 'flex';
+  });
+});
+imageCloseBtn.addEventListener('click', function () {
+  imageModalEl.style.display = 'none';
+});
+// 추가로 더 해볼 만한 것!
+// 모달 바깥 영역 클릭 시 닫기
+// ESC 키로 닫기
+// fade 애니메이션 넣기
+
+// 현재 연도 표시
+// 날짜 정보를 가진 JS의 Date 객체를 활용
+console.log(new Date().getFullYear());
+const year = document.querySelector('.this-year');
+year.textContent = new Date().getFullYear();
+
+// 페이지 최상단 이동
+const totopEl = document.querySelector('#to-top');
+
+// 페이지에 스크롤 이벤트 감지를 추가
+// window: 브라우저 창 객체
+window.addEventListener('scroll', function () {
+// console.log(window.scrollY); // Y축 스크롤 위치
+
+// 페이지 스크롤 위치가
+// 500px을 넘으면 요소를 보이고
+// 500px을 넘지 않으면 요소 숨기기
+if (window.scrollY > 500) {
+  // 요소 보이기
+  totopEl.style.opacity = 1;
+  totopEl.style.transform = 'translateX(0)';
+} else {
+  // 요소 숨기기
+  totopEl.style.opacity = 0;
+  totopEl.style.transform = 'translateX(100px)';
+}
+})
