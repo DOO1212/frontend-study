@@ -109,4 +109,4 @@ if (window.scrollY > 500) {
   totopEl.style.opacity = 0;
   totopEl.style.transform = 'translateX(100px)';
 }
-})
+});

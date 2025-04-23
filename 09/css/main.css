@@ -5,7 +5,7 @@
 
 .html {
   /* 스크롤 이동을 부드럽게 */
-  scroll-behavior:smooth
+  scroll-behavior: smooth;
 }
 
 img {
@@ -13,7 +13,9 @@ img {
 }
 
 body {
-  background-color: #797979;
+  background-color: #ffecec;
+  width: 80%;
+  margin: 0 auto;
 }
 
 /* header */
@@ -22,20 +24,25 @@ body {
   width: 100%;
   position: fixed;
   z-index: 9;
-  background-color: #797979;
-  padding: 40px;
+  background-color: #ffecec;
 }
 
-.top .menu ul li a {
+.top ul {
+  display: flex;
+  align-items: baseline;
+  column-gap: 70px;
+}
+
+a {
   font-size: 50px;
-  color: #fff;
+  color: #ffbb66;
 }
 
 /* 헤더 내용 */
 .name {
   height: 600px;
   position: relative;
-  background-color: #797979;
+  background-color: #ffecec;
   display: flex;
   justify-content: end;
   align-items:end;
@@ -43,12 +50,13 @@ body {
 
 }
 
-.menu ul li + li {
-  margin-top: 20px;
+.menu ul li {
+  list-style: korean-hanja-informal;
+  color: #ffbb66
 }
 
 .main .name h1 {
-  color: #fff;
+  color: #ffbb66;
   font-size: 50px;
   height: 100px;
 }
@@ -56,9 +64,9 @@ body {
 /* ARTTICLE */
 
 .introduce {
-  width: 90%;
-  height: 1000px;
-  background-color: #797979;
+  width: 100%;
+  height: 100%;
+  background-color: #ffecec;
   padding: 70px 30px;
   border-radius: 10px;
   margin: 0 auto;
@@ -88,16 +96,11 @@ body {
   flex: 2;
 }
 
-.self {
-  margin-top: 40px;
-}
-
 .introduce-2, .profile {
   height: 500px;
-  border: 2px solid #797979 ;
+  border: 2px solid #ffecec ;
   border-radius: 10px;
   padding: 20px;
-  background-color: #fff;
 }
 
 .profile {
@@ -113,6 +116,7 @@ body {
 h3 {
   font-size: 30px;
   line-height: 40px;
+  color: #ffbb66;
 }
 
 .png img {
@@ -123,13 +127,12 @@ h3 {
 /* SWIPER */
 .swiper {
   width: 80%;
-  height: 500px;
+  height: 400px;
 }
 
 .swiper-slide {
   text-align: center;
   font-size: 18px;
-  background: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -154,6 +157,16 @@ h3 {
   width: 60%;
 }
 
+.mySwiper {
+  margin-bottom: 50px;
+}
+
+.port h3 {
+  font-size: 50px;
+  text-align: center;
+  padding: 50px;
+}
+
 /* FOOTER */
 .bottom {
   height: 300px;
@@ -169,6 +182,43 @@ h3 {
 
 
 
+/* SCROLL TO TOP */
+#to-top {
+  width: 42px;
+  height: 42px;
+  background-color: #fff8e8;
+  border: 2px solid #333;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 9;
+  transition: 0.5s;
+
+  /* 처음 상태는 투명에 x축으로 +100px 지점 */
+  opacity: 0;
+  transform: translateX(100px);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* 애니메이션 */
 .menu > ul {
@@ -179,13 +229,6 @@ h3 {
   animation: rightleft 1s;
 }
 
-
-
-
-
-
-
-/* 애니메이션 */
 @keyframes leftright {
   0% { transform: translate(-200px); }
 }
