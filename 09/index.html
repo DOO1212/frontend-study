@@ -43,15 +43,24 @@
 <body>
 
   <!-- HEADER -->
-  <header>
+  <header id="header">
     <div class="top">
       <nav class="menu">
         <ul>
           <li><a href="#">ABOUT</a></li>
           <li><a href="#introduce">INTRODUCE</a></li>
           <li><a href="#portfolio">PORTFOLIO</a></li>
+          <li><a href="#portfolio">PORTFOLIO</a></li>
         </ul>
       </nav>
+    </div>
+
+    
+    <!-- 햄버거 버튼 -->
+    <div>
+    <a href="javascript:up();" class="btn-hamburger">
+      <span class="material-symbols-outlined">menu</span>
+    </a>
     </div>
   </header>
 
@@ -71,7 +80,7 @@
       <div class="introduce-1">
         <div class="introduce-2">
             <div class="image">
-              <img src="images/KakaoTalk_20250414_121208196.jpg" alt="">
+              <img src="images/profile.jpg" alt="">
             </div>
         </div>
           
@@ -99,7 +108,7 @@
       <div class="port">
         
         <h3>안녕하세요</h3>
-          <div class="swiper mySwiper">
+          <div class="swiper1 mySwiper scroll-spy">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
                 <img src="images/work_1.jpg" alt="사진1">
@@ -122,7 +131,7 @@
 
 
           <h3>안녕하세요</h3>
-          <div class="swiper mySwiper">
+          <div class="swiper2 mySwiper scroll-spy">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
                 <img src="images/work_1.jpg" alt="사진1">

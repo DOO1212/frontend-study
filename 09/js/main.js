@@ -15,6 +15,8 @@ const swiper = new Swiper(".mySwiper", {
   }
 });
 
+
+
 // 페이지 최상단 이동
 const totopEl = document.querySelector('#to-top');
 
@@ -35,4 +37,60 @@ if (window.scrollY > 500) {
   totopEl.style.opacity = 0;
   totopEl.style.transform = 'translateX(100px)';
 }
+});
+
+
+
+// ScrollMagic 사용
+const spyEls = document.querySelectorAll('.scroll-spy')
+const controller = new ScrollMagic.Controller();
+
+spyEls.forEach(function (spy, index) {
+  // 메소드 체이닝
+  new ScrollMagic.Scene({ // 감시할 장면 추가 및 옵션 지정
+    triggerElement: spy, // 보여짐 여부를 감시할 요소를 지정
+    triggerHook: 0.7 // 화면의 50% 지점에서 보여짐 여부 감시(0~1사이 지정)
+  })
+  .setClassToggle(spy, 'show') // 요소가 화면에 보이면 show 클래스 추가
+  .addTo(controller); // 컨트롤러에 장면을 할당(필수) - 라이브러리에서 지정한 문법으로 깊게 이해 x
+});
+
+
+// 햄버거 메뉴
+const hamburger = document.querySelector('.btn-hamburger');
+
+window.addEventListener('scroll', function () {
+
+if (window.scrollY < 100) {
+  hamburger.style.display = "none";
+  } else {
+  hamburger.style.display = "block";
+  }
+});
+
+const menu = document.querySelector('.top')
+
+window.addEventListener('scroll', function () {
+
+  if (window.scrollY > 100) {
+    menu.style.height = "0";
+    menu.style.overflow = "hidden";
+  } else {
+    menu.style.height = "auto";
+    menu.style.overflow = "visible";
+  }
+})
+
+
+hamburger.addEventListener('click', function (up, index) {
+
+  menu.classList.toggle('show');
+
+  if (document.querySelector('.top.show')) {
+    menu.style.height = "auto";
+    menu.style.overflow = "visible";
+  } else {
+    menu.style.height = "0";
+    menu.style.overflow = "hidden";
+  }
 });
