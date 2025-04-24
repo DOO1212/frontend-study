@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    .flex-container {
+      display: flex;
+      font-size: 30px;
+      text-align: center;
+      line-height: 400px;
+    }
+    .flex-item {
+      height: 400px;
+    }
+    .flex-item-left {
+      width: 50%;
+      background-color: #f1f1f1;
+    }
+    .flex-item-right {
+      width: 50%;
+      background-color: dodgerblue;
+    }
+
+    .flex-item-first {
+      flex: 1;
+      background-color: #f1f1f1;
+    }
+    .flex-item-center {
+      flex: 1;
+      background-color: dodgerblue;
+    }
+    .flex-item-last {
+      flex: 1;
+      background-color: orange;
+    }
+
+    /* 반응형 레이아웃 - 1열 레이아웃 만들기 */
+    @media screen and (max-width: 1023px) {
+      .flex-container {
+        flex-direction: column;
+      }
+      .flex-item-left,
+      .flex-item-right {
+        width: 100%;
+      }
+    }
+
+    /* 767px 이하에서 중요하지 않은 요소는 숨기기 */
+    @media screen and (max-width: 767px) {
+      .flex-item-center {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="flex-container">
+    <div class="flex-item flex-item-left">1</div>
+    <div class="flex-item flex-item-right">2</div>
+  </div>
+
+  <div class="flex-container">
+    <div class="flex-item flex-item-first">1</div>
+    <div class="flex-item flex-item-center">2</div>
+    <div class="flex-item flex-item-last">3</div>
+  </div>
+</body>
+</html>
