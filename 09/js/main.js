@@ -7,7 +7,7 @@ const swiper = new Swiper(".mySwiper", {
     el: ".swiper-pagination",
     clickable: true,
     },
-  loop: true, // 반복 재생 여부, 1 -> 2 -> 3 -> 다시 1
+  loop: true,
   autoplay: { delay: 5000 },
   navigation: {
     nextEl: ".swiper-button-next",
@@ -82,11 +82,11 @@ window.addEventListener('scroll', function () {
 })
 
 
-hamburger.addEventListener('click', function (up, index) {
+hamburger.addEventListener('click', function () {
 
   menu.classList.toggle('show');
 
-  if (document.querySelector('.top.show')) {
+  if (menu.classList.contains('show')) {
     menu.style.height = "auto";
     menu.style.overflow = "visible";
   } else {
