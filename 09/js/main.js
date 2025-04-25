@@ -1,22 +1,18 @@
 // SWIPER
 const swiper = new Swiper(".mySwiper", {
-  effect: "coverflow",
-  grabCursor: true,
-  centeredSlides: true,
-  slidesPerView: "auto",
-  coverflowEffect: {
-    rotate: 50,
-    stretch: 0,
-    depth: 100,
-    modifier: 1,
-    slideShadows: true,
+  slidesPerView: 2,
+  spaceBetween: 30,
+  loop: true,
+  hashNavigation: {
+    watchState: true,
+  },
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
   },
   navigation: {
     nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev",
-  },
-  pagination: {
-    el: ".swiper-pagination",
   },
 });
 
@@ -46,11 +42,11 @@ if (window.scrollY > 500) {
 
 
 
-// ScrollMagic 사용
-const spyEls = document.querySelectorAll('.scroll-spy')
+// scrollMagic 사용
+const scroll = document.querySelectorAll('.scroll-spy')
 const controller = new ScrollMagic.Controller();
 
-spyEls.forEach(function (spy, index) {
+scroll.forEach(function (spy, index) {
   // 메소드 체이닝
   new ScrollMagic.Scene({ // 감시할 장면 추가 및 옵션 지정
     triggerElement: spy, // 보여짐 여부를 감시할 요소를 지정
@@ -68,7 +64,7 @@ window.addEventListener('scroll', function () {
 
 if (window.scrollY < 100) {
   hamburger.style.display = "none";
-  
+
   } else {
   hamburger.style.display = "block";
   }

@@ -13,7 +13,7 @@ img {
 }
 
 body {
-  width: 60%;
+  width: 80%;
   margin: 0 auto;
 }
 
@@ -99,10 +99,7 @@ header .btn-hamburger .material-symbols-outlined {
 }
 
 
-.introduce {
-  width: 100%;
-  height: 100%;
-  
+.introduce {  
   padding: 70px 30px;
   border-radius: 10px;
   margin: 0 auto;
@@ -110,32 +107,13 @@ header .btn-hamburger .material-symbols-outlined {
 
 .introduce-1 {
   display: flex;
-  column-gap: 10px;
+  justify-content: center;
+  column-gap: 150px;
   overflow: hidden;
 }
 
-.image {
-  height: 50%;
-}
-
-.image img {
-  height: 100%;
-  object-fit: contain;
-  margin: 0 auto;
-}
-
-.introduce-2 {
-  flex: 1;
-}
-
-.profile {
-  flex: 2;
-}
-
-.introduce-2, .profile {
-  height: 500px;
-  border-radius: 10px;
-  padding: 20px;
+.introduce-2 > div > img {
+  width: 300px;
 }
 
 .profile {
@@ -161,13 +139,13 @@ h3 {
 
 /* SCROLL-SPY */
 
-.swiper1, .swiper2  {
+.scroll-spy  {
   transform: translateY(100px);
   opacity: 0;
   transition: 1s;
 }
 
-.swiper1.show, .swiper2.show {
+.scroll-spy.show {
   transform: translateY(0);
   opacity: 1;
 }
@@ -183,27 +161,30 @@ h3 {
   padding: 50px;
 }
 
+.portfolio {
+  display: flex;
+  justify-content: center;
+  width: 50vw;
+  margin: 0 auto;
+}
 .swiper {
-  width: 60%;
-  padding-top: 50px;
-  padding-bottom: 50px;
+  width: 100%;
 }
 
 .swiper-slide {
-  background-position: center;
-  background-size: cover;
-  width: 300px;
-  height: 300px;
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .swiper-slide img {
   display: block;
   width: 100%;
-}
-
-.swiper-wrapper img {
-  width: 50%;
-  margin: 0 auto;
+  height: 100%;
+  object-fit: cover;
 }
 
 
@@ -248,7 +229,6 @@ h3 {
 @media screen and (max-width: 767px) {
   /* 모바일에서는 화면의 80%만 차지하도록 */
   body {
-    width: 80%;
   }
 
   .menu ul {
@@ -263,6 +243,10 @@ h3 {
     width: 100%;
     margin: 0 auto;
     display: block;
+  }
+
+  .portfolio {
+    width: 100%;
   }
 
 }

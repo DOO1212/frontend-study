@@ -3,7 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>김재현 포트폴리오</title>
+
+  <!-- 오픈 그래프와 트위터 카드 설정(링크의 프리뷰) -->
+  <!-- 오픈 그래프 -->
+  <!-- 웹페이지가 소셜미디어(카카오톡, 슬랙, 페이스북 등)로 공유될 때 우선적으로 활용되는 정보 -->
+  <!-- 
+    type: 사이트 타입(website로 고정하면 됨)
+    site_name: 웹사이트 이름, 브랜드 네임을 쓰면 좋음(ex. Goni's Portfolio, Goni.dev, MyPortfolio)
+    title: 현재 페이지의 제목
+    description: 간단한 소개(검색, 공유 시 미리보기에서 사용)
+    image: 썸네일 이미지(가장 중요함!), 절대 경로로 작성하는 것을 권장(https://부터 시작), 권장 크기(1200x630px 정도)
+    url: 현재 사이트의 대표 URL
+  -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Goni's Portfolio" />
+  <meta property="og:title" content="Goni | Full Stack Developer" />
+  <meta property="og:description" content="React, Node.js 기반의 웹 개발을 전문으로 하는 풀스택 개발자 포트폴리오입니다." />
+  <meta property="og:image" content="https://your-domain.com/images/thumbnail.png" />
+  <meta property="og:url" content="https://your-domain.com" />
+
+  <!-- 트위터 카드 -->
+  <!-- 웹페이지가 소셜미디어(트위터)로 공유될 때 우선적으로 활용되는 정보 -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <!-- 계정 태그 노출용 작성자 트위터 계정(없으면 생략 가능) -->
+  <!-- <meta name="twitter:site" content="@your_twitter_handle" />
+  <meta name="twitter:creator" content="@your_twitter_handle" /> -->
+  <meta property="twitter:title" content="Goni | Full Stack Developer" />
+  <meta property="twitter:description" content="React, Node.js 기반의 웹 개발을 전문으로 하는 풀스택 개발자 포트폴리오입니다." />
+  <meta property="twitter:image" content="https://your-domain.com/images/thumbnail.png" />
+  <meta property="twitter:url" content="https://your-domain.com" />
+
+  <title>Goni | Full Stack Developer</title>
 
   <!-- 파비콘(favicon.ico)은 프로젝트 폴더의 최상위 경로에 포함시키면 자동 적용
     최상위 경로에 없거나, ico가 아닌 별도 파일을 가진 경우에는 <link>로 적용 -->
