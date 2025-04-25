@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="css/main.css">
 
   <!-- scroll magic cdn -->
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js" integrity="sha512-8E3KZoPoZCD+1dgfqhPbejQBnQfBXe8FuwL4z/c8sTrgeDMFEnoyTlH3obB4/fV+6Sg0a0XF+L/6xS4Xx1fUEg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js" integrity="sha512-8E3KZoPoZCD+1dgfqhPbejQBnQfBXe8FuwL4z/c8sTrgeDMFEnoyTlH3obB4/fV+6Sg0a0XF+L/6xS4Xx1fUEg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <!-- main.js -->
   <script defer src="js/main.js"></script>
@@ -40,8 +40,9 @@
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>   
 
 </head>
-<body>
+<div>
 
+  <div style="overflow-x: hidden;"></div>
   <!-- HEADER -->
   <header id="header">
     <div class="top">
@@ -50,11 +51,9 @@
           <li><a href="#">ABOUT</a></li>
           <li><a href="#introduce">INTRODUCE</a></li>
           <li><a href="#portfolio">PORTFOLIO</a></li>
-          <li><a href="#portfolio">PORTFOLIO</a></li>
         </ul>
       </nav>
     </div>
-
     
     <!-- 햄버거 버튼 -->
     <div>
@@ -107,60 +106,42 @@
     <div id="portfolio" class="portfolio">
       <div class="port">
         
-        <h3>안녕하세요</h3>
-          <div class="swiper1 mySwiper scroll-spy">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <img src="images/work_1.jpg" alt="사진1">
-              </div>
-              <div class="swiper-slide">
-                <img src="images/work_2.jpg" alt="사진2">
-              </div>
-              <div class="swiper-slide">
-                <img src="images/work_3.jpg" alt="사진3">
-              </div>
-              <div class="swiper-slide">
-                <img src="images/work_4.jpg" alt="사진4">
-              </div>
+        <h3>포트폴리오</h3>
+          
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
             </div>
-            
-            <div class="swiper-pagination"></div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-          </div>
-
-
-          <h3>안녕하세요</h3>
-          <div class="swiper2 mySwiper scroll-spy">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <img src="images/work_1.jpg" alt="사진1">
-              </div>
-              <div class="swiper-slide">
-                <img src="images/work_2.jpg" alt="사진2">
-              </div>
-              <div class="swiper-slide">
-                <img src="images/work_3.jpg" alt="사진3">
-              </div>
-              <div class="swiper-slide">
-                <img src="images/work_4.jpg" alt="사진4">
-              </div>
+            <div class="swiper-slide">
+              <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
             </div>
-            
-            <div class="swiper-pagination"></div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-          </div>
+            <div class="swiper-slide">
+              <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
+            </div>
+            <div class="swiper-slide">
+              <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
+            </div>
+            <div class="swiper-slide">
+              <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
+            </div>
+            <div class="swiper-slide">
+              <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
+            </div>
+            <div class="swiper-slide">
+              <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
+            </div>
+            <div class="swiper-slide">
+              <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
+            </div>
 
-      
+          </div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-pagination"></div>
+        </div>
 
       </div>
-    </div>
-
-
-
-
-
 
   </article>
 
@@ -172,6 +153,8 @@
 
     </div>
   </footer>
+
+</div>
 
   <!-- SCROLL TO TOP -->
   <div id="to-top">

@@ -19,11 +19,13 @@ body {
 
 /* header */
 /* 메뉴 */
+
 .top {
-  width: 60%;
+  width: 100%;
   z-index: 1;
   position: fixed;
   background-color: white;
+  padding: 30px;
 
   /* height: 0;
   overflow: hidden; */
@@ -34,13 +36,20 @@ body {
 }
 .top ul {
   display: flex;
-  flex-direction: column;
-  row-gap: 20px;
+  column-gap: 50px;
 }
 
-a {
-  font-size: 50px;
-  color: #00ff15;
+.top a {
+  color: #0099ff;
+  font-size: 30px;
+}
+
+/* .menu ul.show {
+  display: block;
+} */
+
+.menu ul.show li {
+  margin-bottom: 20px;
 }
 
 
@@ -50,6 +59,8 @@ header .btn-hamburger {
   padding: 30px 50px;
   top: 0;
   right: 0;
+  z-index: 9;
+  color: #0099ff;
 }
 header .btn-hamburger .material-symbols-outlined {
   font-size: 40px;
@@ -63,16 +74,17 @@ header .btn-hamburger .material-symbols-outlined {
   height: 600px;
   position: relative;
   display: flex;
-  justify-content: end;
+  justify-content: center;
   align-items:end;
   padding: 40px;
+  text-align: center;
 
 }
 
 .menu ul li {
   list-style: korean-hanja-informal;
   font-size: 20px;
-  color: #00ff15;
+  color: #0099ff;
 }
 
 /* ARTTICLE */
@@ -81,7 +93,7 @@ header .btn-hamburger .material-symbols-outlined {
 }
 
 .main .name h1 {
-  color: #00ff15;
+  color: #0099ff;
   font-size: 50px;
   height: 100px;
 }
@@ -129,7 +141,7 @@ header .btn-hamburger .material-symbols-outlined {
 .profile {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .png {
@@ -139,7 +151,7 @@ header .btn-hamburger .material-symbols-outlined {
 h3 {
   font-size: 30px;
   line-height: 40px;
-  color: #00ff15;
+  color: #0099ff;
 }
 
 .png img {
@@ -165,47 +177,36 @@ h3 {
 
 
 /* SWIPER */
-
-.swiper-slide {
-  text-align: center;
-  font-size: 18px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.swiper-slide img {
-  display: block;
-  width: 80%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.swiper-slide {
-  width: 30%;
-}
-
-.swiper-slide:nth-child(2n) {
-  width: 30%;
-}
-
-.swiper-slide:nth-child(3n) {
-  width: 30%;
-}
-
-.mySwiper {
-  margin-bottom: 50px;
-}
-
-.swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction {
-  transform: translateY(50px);
-}
-
 .port h3 {
   font-size: 50px;
   text-align: center;
   padding: 50px;
 }
+
+.swiper {
+  width: 60%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 300px;
+  height: 300px;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+}
+
+.swiper-wrapper img {
+  width: 50%;
+  margin: 0 auto;
+}
+
+
 
 /* FOOTER */
 .bottom {
@@ -213,8 +214,7 @@ h3 {
   display: flex;
   justify-content: center;
   align-items: center;
-  
-}
+  }
 
 .bottom ul li img {
   width: 80px;
@@ -244,7 +244,28 @@ h3 {
   transform: translateX(100px);
 }
 
+/* 반응형 */
+@media screen and (max-width: 767px) {
+  /* 모바일에서는 화면의 80%만 차지하도록 */
+  body {
+    width: 80%;
+  }
 
+  .menu ul {
+    display: block;
+  }
+
+  .menu ul li {
+    margin-bottom: 20px;
+  }
+
+  .introduce-1 {
+    width: 100%;
+    margin: 0 auto;
+    display: block;
+  }
+
+}
 
 
 

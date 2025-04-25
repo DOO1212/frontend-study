@@ -1,18 +1,23 @@
 // SWIPER
 const swiper = new Swiper(".mySwiper", {
-  slidesPerView: "auto",
+  effect: "coverflow",
+  grabCursor: true,
   centeredSlides: true,
-  spaceBetween: 30,
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-    },
-  loop: true,
-  autoplay: { delay: 5000 },
+  slidesPerView: "auto",
+  coverflowEffect: {
+    rotate: 50,
+    stretch: 0,
+    depth: 100,
+    modifier: 1,
+    slideShadows: true,
+  },
   navigation: {
     nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev",
-  }
+  },
+  pagination: {
+    el: ".swiper-pagination",
+  },
 });
 
 
@@ -63,18 +68,20 @@ window.addEventListener('scroll', function () {
 
 if (window.scrollY < 100) {
   hamburger.style.display = "none";
+  
   } else {
   hamburger.style.display = "block";
   }
 });
 
-const menu = document.querySelector('.top')
+const menu = document.querySelector('.menu ul')
 
 window.addEventListener('scroll', function () {
 
   if (window.scrollY > 100) {
     menu.style.height = "0";
     menu.style.overflow = "hidden";
+
   } else {
     menu.style.height = "auto";
     menu.style.overflow = "visible";
@@ -89,8 +96,11 @@ hamburger.addEventListener('click', function () {
   if (menu.classList.contains('show')) {
     menu.style.height = "auto";
     menu.style.overflow = "visible";
+
   } else {
     menu.style.height = "0";
     menu.style.overflow = "hidden";
   }
 });
+
+// TODO: 스크롤을 내려도 메뉴가 안 없어지게
