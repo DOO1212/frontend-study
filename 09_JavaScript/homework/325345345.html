@@ -1,0 +1,23 @@
+<img id="hz" src="https://i.imgur.com/PQNhCln.gif" height="50" width="50" onClick="imgSizeX2()" ondblclick="imgSizeX1()" title='클릭하면 2배 사이즈, 더블클릭하면 초기화'>
+
+<script>
+function imgSizeX1() {
+  var img = document.getElementById('hz');
+  
+  w = img.width;
+  h = img.height;
+ 
+  img.width = 50
+  img.height = 50;
+}
+  
+function imgSizeX2() {
+  var img = document.getElementById('hz');
+  
+  w = img.width;
+  h = img.height;
+ 
+  img.width = w * 2;
+  img.height = h * 2;
+}
+</script>

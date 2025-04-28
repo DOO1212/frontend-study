@@ -30,25 +30,33 @@
     </div>
 
     <div>
-    <img src="logo_resize.png" alt="" class="picture">
+    <img src="logo_resize.png" alt="" class="picture" >
     </div>
 
   </div>
 
   <script>
+    // const big = document.querySelector('.bigger');
+    // const pic = document.querySelector('.picture');
+
+    // big.addEventListener('click', function () {
+
+    // });
+
     const big = document.querySelector('.bigger');
     const pic = document.querySelector('.picture');
 
+    big.addEventListener('click', function() {
     
+    // 현재 크기 가져오기
+    const currentWidth = pic.offsetWidth;
+    const currentHeight = pic.offsetHeight;
 
-    big.addEventListener('click', function () {
-
-      w = img.width;
-      h = img.height;
-
-
-      img.width = w * 2;
+    // 100px씩 추가
+    pic.style.width = (currentWidth + 100) + 'px';
+    pic.style.height = (currentHeight + 100) + 'px';
     });
+
   </script>
   
 </body>
