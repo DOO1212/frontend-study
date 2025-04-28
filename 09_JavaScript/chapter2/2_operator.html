@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+    
+    // 연산자
+    let num1 = 10;
+    let num2 = 3;
+
+    // 복합 할당(대입) 연산자
+    // +=, -=, /=, %= 등
+
+  num1 += num2;
+  document.write(num1, '<br>');
+
+  num1 -= num2;
+  document.write(num1, '<br>');
+
+  num1 *= num2;
+  document.write(num1, '<br>');
+
+  num1 /= num2;
+  document.write(num1, '<br>');
+
+  // 2. 산술 연산자
+  // + = * / %(나머지연산자)
+  num1 = 15;
+  num2 = 2;
+  let result;
+
+  result = num1 + num2;
+  document.write(result, '<br>');
+  result = num1 - num2;
+  document.write(result, '<br>');
+  result = num1 * num2;
+  document.write(result, '<br>');
+  result = num1 / num2;
+  document.write(result, '<br>');
+  result = num1 % num2;
+  document.write(result, '<br>');
+
+  // 3. 증감 연산자
+  // ++(1씩증가) --(1씩감소)
+  num1 = 10;
+  num1--;
+  document.write(num1, '<br>');
+  num1++;
+  document.write(num1, '<br>');
+  
+  // 중요
+  num2 = 20;
+  result = num2++;
+  document.write(result, '', num2, '<br>');
+
+  // Quiz
+  num1 = 10;
+  num2 = 20;
+  result = ++num1 + num2--;
+
+  // result = num1 + 1 + num2 - 1
+  document.write(result)
+
+  // 4. 문자열 연산자
+  const t1 = '학교 종이';
+  const t2 = '땡땡땡';
+  const t3 = 8282;
+  const t4 = '어서모이자';
+
+  result = t1 + (100 + 200) + t4;
+  document.write(result, '<br>');
+
+  // 5. 비교 연산자
+  // > < >= <= == != === !==
+
+  result = 10 > 20;
+  document.write(result, '<br>');
+  result = 10 < 20;
+  document.write(result, '<br>');
+  result = 10 <= 20;
+  document.write(result, '<br>');
+
+
+
+
+
+
+
+
+
+
+  </script>
+  
+</body>
+</html>
