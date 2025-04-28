@@ -6,18 +6,42 @@
   <title>Document</title>
 
   <style>
-    
+    .container {
+      width: 50%;
+      margin: 0 auto;
+    }
+
+    .picture {
+      width: 100px;
+      height: 100px;
+    }
+
+    .bigger {
+      width: 100px;
+      height: 20px;
+      position: fixed;
+      right: 0;
+    }
   </style>
 </head>
 <body>
-  <div>
-  <button></button>
+  <div class="container">
+    <div>
+      <button class="bigger"></button>
+    </div>
+
+    <div class="picture">
+    <img src="logo_resize.png" alt="">
+    </div>
+
   </div>
-  
-  <img src="logo_resize.png" alt="">
-
   <script>
+    const big = document.querySelector('.bigger');
+    const pic = document.querySelector('.picture');
 
+    big.addEventListener('click', function () {
+      .picture.style = "zoom:2";
+    });
   </script>
   
 </body>
