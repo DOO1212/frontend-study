@@ -20,31 +20,64 @@
       width: 100px;
       height: 20px;
     }
+
+    .input {
+      display: flex;
+      flex-direction: column;
+      width: 200px;
+    }
   </style>
 </head>
 
 <body>
-  <div class="container">
+  <div class="container1">
     <div>
       <button class="bigger"></button>
     </div>
 
     <div>
-    <img src="logo_resize.png" alt="" class="picture" >
+    <img src="logo_resize.png" alt="" class="picture1" >
     </div>
 
   </div>
 
+  <div class="container2">
+    <label>
+      Width (px):
+      <input type="number" class="widthInput" value="100">
+    </label>
+    <br>
+    <label>
+      Height (px):
+      <input type="number" class="heightInput" value="100">
+    </label>
+    <br>
+    <button class="applyButton">변경</button>
+
+    <div>
+      <img src="logo_resize.png" alt="" class="picture2">
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+
+
   <script>
     // const big = document.querySelector('.bigger');
-    // const pic = document.querySelector('.picture');
+    // const pic = document.querySelector('.picture1');
 
     // big.addEventListener('click', function () {
 
     // });
 
     const big = document.querySelector('.bigger');
-    const pic = document.querySelector('.picture');
+    const pic = document.querySelector('.picture1');
 
     big.addEventListener('click', function() {
     
@@ -56,6 +89,28 @@
     pic.style.width = (currentWidth + 100) + 'px';
     pic.style.height = (currentHeight + 100) + 'px';
     });
+
+    
+
+
+
+
+    const widthInput = document.querySelector('.widthInput');
+    const heightInput = document.querySelector('.heightInput');
+    const applyButton = document.querySelector('.applyButton');
+    const pic2 = document.querySelector('.picture2');
+
+    applyButton.addEventListener('click', () => {
+      const width = parseInt(widthInput.value, 10);
+      const height = parseInt(heightInput.value, 10);
+
+      if (!isNaN(width) && !isNaN(height)) {
+        pic2.style.width = `${width}px`;
+        pic2.style.height = `${height}px`;
+      }
+    });
+
+
 
   </script>
   
