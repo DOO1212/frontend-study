@@ -62,6 +62,19 @@
     }
 
     // 반복문 사용 시
+
+    // for (let i = 0; i < 6; i++) {
+    //   if (productList[i].price <= inputCoin) {
+    //   document.write(productList[i].name, '<br>');
+    // }      
+    // }
+
+    for (let i = 0; i < 6; i++) {
+      let lest = Math.floor(inputCoin/productList[i].price);
+
+      document.write(`${productList[i].name} ${lest}개 구매 가능 <br>`);
+    }
+    
     
   </script>
 </head>
