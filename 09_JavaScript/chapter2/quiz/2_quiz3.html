@@ -22,19 +22,15 @@
 
     // const avgSales = ; // 평균 판매량
     // const fourth = prompt('4분기 판매량은?', '0');
-
-    const sale1 = 1200;
-    const sale2 = 1300;
-    const sale3 = 1000;
     
-    const avgSales = (sale1 + sale2 + sale3)/3;
-    
-    const sale4 = Number(prompt('숫자를 입력하세요', '0'));
-    result = sale4 > avgSales ? '판매량이 평균 이상입니다' : '판매량이 평균 미달입니다';
-    document.write(result, '<br>');
     
     // 3번 풀이
-    
+    const avgSales = (1200 + 1300 + 1000) / 3; // 평균 판매량
+    const fourth = prompt('4분기 판매량은?', '0');
+
+    const result = fourth >= avgSales ? '판매량이 평균 이상입니다.' : '판매량이 평균 미달입니다.';
+    document.write(`1~3분기 평균 판매량: ${avgSales}<br>`);
+    document.write(result);
   </script>
 </body>
 </html>

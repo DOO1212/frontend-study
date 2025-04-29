@@ -22,16 +22,13 @@
 
 
     // 2번 풀이
+    const price1 = 3000; // 교통비
+    const price2 = 6000; // 식비
+    const price3 = 3000; // 음료비
 
-    const price1 = 3000;
-    const price2 = 6000;
-    const price3 = 3000;
-    const price4 = 10000;
-    const sum = price1 + price2 + price3;
-
-    result = sum > 10000 ? sum - price4 + '원 초과' : '돈 관리 잘 했어요!';
-    document.write(result, '<br>');
-    
+    const total = price1 + price2 + price3;
+    const result = total > 10000 ? total - 10000 + '원 초과' : '돈 관리 잘 했어요!';
+    document.write(result);
   </script>
 </body>
 </html>

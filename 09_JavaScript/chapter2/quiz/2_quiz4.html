@@ -22,17 +22,16 @@
 
 
     // 4번 풀이
-
     const name = prompt('당신의 이름은?', '');
-    const height = Number(prompt('당신의 신장은?', '0'));
-    const weight = Number(prompt('당신의 몸무게는?', '0'));
+    const height = prompt('당신의 신장은?', '0');
+    const weight = prompt('당신의 몸무게는?', '0');
 
-    const avg = (height - 100) * 0.9;
-    const avgre = avg >= (avg - 5) && (avg + 5) <= avg;
-
-    result = avgre ? name + '님은 적정 체중입니다' : name + '님은 적정 체중이 아닙니다';
-    document.write(result, '<br>');
-    
+    const normalWeight = (height - 100) * 0.9; // 평균 체중
+    let result = weight >= normalWeight - 5 && weight <= normalWeight + 5;
+    result = result ? '적정 체중입니다.' : '적정 체중이 아닙니다.';
+    document.write(`평균 체중은 ${normalWeight}<br>`);
+    document.write(`내 체중은 ${weight}<br>`);
+    document.write(`${name}님은 ${result}`);
   </script>
 </body>
 </html>

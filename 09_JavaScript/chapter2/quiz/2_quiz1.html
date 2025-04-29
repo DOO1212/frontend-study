@@ -7,7 +7,7 @@
   <title>Document</title>
 </head>
 <body>
-  <!-- <input type="number"> -->
+  <input type="number">
 
   <script>
     // 1번 문제
@@ -15,13 +15,16 @@
 
 
     // 1번 풀이
+    const num1 = Number(prompt('덧셈할 첫번째 숫자를 입력하세요.', '1'));
+    const num2 = Number(prompt('덧셈할 두번째 숫자를 입력하세요.', '2'));
+    document.write(num1 + num2);
 
-    const number1 = Number(prompt('숫자를 입력하세요', '0'));
-    const number2 = Number(prompt('숫자를 입력하세요', '0'));
-    
-    const result = number1 + number2;
-    document.write(result, '<br>');
-
+    // (참고) 입력받은 데이터가 문자인 경우 숫자로 바꿀때
+    // 예: number input
+    // document.querySelector('input[type="number"]').addEventListener('input', function () {
+    //   console.log(this.value);
+    //   console.log(typeof this.value);
+    // });
   </script>
 </body>
 </html>
