@@ -20,7 +20,31 @@
     const number2 = Number(prompt('두번째 숫자를 입력하세요', '0'));
     const number3 = Number(prompt('세번째 숫자를 입력하세요', '0'));
 
-    
+    if (number1 > number2 && number1 > number3) {
+      if (number2 > number3) { // 1 2 3
+        document.write('최대값: ' + number1 + '최소값: ' + number3, '<br>');
+        document.write('합계: ' + (number1 + number3) + '평균: ' + ((number1 + number3)/2), '<br>');
+      } else { // 1 3 2
+        document.write('최대값: ' + number1 + '최소값: ' + number2, '<br>');
+        document.write('합계: ' + (number1 + number2) + '평균: ' + ((number1 + number2)/2), '<br>');
+      }
+    } else if (number2 > number1 && number2 > number3) {
+      if (number1 > number3) { // 2 1 3
+        document.write('최대값: ' + number2 + '최소값: ' + number3, '<br>');
+        document.write('합계: ' + (number2 + number3) + '평균: ' + ((number2 + number3)/2), '<br>');
+      } else { // 2 3 1
+        document.write('최대값: ' + number2 + '최소값: ' + number1, '<br>');
+        document.write('합계: ' + (number2 + number1) + '평균: ' + ((number2 + number1)/2), '<br>');
+      }
+    } else { 
+      if (number1 > number3) { // 3 1 2
+        document.write('최대값: ' + number3 + '최소값: ' + number2, '<br>');
+        document.write('합계: ' + (number3 + number2) + '평균: ' + ((number3 + number2)/2), '<br>');
+      } else { // 3 2 1
+        document.write('최대값: ' + number3 + '최소값: ' + number1, '<br>');
+        document.write('합계: ' + (number3 + number1) + '평균: ' + ((number3 + number1)/2), '<br>');
+      }
+    }
     
   </script>
 </head>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    // 문제6
+    // 다음은 음료 자판기에 있는 음료 리스트입니다.
+    // 고객이 음료를 구매하기 위해 투입한 금액에 따라 구매 가능한 음료 목록을 
+    // for문과 if문을 사용해 출력하세요.
+
+    const productList = [
+      {
+        name: '솔의눈',
+        price: 700
+      },
+      {
+        name: '레쓰비',
+        price: 700
+      },
+      {
+        name: '파워에이드',
+        price: 1200
+      },
+      {
+        name: '코코팜',
+        price: 1000
+      },
+      {
+        name: '하늘보리',
+        price: 1200
+      },
+      {
+        name: '밀키스',
+        price: 800
+      },
+    ];
+
+    const inputCoin = Number(prompt('동전 투입', '0'));
+
+    // 풀이6
+    // (힌트) 반복문 미사용 시
+    if (productList[0].price <= inputCoin) {
+      document.write(productList[0].name, '<br>');
+    }
+    if (productList[1].price <= inputCoin) {
+      document.write(productList[1].name, '<br>');
+    }
+    if (productList[2].price <= inputCoin) {
+      document.write(productList[2].name, '<br>');
+    }
+    if (productList[3].price <= inputCoin) {
+      document.write(productList[3].name, '<br>');
+    }
+    if (productList[4].price <= inputCoin) {
+      document.write(productList[4].name, '<br>');
+    }
+    if (productList[5].price <= inputCoin) {
+      document.write(productList[5].name, '<br>');
+    }
+
+    // 반복문 사용 시
+    
+  </script>
+</head>
+<body>
+  
+</body>
+</html>
