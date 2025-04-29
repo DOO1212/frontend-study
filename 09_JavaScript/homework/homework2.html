@@ -4,8 +4,53 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+
+  <style>
+    .ballcon {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .ball {
+      width: 30px;
+      height: 30px;
+      background-color: aquamarine;
+      border-radius: 50px;
+      display: none;
+    }
+  </style>
 </head>
 <body>
+
+<div>
+  <h3>홀수 짝수</h3>
+  <button class="plus">구슬 추가</button>
+  <button class="ab">홀짝</button>
+  <button class="reset">초기화</button>
+
+  <div class="ballcon">
+    <div class="ball"></div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<script>
+  const plusButton = document.querySelector('.plus');
+  const abButton = document.querySelector('.ab');
+  const resetButton = document.querySelector('.reset');
+  const ballPlus = document.querySelector('.ball');
+
+  plusButton.addEventListener('click', function () {
+    ballPlus.style.display = "block";
+    ballPlus.
+  })
+</script>
+
   
 </body>
 </html>
