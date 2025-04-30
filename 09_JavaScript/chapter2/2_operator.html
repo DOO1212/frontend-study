@@ -141,57 +141,61 @@
     // 5. 논리 연산자(&&, ||)
     // 6. 할당(대입) 연산자(=)
 
-    document.write('<h2>논리연산자</h2>');
+    document.write('<h2>논리 연산자</h2>');
     result = 10 > 20 || 20 >= 30 || 30 > 40;
     document.write(result, '<br>');
-
+    
     result = 10 > 20 || 20 >= 30 || 30 <= 40;
     document.write(result, '<br>');
-
+    
     result = 10 <= 20 && 20 >= 30 && 30 <= 40;
     document.write(result, '<br>');
-
+    
     result = 10 <= 20 && 20 <= 30 && 30 <= 40;
     document.write(result, '<br>');
 
-    result = !(10 > 20);
+    result = !(10 > 20); 
     document.write(result, '<br>');
 
     // (응용) 사이 범위 확인하기
-    // age(나이)가 14세 이상 90세 이하에 속하는 지를 확인하는 if문 작성
+    // age(나이)가 14세 이상 90세 이하에 속하는지를 확인하는 if문 작성
     // "이상과 이하"는 범위에 14나 90이 포함된다는 의미
     const age = 50;
     // Quiz
     if (age >= 14 && age <= 90) {}
     if (14 <= age && age <= 90) {}
-    
+
     // (응용) 바깥 범위 확인하기
     // age(나이)가 14세 미만 90세 초과하는지를 확인하는 if문 작성
     // Quiz
-    if (14 > age && age > 90) {}
-    if (!(14 <= age && age <= 90)) {}
+    // 답안은 NOT ! 연산자를 사용한 경우와 사용하지 않은 경우 2가지
+    if (age < 14 || age > 90) {}
+    if (!(age >= 14 && age <= 90)) {}
 
     // Short-circuit evaluation(단축 평가)
-    // &&(AND): 앞이 falsy면 뒤에건 볼 것도 없고, 앞이 truthy면 뒤로 넘어감 (falsy를 찾을때까지 넘어감)
-    // ||(OR): 앞이 truthy면 뒤에건 볼 것도 없고, 앞이 falsy면 뒤로 넘어감 (truthy를 찾을때까지 넘어감)
-    result = 10 > 20 && 30 <= 40; // false &&
+    // &&(AND): 앞이 falsy면 뒤에건 볼 것도 없고, 앞이 truthy면 뒤로 넘어간다.(falsy를 찾을 때까지 넘어간다.)
+    // ||(OR): 앞이 truthy면 뒤에건 볼 것도 없고, 앞이 falsy면 뒤로 넘어간다.(truthy를 찾을 때까지 넘어간다.)
+    result = 10 > 20 && 30 <= 40; // false && 
     document.write(result, '<br>');
 
-    result = 10 < 20 || 30 > 40; // true ||
+    result = 10 < 20 || 30 > 40; // true || 
     document.write(result, '<br>');
 
     // (응용) 기본값 설정 시 사용
-    // falsy(false로 취급되는 값): fasle, 0, null, undefined, '', NaN
+    // falsy(false로 취급되는 값): false, 0, null, undefined, '', NaN
     // const inputName1 = 'Goni';
     const inputName1 = '';
     const nickName1 = inputName1 || 'Guest';
-    document.write(nickName1, '<br>') ;
+    document.write(nickName1, '<br>');
 
     // (참고) null 병합 연산자(ES2020)
     // nullish(null 계열의 값): null, undefined
-    const inputName2 = '0';
+    // const inputName2 = '';
+    // const inputName2 = 0;
+    // const inputName2 = null;
+    const inputName2 = undefined;
     const nickName2 = inputName2 ?? 'Guest';
-    document.write(nickName2, '<br>') ;
+    document.write(nickName2, '<br>');
 
     // Quiz
     let aa;
@@ -201,29 +205,28 @@
     let ee = 'five';
     let ff = aa || bb || cc || dd || ee;
     // ff에 저장된 값은? 4
-    document.write(ff, '<br>') ;
+    document.write(ff, '<br>');
 
     // 7. 조건(삼항) 연산자
-    // 조건에 따라 2개의 값 중 하나를 반환 (true면 앞, false면 뒤)
+    // 조건에 따라 2개의 값 중 하나를 반환
     // 조건식 ? 값1 : 값2;
     document.write('<h2>조건(삼항) 연산자</h2>');
     result = false ? 'javascript' : 'hello';
     document.write(result, '<br>');
 
-    const score = 95;
-    result = score >= 90 ? 'A' :(score >= 80 ? 'B' : 'C');
+    const score = 85;
+    // result = score >= 90 ? 'A' : 'B';
+    result = score >= 90 ? 'A' : (score >= 80 ? 'B' : 'C');
     document.write(result, '<br>');
 
     // 홀짝 판별기
     // window.prompt('메세지', '기본값'): 입력을 요청하는 대화 상자
     // 확인을 누르면 입력값이, 취소를 누르면 null을 반환
-    const number = Number(prompt('숫자를 입력하세요', '0'));
+    const number = Number(prompt('숫자를 입력하세요.', '0'));
     document.write(number, ' ', typeof number, '<br>');
 
     result = number % 2 === 0 ? '짝수' : '홀수';
     document.write(result, '<br>');
-
-
   </script>
 </body>
 </html>

@@ -42,40 +42,31 @@
 
     // 풀이6
     // (힌트) 반복문 미사용 시
-    if (productList[0].price <= inputCoin) {
-      document.write(productList[0].name, '<br>');
-    }
-    if (productList[1].price <= inputCoin) {
-      document.write(productList[1].name, '<br>');
-    }
-    if (productList[2].price <= inputCoin) {
-      document.write(productList[2].name, '<br>');
-    }
-    if (productList[3].price <= inputCoin) {
-      document.write(productList[3].name, '<br>');
-    }
-    if (productList[4].price <= inputCoin) {
-      document.write(productList[4].name, '<br>');
-    }
-    if (productList[5].price <= inputCoin) {
-      document.write(productList[5].name, '<br>');
-    }
-
-    // 반복문 사용 시
-
-    // for (let i = 0; i < 6; i++) {
-    //   if (productList[i].price <= inputCoin) {
-    //   document.write(productList[i].name, '<br>');
-    // }      
+    // if (productList[0].price <= inputCoin) {
+    //   document.write(productList[0].name, '<br>');
+    // }
+    // if (productList[1].price <= inputCoin) {
+    //   document.write(productList[1].name, '<br>');
+    // }
+    // if (productList[2].price <= inputCoin) {
+    //   document.write(productList[2].name, '<br>');
+    // }
+    // if (productList[3].price <= inputCoin) {
+    //   document.write(productList[3].name, '<br>');
+    // }
+    // if (productList[4].price <= inputCoin) {
+    //   document.write(productList[4].name, '<br>');
+    // }
+    // if (productList[5].price <= inputCoin) {
+    //   document.write(productList[5].name, '<br>');
     // }
 
+    // 반복문 사용 시
     for (let i = 0; i < 6; i++) {
-      let lest = Math.floor(inputCoin/productList[i].price);
-
-      document.write(`${productList[i].name} ${lest}개 구매 가능 <br>`);
+      if (productList[i].price <= inputCoin) {
+        document.write(productList[i].name, '<br>');
+      }
     }
-    
-    
   </script>
 </head>
 <body>

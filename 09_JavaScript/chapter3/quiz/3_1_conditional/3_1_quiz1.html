@@ -12,14 +12,13 @@
 
 
     // 풀이1
-    
-    const number = Number(prompt('숫자를 입력하세요', '0'));
+    const num = prompt('숫자 입력', '0');
+    let msg = '50 미만';
 
-    if (number >= 50) {
-      document.write('50 이상입니다', '<br>');
-    } else {
-      document.write('50 미만입니다', '<br>');
+    if (num >= 50) {
+      msg = '50 이상';
     }
+    document.write(msg);
   </script>
 </head>
 <body>

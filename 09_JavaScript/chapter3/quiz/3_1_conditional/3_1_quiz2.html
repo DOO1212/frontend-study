@@ -12,14 +12,13 @@
 
 
     // 풀이2
-    
-    const number = Number(prompt('숫자를 입력하세요', '0'));
+    const num = prompt('숫자 입력', '0');
+    let msg = '3의 배수 아님';
 
-    if (number % 3 === 0) {
-      document.write('3의 배수입니다', '<br>');
-    } else {
-      document.write('3의 배수 아님', '<br>');
+    if (num % 3 === 0) {
+      msg = '3의 배수';
     }
+    document.write(msg);
   </script>
 </head>
 <body>

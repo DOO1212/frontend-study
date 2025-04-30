@@ -15,37 +15,28 @@
     // 주의! 덧셈을 하거나 문자끼리 비교를 피하려면 숫자로 변환해 줄 것!!
     //'11' > '2' => false
     //'11' > 2 => true
+    const num1 = Number(prompt('정수1 입력', '0'));
+    const num2 = Number(prompt('정수2 입력', '0'));
+    const num3 = Number(prompt('정수3 입력', '0'));
 
-    const number1 = Number(prompt('첫번째 숫자를 입력하세요', '0'));
-    const number2 = Number(prompt('두번째 숫자를 입력하세요', '0'));
-    const number3 = Number(prompt('세번째 숫자를 입력하세요', '0'));
-
-    if (number1 > number2 && number1 > number3) {
-      if (number2 > number3) { // 1 2 3
-        document.write('최대값: ' + number1 + '최소값: ' + number3, '<br>');
-        document.write('합계: ' + (number1 + number3) + '평균: ' + ((number1 + number3)/2), '<br>');
-      } else { // 1 3 2
-        document.write('최대값: ' + number1 + '최소값: ' + number2, '<br>');
-        document.write('합계: ' + (number1 + number2) + '평균: ' + ((number1 + number2)/2), '<br>');
-      }
-    } else if (number2 > number1 && number2 > number3) {
-      if (number1 > number3) { // 2 1 3
-        document.write('최대값: ' + number2 + '최소값: ' + number3, '<br>');
-        document.write('합계: ' + (number2 + number3) + '평균: ' + ((number2 + number3)/2), '<br>');
-      } else { // 2 3 1
-        document.write('최대값: ' + number2 + '최소값: ' + number1, '<br>');
-        document.write('합계: ' + (number2 + number1) + '평균: ' + ((number2 + number1)/2), '<br>');
-      }
-    } else { 
-      if (number1 > number3) { // 3 1 2
-        document.write('최대값: ' + number3 + '최소값: ' + number2, '<br>');
-        document.write('합계: ' + (number3 + number2) + '평균: ' + ((number3 + number2)/2), '<br>');
-      } else { // 3 2 1
-        document.write('최대값: ' + number3 + '최소값: ' + number1, '<br>');
-        document.write('합계: ' + (number3 + number1) + '평균: ' + ((number3 + number1)/2), '<br>');
-      }
-    }
+    // 최대값
+    // let max = -Infinity;
+    let max = num1;
+    if (max < num2) max = num2;
+    if (max < num3) max = num3;
+    document.write(`최대값: ${max}<br>`);
     
+    // 최소값
+    // let min = Infinity;
+    let min = num1;
+    if (min > num2) min = num2;
+    if (min > num3) min = num3;
+    document.write(`최소값: ${min}<br>`);
+
+    const sum = num1 + num2 + num3;
+    const avg = sum / 3;
+    document.write(`합계: ${sum}<br>`);
+    document.write(`평균: ${avg}<br>`);
   </script>
 </head>
 <body>

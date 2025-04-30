@@ -11,34 +11,25 @@
     // 학년과 점수를 입력 받은 후,
     // 1~3학년은 60점 이상이면 합격, 그 외의 학년은 70점 이상이면 합격 처리 후 
     // 각각 "합격"과 "불합격"을 브라우저에 출력하세요.
-    // (점수가 0미만 100초과이거나 학년이 1미만 6 초과인 경우  "에러입니다." 라는 alert창을 띄우세요.)
+    // (점수가 0미만 100초과이거나 학년이 1미만 6 초과인 경우 "에러입니다." 라는 alert창을 띄우세요.)
 
 
     // 풀이3
+    const grade = Number(prompt('학년?', '1'));
+    const score = Number(prompt('점수?', '0'));
+    let msg = '에러입니다.';
 
-    const age = Number(prompt('학년을 입력하세요', '0'));
-    const score = Number(prompt('점수를 입력하세요', '0'));
-
-    if (1 <= age && age <= 3) {
-
-      if (score >= 60) {
-        document.write('합격입니다', '<br>');
-      } else {
-        document.write('불합격입니다', '<br>');
-      }
-
-    } else if (4 <= age && age <= 6) {
-
-      if (score >= 70) {
-        document.write('합격입니다', '<br>');
-      } else {
-        document.write('불합격입니다', '<br>');
-      }
-
+    if (score < 0 || score > 100 || grade < 1 || grade > 6) {
+      alert(msg);
     } else {
-      document.write('에러입니다', '<br>');
+      if ((grade >= 1 && grade <= 3 && score >= 60) ||
+          (grade >= 4 && grade <= 6 && score >= 70)) {
+        msg = '합격';
+      } else {
+        msg = '불합격';
+      }
     }
-    
+    document.write(msg);
   </script>
 </head>
 <body>

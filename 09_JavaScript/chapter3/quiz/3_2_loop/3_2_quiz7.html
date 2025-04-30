@@ -33,14 +33,18 @@
     // 풀이7
     // 이중 for문 이용
     let html = '<table border="1">';
+    let num = 1;
 
-      for (let i = 1; i < 5; i++) {
-      for (let j = 0; j < 5; j++) {
-        document.write(i+j);
+    for (let i = 1; i <= 5; i++) { // 행
+      html += '<tr>';
+      for (let j = 1; j <= 5; j++) {
+        html += `<td>${num++}</td>`;
       }
-        document.write(`<br>`);
-      }
-    
+      html += '</tr>';
+    }
+
+    html += '</table>';
+    document.write(html);
   </script>
 </head>
 <body>

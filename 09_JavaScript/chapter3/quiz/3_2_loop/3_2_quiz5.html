@@ -10,18 +10,13 @@
     // while문을 이용하여 0부터 10미만의 정수 중에서 홀수만을 작은 수부터 출력하세요.
 
     // 풀이5
-
     let i = 0;
-
     while (i < 10) {
-      if (i % 2 === 1) {
-        document.write(i);
+      if (i % 2 !== 0) {
+        document.write(i, '<br>');
       }
-    
       i++;
-      
-    } 
-    
+    }
   </script>
 </head>
 <body>
