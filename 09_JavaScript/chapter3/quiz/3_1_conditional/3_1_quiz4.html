@@ -20,16 +20,20 @@
 
     const height = Number(prompt('신장을 입력하세요', '0'));
 
-    if (height >= 150) {
-      document.write('놀이기구 이용 가능', '<br>');
-    } else {
-      const result = confirm('부모님과 함께 왔나요?');
-      if (result) {
-        document.write('좋은 시간 보내렴~', '<br>');
-      } else {
-        document.write('어른 모시고 다시 오렴~', '<br>');
-      }
-    }
+    // if (height >= 150) {
+    //   document.write('놀이기구 이용 가능', '<br>');
+    // } else {
+    //   const result = confirm('부모님과 함께 왔나요?');
+    //   if (result) {
+    //     document.write('좋은 시간 보내렴~', '<br>');
+    //   } else {
+    //     document.write('어른 모시고 다시 오렴~', '<br>');
+    //   }
+    // }
+
+    const withMom = confirm('부모님과 함께 왔니?');
+    result = withMom ? '좋은 시간 보내렴~' : '어른 모시고 다시 오렴~'; 
+    document.write(result);
     
   </script>
 </head>
