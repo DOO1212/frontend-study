@@ -17,19 +17,12 @@
 
 
     // 풀이1
-    // new User(); (불가)
-
-    const user = {
-      name : 'John',
-      surname : 'Smith',
-    }
-
-    user.name = 'pete';
+    // new User(); (이렇게 쓸 수 없습니다.)
+    const user = {};
+    user.name = 'John';
+    user.surname = 'Smith';
+    user.name = 'Pete';
     delete user.name;
-
-    console.log(user.name);
-    
-    
   </script>
 </head>
 <body>
