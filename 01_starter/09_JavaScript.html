@@ -747,19 +747,29 @@
 
     // 3행 2열 구조의 데이터 출력
     for (let i = 1; i <= 3; i++) { // 행 반복
+
       for (let j = 1; j <= 2; j++) { // 열 반복
+
         document.write(i + '행' + j + '열 ');
+
       }
+
       document.write('<br>');
+
     }
 
 
     // Quiz: 구구단 출력하기
     for (let i = 2; i <= 9; i++) {
+
       document.write('**** ' + i + '단 ****<br>');
+
       for (let j = 1; j <= 9; j++) {
+
         document.write(`${i} x ${j} = ${i * j}<br>`);
+
       }
+      
     }
 
     // 2. while문
@@ -771,19 +781,29 @@
 
     // 안녕하세요1~10까지 10회 출력
     let i = 1;
+
     while (i <= 10) {
+
       document.write('안녕하세요' + i, '<br>');
+
       i++;
+
     }
 
     // Quiz
     // 1~30까지 숫자 중 2의 배수이면서 3의 배수인 숫자만 출력
     i = 1;
+
     while (i <= 30) {
+
       if (i % 2 === 0 && i % 3 === 0) {
+
         document.write(i, '<br>');
+
       }
+
       i++;
+
     }
 
     // Quiz
@@ -791,15 +811,22 @@
     // document.write('<p style="color: blue;">2</p>');
     // document.write('<p style="color: red;">1</p>');
     i = 20;
-    while (i >= 10) {
-      if (i % 2 === 0) {
-        document.write(`<p style="color: blue;">${i}</p>`);
-      } else {
-        document.write('<p style="color: red;">' + i + '</p>');
-      }
-      i--;
-    }
 
+    while (i >= 10) {
+
+      if (i % 2 === 0) {
+
+        document.write(`<p style="color: blue;">${i}</p>`);
+
+      } else {
+
+        document.write('<p style="color: red;">' + i + '</p>');
+
+      }
+
+      i--;
+
+    }
 
     // 반복 횟수를 모를 때 주로 사용
     // 지폐를 투입하면 500원짜리 동전으로 교환해주는 자판기가 있다고 할 때
@@ -810,9 +837,13 @@
 
     // while문을 이용하여 사용자가 넣은 금액이 0원이 될 때까지 500원씩 차감
     while (inputPrice > 0) {
+
       inputPrice = inputPrice - coinUnit;
+
       coinCount++; // 반복문이 한 번 돌 때마다 반환되는 500원짜리 동전 수 증가시킴
+
     }
+
     document.write(coinCount, '개<br>');
 
 
@@ -823,10 +854,15 @@
     // } while (2. 조건식);
 
     i = 5;
+
     do {
+
       document.write('hello!!<br>');
+
       i++;
+
     } while (i < 3);
+
   </script>
 </body>
 </html>
@@ -844,8 +880,6 @@
   <!-- * -->
   <button type="button" onclick="changeColor()">배경색 바꾸기</button>
 
-  <hr>
-
   <!-- ** -->
   <input type="text" id="id" placeholder="아이디">
   <input type="text" id="pw" placeholder="비밀번호">
@@ -862,9 +896,8 @@
     </p>
   </div>
 
-  <hr>
-
   <script>
+
     // 함수
     // 여러 실행 코드들의 묶음(그룹화)
     // 자주 사용하는 코드들(기능)을 저장했다가 필요할 때 호출해서 사용
@@ -1102,6 +1135,7 @@
 
     // (참고) 대문자로 시작하는 내장 함수 = 생성자 함수
     // new 키워드와 함께 생성자도 되고, new 없이 그냥 형변환 함수처럼도 동작하는 특수한 생성자 함수
+
   </script>
 </body>
 </html>
@@ -1117,6 +1151,7 @@
 </head>
 <body>
   <script>
+
     // 1. 객체의 정의
     // 여러 데이터들의 묶음
     // 멤버로 속성(데이터, property)과 기능(동작, method)을 가짐
@@ -1224,6 +1259,7 @@
     // const는 한 번이라도 값을 할당한 변수가 변경되는 걸 막음
     // 변수 testUser는 객체의 참조값(주소값, 번지)을 저장하고 있는데, 
     // const는 이 값이 변경되는걸 막는 것이지, 객체의 내용(속성)을 변경하는 건 막지 않음
+    
   </script>
 </body>
 </html>
