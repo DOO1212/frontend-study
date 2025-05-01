@@ -507,12 +507,12 @@
     }
 
     // (응용) 정상적인 값이 들어왔는지 판단
-    const userName = prompt('방문자의 이름은?');
-    if (userName !== '') {
-    if (userName.length > 0) {
-    if (userName) {
-      alert(userName + '님 반갑습니다!');
-    }
+    // const userName = prompt('방문자의 이름은?');
+    // if (userName !== '') {
+    // if (userName.length > 0) {
+    // if (userName) {
+    //   alert(userName + '님 반갑습니다!');
+    // }
 
     // 4) 중첩 if문
     if (조건식1 (true)) {
@@ -582,6 +582,7 @@
     let url;
 
     switch (site) {
+
       case '네이버':
         url = 'www.naver.com';
         break;
@@ -607,14 +608,12 @@
     // 3) 여러 개의 case 묶기
     // case문 개수에 제한은 없음
     const grade = 'A';
-
-    document.write('회원 등급: ' + grade, '<br>');
     
     switch (grade) {
-
+      
+      // 'A' 이거나 'a' 둘 중 하나이면 실행
       case 'A':        
       case 'a':
-        // 'A' 이거나 'a' 둘 중 하나이면 실행
         document.write('우수 회원입니다.', '<br>');
         break;
 
@@ -654,12 +653,12 @@
 
     // 반복문
     // 조건식을 만족하는 동안 실행 코드를 반복하여 수행
-    // 예) 데이터를 반복해서 처리해야 될 때, 100개의 데이터를 100번 쓰는것보다 코드 한 줄로 100번 반복이 효율적
+    // 예 데이터를 반복해서 처리해야 될 때, 100개의 데이터를 100번 쓰는것보다 코드 한 줄로 100번 반복이 효율적
     // 주로 배열과 함께 많이 쓰임
     // for문, while문
 
     // 1. for문
-    // 1) 기본 문법
+    // 1 기본 문법
     for (1. 초기화식; 2. 5. 조건식; 4. 증감식) {
       3. 실행코드
     }

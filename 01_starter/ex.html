@@ -77,16 +77,28 @@
 
 
 
-    num1 = 10;
-    num2 = 20;
-    result = num1 + --num2;
-    // result, num1, num2에 저장된 값은?
-    // 순서대로 풀어서 써보기 실습!!
-    // num1 = num1 + 1; // 11
-    // num1 + num2; // 11 + 20 = 31
-    // result = 31;
-    // num2 = num2 - 1; // 19
-    document.write(result, ' ', num1, ' ', num2, '<br>');
+const grade = 'A';
+
+    document.write('회원 등급: ' + grade, '<br>');
+    
+    switch (grade) {
+
+      case 'A':        
+      case 'a':
+        // 'A' 이거나 'a' 둘 중 하나이면 실행
+        document.write('우수 회원입니다.', '<br>');
+        break;
+
+      case 'B': 
+      case 'b':
+        document.write('일반 회원입니다.', '<br>');
+        break;
+
+      default:
+        document.write('손님입니다.', '<br>');
+        break;
+
+    }
     
     
 
