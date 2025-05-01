@@ -198,7 +198,7 @@
     cars[0] = 'Hyundai';
     cars[1] = 'Kia';
 
-    // 값으로는 자바스크립트의 모든 데이터 타입을 사용할 수 있음
+    // 값으로는 자바스크립트의 모든 데이터 타입을 사용할 수 있음boolean
 
     // (참고) 타입 체크
     // typeof: 현재 값 또는 변수의 자료형(데이터 타입)을 알아낼 수 있음
@@ -252,11 +252,6 @@
     num2 = 2;
     let result;
 
-    result = num1 + num2;
-    document.write(result, '<br>');
-    result = num1 % num2;
-    document.write(result, '<br>');
-
     // 3. 증감 연산자
     // ++(1씩 증가), --(1씩 감소)
 
@@ -271,7 +266,8 @@
     // (중요)
     // 다른 연산자와 같이 사용 시 위치(전위, 후위)에 따라 연산이 달라짐
     num2 = 20;
-    result = num2++; // 먼저 담고 더해라라
+
+    result = num2++; // 먼저 담고 더해라
     // result = num2; 
     // num2 = num2 + 1;
     document.write(result, ' ', num2, '<br>');
@@ -285,12 +281,7 @@
     num1 = 10;
     num2 = 20;
     result = ++num1 + num2--;
-    // result, num1, num2에 저장된 값은?
-    // 순서대로 풀어서 써보기 실습!!
-    // num1 = num1 + 1; // 11
-    // num1 + num2; // 11 + 20 = 31
-    // result = 31;
-    // num2 = num2 - 1; // 19
+   
     document.write(result, ' ', num1, ' ', num2, '<br>');
     
     // 4. 문자열 연산자
@@ -322,14 +313,19 @@
 
     result = 10 <= 20;
     document.write(result, '<br>');
+
     result = 20 == '20'; // 값만 비교
     document.write(result, '<br>');
+
     result = 20 === '20'; // 값과 타입까지 비교(권장)
     document.write(result, '<br>');
+
     result = 10 != 20;
     document.write(result, '<br>');
+
     result = 20 != '20'; // 값만 비교
     document.write(result, '<br>');
+    
     result = 20 !== '20'; // 값과 타입까지 비교(권장)
     document.write(result, '<br>');
 
@@ -347,7 +343,6 @@
     // 5. 논리 연산자(&&, ||)
     // 6. 할당(대입) 연산자(=)
 
-    document.write('<h2>논리 연산자</h2>');
     result = 10 > 20 || 20 >= 30 || 30 > 40;
     document.write(result, '<br>');
     
@@ -362,7 +357,6 @@
     // "이상과 이하"는 범위에 14나 90이 포함된다는 의미
     const age = 50;
     // Quiz
-    if (age >= 14 && age <= 90) {}
     if (14 <= age && age <= 90) {}
 
     // (응용) 바깥 범위 확인하기
@@ -373,12 +367,12 @@
     if (!(age >= 14 && age <= 90)) {}
 
     // Short-circuit evaluation(단축 평가)
-    // &&(AND): 앞의 조건이 truthy면 뒤로 넘어간다. falsy 를 찾을 때까지 넘어간다.
-    // ||(OR):  앞의 조건이 falsy 면 뒤로 넘어간다. truthy를 찾을 때까지 넘어간다.
-    result = 10 > 20 && 30 <= 40; // false && 
+    // &&(AND): 앞의 조건이 fasly  면 끝낸다
+    // ||(OR):  앞의 조건이 truthy 면 끝낸다
+    result = 10 > 20 && 30 <= 40; // false && true
     document.write(result, '<br>');
 
-    result = 10 < 20 || 30 > 40; // true || 
+    result = 10 < 20 || 30 > 40; // true || false
     document.write(result, '<br>');
 
     // (응용) 기본값 설정 시 사용
@@ -418,10 +412,8 @@
     // window.prompt('메세지', '기본값'): 입력을 요청하는 대화 상자
     // 확인을 누르면 입력값이, 취소를 누르면 null을 반환
     const number = Number(prompt('숫자를 입력하세요.', '0'));
-    document.write(number, ' ', typeof number, '<br>');
 
     result = number % 2 === 0 ? '짝수' : '홀수';
-    document.write(result, '<br>');
 
   </script>
 </body>
@@ -458,8 +450,6 @@
       
     }
 
-    document.write(isAdult, '<br>');
-
     // 2) if-else문
     // 조건식을 만족하면 if문 실행, 만족하지 않으면 else문 실행
     // 조건식의 결과에 따라 두가지 중 하나를 실행시킬때 사용
@@ -475,10 +465,8 @@
 
     }
 
-    document.write(isAdult, '<br>');
-
     // window.confirm('메세지'): 확인 상자는 사용자가 무언가를 확인하거나 수락하기를 원하는 경우에 사용
-    // 확인을 누르면 true를, 취소를 누르면 false를 반환
+    // 확인을 누르면 true, 취소를 누르면 false 반환
 
     const result = confirm('정말로 회원 탈퇴를 하시겠습니다?');
 
@@ -496,29 +484,17 @@
     // 여러 if문 조건식 중 만족하는 것을 찾아 실행, 만족하는게 없으면 else문 실행
     // 조건식의 결과에 따라 여러가지 중 하나를 실행시킬때 사용
 
-    const month = Number(prompt('현재는 몇 월입니까?' , ''));
+    if (age > 19) {
+    
+    isAdult = true;
 
-    if (month >= 3 && month <= 5) { // 3~5
+    } else if {
 
-      document.write('햇살 가득한 봄이네요!!');
+    isAdult = false;
 
-    } else if (month >= 6 && month <= 8) { // 6~8
+    } else {
 
-      document.write('여행 가기 좋은 여름이네요!!');
-
-    } else if (month >= 9 && month <= 11) { // 9~11
-
-      document.write('독서의 계절 가을이네요!!');
-
-    } else if (month === 12 || (month >= 1 && month <= 2)) { 
-
-    // } else if (month === 12 || month === 1 || month === 2) {
-
-      document.write('눈이 오는 겨울이네요!!');
-
-    } else { // 나머지 입력
-
-      document.write('잘못 입력하셨어요!!');
+      document.write('잘못 입력하셨어요!');
 
     }
 
@@ -531,18 +507,20 @@
     }
 
     // (응용) 정상적인 값이 들어왔는지 판단
-    // const userName = prompt('방문자의 이름은?');
-    // if (userName !== '') {
-    // if (userName.length > 0) {
-    // if (userName) {
-    //   alert(userName + '님 반갑습니다!');
-    // }
+    const userName = prompt('방문자의 이름은?');
+    if (userName !== '') {
+    if (userName.length > 0) {
+    if (userName) {
+      alert(userName + '님 반갑습니다!');
+    }
 
     // 4) 중첩 if문
-    if (조건식1) {
+    if (조건식1 (true)) {
       if (조건식2) {
         실행코드
       }
+    } else (false) {
+
     }
 
     const dbId = 'goni';
@@ -599,8 +577,6 @@
         break;
 
     }
-
-
 
     const site = prompt('네이버, 다음, 구글 중 즐겨 사용하는 포털은?');
     let url;
@@ -1265,3 +1241,4 @@
 </html>
 
 ================================================================================
+
