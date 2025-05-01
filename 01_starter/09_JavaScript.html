@@ -521,7 +521,7 @@
       document.write('잘못 입력하셨어요!!');
 
     }
-    
+
     // Quiz: 명확히 하려면 else if문을 사용하여 12, 1~2를 체크하는 조건식 넣기
 
     // 조건식에 논리형 데이터가 아닌 다른 타입의 데이터가 입력됐을 때
@@ -531,12 +531,12 @@
     }
 
     // (응용) 정상적인 값이 들어왔는지 판단
-    const userName = prompt('방문자의 이름은?');
-    if (userName !== '') {
-    if (userName.length > 0) {
-    if (userName) {
-      alert(userName + '님 반갑습니다!');
-    }
+    // const userName = prompt('방문자의 이름은?');
+    // if (userName !== '') {
+    // if (userName.length > 0) {
+    // if (userName) {
+    //   alert(userName + '님 반갑습니다!');
+    // }
 
     // 4) 중첩 if문
     if (조건식1) {
@@ -547,20 +547,28 @@
 
     const dbId = 'goni';
     const dbPw = '1234';
-    // const userId = prompt('아이디는?');
+    const userId = prompt('아이디는?');
 
-    // // 아이디가 일치하지 않으면 굳이 비밀번호를 검사할 필요 없음
     if (dbId === userId) { // 아이디 먼저 검사
+
+      // 아이디가 일치하지 않으면 굳이 비밀번호를 검사할 필요 없음
       // 비밀번호 검사
       const userPw = prompt('비밀번호는?');
 
       if (dbPw === userPw) {
+
         alert(userId + '님 반갑습니다!');
+
       } else {
+
         alert('비밀번호가 일치하지 않습니다.');
+
       }
+
     } else {
+
       alert('아이디가 일치하지 않습니다.');
+
     }
 
     // 2. switch
@@ -569,20 +577,27 @@
     // 이 때 case절의 상수 값은 숫자 혹은 문자 가능, 비교 구문 안 됨
 
     // 1) switch문
+
     const 변수 = 값;
+
     switch (변수) {
+
       case 값1:
         실행코드1;
         break;
+
       case 값2:
         실행코드2;
         break;
+
       case 값3:
         실행코드3;
         break;
+
       default:
         실행코드4;
         break;
+
     }
 
 
@@ -594,54 +609,48 @@
       case '네이버':
         url = 'www.naver.com';
         break;
+
       case '다음':
         url = 'www.daum.net';
         break;
+
       case '구글':
         url = 'www.google.com';
         break;
+
       default:
         alert('보기 중에 없는 사이트입니다.');
         break;
+
     }
 
     if (url) {
       location.href = 'https://' + url; // url 정보가 바뀌면서 이동됨
     }
 
-    // 2) break문이 없을 때
-    const time = 8;
-    document.write('현재 시간: ' + time + '시', '<br>');
-    
-    switch (time) {
-      case 8:
-        document.write('출근합니다.', '<br>');
-      case 9:
-        document.write('회의를 합니다.', '<br>');
-      case 10:
-        document.write('업무를 봅니다.', '<br>');
-      default:
-        document.write('외근을 나갑니다.', '<br>');
-    }
-
     // 3) 여러 개의 case 묶기
     // case문 개수에 제한은 없음
     const grade = 'A';
+
     document.write('회원 등급: ' + grade, '<br>');
     
     switch (grade) {
-      case 'A':
+
+      case 'A':        
       case 'a':
         // 'A' 이거나 'a' 둘 중 하나이면 실행
         document.write('우수 회원입니다.', '<br>');
         break;
+
       case 'B': 
       case 'b':
         document.write('일반 회원입니다.', '<br>');
         break;
+
       default:
         document.write('손님입니다.', '<br>');
         break;
+
     }
 
     // (정리) if문과 switch문의 차이
@@ -666,6 +675,7 @@
 </head>
 <body>
   <script>
+
     // 반복문
     // 조건식을 만족하는 동안 실행 코드를 반복하여 수행
     // 예) 데이터를 반복해서 처리해야 될 때, 100개의 데이터를 100번 쓰는것보다 코드 한 줄로 100번 반복이 효율적
@@ -674,35 +684,43 @@
 
     // 1. for문
     // 1) 기본 문법
-    // for (1. 초기화식; 2. 5. 조건식; 4. 증감식) {
-    //   3. 실행코드
-    // }
-    // 참고로 4번에는 모든 증감식이 올 수 있음(i++, i--, i = i * 10 등)
+    for (1. 초기화식; 2. 5. 조건식; 4. 증감식) {
+      3. 실행코드
+    }
+
+    // 참고로 4번에는 모든 증감식이 올 수 있음 (i++, i--, i = i * 10 등)
 
     // 반복1~10까지 10회 출력
     for (let i = 1; i <= 10; i++) {
+
       document.write('반복' + i, '<br>');
+
     }
-    document.write('=====<br>');
 
     // 1~100까지의 합
     let sum = 0; // 중요: 초기값을 반드시 줘야한다. 안주면 undefined 값이라 NaN이 나옴.
+
     for (let i = 1; i <= 100; i++) {
+
       // sum = sum + i;
       sum += i;
+
     }
+
     document.write('1~100까지의 합: ' + sum, '<br>');
-    document.write('=====<br>');
 
     // 2) break문
     // switch문 또는 반복문을 빠져나갈때 사용
 
     // 1~10까지 반복 중 i의 값이 6일 때 빠져나가기
+
     for (let i = 1; i <= 10; i++) {
+
       if (i === 6) break;
+
       document.write(i, '<br>');
+
     }
-    document.write('=====<br>');
 
     // 3) continue문
     // 반복문에서만 사용 가능
@@ -711,10 +729,12 @@
 
     // 1~10까지 홀수만 출력(짝수일때는 건너뛰기)
     for (let i = 1; i <= 10; i++) {
+
       if (i % 2 === 0) continue;
+
       document.write(i, '<br>');
+
     }
-    document.write('=====<br>');
 
     // 4) 중첩 for문
     // for문 안에 for문 사용
@@ -732,7 +752,7 @@
       }
       document.write('<br>');
     }
-    document.write('=====<br>');
+
 
     // Quiz: 구구단 출력하기
     for (let i = 2; i <= 9; i++) {
@@ -741,7 +761,6 @@
         document.write(`${i} x ${j} = ${i * j}<br>`);
       }
     }
-    document.write('=====<br>');
 
     // 2. while문
     // 반복 횟수를 모르고 특정 조건을 만족하는 동안 반복문을 실행하고자 할 때 사용
@@ -756,7 +775,6 @@
       document.write('안녕하세요' + i, '<br>');
       i++;
     }
-    document.write('=====<br>');
 
     // Quiz
     // 1~30까지 숫자 중 2의 배수이면서 3의 배수인 숫자만 출력
@@ -767,7 +785,6 @@
       }
       i++;
     }
-    document.write('=====<br>');
 
     // Quiz
     // 20~10까지 숫자 중 짝수일 경우 파란색, 홀수일 경우 빨간색으로 출력
@@ -782,7 +799,7 @@
       }
       i--;
     }
-    document.write('=====<br>');
+
 
     // 반복 횟수를 모를 때 주로 사용
     // 지폐를 투입하면 500원짜리 동전으로 교환해주는 자판기가 있다고 할 때
@@ -797,7 +814,7 @@
       coinCount++; // 반복문이 한 번 돌 때마다 반환되는 500원짜리 동전 수 증가시킴
     }
     document.write(coinCount, '개<br>');
-    document.write('=====<br>');
+
 
     // 2) do while문(잘 안씀)
     // while문과 차이점: 무조건 한 번은 코드를 실행하고 조건식 검사
