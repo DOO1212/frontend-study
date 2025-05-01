@@ -7,14 +7,6 @@
 </head>
 <body>
   <script>
-    // 변수
-    // 데이터를 저장할 수 있는 공간(그릇)이고 그 이름을 지정
-    // 쓰는 이유? 변수에 저장해뒀다가 재사용
-    const a = 2;
-    const b = 5;
-    // const a = 3; //(같은 범위 안에서) 동일한 이름으로 중복 선언 불가
-
-
 
     // const
     // 변수를 선언하는 가장 기본적인 키워드
@@ -65,18 +57,10 @@
     // 백틱 미사용시 데이터 끼워넣기
     const concatString = 'Hello' + myName + '?!';
 
-    console.log(myName);
-    console.log(email);
-    console.log(hello);
-    console.log(concatString)
-
     // Number(숫자 데이터)
     // 정수 및 부동소수점(실수) 숫자를 나타냄
     const number = 123;
     const opacity = 0.57;
-
-    console.log(number);
-    console.log(opacity);
 
     // Boolean(논리 데이터)
     // true(참), (false(거짓) 두 가지 값만 존재
@@ -147,32 +131,6 @@
     // 대부분 같은 종류의 데이터를 나열
     const arr = ['goni.kim', 33, false]
 
-    // (활용 예) 상품 리스트, 사용자 리스트
-    const productList = [
-      {
-        productId: 1,
-        productName: '고려은단 비타민C',
-        price: 32900,
-        productImg: 'https://이미지경로',
-        brand: '고려은단'
-      }, 
-      {
-        productId: 2,
-        productName: '콘드로이친1200',
-        price: 285000,
-        productImg: 'https://이미지경로',
-        brand: '관절엔'
-      }, 
-      {
-        productId: 3,
-        productName: '에버콜라겐C',
-        price: 210000,
-        productImg: 'https://이미지경로',
-        brand: '뉴트리'
-      }
-    ];
-
-    console.log(productList[0].price);
 
     const userList = [
       {
@@ -399,21 +357,14 @@
 
 ================================================================================
 
+<script>
+
 // querySelector('CSS 선택자')
 // HTML에서 해당 요소를 검색하여 찾은 첫 번째 요소 하나만 반환
 // 요소를 찾지 못하면 null을 반환
 
 const boxEl = document.querySelector('.box');
 console.log(boxEl);
-
-// 요소에 이벤트 리스너 등록하기
-// 이벤트: 마우스(click), 스크롤(scroll), 키보드(keydown) 등
-// addEventListener() 메소드:
-// 해당 요소에 지정한 이벤트(Event)가 발생하는지 듣고(Listen) 있다가
-// 실제 이벤트가 발생하면 연결된 함수(Handler)를 실행
-
-boxEl.addEventListener('click', function () {
-  console.log('click!');
 
   // classList 속성: HTML 요소의 class 속성에 대한 제어 명령이 포함
   // 추가하기
@@ -428,13 +379,7 @@ boxEl.addEventListener('click', function () {
   hasActive = boxEl.classList.contains('active');
   console.log(hasActive);
 
-  // 토글하기
-  // if (boxEl.classList.contains('on')) {
-  //   boxEl.classList.remove('on');
-  // } else {
-  //   boxEl.classList.add('on');
-  // }
-
+  // 토글하기       
   boxEl.classList.toggle('on');
   
   // 활용 예: active라는 클래스에 미리 스타일을 지정하고 클릭한 특정 요소에 스타일을 적용할 때
@@ -442,71 +387,12 @@ boxEl.addEventListener('click', function () {
   // 참고 링크
   // 이벤트 종류: https://www.w3schools.com/jsref/dom_obj_event.asp (<-- 한 번 정도 슥 읽어볼 것!)
   // HTML DOM 속성/메소드: https://www.w3schools.com/jsref/dom_obj_document.asp
-});
+
+</script>
 
 ================================================================================
 
-// HTML에서 해당 요소를 검색하여 찾은 모든 요소들을 반환
-const boxEls = document.querySelectorAll('.box');
-console.log(boxEls); // 찾은 요소들의 리스트가 반환됨
-// => 앞에서 사용한 DOM API들을 바로 쓸 수가 없음
 
-// forEach() 메소드 사용: 배열에서 각 요소에 대한 반복 처리를 수행
-// 인수(인자값)로 반복을 돌면서 꺼내온 요소를 처리하는 함수 작성
-// 처리함수 작성 시 매개변수(현재 가져온 요소, 요소의 인덱스) 순서가 중요!
-boxEls.forEach(function (boxEl,index) {
-  console.log(index, boxEl);
-  
-  // boxEl.classList.add('order-' + (index + 1));
-  boxEl.classList.add(`order-${index + 1}`);
-});
-
-// 요소의 내용 확인 및 수정
-const boxEl = document.querySelector('.box');
-console.log(boxEl.textContent); // 요소의 내용 출력
-
-boxEl.textContent = 'CHANGE!'
-console.log(boxEl.textContent);
-//(참고) innerHTML: HTML 태그까지 조작하거나 삽입하고 싶을 때
-boxEl.innerHTML = '<b>CHANGE!</b>';
-
-================================================================================
-
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-
-  <script>
-    // 메소드 체이닝: 여러 메소드를 이어서 작성
-    const a = 'He-llo-IT';
-
-    // 메소드 체이닝을 안썼을때
-    const b = a.split('');
-    console.log(b);
-    const c = b.reverse();
-    console.log(c);
-    const d = c.join();
-    console.log(d);
-
-    // 메소드 체이닝을 썼을때
-    const e = a.split('').reverse().join('');
-    console.log(e);
-    
-    // 정리: 분리해서 작성하면 코드가 길어지니까 필요에 따라 메소드 체이닝을 사용
-
-    // split: 문자를 인수 기준으로 쪼개서 배열로 반환
-    // reverse: 배열을 뒤집기
-    // join: 배열을 인수 기준으로 문자로 병합해 반환
-    
-  </script>
-  
-</body>
-</html>
 
 ================================================================================
 
