@@ -24,10 +24,6 @@
     // write(): 문서 출력 메소드
     document.write('<h1>환영합니다.</h1>');
     console.log('log');
-    console.warn('warn');
-    console.error('error');
-    console.info('info');
-    console.debug('debug');
     
     // 변수: 데이터를 담는 그릇(저장하는 공간), 한 개의 값만 저장 가능
     // 쓰는 이유? 값을 저장했다가 나중에 필요할 때 또 쓰기 위해
@@ -49,16 +45,18 @@
     let y = 6;
     let z = x + y;
 
-    x = 7; // 값이 변경됨
+    // 값이 변경됨
     // let x = 7; // 동일한 변수명으로 재선언 불가
+    x = 7; 
 
     // 2. const 선언자
     const X = 5;
     const Y = 6;
     const Z = X + Y;
 
-    X = 7; // 값 재할당시 에러 발생(값 변경 불가)
+    // 값 재할당시 에러 발생(값 변경 불가)
     // const X = 7; // 동일한 변수명으로 재선언 불가
+    X = 7; 
 
     // 실무 예
     // 1) 애플리케이션 내 모두 동일한 날짜 포맷을 사용할 때
@@ -77,6 +75,7 @@
     // 실수로 값을 바꾸는 오류를 방지함
     // 대부분의 경우 변수는 한 번 값이 정해지면 바뀔 필요가 없음
     // 요즘 추세는 "일단 const를 쓰고, 나중에 필요할 때 let으로 바꿈!"
+
   </script>
 </body>
 </html>
@@ -92,6 +91,7 @@
 </head>
 <body>
   <script>
+
     // 자료형(Data Types)
     // 크게 1. 원시 타입(primitive type)과 2. 객체 타입(object/reference type) 으로 구분
 
@@ -103,57 +103,37 @@
     // "", '', ``(백틱, ES6차)
     const name1 = "Goni Kim";
     const name2 = 'Goni Kim';
-    document.write(name1, '<br>');
-    document.write(name2, '<br>');
 
     // 문자열 안에서 큰따옴표 또는 작은따옴표를 사용하려면?
     const singleQuote = "He is called 'Goni'";
     const doubleQuote = 'He is called "Goni"';
-    document.write(singleQuote, '<br>');
-    document.write(doubleQuote, '<br>');
-
-    // const singleQuote2 = "He is called "Goni"";
-    // const doubleQuote2 = 'He is called 'Goni'';
-    // 이스케이프 문자(\)를 사용하면 해결
-    // => \ 뒤에 오는 특수문자를 일반 문자로 사용할 수 있게 해줌
-    // 예: \', \", \\
-    const singleQuote2 = "He is called \"Goni\"";
-    const doubleQuote2 = 'He is called \'Goni\'';
-    document.write(singleQuote2, '<br>');
-    document.write(doubleQuote2, '<br>');
 
     const name = 'goni';
-    document.write('hello ' + name, '<br>');
-    document.write(`hello ${name}`, '<br>'); // 템플릿 리터럴 문법
-    document.write(`hello ${'name'}`, '<br>');
-    document.write(`hello ${1 + 2}`, '<br>');
-    document.write('<br>');
+    document.write('hello ' + name, '<br>'); // hello goni
+    document.write(`hello ${name}`, '<br>'); // hello goni // 템플릿 리터럴 문법
+    document.write(`hello ${'name'}`, '<br>'); // hello name
+    document.write(`hello ${1 + 2}`, '<br>'); // hello 3
 
     // 2) Number(숫자)
     // 다른 프로그래밍 언어와 달리 숫자 타입에 대한 구분이 없음
     // 항상 64비트 부동소수점으로 저장됨
     const num1 = 34.13; // 소수점이 있는 소수
     const num2 = 34; // 소수점이 없는 정수
-    document.write(num1, '<br>');
-    document.write(num2, '<br>');
 
     // (참고) 자바스크립트 내장 함수
     const num3 = Number('500'); // '500' -> 500
     const num4 = Number('abc'); // NaN(숫자로 변환 불가 시)
-    document.write(num3, '<br>');
-    document.write(num4, '<br>');
-    document.write('<br>');
 
     // 3) Boolean(논리)
     // true(참), false(거짓)
     // 사용 예: 조건식에서 특정 조건이 만족하는지 여부를 판단할 때(그 결과는 true, false로 나타나게 됨)
+    let isOk = true; //  true
+
     const numX = 5;
     const numY = 5;
     const numZ = 6;
     document.write(numX === numY, '<br>');
     document.write(numX === numZ, '<br>');
-    let isOk = true;
-    document.write(isOk, '<br>');
 
     // (중요) false로 취급되는 값(falsy): false, 0, ''(빈문자), null, undefined, NaN
     // (참고) 자바스크립트 내장 함수
@@ -165,9 +145,7 @@
     // 4) undefined: 값이 할당되지 않았을 때
     // 특징: 데이터 타입이자 데이터 값
     let val1; // 변수를 선언하고 값을 할당하지 않으면 실행할 때 자동으로 undefined 할당
-    let val2 = 'hello';
-    document.write(val1, '<br>');
-    document.write(val2, '<br>');
+    let val2 = 'hello'; // hello
 
     // 5) null: 의도적으로 비우고자 할 때
     // 예: 선언된 변수에 아직 어떤 값을 할당할지, 어떤 데이터 타입이 할당될지 모를 경우 개발자가 명시적으로 사용
@@ -219,11 +197,8 @@
     // 데이터를 변경하는 방법
     cars[0] = 'Hyundai';
     cars[1] = 'Kia';
-    console.log(cars[0]);
-    console.log(cars[1]);
 
     // 값으로는 자바스크립트의 모든 데이터 타입을 사용할 수 있음
-
 
     // (참고) 타입 체크
     // typeof: 현재 값 또는 변수의 자료형(데이터 타입)을 알아낼 수 있음
@@ -252,6 +227,7 @@
 </head>
 <body>
   <script>
+
     // 연산자
     // 연산이란 데이터를 처리하여 결과가 나오는 것
     // 프로그래밍에서는 산술, 비교, 논리, 문자열에 대한 연산이 존재
@@ -259,7 +235,7 @@
     // 1. 할당(대입) 연산자
     // 오른쪽의 값을 왼쪽에 할당(대입, 저장)할 때 사용
     // 등호(=)
-    document.write('<h2>할당(대입) 연산자</h2>');
+
     let num1 = 10;
     let num2 = 3;
 
@@ -269,36 +245,21 @@
     num1 += num2; // num1 = num1 + num2;
     document.write(num1, '<br>');
 
-    num1 -= num2; // num1 = num1 - num2;
-    document.write(num1, '<br>');
-
-    num1 *= num2; // num1 = num1 * num2;
-    document.write(num1, '<br>');
-
-    num1 /= num2; // num1 = num1 / num2;
-    document.write(num1, '<br>');
-
     // 2. 산술 연산자
     // +, -, *, /, %(나머지 연산자)
-    document.write('<h2>산술 연산자</h2>');
+
     num1 = 15;
     num2 = 2;
     let result;
 
     result = num1 + num2;
     document.write(result, '<br>');
-    result = num1 - num2;
-    document.write(result, '<br>');
-    result = num1 * num2;
-    document.write(result, '<br>');
-    result = num1 / num2;
-    document.write(result, '<br>');
     result = num1 % num2;
     document.write(result, '<br>');
 
     // 3. 증감 연산자
     // ++(1씩 증가), --(1씩 감소)
-    document.write('<h2>증감 연산자</h2>');
+
     num1 = 10;
 
     num1--; // num1 = num1 - 1;
@@ -310,10 +271,14 @@
     // (중요)
     // 다른 연산자와 같이 사용 시 위치(전위, 후위)에 따라 연산이 달라짐
     num2 = 20;
-    result = num2++; // result = num2; num2 = num2 + 1;
+    result = num2++; // 먼저 담고 더해라라
+    // result = num2; 
+    // num2 = num2 + 1;
     document.write(result, ' ', num2, '<br>');
     
-    result = ++num2; // num2 = num2 + 1; result = num2;
+    result = ++num2; // 먼저 더하고 담아라
+    // num2 = num2 + 1; 
+    // result = num2;
     document.write(result, ' ', num2, '<br>');
 
     // Quiz
@@ -332,33 +297,29 @@
     // 여러 개의 문자를 하나의 문자로 결합할 때 사용
     // 문자 데이터가 하나라도 포함되어 있으면 문자 결합 연산으로 동작함
     // +
-    document.write('<h2>문자열 연산자</h2>');
+
     const t1 = '학교 종이';
     const t2 = ' 땡땡땡 ';
     const t3 = 8282;
     const t4 = ' 어서 모이자';
 
     // (중요) 연산의 기본 방향: 왼쪽에서 오른쪽으로
-    result = t1 + t2 + t3 + t4;
+    result = t1 + t2 + t3 + t4; // 학교 종이 땡땡땡 8282 어서 모이자
     document.write(result, '<br>');
     
-    result = t1 + 100 + 200 + t4;
+    result = t1 + 100 + 200 + t4; // 학교 종이100200 어서 모이자
     document.write(result, '<br>');
     
-    result = 100 + 200 + t1 + t4;
+    result = 100 + 200 + t1 + t4; // 300학교 종이 어서 모이자
     document.write(result, '<br>');
 
-    result = t1 + (100 + 200) + t4;
+    result = t1 + (100 + 200) + t4; // 학교 종이300 어서 모이자
     document.write(result, '<br>');
 
     // 5. 비교 연산자
     // 데이터를 서로 비교하여 결과값으로 true, false를 반환
     // >, <, >=, <=, ==(동등), !=(부등), ===(일치), !==(불일치)
-    document.write('<h2>비교 연산자</h2>');
-    result = 10 > 20;
-    document.write(result, '<br>');
-    result = 10 < 20;
-    document.write(result, '<br>');
+
     result = 10 <= 20;
     document.write(result, '<br>');
     result = 20 == '20'; // 값만 비교
@@ -390,13 +351,7 @@
     result = 10 > 20 || 20 >= 30 || 30 > 40;
     document.write(result, '<br>');
     
-    result = 10 > 20 || 20 >= 30 || 30 <= 40;
-    document.write(result, '<br>');
-    
     result = 10 <= 20 && 20 >= 30 && 30 <= 40;
-    document.write(result, '<br>');
-    
-    result = 10 <= 20 && 20 <= 30 && 30 <= 40;
     document.write(result, '<br>');
 
     result = !(10 > 20); 
@@ -414,12 +369,12 @@
     // age(나이)가 14세 미만 90세 초과하는지를 확인하는 if문 작성
     // Quiz
     // 답안은 NOT ! 연산자를 사용한 경우와 사용하지 않은 경우 2가지
-    if (age < 14 || age > 90) {}
+    if (14 > age && age > 90) {}
     if (!(age >= 14 && age <= 90)) {}
 
     // Short-circuit evaluation(단축 평가)
-    // &&(AND): 앞이 falsy면 뒤에건 볼 것도 없고, 앞이 truthy면 뒤로 넘어간다.(falsy를 찾을 때까지 넘어간다.)
-    // ||(OR): 앞이 truthy면 뒤에건 볼 것도 없고, 앞이 falsy면 뒤로 넘어간다.(truthy를 찾을 때까지 넘어간다.)
+    // &&(AND): 앞의 조건이 truthy면 뒤로 넘어간다. falsy 를 찾을 때까지 넘어간다.
+    // ||(OR):  앞의 조건이 falsy 면 뒤로 넘어간다. truthy를 찾을 때까지 넘어간다.
     result = 10 > 20 && 30 <= 40; // false && 
     document.write(result, '<br>');
 
@@ -455,13 +410,8 @@
     // 7. 조건(삼항) 연산자
     // 조건에 따라 2개의 값 중 하나를 반환
     // 조건식 ? 값1 : 값2;
-    document.write('<h2>조건(삼항) 연산자</h2>');
-    result = false ? 'javascript' : 'hello';
-    document.write(result, '<br>');
 
-    const score = 85;
-    // result = score >= 90 ? 'A' : 'B';
-    result = score >= 90 ? 'A' : (score >= 80 ? 'B' : 'C');
+    result = false ? 'javascript' : 'hello';
     document.write(result, '<br>');
 
     // 홀짝 판별기
@@ -472,6 +422,7 @@
 
     result = number % 2 === 0 ? '짝수' : '홀수';
     document.write(result, '<br>');
+
   </script>
 </body>
 </html>
@@ -487,6 +438,7 @@
 </head>
 <body>
   <script>
+
     // 조건문
     // 특정 조건에 대한 만족 여부(true/false)에 따라 코드 수행 여부가 결정됨
     // if문, switch문
@@ -696,6 +648,7 @@
     // 3) if문은 조건식을 위에서부터 차례대로 순차 비교, switch문은 상수 값을 판단하고 해당하는 case절로 바로 찾아감
     // 결론: 비교 연산이 필요 없고, 특정 상수 값인 경우 if문 보다 switch문을 사용하는 것이 좋음(가독성, 성능)
     // 참고로 모든 switch문은 if문으로 바꿀 수 있으나 그 반대의 경우는 안됨
+    
   </script>
 </body>
 </html>
