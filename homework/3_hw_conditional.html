@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    #charImg {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 2px solid yellowgreen;
+    }
+</style>
+</head>
+<body>
+  <!-- 1번 -->
+  <h1>날씨 확인</h1>
+  계절
+  <input type="radio" name="season" id="spring" value="봄">
+  <label for="spring">봄</label>
+  <input type="radio" name="season" id="summer" value="여름">
+  <label for="summer">여름</label>
+  <input type="radio" name="season" id="fall" value="가을">
+  <label for="fall">가을</label>
+  <input type="radio" name="season" id="winter" value="겨울">
+  <label for="winter">겨울</label>
+  <div>
+    <label for="temp">기온</label>
+    <input type="number" id="temp">
+  </div>
+  <button type="button" onclick="checkSeason()">확인</button>
+
+  <script>
+    // 1번
+    
+  </script>
+
+  <!-- 2번 -->
+  <h1>스폰지밥, 뚱이, 징징이</h1>
+  <select id="charSelect" onchange="changeCharacter()">
+    <option value="1" selected>스폰지밥</option>
+    <option value="2">뚱이</option>
+    <option value="3">징징이</option>
+  </select>
+  <img src="images/sponge.png" alt="캐릭터" id="charImg">
+
+  <script>
+    // 2번
+    
+  </script>
+</body>
+</html>
