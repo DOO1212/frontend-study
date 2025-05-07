@@ -13,17 +13,11 @@
 
     // 풀이1
     // 공식화: Math.floor(Math.random() * (최대값 - 최소값 + 1)) + 최소값;
-
-    let i = 1;
-
-    while (i <= 6) {
-      const number = Math.floor(Math.random() * 45) + 1;
-      document.write(number,'<br>');
-      i++
+    
+    for (let i = 0; i < 6; i++) {
+      const num = Math.floor(Math.random() * 45) + 1;
+      document.write(num, ' ');
     }
-
-    
-    
   </script>
 </head>
 <body>
