@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    // 문제1
+    // 날짜 생성하기
+
+    // 2023년 2월 20일, 오전 3시 12분을 나타내는 Date 객체를 만들어보세요.
+    // 그리고 생성한 날짜 객체 정보를 예쁘게 출력하세요.
+
+    // 풀이1
+    const d1 = new Date(2023, 1, 20, 3, 12);
+
+    const year = d1.getFullYear();
+    // (ES2017) padStart(문자열의 총 길이, 추가할 문자): 문자열 앞에 지정된 문자를 지정된 길이만큼 추가
+    const month = String(d1.getMonth() + 1).padStart(2, '0');
+    const day = String(d1.getDate()).padStart(2, '0');
+    const hour = String(d1.getHours()).padStart(2, '0');
+    const minute = String(d1.getMinutes()).padStart(2, '0');
+
+    const formatted = `${year}-${month}-${day} ${hour}:${minute}`;
+    document.write(formatted, '<br>');
+
+    // 지역(locale) 별로 변환해주는 메소드
+    document.write(d1.toLocaleString('ko-KR'), '<br>'); // 날짜 + 시간
+    document.write(d1.toLocaleDateString('ko-KR'), '<br>'); // 날짜
+    document.write(d1.toLocaleDateString('en-CA'), '<br>'); // 날짜
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

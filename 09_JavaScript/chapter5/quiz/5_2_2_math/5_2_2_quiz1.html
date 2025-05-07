@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    // 문제1
+    // 로또 번호 추첨기(미완성)
+    // 반복문을 이용하여 1~45까지의 랜덤한 정수값 6개 출력
+    // 여기서는 중복된 숫자가 나와도 걸러낼 필요 없음
+
+    // 풀이1
+    // 공식화: Math.floor(Math.random() * (최대값 - 최소값 + 1)) + 최소값;
+
+    let i = 1;
+
+    while (i <= 6) {
+      const number = Math.floor(Math.random() * 45) + 1;
+      document.write(number,'<br>');
+      i++
+    }
+
+    
+    
+  </script>
+</head>
+<body>
+  
+</body>
+</html>
