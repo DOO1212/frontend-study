@@ -377,7 +377,8 @@
   </script>
 ================================================================================
 
-  <script>    
+  <script>
+
     // 조건문
     // 특정 조건에 대한 만족 여부(true/false)에 따라 코드 수행 여부가 결정됨
     // if문, switch문
@@ -395,36 +396,6 @@
 
       isAdult = true;
       
-    }
-
-    // 2) if-else문
-    // 조건식을 만족하면 if문 실행, 만족하지 않으면 else문 실행
-    // 조건식의 결과에 따라 두가지 중 하나를 실행시킬때 사용
-    age = 14;
-
-    if (age > 19) {
-    
-      isAdult = true;
-
-    } else {
-
-      isAdult = false;
-
-    }
-
-    // window.confirm('메세지'): 확인 상자는 사용자가 무언가를 확인하거나 수락하기를 원하는 경우에 사용
-    // 확인을 누르면 true, 취소를 누르면 false 반환
-
-    const result = confirm('정말로 회원 탈퇴를 하시겠습니다?');
-
-    if (result) {
-
-      document.write('탈퇴 처리되었습니다!');
-
-    } else {
-
-      document.write('탈퇴 취소되었습니다!');
-
     }
 
     // 3) if-else if문
@@ -476,25 +447,18 @@
     const dbPw = '1234';
     const userId = prompt('아이디는?');
 
-    if (dbId === userId) { // 아이디 먼저 검사
+    if (dbId === userId) { // true
 
-      // 아이디가 일치하지 않으면 굳이 비밀번호를 검사할 필요 없음
       const userPw = prompt('비밀번호는?');
 
       if (dbPw === userPw) {
-
         alert(userId + '님 반갑습니다!');
-
       } else {
-
         alert('비밀번호가 일치하지 않습니다.');
-
       }
 
-    } else {
-
+    } else { // false
       alert('아이디가 일치하지 않습니다.');
-
     }
 
     // 2. switch
@@ -526,32 +490,7 @@
 
     }
 
-    const site = prompt('네이버, 다음, 구글 중 즐겨 사용하는 포털은?');
-    let url;
-
-    switch (site) {
-
-      case '네이버':
-        url = 'www.naver.com';
-        break;
-
-      case '다음':
-        url = 'www.daum.net';
-        break;
-
-      case '구글':
-        url = 'www.google.com';
-        break;
-
-      default:
-        alert('보기 중에 없는 사이트입니다.');
-        break;
-
-    }
-
-    if (url) {
-      location.href = 'https://' + url; // url 정보가 바뀌면서 이동됨
-    }
+    location.href = 'https://' + url; // url 정보가 바뀌면서 이동됨
 
     // 3) 여러 개의 case 묶기
     // case문 개수에 제한은 없음
@@ -587,8 +526,6 @@
 
 ================================================================================
 
-<!DOCTYPE html>
-<body>
   <script>
 
     // 반복문
@@ -607,18 +544,14 @@
 
     // 반복1~10까지 10회 출력
     for (let i = 1; i <= 10; i++) {
-
       document.write('반복' + i, '<br>');
-
     }
 
     // 1~100까지의 합
     let sum = 0; // 중요: 초기값을 반드시 줘야한다. 안주면 undefined 값이라 NaN이 나옴.
 
     for (int i = 1; i <= 100; i++) {
-
       sum += i;
-
     }
 
     document.write('1~100까지의 합: ' + sum, '<br>');
@@ -630,11 +563,8 @@
     // 1~10까지 반복 중 i의 값이 6일 때 빠져나가기
 
     for (let i = 1; i <= 10; i++) {
-
       if (i === 6) break;
-
       document.write(i, '<br>');
-
     }
 
     // 3) continue문
@@ -644,11 +574,8 @@
 
     // 1~10까지 홀수만 출력(짝수일때는 건너뛰기)
     for (let i = 1; i <= 10; i++) {
-
       if (i % 2 === 0) continue;
-
       document.write(i, '<br>');
-
     }
 
     // 4) 중첩 for문
@@ -664,25 +591,17 @@
     for (let i = 1; i <= 3; i++) { // 행 (가로줄) 반복
 
       for (let j = 1; j <= 2; j++) { // 열 (세로줄) 반복
-
         document.write(i + j);
-
       }
-
       document.write('<br>');
-
     }
 
 
     // Quiz: 구구단 출력하기
-    for (let i = 2; i <= 9; i++) {
-
-      document.write('**** ' + i + '단 ****<br>');
+    for (let i = 1; i <= 9; i++) {
 
       for (let j = 1; j <= 9; j++) {
-
         document.write(`${i} x ${j} = ${i * j}<br>`);
-
       }
       
     }
@@ -746,8 +665,6 @@
     document.write(coinCount, '개<br>');
 
   </script>
-</body>
-</html>
 
 ================================================================================
 
