@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 1. 객체의 정의
+    // 여러 데이터들의 묶음
+    // 멤버로 속성(데이터, property)과 기능(동작, method)을 가짐
+    // 예: 
+    // 1) 차 - 속성(색상, 배기량, 가격), 기능(달리다, 멈추다, 후진하다)
+    // 2) 사람 - 속성(이름, 나이, 주민번호), 기능(말하다, 걷다, 달리다, 먹다)
+    // 3) 폰 - 속성(색상, 크기), 기능(전화 걸기, 문자 보내기)
+    // 4) TV - 속성(인치, 화질), 기능(켜다, 끄다, 볼륨업/다운, 음소거)
+
+    // 이미 쓰고 있던 객체들
+    document.write('데이터'); // document 객체의 write 메소드
+    window.document.write('데이터'); // window 객체: document의 상위 객체(생략 가능)
+    document.write(Math.PI); // Math 객체의 PI 속성
+
+    // 2. 자바스크립트 객체의 종류
+    // 1) 사용자 정의 객체: 
+    // 기본 제공되는 객체가 아닌 사용자가 직접 정의한 객체
+    // 2) 표준 빌트인(내장) 객체: 
+    // ECMAScript 사양에 정의된 객체로 공통 기능을 제공, 실행 환경과 관계없이 언제나 사용 가능
+    // 3) 호스트 객체: 
+    // 실행 환경에서 추가로 제공되는 객체
+    // 예: 브라우저 환경에서는 브라우저 객체(BOM), 문서 객체(DOM), Canvas 등
+
+    // 3. 사용자 정의 객체 만들기(2가지 방법)
+    // 1) Object 내장 객체 이용
+    // 변수 = new 객체 생성자 함수();
+    // new: 객체 생성 키워드
+    // 생성한 객체를 사용하기 위해 변수에 저장
+
+    const tv = new Object(); // 객체 생성자 함수(constructor)는 대문자로 시작!!
+    // 속성 및 메소드 추가, 객체 접근은 도트 연산자(.)를 이용
+    tv.color = 'white';
+    tv.price = 3000000;
+    tv.info = function () {
+      // this: 객체 자기 자신을 가리킴
+      return `tv 색상: ${this.color}, 가격: ${this.price}`;
+    };
+    document.write('<h1>tv 객체 메소드 호출</h1>');
+    document.write(tv.info(), '<br>');
+
+    // 2) 리터럴 방식을 이용
+    const car = {
+      color: 'black',
+      price: 50000000,
+      info: function () {
+        return `car 색상: ${this.color}, 가격: ${this.price}`;
+      }
+    };
+    document.write('<h1>car 객체 메소드 호출</h1>');
+    document.write(car.info(), '<br>');
+
+    // 4. 객체 속성 추가, 수정, 삭제
+    document.write(`제조사: ${car.company}<br>`);
+    car.company = 'Hyundai';
+    document.write(`제조사: ${car.company}<br>`);
+    car.company = 'Kia';
+    document.write(`제조사: ${car.company}<br>`);
+    delete car.company;
+    document.write(`제조사: ${car.company}<br>`);
+
+    // 5. 객체 안에 객체도 넣을수 있음
+    const obj = {
+      key1: 'value1',
+      key2: 100,
+      key3: {
+        key4: 'value2',
+        key5: function () {
+          return '객체 안에 객체 안에 함수';
+        }
+      }
+    };
+    // Quiz
+    console.log(obj.key3.key4); // key4의 값 출력
+    console.log(obj.key3.key5()); // key5의 메소드 호출
+
+    // 6. 대괄호 표기법으로 속성 값 얻기(특징 2가지)
+    document.write('<h1>대괄호 표기법</h1>');
+    const user = {
+      name: 'goni',
+      age: 30,
+      'my hobby': ['배드민턴', '싸이클', '스노우보드'] // Key값을 띄어쓰기 넣은 형태로는 잘 안씀..
+    };
+
+    document.write(`name: ${user.name}<br>`);
+    document.write(`age: ${user['age']}<br>`);
+    document.write(`my hobby: ${user['my hobby']}<br>`); // 특징1: 여러 단어로 이루어진 Key값 사용 가능
+
+    // 키 값을 변수로 받아 접근하기
+    const key = prompt('사용자의 어떤 정보를 얻고 싶으신가요?', 'name');
+    document.write(user[key]); // 특징2: 변수나 복잡한 표현식 사용 가능
+
+    // 정리: 대괄호 표기법을 쓰는 이유?
+    // 1) 여러 단어로 이루어진 키에 접근할 때
+    // 2) 키 값을 변수로 받아올 때
+
+    // 7. const? 변하지 않는 객체??
+    const testUser = {
+      name: 'goni'
+    };
+    // 아래 코드는 에러 없이 실행될까요?
+    testUser.name = 'peter';
+    console.log(testUser.name);
+    // testUser = 123; // 에러
+    
+    // const는 한 번이라도 값을 할당한 변수가 변경되는 걸 막음
+    // 변수 testUser는 객체의 참조값(주소값, 번지)을 저장하고 있는데, 
+    // const는 이 값이 변경되는걸 막는 것이지, 객체의 내용(속성)을 변경하는 건 막지 않음
+  </script>
+</body>
+</html>
+
+================================================================================
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 표준 빌트인(내장) 객체
+    // 자바스크립트 엔진에 내장되어 기본으로 제공되며 필요한 경우 생성하여 사용
+    // Object 객체는 모든 JS 객체의 최상위(루트) 객체
+    // 그 외에도 String, Number, Date, Array, Math 등 다양한 객체가 존재
+    // 참고: https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects
+
+    // 1. Date 객체
+    // 날짜와 시간을 다루는 객체로 날짜와 시간에 대한 정보를 보여줌
+    // Date 객체 자체는 날짜 포맷을 직접 지정하는 기능은 제공하지 않음
+    // (Date 객체에서 날짜 정보를 꺼내서, 직접 문자열을 조합해서 원하는 포맷을 만들어야 함)
+    // 사용성이 떨어져서 복잡한 포맷이나 시간대 처리를 자주 한다면 날짜 관련 외부 라이브러리가 유용
+    // 참고: 외부 라이브러리
+    // dayjs (가볍고 심플)
+    // date-fns (함수 기반)
+    // luxon (시간대 지원 강력)
+    // moment.js (많이 쓰였지만 지금은 deprecated)
+    // 물론 이런 라이브러리들 내부는 Date 객체를 이용하여 만들어진 것들임
+    document.write('<h1>Date 객체</h1>');
+
+    // 1) Date() 생성자
+    // Date 객체 생성 4가지 방식
+    // 변수 = new Date();
+    const now = new Date(); // 현재 날짜와 시간을 가져옴
+    document.write(now, '<br>');
+    
+    // 변수 = new Date(year, month, day, hours, minutes, seconds, milliseconds);
+    // 특정 날짜, 시간을 지정해서 Date 객체 생성
+    // 이 때 month는 0부터 시작
+    const d1 = new Date(2025, 4, 8, 10, 33, 30 ,0);
+    document.write(d1, '<br>');
+
+    // 변수 = new Date(milliseconds);
+    const d2 = new Date(0); // 1970년 1월 1일
+    document.write(d2, '<br>');
+    const d3 = new Date(100000000000); // 1970년 1월 1일 + 100000000000ms = 대략 1973년 3월 3일
+    document.write(d3, '<br>');
+
+    // 변수 = new Date(date string);
+    // 날짜 문자열로 Date 객체 생성
+    const d4 = new Date('October 15, 2022 11:30:00');
+    document.write(d4, '<br>');
+    const d5 = new Date('2022-10-15T11:30:00');
+    document.write(d5, '<br>');
+
+    // 2) Get 함수
+    document.write('<h3>Get 함수</h3>');
+    // 오늘 날짜에 대한 정보를 가지고 있는 객체 생성
+    const today = new Date();
+    const nowYear = today.getFullYear();
+    const nowMonth = today.getMonth(); // 0~11: 현재 월보다 1 적게 나옴
+    const nowDate = today.getDate();
+    const nowDay = today.getDay(); // 0~6: 일~토
+
+    document.write('<h4>오늘 날짜 정보</h4>');
+    document.write(`날짜 정보(기본 포맷): ${today}<br>`);
+    document.write(`연도: ${nowYear}<br>`);
+    document.write(`월: ${nowMonth}<br>`);
+    document.write(`일: ${nowDate}<br>`);
+    document.write(`요일: ${nowDay}<br>`);
+    document.write(`${nowYear}/${nowMonth + 1}/${nowDate}`); // 내가 직접 포맷팅
+
+    // Quiz: 특정 날짜 정보를 갖는 객체 생성 후 정보 출력해보기
+    // 예: 2025년 12월 31일
+    const someday = new Date(2025, 11, 31);
+    // const someday = new Date('2025-12-31');
+    const theYear = someday.getFullYear();
+    const theMonth = someday.getMonth();
+    const theDate = someday.getDate();
+    const theDay = someday.getDay();
+
+    document.write('<h4>특정 날짜 정보</h4>');
+    document.write(`${theYear}-${theMonth + 1}-${theDate}`);
+
+    // 실습: 특정 날짜까지 D-day 구하기
+    // 남은 일 수(밀리초) = 특정 날짜 객체 시간 - 현재 날짜 객체 시간
+    // 1초 = 1000ms
+    // 1분(60초) = 1000 * 60ms
+    // 1시간(60분) = 1000 * 60 * 60ms
+    // 1일(24시간) = 1000 * 60 * 60 * 24ms
+    document.write('<h4>오늘부터 종강까지 남은 일 수</h4>');
+    const classEndDate = new Date(2025, 9, 24);
+    // const diffTime = classEndDate.getTime() - today.getTime();
+    const diffTime = classEndDate - today; // 내부적으로 시간으로 변환해서 동작
+    // getTime(): 1970년 1월 1일 0시 0분 0초로부터 시작해서 지금까지 몇 ms가 지났는지
+    document.write(`${diffTime}ms<br>`);
+    document.write(`${diffTime / (1000 * 60 * 60 * 24)}일<br>`);
+    const diffDate = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    document.write(`D-day: ${diffDate}일 남았습니다.<br>`);
+
+    // 3) Set 함수
+    document.write('<h3>Set 함수</h3>');
+    let d = new Date();
+    document.write(d, '<br>');
+    d.setFullYear(2020);
+    document.write(d, '<br>');
+
+    // 날짜를 6개월 전으로 설정
+    d = new Date();
+    // d.setFullYear(d.getFullYear(), d.getMonth() - 6);
+    d.setMonth(d.getMonth() - 6);
+    document.write(d, '<br>');
+
+    // 날짜를 지난 달의 마지막 날로 설정
+    d = new Date();
+    // d.setMonth(d.getMonth(), 0); // 0: 지난달 말일
+    d.setDate(0);
+    document.write(d, '<br>');
+  </script>
+</body>
+</html>
+
+================================================================================
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 2. Math 객체
+    // 수학적인 상수와 내장 함수를 가진 객체로 수학 관련 속성과 함수를 제공
+    // 다른 객체와 달리 Math는 생성자가 아님. 즉, 객체 생성을 하지 않고 사용 가능 => 정적(static)
+    // Math.속성명;
+    // Math.함수명();
+    document.write('<h1>Math 객체</h1>');
+
+    // 속성
+    document.write('<h4>원주율 PI</h4>');
+    document.write(Math.PI, '<br>');
+
+    // 1) Math.round()
+    // 숫자에 대한 반올림 처리(소수점 첫째 자리 반올림)
+    document.write('<h4>round</h4>');
+    document.write(Math.round(4.9), '<br>');
+    document.write(Math.round(4.7), '<br>');
+    document.write(Math.round(4.4), '<br>');
+    document.write(Math.round(4.2), '<br>');
+    document.write(Math.round(-4.2), '<br>');
+
+    // 2) Math.ceil()
+    // 숫자에 대한 무조건 올림 처리(소수점 첫째 자리 올림)
+    document.write('<h4>ceil</h4>');
+    document.write(Math.ceil(4.9), '<br>');
+    document.write(Math.ceil(4.7), '<br>');
+    document.write(Math.ceil(4.4), '<br>');
+    document.write(Math.ceil(4.2), '<br>');
+    document.write(Math.ceil(-4.2), '<br>');
+    // 실무 사용 사례
+    // - 게시판처럼 페이징 처리가 필요한 곳에서 한 페이지에 보이는 아이템 수를 조절하게 될 때
+    // 전체 아이템이 총 몇 페이지가 되는지 총 페이지 수를 계산해야 하는데
+    // 이때 총 페이지 수 = Math.ceil(총 아이템 수/한 페이지당 보이는 아이템 수);
+    // 예: 50 / 15 = 3.3333333333333335, Math.ceil(3.3333333333333335) = 4
+
+    // 3) Math.floor()
+    // 숫자에 대한 무조건 내림 처리(소수점 첫째 자리 내림)
+    document.write('<h4>floor</h4>');
+    document.write(Math.floor(4.9), '<br>');
+    document.write(Math.floor(4.7), '<br>');
+    document.write(Math.floor(4.4), '<br>');
+    document.write(Math.floor(4.2), '<br>');
+    document.write(Math.floor(-4.2), '<br>');
+    // 실무 사용 사례
+    // - 예: 7 * 0.1 !== 0.7
+    // 정확한 결과를 얻으려면 아래와 같이 계산
+    // Math.floor(7 * 0.1 * 10) / 10
+
+    // 4) Math.trunc()
+    // 소수 부분은 무조건 버리고 정수 부분만 반환
+    document.write('<h4>trunc</h4>');
+    document.write(Math.trunc(4.9), '<br>');
+    document.write(Math.trunc(4.7), '<br>');
+    document.write(Math.trunc(4.4), '<br>');
+    document.write(Math.trunc(4.2), '<br>');
+    document.write(Math.trunc(-4.2), '<br>');
+
+    // 5) Math.sign()
+    // 숫자가 양수인지 음수인지 확인하는 용도로 사용
+    // 양수이면 1, 음수이면 -1, 0이면 0을 반환
+    document.write('<h4>sign</h4>');
+    document.write(Math.sign(-4), '<br>');
+    document.write(Math.sign(0), '<br>');
+    document.write(Math.sign(4), '<br>');
+
+    // 6) Math.pow()
+    // 거듭제곱(power)한 값을 반환
+    document.write('<h4>pow</h4>');
+    document.write(Math.pow(8, 2), '<br>');
+
+    // (ES7차) 지수 연산자
+    // **은 지수를 뜻함
+    document.write(8 ** 2, '<br>');
+
+    // 거듭제곱 연산을 여러 번 결합할 때 유용
+    document.write(Math.pow(Math.pow(2, 2), 2), '<br>');
+    document.write(2 ** 2 ** 2, '<br>');
+
+    // 7) Math.sqrt()
+    // 제곱근(square root) 값을 반환
+    document.write('<h4>sqrt</h4>');
+    document.write(Math.sqrt(64), '<br>');
+
+    // 8) Math.abs()
+    // 절대값(absolute)을 반환. 즉, 무조건 양수로 반환
+    document.write('<h4>abs</h4>');
+    document.write(Math.abs(-4.7), '<br>');
+
+    // 9) Math.min(), Math.max()
+    // min()은 가장 작은 값을 반환하고, max()는 가장 큰 값을 반환
+    // 최소값, 최대값
+    document.write('<h4>min, max</h4>');
+    document.write(Math.min(0, 150, 30, 20, -8, -200), '<br>');
+    document.write(Math.max(0, 150, 30, 20, -8, -200), '<br>');
+
+    // 10) Math.random()
+    // 0보다 크거나 같고 1보다 작은 범위에서 숫자형 값을 반환
+    // 0.0 이상 1.0 미만의 부동소수점(실수 표현 방법) 난수를 반환
+    document.write('<h4>random</h4>');
+    document.write(Math.random(), '<br>');
+
+    // (응용) 1에서 10 사이의 랜덤한 정수 생성
+    document.write('<h4>1에서 10 사이의 랜덤한 정수</h4>');
+    const randomNum = Math.random();
+    // 0.0 <= Math.random() < 1.0 (0.0 이상 1.0 미만의 랜덤한 실수)
+    document.write(randomNum, '<br>');
+    // 0.0 <= Math.random() * 10 < 10.0 (0.0 이상 10.0 미만의 랜덤한 실수)
+    document.write(randomNum * 10, '<br>');
+    // 0 <= Math.floor(Math.random() * 10) < 10 (0 이상 10 미만의 랜덤한 정수)
+    document.write(Math.floor(randomNum * 10), '<br>');
+    // 1 <= Math.floor(Math.random() * 10) + 1 < 11 (1 이상 11 미만의 랜덤한 정수)
+    document.write(Math.floor(randomNum * 10) + 1, '<br>');
+
+    // 실제 실무에서 특정 범위의 랜덤 정수값을 생성하는 경우가 많음
+    // 공식화: Math.floor(Math.random() * (최대값 - 최소값 + 1)) + 최소값;
+    // 자주 쓰면 함수로 만들어 놓기
+    document.write('<h4>최소값과 최대값 사이의 정수를 반환하는 함수</h4>');
+    function getRandomInteger(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    document.write(getRandomInteger(100, 200), '<br>');
+
+    // 실습: 가위, 바위, 보 맞추기
+    document.write('<h4>가위, 바위, 보 맞추기</h4>');
+    const selectRps = prompt('가위, 바위, 보 중 선택하세요.', '가위');
+    let player;
+
+    switch (selectRps) {
+      case '가위':
+        player = 1;
+        break;
+      case '바위':
+        player = 2;
+        break;
+      case '보':
+        player = 3;
+        break;
+      default:
+        alert('잘못 작성하셨습니다.');
+        location.reload(); // 새로고침
+        break;
+    }
+
+    // 1~3 사이의 랜덤한 정수 생성
+    const com = Math.floor(Math.random() * 3) + 1;
+    document.write(`<img src="images/math_img_${com}.jpg">`);
+
+    if (com === player) {
+      document.write(`<img src="images/game_1.jpg">`);
+    } else {
+      document.write(`<img src="images/game_2.jpg">`);
+    }
+    document.write('<br>');
+
+    // 실습: 가위, 바위, 보 게임 만들기
+    document.write('<h4>가위, 바위, 보 게임</h4>');
+    // 컴퓨터가 낸 것 이미지 출력
+    document.write('컴퓨터가 낸 것');
+    document.write(`<img src="images/math_img_${com}.jpg">`);
+    // 내가 낸 것 이미지 출력
+    document.write('VS 내가 낸 것');
+    document.write(`<img src="images/math_img_${player}.jpg">`);
+
+    // Quiz: 누가 이겼는지 출력하기
+    // player와 com의 차를 이용
+    // 0이면 비김
+    // 1 또는 -2 이면 내가 이김
+    // 그 외는 내가 짐
+    const whoWin = player - com;
+    if (whoWin === 0) {
+      document.write('비김');
+    } else if (whoWin === 1 || whoWin === -2) {
+      document.write('내가 이겼다!');
+    } else {
+      document.write('내가 졌다!');
+    }
+  </script>
+</body>
+</html>
+
+================================================================================
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 3. Array 객체
+    // 여러 데이터를 순차적으로 저장 가능한 객체로 배열을 다룰 때 유용한 속성과 함수를 제공
+    // 배열 객체 생성 3가지 방식
+    // 첫번째 방식
+    // 변수 = new Array(값1, 값2, 값3);
+    // const arr1 = new Array(1, 2, 3);
+    
+    // 두번째 방식
+    // 변수 = new Array();
+    // 변수[0] = 값1;
+    // 변수[1] = 값2;
+    // 변수[2] = 값3;
+    // const arr2 = new Array();
+    // arr2[0] = 1;
+    // arr2[1] = 2;
+    // arr2[2] = 3;
+    
+    // 세번째 방식
+    // 변수 = [값1, 값2, 값3]; => 리터럴 방식 (-> 편의성을 위해)
+    // const arr3 = [1, 2, 3];
+
+    document.write('<h1>Array 객체</h1>');
+    const arr = ['Apple', 'Banana', 'Mango'];
+
+    // 배열 요소 변경
+    // 인덱스로 접근해서 새로운 요소를 할당
+    arr[0] = 'Kiwi';
+    console.log(arr);
+
+    // 배열 요소 접근
+    document.write('<h4>배열값 가져오기-1</h4>');
+    document.write(arr[0], '<br>');
+    document.write(arr[1], '<br>');
+    document.write(arr[2], '<br>');
+
+    document.write('<h4>배열값 가져오기-2</h4>');
+    // Quiz: 일반 for문
+    for (let i = 0; i < arr.length; i++) {
+      document.write(arr[i], '<br>');
+    }
+
+    document.write('<h4>배열값 가져오기-3(권장 안함)</h4>');
+    for (const i in arr) { // Key 값을 가져옴
+      document.write(arr[i], '<br>');
+    }
+
+    document.write('<h4>배열값 가져오기-4</h4>');
+    for (const el of arr) { // Value 값을 가져옴, ES6차 문법
+      document.write(el, '<br>');
+    }
+
+    document.write('<h4>배열값 가져오기-5</h4>');
+    // Quiz: 배열의 forEach() 메소드
+    arr.forEach(function (element, index) {
+      document.write(`${index}: ${element}<br>`);
+    });
+
+    // 1) toString()
+    // 배열 안의 모든 요소를 쉼표(,)를 이용해 결합해서 하나의 문자열로 반환
+    let fruits = ['Banana', 'Orange', 'Apple', 'Mango'];
+    console.log(fruits.toString());
+    
+    // 2) join()
+    // 배열 안의 모든 요소를 지정한 문자를 이용해 결합해서 하나의 문자열로 반환
+    console.log(fruits.join(' * '));
+    // 실무 사용 사례: 
+    // - 문자열을 합쳐야 하는 경우, 더하기(+)를 이용해서 문자열을 합칠 수도 있지만, 합쳐야 할 문자열이 많은 경우
+    // 합쳐야 할 문자열을 배열에 넣고, 나중에 한번에 join() 함수를 사용해서 합치는 것이 프로그램 성능면에서 우수
+
+    // 3) pop()
+    // 배열에서 마지막 요소를 제거하고, 마지막 요소를 반환
+    // 원본 배열이 변경됨
+    let x = fruits.pop();
+    console.log(x);
+    console.log(fruits);
+
+    // 4) shift()
+    // 배열에서 첫 번째 요소를 제거하고, 첫 번째 요소를 반환
+    // 원본 배열이 변경됨
+    x = fruits.shift();
+    console.log(x);
+    console.log(fruits);
+
+    // 5) push()
+    // 배열에 새로운 요소를 추가하고, 배열의 길이를 반환
+    // 원본 배열이 변경됨
+    let ln = fruits.push('Mango');
+    console.log(fruits);
+    console.log(ln);
+    // 실무 사용 사례: 
+    // - 쇼핑몰에서 장바구니 기능을 구현할 때 장바구니에 제품 목록을 배열로 저장할 수 있음
+    // 고객이 제품을 선택하고 장바구니 추가 버튼을 누를 때마다 배열의 push() 함수를 이용해서 추가
+
+    // 6) unshift()
+    // 배열의 맨 앞에 요소를 추가하고, 배열의 길이를 반환
+    // 원본 배열이 변경됨
+    ln = fruits.unshift('Banana');
+    console.log(fruits);
+    console.log(ln);
+    // 실무 사용 사례: 
+    // - 데이터베이스에서 지역 목록을 가져온 후, 가져온 지역 목록을 <select> 태그의 <option> 태그로 추가하려고 할 때
+    // 사용자에게 제일 먼저 보이는 옵션은 '지역을 선택하세요'라는 정보성 옵션을 구성하는 경우가 많음
+    // 이럴 때 데이터베이스에서 가져온 목록의 배열 첫 요소로 '선택하세요'라는 정보성 옵션을 unshift() 함수로 쉽게 추가
+
+    // 7) splice()
+    // 새로운 요소를 특정 위치에 추가하거나 기존 요소를 삭제할 수도 있음
+    // 원본 배열이 변경됨
+    // array.splice(index, howmany, item1, ....., itemX)
+    // index: 항목을 추가하거나 제거할 인덱스 번호
+    // howmany: 제거할 항목 수
+    // 나머지 파라미터: 추가할 새 요소
+    fruits.splice(2, 0, 'Lemon', 'Kiwi');
+    console.log(fruits);
+    // 실무 사용 사례: 
+    // - 일반적으로 테이블 목록 같은 데이터는 배열 형태로 관리됨
+    // 테이블에서 특정 행을 선택하고 '행 추가' 버튼을 누르면 현재 선택된 행의 인덱스 번호를 기준으로 새로운 행을 추가해야 함
+    // 이때 splice() 함수를 사용
+
+    // 8) concat()
+    // 2개 이상의 배열을 하나의 배열로 결합
+    // 새로운 배열로 반환
+    const arr1 = ['Cecilie', 'Lone'];
+    const arr2 = ['Emil', 'Tobias', 'Linus'];
+    const arr3 = ['Robin', 'Morgan'];
+    const myChildren = arr1.concat(arr2, arr3);
+    console.log(myChildren);
+
+    // 9) slice()
+    // 지정된 시작과 끝 위치(포함되지 않음) 구간만큼 잘라내서 반환
+    // 새로운 배열로 반환
+    // array.slice(start = 0, end = last element)
+    fruits = ['Banana', 'Orange', 'Lemon', 'Apple', 'Mango'];
+    const citrus = fruits.slice(3); // 시작 인덱스에서 마지막 배열 요소까지 잘라내서 반환
+    console.log(citrus);
+    const citrus2 = fruits.slice(1, 3);
+    console.log(citrus2);
+
+    // 10) sort()
+    // 배열에 문자형 데이터가 있는 경우 오름차순으로 정렬
+    // 원본 배열이 변경됨
+    fruits = ['Banana', 'Orange', 'Apple', 'Mango'];
+    fruits.sort();
+    console.log(fruits);
+
+    // 배열 안에 숫자형 데이터가 있더라도 기본적으로는 문자로 인식해서 오름차순으로 정렬
+    const points = [40, 100, 1, 5, 25, 10];
+    points.sort();
+    console.log(points); // [1, 10, 100, 25, 40, 5]
+    // '25'는 '100'보다 크다. 왜냐하면 '2'가 '1'보다 크기 때문
+    // 그래서 숫자 값으로 정렬하려면 정렬 (비교) 함수를 정의해서 사용해야 함
+    // array.sort(정렬함수);
+    // 정렬함수: function(a, b) { return a - b; }
+    points.sort(function(a, b) { return a - b; });
+    console.log(points); // [1, 5, 10, 25, 40, 100]
+    // 정렬 원리
+    // returned (negative, zero, positive) value
+    // 음수가 나오면 a, b 순으로 두 요소의 위치를 바꾸지 않음
+    // 양수가 나오면 b, a 순으로 두 요소의 위치를 바꿈
+    // 0이 나오면 변화 없음
+    // Step 1: 첫 번째와 두 번째 요소를 비교. 40 - 100 = -60 음수이므로 두 요소의 위치를 바꾸지 않음
+    // Step 2: 두 번째와 세 번째 요소를 비교. 100 - 1 = 99 양수이므로 두 요소의 위치를 바꿈
+    // Step 3: 세 번째와 네 번째 요소를 비교. 100 - 5 = 95 양수이므로 두 요소의 위치를 바꿈
+    // Step 4: 네 번째와 다섯 번째 요소를 비교. 100 - 25 = 75 양수이므로 두 요소의 위치를 바꿈
+    // Step 5: 다섯 번째와 여섯 번째 요소를 비교. 100 - 10 = 90 양수이므로 두 요소의 위치를 바꿈
+    // Step 6: 1번에서 5번 과정을 반복적으로 수행하면서 더 이상 요소 간의 위치 변경이 없을 때까지 진행
+    // Step 7: 최종적으로 [1, 5, 10, 25, 40, 100] 결과를 얻음
+
+    // Quiz: 숫자 데이터 내림차순 정렬하기
+    points.sort(function(a, b) { return b - a; });
+    console.log(points);
+
+    // 활용 Tip!
+    // 실무에서는 Object의 특정 키를 기준으로 sort() 함수를 사용하는 경우가 많음
+    // 예: 쇼핑몰 상품 목록에서 가격 높은 순, 낮은 순, 리뷰 많은 순, 누적 판매 순
+    // Quiz: 아래 사람들을 점수가 높은 순으로 정렬하기
+    const persons = [
+      {
+        name: '유재석',
+        point: 78,
+        city: '서울',
+      },
+      {
+        name: '김종국',
+        point: 92,
+        city: '서울',
+      },
+      {
+        name: '양세찬',
+        point: 76,
+        city: '제주',
+      },
+      {
+        name: '하하',
+        point: 81,
+        city: '서울',
+      },
+    ];
+
+    persons.sort(function(a, b) {
+      return b.point - a.point; 
+    });
+    console.log(persons);
+
+    // 11) reverse()
+    // 배열의 순서를 반대로 바꿈
+    // 원본 배열이 변경됨
+    // 보통 정렬된 배열을 역순으로 정렬할 때 사용
+    fruits = ['Banana', 'Orange', 'Apple', 'Mango'];
+    fruits.sort();
+    fruits.reverse();
+    console.log(fruits);
+
+    // 12) indexOf(), lastIndexOf()
+    // 배열 안에 특정 요소가 존재하는지를 찾고, 
+    // 찾으면 첫번째 인덱스(위치)를 반환
+    // 찾을 수 없는 경우 -1을 반환
+    fruits = ['Banana', 'Orange', 'Apple', 'Mango', 'Apple'];
+    let index = fruits.indexOf('Apple');
+    console.log(index);
+    index = fruits.indexOf('Apple', 3); // 검색 시작 위치 지정
+    console.log(index);
+    index = fruits.lastIndexOf('Apple');
+    console.log(index);
+
+    // (ES7차) includes()
+    // 지정된 값이 포함된 경우 true를 반환
+    // 포함되지 않은 경우 false를 반환
+    let has = fruits.includes('Mango');
+    console.log(has);
+    has = fruits.includes('Banana', 3); // 검색 시작 위치 지정
+    console.log(has);
+  </script>
+</body>
+</html>
