@@ -543,3 +543,455 @@
 
 ================================================================================  4
 
+  <script>
+    // 4. String 객체
+    // 문자열을 다루기 위한 객체로 문자열을 다룰 때 유용한 속성과 함수를 제공
+    // 문자열 생성 2가지 방식
+    // const 변수 = new String('문자');
+    // const 변수 = '문자'; => 리터럴 방식 (-> 편의성을 위해)
+    // (참고) 2가지 방식의 차이는 타입이 다름
+    document.write('<h1>String 객체</h1>');
+
+    // 1) length
+    // 문자열 길이를 반환하는 속성
+    document.write('<h4>문자열 길이</h4>');
+    const txt = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const sln = txt.length;
+    document.write(sln, '<br>');
+    // 실무 사용 사례: 
+    // - 회원가입 시 '비밀번호 길이가 최소 8자리 이상 16자리 이하'와 같이 비밀번호 생성 규칙을 두는 경우, 
+    // 사용자가 비밀번호를 입력하면 몇 자리로 입력되었는지 알 수 있음
+    // - 주민번호 앞 6자리인 생년월일을 입력하는 화면에서 생년월일이 6자리로 입력되었는지 알 수 있음
+
+    // 2) indexOf()
+    // 문자열 안에 특정 문자열이 존재하는지를 찾고, 
+    // 있다면 찾고자 하는 문자열이 시작되는 index를 반환(처음 나타나는 위치)
+    // 발견하지 못하면 -1을 반환
+    // (참고) 문자열도 배열과 같이 index의 개념이 있음
+    document.write('<h4>문자열 검색</h4>');
+    let str = 'Please locate where "locate" occurs!';
+    let pos = str.indexOf('locate');
+    document.write(pos, '<br>');
+    // 실무 사용 사례: 
+    // - 전화번호를 입력받는 데 입력받을 전화번호는 하이픈(-)이 없어야 함
+    // 입력된 전화번호 데이터에 하이픈(-)이 있는지를 indexOf('-')로 
+    // 반환받은 값이 -1이면 입력한 전화번호에 하이픈(-)이 없다는 것을 의미하고
+    // 사용자가 하이픈(-) 없이 입력했다는 것을 알 수 있음
+
+    // 3) lastIndexOf()
+    // 문자열 안에 특정 문자열이 존재하는지를 찾는 것은 동일
+    // 문자열이 둘 이상 발견되면 제일 마지막에 발견된 문자열의 index를 반환(문자열 끝에서부터 검색)
+    // 발견하지 못하면 -1을 반환
+    pos = str.lastIndexOf('locate');
+    document.write(pos, '<br>');
+    // 실무 사용 사례: 
+    // - 파일 확장자 추출을 위한 index를 알아내기 위해
+
+    // 검색 시작 위치(index) 지정 가능
+    pos = str.indexOf('locate', 15); // 15번째 index부터 찾기 시작
+    document.write(pos, '<br>');
+    pos = str.lastIndexOf('locate', 15);
+    document.write(pos, '<br>');
+
+    // (ES6차) includes()
+    // 지정된 문자열이 포함된 경우 true를 반환
+    // 그렇지 않으면 false를 반환
+    let has = str.includes('locate');
+    document.write(has, '<br>');
+    has = str.includes('locate', 15);
+    document.write(has, '<br>');
+
+    // 실습: 사용자로부터 입력받은 이메일 주소 유효성 검사(정규표현식을 안쓰는 경우)
+    // 실무에서는 복잡한 패턴의 경우 정규식 사용!!(사용 시 가독성↓, 간결함↑)
+    document.write('<h4>실습: 이메일 주소 유효성 검사</h4>');
+    // const userEmail = prompt('당신의 이메일 주소는?');
+    // const arrUrl = ['.co.kr', '.com', '.net', '.or.kr', '.go.kr'];
+
+    // let check1 = false;
+    // let check2 = false;
+
+    // // @가 있는지 검사
+    // if (userEmail.indexOf('@') > 0) {
+    //   check1 = true;
+    // }
+
+    // // 도메인 검사
+    // for (let i = 0; i < arrUrl.length; i++) {
+    //   if (userEmail.indexOf(arrUrl[i]) > 2) {
+    //     check2 = true;
+    //     break; // 1개라도 일치하면 멈춤
+    //   }
+    // }
+
+    // if (check1 && check2) {
+    //   document.write(userEmail, '<br>');
+    // } else {
+    //   alert('이메일 형식이 잘못되었습니다.');
+    // }
+
+    // 4) slice()
+    // 시작 위치와 종료 위치를 주면, 문자열에서 해당 부분을 잘라내서 반환
+    document.write('<h4>문자열 추출</h4>');
+    str = 'Apple, Banana, Kiwi';
+    let res = str.slice(7, 13);
+    document.write(res, '<br>');
+    
+    // 두번째 인수인 종료 위치를 생략하면, 시작 위치에서 문자열의 마지막 위치까지 잘라내서 반환
+    res = str.slice(7);
+    document.write(res, '<br>');
+    
+    // 첫번째 인수인 시작 위치를 음수로 주면, 문자열의 끝에서부터 거꾸로 읽게 됨
+    res = str.slice(-12);
+    document.write(res, '<br>');
+    // 실무 사용 사례: 
+    // - 입력된 주민등록번호 기준으로 성별 구분을 하려고 할 때
+    // 주민번호에서 앞의 생년월일 6자리 이후 입력되는 첫번째 숫자는 남녀 성별을 구분할 수 있는 숫자임
+    // slice(6, 7)을 이용하면 남녀 성별에 해당하는 숫자를 얻을 수 있음
+    // - 제품 코드는 일반적으로 제품 모델, 사양 등 제품을 구분할 수 있는 코드의 조합으로 이루어져 있음
+    // 이 제품의 모델이 무엇인지 알아내기 위해 제품 코드의 특정 위치를 잘라내서 사용
+
+    // 5) substring()
+    // slice() 함수와 동일한 기능
+    // 인수로 음수를 허용하지 않는다는 차이
+    res = str.substring(7, 13);
+    document.write(res, '<br>');
+    res = str.substring(7);
+    document.write(res, '<br>');
+    
+    // 6) substr()
+    // slice() 함수와 매우 유사
+    // 시작 위치에서 지정한 길이 만큼 잘라내서 반환
+    res = str.substr(7, 6);
+    document.write(res, '<br>');
+    res = str.substr(7);
+    document.write(res, '<br>');
+    res = str.substr(-12);
+    document.write(res, '<br>');
+
+    // 실습: 주민등록번호를 입력받은 후 정보가 노출되지 않도록 뒤의 여섯자리는 ******로 출력하세요.
+    document.write('<h4>실습: 주민등록번호 마스킹</h4>');
+    // const userSsn = prompt('주민등록번호를 입력하세요.');
+
+    // 실행결과: 
+    // 123456-1234567 -> 123456-1******
+    // 1234561234567 -> 1234561******
+    // 어떻게 입력하여도 뒤의 여섯자리만 *로 출력되도록 구현
+    // const maskSsn = userSsn.substring(0, userSsn.length - 6) + '******';
+    // document.write(maskSsn);
+
+    // 7) replace()
+    // 문자열 내의 특정 문자열을 지정한 문자열로 바꾸고 새 문자열로 반환
+    // 이때 바꾸려는 문자열이 하나 이상 있더라도 처음 발견된 문자열만 바꾸게 됨
+    document.write('<h4>문자열 변환</h4>');
+    str = 'Please visit Seoul and Seoul!';
+    let n = str.replace('Seoul', 'Jeju');
+    document.write(n, '<br>');
+
+    // 대소문자를 구분
+    n = str.replace('SEOUL', 'Jeju');
+    document.write(n, '<br>');
+    
+    // 정규 표현식과 함께 사용
+    // (참고) 정규 표현식(정규식)
+    // 문자열에서 특정 문자 조합을 찾기 위한 패턴
+    // 주로 회원가입 시 유효성 검사(패스워드, 이메일, 전화번호 포맷 검증 등)에 사용
+    n = str.replace(/SEOUL/i, 'Jeju'); // i=대소문자를 구분하지 않겠다는 뜻
+    document.write(n, '<br>');
+    n = str.replace(/Seoul/g, 'Jeju'); // g=일치하는 모든 문자열을 찾겠다는 뜻
+    document.write(n, '<br>');
+    // 실무 사용 사례: 
+    // - 사람 이름, 제품명, 가격 등 데이터베이스의 데이터로 특정 부분을 바꾸는 프로그램의 경우 replace() 함수를 사용
+    // - 날짜 데이터가 '2021-06-18' 형식으로 되어 있는데 화면에 날짜 포맷 형식을 
+    // '년도-월-일' 형식이 아니라 '년도/월/일' 형식으로 보여줘야 한다면
+    // 날짜.replace(/-/g, '/') 를 이용해서 날짜 포맷을 쉽게 바꿀 수 있음
+
+    // 8) toUpperCase(), toLowerCase()
+    // 문자열을 모두 대문자로 변경
+    let text1 = 'Hello World!';
+    let text2 = text1.toUpperCase();
+    document.write(text2, '<br>');
+
+    // 문자열을 모두 소문자로 변경
+    text2 = text1.toLowerCase();
+    document.write(text2, '<br>');
+    // 실무 사용 사례: 
+    // - 여권, 항공권, 신용카드 등의 영문 이름은 모두 대문자로 관리하게 됨
+    // 사용자가 영문 이름을 입력하면 toUpperCase() 함수를 이용해서 모두 대문자로 변경하여 서버로 데이터를 전송
+    // - 사용자가 검색 키워드로 제품명을 검색하려고 할 때
+    // 데이터베이스에는 제품명이 소문자, 대문자, 대소문자가 혼용되어 저장되어 있음
+    // 소문자로만 입력하면 대문자로 저장되어 있거나 대소문자로 혼용해서 저장된 제품은 검색 되지 않음
+    // (물론 데이터베이스 쿼리에서 이런 문제를 처리할 수도 있지만..)
+    // 사용자가 입력한 검색 키워드를 모두 대문자 또는 모두 소문자로 변경한 후 서버에 보내면
+    // 서버에서는 제품명을 대문자 또는 소문자로 비교하여 대소문자 구분 없이 검색될 수 있도록 할 수 있음
+    // - 파일 확장자 검사 할 때, 예) 'jpg', 'JPG'
+
+    // 9) concat()
+    // 2개 이상의 문자열을 하나의 문자열로 합치고 새 문자열로 반환
+    document.write('<h4>문자열 결합</h4>');
+    text1 = 'Hello';
+    text2 = 'World!';
+    let text3 = text1.concat(' ', text2);
+    document.write(text3, '<br>');
+    let text4 = 'Hello' + ' ' + 'World!';
+    document.write(text4, '<br>');
+    let text5 = 'Hello'.concat(' ', 'World!');
+    document.write(text5, '<br>');
+    // 실무 사용 사례: 
+    // - 한국 사람의 이름은 성과 이름을 붙여서 사용
+    // 하지만 미국이나 유럽 같은 경우는 first name, middle name, last name을 공백을 사용해서 구분하고 전체 이름을 보여줌
+    // 이럴 경우 firstName.concat(' ', middleName, ' ', lastName)과 같이 사용하면 
+    // 서로 다른 변수에 저장된 이름을 하나로 합쳐서 보여줄 수 있음
+
+    // 10) trim
+    // 문자열의 앞, 뒤 공백을 모두 제거
+    str = '       Hello World!        ';
+    console.log(str);
+    console.log(str.trim());
+    // 실무 사용 사례: 
+    // - 사용자가 입력한 데이터의 앞과 뒤에 공백이 있는 경우,
+    // 이 데이터를 데이터베이스에 그대로 저장하면 원하는 결과를 얻지 못할 수도 있음
+    // 사용자로부터 입력을 받는 모든 필드에 입력된 데이터는 데이터베이스에 저장하기 전에 
+    // trim() 함수를 이용해서 앞뒤 공백을 제거해줄 필요가 있음
+    // - 사용자 이름을 통해 사용자 목록을 조회할 때
+    // 검색 키워드로 ' 홍길동'처럼 앞에 공백이 들어간 채로 검색하면 '홍길동'이라는 데이터가 검색이 되지 않는 상황이 발생할 수 있음
+    // (물론 데이터베이스에서 검색 처리를 할 때 앞뒤 공백을 제거하는 로직을 적용하지만)
+    // 자바스크립트에서 검색 키워드의 앞뒤 공백을 제거한 후 서버에 요청하는 것이 바람직함
+    // - 마찬가지로 로그인 시 사용자가 공백을 입력 했을 때
+
+    // 11) charAt()
+    // 문자열에서 특정 인덱스에 해당하는 문자 하나를 반환
+    document.write('<h4>특정 문자 1개 추출</h4>');
+    str = 'HELLO WORLD';
+    document.write(str.charAt(0), '<br>');
+    // 실무 사용 사례: 
+    // - 사용자 아이디를 만들 때 사용자 역할을 의미하는 문자를 이용해서 생성하는 경우
+    // 시스템 관리자를 뜻하는 Admin의 A를 따서 A0001, A0002, A0003
+    // 일반 관리자 역할은 Manager의 M을 따서 M0001, M0002, M0003
+    // - 제품명의 제일 첫 번째 문자를 해당 제품의 모델을 의미하는 알파벳 문자를 사용하는 경우
+    // - 입력된 주민등록번호 기준으로 성별 구분을 하려고 할 때도 가능
+
+    // 12) charCodeAt()
+    // 문자열에서 특정 인덱스에 해당하는 문자 하나의 유니코드 값을 반환
+    document.write(str.charCodeAt(0), '<br>');
+    document.write('가각나다라마'.charCodeAt(1), '<br>');
+
+    // 13) split()
+    // 특정 구분자를 기준으로 문자열을 분리해서 배열로 반환
+    document.write('<h4>문자열 배열로 쪼개기</h4>');
+    const birthday = '2022-10-15';
+    const arrBirthday = birthday.split('-'); // 하이픈을 기준으로 문자열을 분리
+    console.log(arrBirthday);
+    // 실무 사용 사례: 
+    // - 날짜 데이터에서 연, 월, 일을 분리해서 사용하고 싶을 때
+    // - SNS 서비스에서 여러 가지 태그 데이터들이 데이터베이스에 한번에 저장되어 있을 때
+    // (예: #제주#성산일출봉#일출보기)
+    // - 문자열을 쪼개서 반복 처리하고 싶을 때
+  </script>
+
+================================================================================  5
+
+<body>
+  <!-- * -->
+  <h2>setTimeout() 동작을 취소하려면 5초 안에 버튼을 클릭하세요.</h2>
+	<p>콘솔 패널을 열어 확인하세요.</p>
+  <button type="button" onclick="clearTimeout(myTimeout)">멈추기</button>
+
+  <!-- ** -->
+  <h2>일정 시간 간격으로 값 증감시키기</h2>
+	<p>콘솔 패널을 열어 확인하세요.</p>
+	<button type="button" onclick="clearInterval(counter)">증가 정지</button>
+	<button type="button" onclick="clearInterval(timer)">감소 정지</button>
+
+  <script>
+    // 브라우저 객체 모델(BOM)
+    // 브라우저에 내장된 객체를 가리키고 브라우저를 제어 및 조작 가능
+    // window: 브라우저 객체의 최상위 객체, 아래와 같은 하위 객체를 계층 구조로 포함
+    // - screen: 스크린 관련된 정보 제공(화면 정보)
+    // - location: 현재 브라우저의 위치 정보(URL 정보)
+    // - history: 브라우저에서 웹 서핑을 할 때 기록들을 가짐
+    // - navigator: OS, 브라우저에 대한 다양한 정보를 가짐
+    // - document(DOM): 문서 객체, 웹 문서 관련
+
+
+    // 1. window 객체
+    document.write('<h1>window 객체</h1>');
+
+    // 1) alert()
+    // 경고창을 띄워 경고 메시지를 출력
+    // alert('이것은 alert 창입니다.');
+
+    // 2) confirm()
+    // 확인창을 띄워 진행할지, 종료할지에 대한 진행 여부를 확인
+    // 확인을 누르면 true를 반환
+    // 취소를 누르면 false를 반환
+    // if (confirm('정말 삭제하시겠습니까?')) {
+    //   document.write('삭제 실행<br>');
+    // }
+
+    // 3) prompt()
+    // 질의응답 창을 띄워 문자열을 입력받음
+    // 확인을 누르면 입력한 값을 반환
+    // 취소를 누르면 null을 반환
+    // const txt = prompt('비밀번호를 입력하세요.');
+
+    // if (txt === null) {
+    //   document.write('취소 버튼을 클릭했을 때<br>');
+    // } else if (txt === '') {
+    //   document.write('어떤 값도 입력하지 않고 확인 버튼을 클릭했을 때<br>');
+    // } else if (txt !== '') {
+    //   document.write('값을 입력하고 확인 버튼을 클릭했을 때<br>');
+    // }
+
+    // 4) window.open()
+    // 팝업창(브라우저 새 창/새 탭)을 띄워 지정한 url을 오픈
+    // 예: 광고 팝업 등 - 브라우저에서 팝업 차단을 할 수 있어 open()을 활용한 광고 팝업은 이제 잘 안쓰임
+    // window.open('https://www.google.com', 'googleTab');
+    // window.open('https://www.google.com', 'googleWindow', 'popup');
+    // window.open('https://www.google.com', 'googleWindow', 'width=300, height=400, left=300, top=50');
+
+    // 팝업 창 열고 닫기 예제
+    // open('URL 또는 웹문서', '타겟 또는 이름', '창 옵션');
+    // window.open('winpopup.html', '팝업', 'width=300, height=400, left=300, top=50');
+
+    // 5) setTimeout(), clearTimeout() 
+    // id = setTimeout(): 지정한 시간 뒤에 정의한 함수를 실행
+    // clearTimeout(id): setTimeout으로 설정된 타이머를 지움(위에 * 참조)
+    const myTimeout = setTimeout(function () {
+      console.log('5초 후 프로그램 실행');
+    }, 5000);
+
+    // 6) setInterval(), clearInterval()
+    // id = setInterval(): 지정한 시간 간격마다 정의한 함수를 반복적으로 실행
+    // clearInterval(id): setInterval로 설정된 타이머를 지움(위에 ** 참조)
+    let addNum = 0;
+    let subNum = 1000;
+    
+    const counter = setInterval(function () {
+      addNum++;
+      console.log('addNum: ' + addNum);
+    }, 1000);
+
+    const timer = setInterval(function () {
+      subNum--;
+      console.log('subNum: ' + subNum);
+    }, 1000);
+
+
+    // 2. screen 객체(활용도 낮음)
+    // 사용자의 모니터(화면) 정보를 제공
+    // 예: 모니터 너비나 높이 등
+    document.write('<h1>screen 객체</h1>');
+    document.write(screen.width, '<br>');
+    document.write(screen.height, '<br>');
+    document.write(screen.availWidth, '<br>'); // 작업 표시줄을 제외한 값
+    document.write(screen.availHeight, '<br>'); // 작업 표시줄을 제외한 값
+  </script>
+
+  <!-- *** -->
+  <h2>리다이렉트 하기</h2>
+  <button type="button" onclick="href()">Naver로 이동<br>(href 속성)</button>
+  <button type="button" onclick="assign()">Naver로 이동<br>(assign() 메소드)</button>
+  <button type="button" onclick="replace()">Naver로 이동<br>(replace() 메소드)</button>
+
+  <script>
+    // 3. location 객체
+    // 현재 URL과 관련된 속성과 메소드 제공
+    // 예: 현재 URL 정보(속성), 새로고침(메소드)
+    document.write('<h1>location 객체</h1>');
+    document.write(`origin: ${location.origin}<br>`);
+    document.write(`protocol: ${location.protocol}<br>`);
+    document.write(`host: ${location.host}<br>`);
+    document.write(`hostname: ${location.hostname}<br>`);
+    document.write(`port: ${location.port}<br>`);
+    document.write(`href: ${location.href}<br>`);
+    document.write(`search: ${location.search}<br>`); // 쿼리 스트링 반환
+
+    // location.reload(); // 새로고침
+
+    // 리다이렉트 하기(위에 *** 참조)
+    // 다른 주소나 페이지로 보내기
+    function href() {
+      // 현재 URL을 설정
+      location.href = 'https://www.naver.com';
+    }
+    function assign() {
+      // 새 문서를 로드
+      // 히스토리 쌓임
+      location.assign('https://www.naver.com');
+    }
+    function replace() {
+      // 현재 문서를 새 문서로 교체
+      // 히스토리에서 현재 URL을 제거, 원래 문서로 back 불가
+      location.replace('https://www.naver.com');
+    }
+  </script>
+
+  <!-- **** -->
+  <h2>이전, 다음 페이지로 이동</h2>
+  <button type="button" onclick="back()">뒤로 가기</button>
+  <button type="button" onclick="forward()">앞으로 가기</button>
+
+  <script>
+    // 4. history 객체
+    // 사용자가 방문한 사이트의 기록을 남기고, 이전과 다음 페이지로 다시 돌아갈 수 있도록 제공
+    document.write('<h1>history 객체</h1>');
+    document.write(`length: ${history.length}`); // 방문 기록에 저장된 URL(페이지) 개수
+
+    // 이전, 다음 페이지로 이동
+    // 브라우저 뒤로 가기, 앞으로 가기와 동일(위에 **** 참조)
+    function back() {
+      history.back();
+    }
+    function forward() {
+      history.forward();
+    }
+  </script>
+
+  <!-- ***** -->
+  <h2>HTML Geolocation API</h2>
+  <button type="button" onclick="getLocation()">좌표 얻기</button>
+
+  <script>
+    // 5. navigator 객체
+    // 현재 방문자가 사용하는 브라우저와 운영체제 정보를 제공
+    document.write('<h1>navigator 객체</h1>');
+    document.write(`userAgent: ${navigator.userAgent}<br>`); // 브라우저 및 운영체제에 대한 종합 정보
+
+    const info = navigator.userAgent.toLowerCase();
+    let osImg = null;
+    if (info.includes('windows')) {
+      osImg = 'windows.png';
+    } else if (info.includes('macintosh')) {
+      osImg = 'macintosh.png';
+    } else if (info.includes('iphone')) {
+      osImg = 'iphone.png';
+    } else if (info.includes('android')) {
+      osImg = 'android.png';
+    }
+    document.write(`<img src="images/${osImg}">`);
+
+    // Tip! 위치 정보(좌표) 가져오기(위에 ***** 참조)
+    // HTML Geolocation API는 사용자의 위치를 찾는 데 사용
+    // (참고) 위치정보는 스마트폰과 같이 GPS가 탑재된 기기에서 가장 정확함
+    function getLocation() {
+      if (navigator.geolocation) {
+        // getCurrentPosition(): 사용자의 위치를 반환
+        navigator.geolocation.getCurrentPosition(function (position) {
+          console.log(position);
+
+          alert(`위도: ${position.coords.latitude}, 경도: ${position.coords.longitude}`);
+        });
+      } else {
+        alert('이 브라우저에서는 위치정보가 지원되지 않습니다.');
+      }
+    }
+    // (참고) watchPosition(), clearWatch()
+    // 사용자의 현재 위치를 반환하고 사용자가 움직일 때마다 업데이트된 위치를 계속해서 반환
+    // (지속적으로 확인하여 사용자의 위치가 변경될 때마다 지정된 콜백 함수를 호출)
+    // 이를 테스트하려면 정확한 GPS 장치(예: 스마트폰)가 필요
+    // navigator.geolocation.watchPosition();
+  </script>
+</body>
+
+================================================================================  6
+
