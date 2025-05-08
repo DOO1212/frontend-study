@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 4. String 객체
+    // 문자열을 다루기 위한 객체로 문자열을 다룰 때 유용한 속성과 함수를 제공
+    // 문자열 생성 2가지 방식
+    // const 변수 = new String('문자');
+    // const 변수 = '문자'; => 리터럴 방식 (-> 편의성을 위해)
+    // (참고) 2가지 방식의 차이는 타입이 다름
+    document.write('<h1>String 객체</h1>');
+
+    // 1) length
+    // 문자열 길이를 반환하는 속성
+    document.write('<h4>문자열 길이</h4>');
+    const txt = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const sln = txt.length;
+    document.write(sln, '<br>');
+    // 실무 사용 사례: 
+    // - 회원가입 시 '비밀번호 길이가 최소 8자리 이상 16자리 이하'와 같이 비밀번호 생성 규칙을 두는 경우, 
+    // 사용자가 비밀번호를 입력하면 몇 자리로 입력되었는지 알 수 있음
+    // - 주민번호 앞 6자리인 생년월일을 입력하는 화면에서 생년월일이 6자리로 입력되었는지 알 수 있음
+
+    // 2) indexOf()
+    // 문자열 안에 특정 문자열이 존재하는지를 찾고, 
+    // 있다면 찾고자 하는 문자열이 시작되는 index를 반환(처음 나타나는 위치)
+    // 발견하지 못하면 -1을 반환
+    // (참고) 문자열도 배열과 같이 index의 개념이 있음
+    document.write('<h4>문자열 검색</h4>');
+    let str = 'Please locate where "locate" occurs!';
+    let pos = str.indexOf('locate');
+    document.write(pos, '<br>');
+    // 실무 사용 사례: 
+    // - 전화번호를 입력받는 데 입력받을 전화번호는 하이픈(-)이 없어야 함
+    // 입력된 전화번호 데이터에 하이픈(-)이 있는지를 indexOf('-')로 
+    // 반환받은 값이 -1이면 입력한 전화번호에 하이픈(-)이 없다는 것을 의미하고
+    // 사용자가 하이픈(-) 없이 입력했다는 것을 알 수 있음
+
+    // 3) lastIndexOf()
+    // 문자열 안에 특정 문자열이 존재하는지를 찾는 것은 동일
+    // 문자열이 둘 이상 발견되면 제일 마지막에 발견된 문자열의 index를 반환(문자열 끝에서부터 검색)
+    // 발견하지 못하면 -1을 반환
+    pos = str.lastIndexOf('locate');
+    document.write(pos, '<br>');
+    // 실무 사용 사례: 
+    // - 파일 확장자 추출을 위한 index를 알아내기 위해
+
+    // 검색 시작 위치(index) 지정 가능
+    pos = str.indexOf('locate', 15); // 15번째 index부터 찾기 시작
+    document.write(pos, '<br>');
+    pos = str.lastIndexOf('locate', 15);
+    document.write(pos, '<br>');
+
+    // (ES6차) includes()
+    // 지정된 문자열이 포함된 경우 true를 반환
+    // 그렇지 않으면 false를 반환
+    let has = str.includes('locate');
+    document.write(has, '<br>');
+    has = str.includes('locate', 15);
+    document.write(has, '<br>');
+
+    // 실습: 사용자로부터 입력받은 이메일 주소 유효성 검사(정규표현식을 안쓰는 경우)
+    // 실무에서는 복잡한 패턴의 경우 정규식 사용!!(사용 시 가독성↓, 간결함↑)
+    document.write('<h4>실습: 이메일 주소 유효성 검사</h4>');
+    // const userEmail = prompt('당신의 이메일 주소는?');
+    // const arrUrl = ['.co.kr', '.com', '.net', '.or.kr', '.go.kr'];
+
+    // let check1 = false;
+    // let check2 = false;
+
+    // // @가 있는지 검사
+    // if (userEmail.indexOf('@') > 0) {
+    //   check1 = true;
+    // }
+
+    // // 도메인 검사
+    // for (let i = 0; i < arrUrl.length; i++) {
+    //   if (userEmail.indexOf(arrUrl[i]) > 2) {
+    //     check2 = true;
+    //     break; // 1개라도 일치하면 멈춤
+    //   }
+    // }
+
+    // if (check1 && check2) {
+    //   document.write(userEmail, '<br>');
+    // } else {
+    //   alert('이메일 형식이 잘못되었습니다.');
+    // }
+
+    // 4) slice()
+    // 시작 위치와 종료 위치를 주면, 문자열에서 해당 부분을 잘라내서 반환
+    document.write('<h4>문자열 추출</h4>');
+    str = 'Apple, Banana, Kiwi';
+    let res = str.slice(7, 13);
+    document.write(res, '<br>');
+    
+    // 두번째 인수인 종료 위치를 생략하면, 시작 위치에서 문자열의 마지막 위치까지 잘라내서 반환
+    res = str.slice(7);
+    document.write(res, '<br>');
+    
+    // 첫번째 인수인 시작 위치를 음수로 주면, 문자열의 끝에서부터 거꾸로 읽게 됨
+    res = str.slice(-12);
+    document.write(res, '<br>');
+    // 실무 사용 사례: 
+    // - 입력된 주민등록번호 기준으로 성별 구분을 하려고 할 때
+    // 주민번호에서 앞의 생년월일 6자리 이후 입력되는 첫번째 숫자는 남녀 성별을 구분할 수 있는 숫자임
+    // slice(6, 7)을 이용하면 남녀 성별에 해당하는 숫자를 얻을 수 있음
+    // - 제품 코드는 일반적으로 제품 모델, 사양 등 제품을 구분할 수 있는 코드의 조합으로 이루어져 있음
+    // 이 제품의 모델이 무엇인지 알아내기 위해 제품 코드의 특정 위치를 잘라내서 사용
+
+    // 5) substring()
+    // slice() 함수와 동일한 기능
+    // 인수로 음수를 허용하지 않는다는 차이
+    res = str.substring(7, 13);
+    document.write(res, '<br>');
+    res = str.substring(7);
+    document.write(res, '<br>');
+    
+    // 6) substr()
+    // slice() 함수와 매우 유사
+    // 시작 위치에서 지정한 길이 만큼 잘라내서 반환
+    res = str.substr(7, 6);
+    document.write(res, '<br>');
+    res = str.substr(7);
+    document.write(res, '<br>');
+    res = str.substr(-12);
+    document.write(res, '<br>');
+
+    // 실습: 주민등록번호를 입력받은 후 정보가 노출되지 않도록 뒤의 여섯자리는 ******로 출력하세요.
+    document.write('<h4>실습: 주민등록번호 마스킹</h4>');
+    // const userSsn = prompt('주민등록번호를 입력하세요.');
+
+    // 실행결과: 
+    // 123456-1234567 -> 123456-1******
+    // 1234561234567 -> 1234561******
+    // 어떻게 입력하여도 뒤의 여섯자리만 *로 출력되도록 구현
+    // const maskSsn = userSsn.substring(0, userSsn.length - 6) + '******';
+    // document.write(maskSsn);
+
+    // 7) replace()
+    // 문자열 내의 특정 문자열을 지정한 문자열로 바꾸고 새 문자열로 반환
+    // 이때 바꾸려는 문자열이 하나 이상 있더라도 처음 발견된 문자열만 바꾸게 됨
+    document.write('<h4>문자열 변환</h4>');
+    str = 'Please visit Seoul and Seoul!';
+    let n = str.replace('Seoul', 'Jeju');
+    document.write(n, '<br>');
+
+    // 대소문자를 구분
+    n = str.replace('SEOUL', 'Jeju');
+    document.write(n, '<br>');
+    
+    // 정규 표현식과 함께 사용
+    // (참고) 정규 표현식(정규식)
+    // 문자열에서 특정 문자 조합을 찾기 위한 패턴
+    // 주로 회원가입 시 유효성 검사(패스워드, 이메일, 전화번호 포맷 검증 등)에 사용
+    n = str.replace(/SEOUL/i, 'Jeju'); // i=대소문자를 구분하지 않겠다는 뜻
+    document.write(n, '<br>');
+    n = str.replace(/Seoul/g, 'Jeju'); // g=일치하는 모든 문자열을 찾겠다는 뜻
+    document.write(n, '<br>');
+    // 실무 사용 사례: 
+    // - 사람 이름, 제품명, 가격 등 데이터베이스의 데이터로 특정 부분을 바꾸는 프로그램의 경우 replace() 함수를 사용
+    // - 날짜 데이터가 '2021-06-18' 형식으로 되어 있는데 화면에 날짜 포맷 형식을 
+    // '년도-월-일' 형식이 아니라 '년도/월/일' 형식으로 보여줘야 한다면
+    // 날짜.replace(/-/g, '/') 를 이용해서 날짜 포맷을 쉽게 바꿀 수 있음
+
+    // 8) toUpperCase(), toLowerCase()
+    // 문자열을 모두 대문자로 변경
+    let text1 = 'Hello World!';
+    let text2 = text1.toUpperCase();
+    document.write(text2, '<br>');
+
+    // 문자열을 모두 소문자로 변경
+    text2 = text1.toLowerCase();
+    document.write(text2, '<br>');
+    // 실무 사용 사례: 
+    // - 여권, 항공권, 신용카드 등의 영문 이름은 모두 대문자로 관리하게 됨
+    // 사용자가 영문 이름을 입력하면 toUpperCase() 함수를 이용해서 모두 대문자로 변경하여 서버로 데이터를 전송
+    // - 사용자가 검색 키워드로 제품명을 검색하려고 할 때
+    // 데이터베이스에는 제품명이 소문자, 대문자, 대소문자가 혼용되어 저장되어 있음
+    // 소문자로만 입력하면 대문자로 저장되어 있거나 대소문자로 혼용해서 저장된 제품은 검색 되지 않음
+    // (물론 데이터베이스 쿼리에서 이런 문제를 처리할 수도 있지만..)
+    // 사용자가 입력한 검색 키워드를 모두 대문자 또는 모두 소문자로 변경한 후 서버에 보내면
+    // 서버에서는 제품명을 대문자 또는 소문자로 비교하여 대소문자 구분 없이 검색될 수 있도록 할 수 있음
+    // - 파일 확장자 검사 할 때, 예) 'jpg', 'JPG'
+
+    // 9) concat()
+    // 2개 이상의 문자열을 하나의 문자열로 합치고 새 문자열로 반환
+    document.write('<h4>문자열 결합</h4>');
+    text1 = 'Hello';
+    text2 = 'World!';
+    let text3 = text1.concat(' ', text2);
+    document.write(text3, '<br>');
+    let text4 = 'Hello' + ' ' + 'World!';
+    document.write(text4, '<br>');
+    let text5 = 'Hello'.concat(' ', 'World!');
+    document.write(text5, '<br>');
+    // 실무 사용 사례: 
+    // - 한국 사람의 이름은 성과 이름을 붙여서 사용
+    // 하지만 미국이나 유럽 같은 경우는 first name, middle name, last name을 공백을 사용해서 구분하고 전체 이름을 보여줌
+    // 이럴 경우 firstName.concat(' ', middleName, ' ', lastName)과 같이 사용하면 
+    // 서로 다른 변수에 저장된 이름을 하나로 합쳐서 보여줄 수 있음
+
+    // 10) trim
+    // 문자열의 앞, 뒤 공백을 모두 제거
+    str = '       Hello World!        ';
+    console.log(str);
+    console.log(str.trim());
+    // 실무 사용 사례: 
+    // - 사용자가 입력한 데이터의 앞과 뒤에 공백이 있는 경우,
+    // 이 데이터를 데이터베이스에 그대로 저장하면 원하는 결과를 얻지 못할 수도 있음
+    // 사용자로부터 입력을 받는 모든 필드에 입력된 데이터는 데이터베이스에 저장하기 전에 
+    // trim() 함수를 이용해서 앞뒤 공백을 제거해줄 필요가 있음
+    // - 사용자 이름을 통해 사용자 목록을 조회할 때
+    // 검색 키워드로 ' 홍길동'처럼 앞에 공백이 들어간 채로 검색하면 '홍길동'이라는 데이터가 검색이 되지 않는 상황이 발생할 수 있음
+    // (물론 데이터베이스에서 검색 처리를 할 때 앞뒤 공백을 제거하는 로직을 적용하지만)
+    // 자바스크립트에서 검색 키워드의 앞뒤 공백을 제거한 후 서버에 요청하는 것이 바람직함
+    // - 마찬가지로 로그인 시 사용자가 공백을 입력 했을 때
+
+    // 11) charAt()
+    // 문자열에서 특정 인덱스에 해당하는 문자 하나를 반환
+    document.write('<h4>특정 문자 1개 추출</h4>');
+    str = 'HELLO WORLD';
+    document.write(str.charAt(0), '<br>');
+    // 실무 사용 사례: 
+    // - 사용자 아이디를 만들 때 사용자 역할을 의미하는 문자를 이용해서 생성하는 경우
+    // 시스템 관리자를 뜻하는 Admin의 A를 따서 A0001, A0002, A0003
+    // 일반 관리자 역할은 Manager의 M을 따서 M0001, M0002, M0003
+    // - 제품명의 제일 첫 번째 문자를 해당 제품의 모델을 의미하는 알파벳 문자를 사용하는 경우
+    // - 입력된 주민등록번호 기준으로 성별 구분을 하려고 할 때도 가능
+
+    // 12) charCodeAt()
+    // 문자열에서 특정 인덱스에 해당하는 문자 하나의 유니코드 값을 반환
+    document.write(str.charCodeAt(0), '<br>');
+    document.write('가각나다라마'.charCodeAt(1), '<br>');
+
+    // 13) split()
+    // 특정 구분자를 기준으로 문자열을 분리해서 배열로 반환
+    document.write('<h4>문자열 배열로 쪼개기</h4>');
+    const birthday = '2022-10-15';
+    const arrBirthday = birthday.split('-'); // 하이픈을 기준으로 문자열을 분리
+    console.log(arrBirthday);
+    // 실무 사용 사례: 
+    // - 날짜 데이터에서 연, 월, 일을 분리해서 사용하고 싶을 때
+    // - SNS 서비스에서 여러 가지 태그 데이터들이 데이터베이스에 한번에 저장되어 있을 때
+    // (예: #제주#성산일출봉#일출보기)
+    // - 문자열을 쪼개서 반복 처리하고 싶을 때
+  </script>
+</body>
+</html>

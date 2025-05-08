@@ -16,7 +16,15 @@
     const arr = [];
 
     // 풀이5
-    
+    for (let i = 0; i < arrLength; i++) {
+      // arr[i] = prompt('배열에 넣을 데이터를 입력하세요.');
+      arr.push(prompt('배열에 넣을 데이터를 입력하세요.'));
+    }
+
+    if (arr.length > 0) {
+      document.write(arr.shift(), '<br>'); // 배열의 첫번째 요소를 제거하고 반환
+      document.write(arr.pop(), '<br>'); // 배열의 마지막 요소를 제거하고 반환
+    }
   </script>
 </head>
 <body>

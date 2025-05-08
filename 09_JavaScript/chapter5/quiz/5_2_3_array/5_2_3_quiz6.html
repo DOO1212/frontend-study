@@ -15,7 +15,25 @@
     const lottoArr = []; // 빈 배열
 
     // 풀이6
-    
+    while (lottoArr.length < 6) {
+      const num = Math.floor(Math.random() * 45) + 1;
+      if (!lottoArr.includes(num)) {
+        lottoArr.push(num);
+      }
+    }
+    document.write(lottoArr.sort(function (a, b) { return a - b; }), '<br>');
+
+    // for문 사용 시
+    const lottoArr2 = []; // 빈 배열
+
+    for (let i = 0; i < 6;) {
+      const num = Math.floor(Math.random() * 45) + 1;
+      if (!lottoArr2.includes(num)) {
+        lottoArr2.push(num);
+        i++;
+      }
+    }
+    document.write(lottoArr2.sort(function (a, b) { return a - b; }), '<br>');
   </script>
 </head>
 <body>
