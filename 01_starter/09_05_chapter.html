@@ -278,63 +278,51 @@
     const arr = ['Apple', 'Banana', 'Mango'];
 
     // 배열 요소 변경
-    // 인덱스로 접근해서 새로운 요소를 할당
     arr[0] = 'Kiwi'; // ['Kiwi', 'Banana', 'Mango'];
 
-    document.write('<h4>배열값 가져오기-2</h4>');
-    // Quiz: 일반 for문
+    // for문으로 배열 요소 가져오기
     for (let i = 0; i < arr.length; i++) {
       document.write(arr[i], '<br>');
     }
 
-    document.write('<h4>배열값 가져오기-3(권장 안함)</h4>');
-    for (const i in arr) { // Key 값을 가져옴
-      document.write(arr[i], '<br>');
-    }
-
-    document.write('<h4>배열값 가져오기-4</h4>');
     for (const el of arr) { // Value 값을 가져옴, ES6차 문법
       document.write(el, '<br>');
     }
 
-    document.write('<h4>배열값 가져오기-5</h4>');
-    // Quiz: 배열의 forEach() 메소드
-    arr.forEach(function (element, index) {
-      document.write(`${index}: ${element}<br>`);
+    // 배열의 forEach() 메소드
+    arr.forEach(function (element, i) {
+      document.write(element + i + '<br>');
     });
 
     // 1) toString()
     // 배열 안의 모든 요소를 쉼표(,)를 이용해 결합해서 하나의 문자열로 반환
-    let fruits = ['Banana', 'Orange', 'Apple', 'Mango'];
-    console.log(fruits.toString());
+    let fruits = ['Banana', 'Orange', 'Apple', 'Mango']; // Banana,Orange,Apple,Mango
     
     // 2) join()
     // 배열 안의 모든 요소를 지정한 문자를 이용해 결합해서 하나의 문자열로 반환
-    console.log(fruits.join(' * '));
-    // 실무 사용 사례: 
-    // - 문자열을 합쳐야 하는 경우, 더하기(+)를 이용해서 문자열을 합칠 수도 있지만, 합쳐야 할 문자열이 많은 경우
-    // 합쳐야 할 문자열을 배열에 넣고, 나중에 한번에 join() 함수를 사용해서 합치는 것이 프로그램 성능면에서 우수
+    console.log(fruits.join(' * ')); // Banana * Orange * Apple * Mango
 
     // 3) pop()
     // 배열에서 마지막 요소를 제거하고, 마지막 요소를 반환
     // 원본 배열이 변경됨
     let x = fruits.pop();
-    console.log(x);
-    console.log(fruits);
+    console.log(x); // Mango
+    console.log(fruits); // ['Banana', 'Orange', 'Apple']
 
     // 4) shift()
     // 배열에서 첫 번째 요소를 제거하고, 첫 번째 요소를 반환
     // 원본 배열이 변경됨
     x = fruits.shift();
-    console.log(x);
-    console.log(fruits);
+    console.log(x); // Banana
+    console.log(fruits); // ['Orange', 'Apple', 'Mango']
 
     // 5) push()
     // 배열에 새로운 요소를 추가하고, 배열의 길이를 반환
     // 원본 배열이 변경됨
     let ln = fruits.push('Mango');
-    console.log(fruits);
-    console.log(ln);
+    console.log(fruits); // (5) ['Banana', 'Orange', 'Apple', 'Mango', 'Mango']
+    console.log(ln); // 5
+
     // 실무 사용 사례: 
     // - 쇼핑몰에서 장바구니 기능을 구현할 때 장바구니에 제품 목록을 배열로 저장할 수 있음
     // 고객이 제품을 선택하고 장바구니 추가 버튼을 누를 때마다 배열의 push() 함수를 이용해서 추가
@@ -343,8 +331,9 @@
     // 배열의 맨 앞에 요소를 추가하고, 배열의 길이를 반환
     // 원본 배열이 변경됨
     ln = fruits.unshift('Banana');
-    console.log(fruits);
-    console.log(ln);
+    console.log(fruits); // (5) ['Banana', 'Banana', 'Orange', 'Apple', 'Mango']
+    console.log(ln); // 5
+
     // 실무 사용 사례: 
     // - 데이터베이스에서 지역 목록을 가져온 후, 가져온 지역 목록을 <select> 태그의 <option> 태그로 추가하려고 할 때
     // 사용자에게 제일 먼저 보이는 옵션은 '지역을 선택하세요'라는 정보성 옵션을 구성하는 경우가 많음
@@ -357,8 +346,8 @@
     // index: 항목을 추가하거나 제거할 인덱스 번호
     // howmany: 제거할 항목 수
     // 나머지 파라미터: 추가할 새 요소
-    fruits.splice(2, 0, 'Lemon', 'Kiwi');
-    console.log(fruits);
+    fruits.splice(2, 0, 'Lemon', 'Kiwi'); // (6) ['Banana', 'Orange', 'Lemon', 'Kiwi', 'Apple', 'Mango']
+    
     // 실무 사용 사례: 
     // - 일반적으로 테이블 목록 같은 데이터는 배열 형태로 관리됨
     // 테이블에서 특정 행을 선택하고 '행 추가' 버튼을 누르면 현재 선택된 행의 인덱스 번호를 기준으로 새로운 행을 추가해야 함
@@ -371,24 +360,23 @@
     const arr2 = ['Emil', 'Tobias', 'Linus'];
     const arr3 = ['Robin', 'Morgan'];
     const myChildren = arr1.concat(arr2, arr3);
-    console.log(myChildren);
+    console.log(myChildren); // (7) ['Cecilie', 'Lone', 'Emil', 'Tobias', 'Linus', 'Robin', 'Morgan']
 
     // 9) slice()
-    // 지정된 시작과 끝 위치(포함되지 않음) 구간만큼 잘라내서 반환
+    // 지정된 시작과 끝 위치(전까지) 구간만큼 잘라내서 반환
     // 새로운 배열로 반환
     // array.slice(start = 0, end = last element)
     fruits = ['Banana', 'Orange', 'Lemon', 'Apple', 'Mango'];
-    const citrus = fruits.slice(3); // 시작 인덱스에서 마지막 배열 요소까지 잘라내서 반환
-    console.log(citrus);
-    const citrus2 = fruits.slice(1, 3);
-    console.log(citrus2);
+    const citrus = fruits.slice(3); // 3 ~
+    console.log(citrus); // (2) ['Apple', 'Mango']
+    const citrus2 = fruits.slice(1, 3); // 1 ~ 2
+    console.log(citrus2); // (2) ['Orange', 'Lemon']
 
     // 10) sort()
     // 배열에 문자형 데이터가 있는 경우 오름차순으로 정렬
     // 원본 배열이 변경됨
     fruits = ['Banana', 'Orange', 'Apple', 'Mango'];
-    fruits.sort();
-    console.log(fruits);
+    fruits.sort(); // (4) ['Apple', 'Banana', 'Mango', 'Orange']
 
     // 배열 안에 숫자형 데이터가 있더라도 기본적으로는 문자로 인식해서 오름차순으로 정렬
     const points = [40, 100, 1, 5, 25, 10];
@@ -396,10 +384,11 @@
     console.log(points); // [1, 10, 100, 25, 40, 5]
     // '25'는 '100'보다 크다. 왜냐하면 '2'가 '1'보다 크기 때문
     // 그래서 숫자 값으로 정렬하려면 정렬 (비교) 함수를 정의해서 사용해야 함
-    // array.sort(정렬함수);
-    // 정렬함수: function(a, b) { return a - b; }
-    points.sort(function(a, b) { return a - b; });
+    points.sort(function(a, b) {
+      return a - b;
+    });
     console.log(points); // [1, 5, 10, 25, 40, 100]
+
     // 정렬 원리
     // returned (negative, zero, positive) value
     // 음수가 나오면 a, b 순으로 두 요소의 위치를 바꾸지 않음
@@ -414,8 +403,9 @@
     // Step 7: 최종적으로 [1, 5, 10, 25, 40, 100] 결과를 얻음
 
     // Quiz: 숫자 데이터 내림차순 정렬하기
-    points.sort(function(a, b) { return b - a; });
-    console.log(points);
+    points.sort(function(a, b) {
+      return b - a;
+    });
 
     // 활용 Tip!
     // 실무에서는 Object의 특정 키를 기준으로 sort() 함수를 사용하는 경우가 많음
@@ -445,38 +435,37 @@
     ];
 
     persons.sort(function(a, b) {
-      return b.point - a.point; 
+      return b.point - a.point;
     });
-    console.log(persons);
+    console.log(persons); // point 높은 순으로 정렬
 
     // 11) reverse()
     // 배열의 순서를 반대로 바꿈
     // 원본 배열이 변경됨
     // 보통 정렬된 배열을 역순으로 정렬할 때 사용
     fruits = ['Banana', 'Orange', 'Apple', 'Mango'];
-    fruits.sort();
-    fruits.reverse();
-    console.log(fruits);
+    fruits.sort(); // (4) ['Apple', 'Banana', 'Mango', 'Orange']
+    fruits.reverse(); // (4) ['Orange', 'Mango', 'Banana', 'Apple']
 
     // 12) indexOf(), lastIndexOf()
     // 배열 안에 특정 요소가 존재하는지를 찾고, 
     // 찾으면 첫번째 인덱스(위치)를 반환
     // 찾을 수 없는 경우 -1을 반환
     fruits = ['Banana', 'Orange', 'Apple', 'Mango', 'Apple'];
-    let index = fruits.indexOf('Apple');
-    console.log(index);
-    index = fruits.indexOf('Apple', 3); // 검색 시작 위치 지정
-    console.log(index);
-    index = fruits.lastIndexOf('Apple');
-    console.log(index);
+
+    let index = fruits.indexOf('Apple'); // 2
+
+    index = fruits.indexOf('Apple', 3); // 4 (검색 시작 위치 지정)
+
+    index = fruits.lastIndexOf('Apple'); // 4 (뒤에서부터 시작)
 
     // (ES7차) includes()
     // 지정된 값이 포함된 경우 true를 반환
     // 포함되지 않은 경우 false를 반환
-    let has = fruits.includes('Mango');
-    console.log(has);
-    has = fruits.includes('Banana', 3); // 검색 시작 위치 지정
-    console.log(has);
+    let has1 = fruits.includes('Mango'); // true
+
+    let has2 = fruits.includes('Banana', 3); // false (검색 시작 위치 지정)
+
   </script>
 
 ================================================================================  4
