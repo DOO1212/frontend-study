@@ -8,17 +8,16 @@
   <!-- <script defer src="5_dom_api.js"></script> -->
 </head>
 <body>
+  <!-- DOM API란?
+    Document Object Model(문서 객체 모델): HTML 문서를 객체 형태로 모델링 => DOM에서는 모든 HTML 요소가 객체로 정의됨
+    Application Programing Interface: 무언가 동작시킬 때 사용하는 프로그래밍 명령 => 각 객체의 속성과 메소드
 
-  <!-- DOM API란 -->
-  <!-- Document Object Model(문서 객체 모델): HTML 문서를 객체 형태로 모델링 => DOM에서는 모든 HTML 요소가 객체로 정의됨
-       Application Programing Interface: 무언가 동작시킬 때 사용하는 프로그래밍 명령 => 각 객체의 속성과 메소드
+    정리: JS에서 HTML을 제어할 수 있는 명령들
+  -->
 
-       정리: JS에서 HTML을 제어할 수 있는 명령들 --> 
+  <div class="box">Box!!</div>
 
-  <div class="box"> Box! </div>
-
-  <script src="5_dom_api.js"></script>
-  
+  <script src="5_dom_api.js"></script> 
 </body>
 </html>
 
@@ -29,4 +28,5 @@
 
   해결 방법 2가지
   1. <script>를 <body>의 가장 뒷부분에 작성해서 HTML구조를 모두 읽은 뒤에 동작하게 하거나
-  2. defer 속성을 추가해 HTML 구조를 읽은 뒤 <script>가 동작하도록 지연시킬 수 있음 -->
+  2. defer 속성을 추가해 HTML 구조를 읽은 뒤 <script>가 동작하도록 지연시킬 수 있음
+-->

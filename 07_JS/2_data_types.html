@@ -6,7 +6,6 @@
   <title>Document</title>
 </head>
 <body>
-
   <script>
     // 데이터 타입(자료형)
 
@@ -15,13 +14,13 @@
     const myName = "GONI";
     const email = 'geoblo@naver.com';
     const hello = `Hello ${myName}?!`; // 템플릿 리터럴(ES6차)
-    // 백틱 미사용시 데이터 끼워넣기
-    const concatString = 'Hello' + myName + '?!';
+    // 백틱 미사용 시 데이터 끼워넣기
+    const concatString = 'Hello ' + myName + '?!';
 
     console.log(myName);
     console.log(email);
     console.log(hello);
-    console.log(concatString)
+    console.log(concatString);
 
     // Number(숫자 데이터)
     // 정수 및 부동소수점(실수) 숫자를 나타냄
@@ -32,42 +31,40 @@
     console.log(opacity);
 
     // Boolean(논리 데이터)
-    // true(참), (false(거짓) 두 가지 값만 존재
-    // 이분법적으로 구분해야 하는 상황에서 사용
-    // => 조건문/반복문에서 조건을 판단할 때
+    // true(참), false(거짓) 두 가지 값만 존재
+    // 이분법적으로 구분해야 하는 상황에서 사용 => 조건문/반복문에서 조건을 판단할 때
     const checked = true;
     const isShow = false;
-    
+
     // 조건식
     const numX = 5;
     const numY = '5';
     const numZ = 6;
-
     console.log(numX === numY);
     console.log(numX === numZ);
-
+    
     // undefined
     // 아무것도 정의되지 않은(값이 할당되지 않은) 상태를 의미
     // 변수의 초기화를 하지 않으면 자동으로 undefined가 할당
     // (초기화: 변수를 선언하고 처음으로 값을 저장하는 것)
     let undef;
     console.log(undef);
-
-    const obj = {
-      abc: 123
+    
+    const obj = { 
+      abc: 123 
     };
     console.log(obj.abc);
     console.log(obj.xyz);
-
+    
     // null
     // 어떤 값이 의도적으로 비어있음을 의미
-    // undefined와 다른 점은 개발자가 명시적으로 값이 비었음을 나타낼 때 사용
+    // undefined와 다른 점은 개발자가 명시적으로 값이 비어있을을 나타낼 때 사용
     let name = null;
     console.log(name);
 
     name = 'goni.kim';
     console.log(name);
-
+    
     // Object(객체 데이터)
     // 관련있는 여러 데이터를 key-value 1쌍의 형태로 저장
     // {} 방식을 주로 사용
@@ -77,13 +74,13 @@
       age: 33, // 숫자
       isMarried: false // 논리
     };
-
+    
     console.log(user);
     // 객체 내부에 특정 데이터만 출력
     console.log(user.name);
     console.log(user.age);
     console.log(user.isMarried);
-
+    
     // Array(배열 데이터)
     // 여러 데이터를 순차적으로 저장
     // [] 방식을 주로 사용
@@ -91,14 +88,13 @@
     const fruits = ['Apple', 'Banana', 'Cherry'];
 
     console.log(fruits);
-    //배열의 특정 데이터만 출력
+    // 배열의 특정 데이터만 출력
     console.log(fruits[0]);
     console.log(fruits[1]);
     console.log(fruits[2]);
 
-    // (참고) 다른 종류의 데이터를 포함시킬 수도 있지만,
-    // 대부분 같은 종류의 데이터를 나열
-    const arr = ['goni.kim', 33, false]
+    // (참고) 다른 종류의 데이터를 포함시킬 수도 있지만, 대부분 같은 종류의 데이터를 나열
+    const arr = ['goni.kim', 33, false];
 
     // (활용 예) 상품 리스트, 사용자 리스트
     const productList = [
@@ -124,9 +120,8 @@
         brand: '뉴트리'
       }
     ];
-
-    console.log(productList[0].price);
-
+    console.log(productList[0].productName);
+    
     const userList = [
       {
         userId: 'geoblo',
@@ -143,10 +138,9 @@
         hobby: ['멍때리기']
       }
     ];
-    
     console.log(userList[0].hobby[2]);
-
-    // (참고) JS는 매우 유연한 언어
+    
+    // (참고) JS 매우 유연한 언어
     // 변수에 여러 데이터 타입을 넣을 수 있고 값을 넣은 순간에 타입이 결정됨
     // => 동적 타입 언어
     let e = 1;
@@ -154,10 +148,7 @@
     e = 'abc';
     console.log(typeof e);
 
-    // (참고) false로 취급되는 값(falsy): false, 0,''(빈문자), null,
-    // undefined, NaN(Not a Number)
-
+    // (참고) false로 취급되는 값(falsy): false, 0, ''(빈문자), null, undefined, NaN(Not a Number)
   </script>
-  
 </body>
 </html>
