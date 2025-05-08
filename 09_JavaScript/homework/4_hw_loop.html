@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 1번 -->
+  <h1>콤보세트</h1>
+  <label for="setCnt">개수: </label>
+  <input type="number" id="setCnt">
+  <button type="button" class="btn-order">주문</button>
+  <div class="combo-list">
+    <!-- 콤보 세트 이미지가 들어갈 자리 -->
+  </div>
+
+  <script>
+    // 1번
+    const countInput = document.querySelector('#setCnt');
+    const comboList = document.querySelector('.combo-list');
+
+    document.querySelector('.btn-order').addEventListener('click', function () {
+      let imgHtml = '';
+
+      for (let i = 0; i < countInput.value; i++) {
+        imgHtml += '<div>';
+        imgHtml += '<img src="images/popcorn.png" alt="팝콘">';
+        for (let j = 0; j < 2; j++) {
+          imgHtml += '<img src="images/coke.png" alt="콜라">';
+        }
+        imgHtml += '</div>';
+      }
+      comboList.innerHTML = imgHtml;
+    });
+  </script>
+
+  <!-- 2번 -->
+  <h1>행 열 개수 각각 입력받아 테이블 만들기</h1>
+  <button type="button" onclick="createTable()">테이블 생성</button>
+  <div class="table-area">
+    <!-- 표가 들어갈 자리 -->
+  </div>
+
+  <script>
+    // 2번
+    const tableArea = document.querySelector('.table-area');
+
+    function createTable() {
+      const row = prompt('테이블 행의 개수는?');
+      const column = prompt('테이블 열의 개수는?');
+
+      let num = 1;
+      let html = '<table border="1">';
+      for (let i = 0; i < row; i++) {
+        html += '<tr>';
+        for (let j = 0; j < column; j++) {
+          html += `<td>${num++}</td>`;
+        }
+        html += '</tr>';
+      }
+      html += '</table>';
+      tableArea.innerHTML = html;
+    }
+  </script>
+
+  <!-- 3번 -->
+  <h1>귤농장</h1>
+  <button type="button" onclick="getOrange()">체험시작</button>
+  <div class="basket" style="display: flex; flex-wrap: wrap;">
+    <!-- 귤이 들어갈 자리 -->
+  </div>
+
+  <script>
+    // 3번
+    const basketDiv = document.querySelector('.basket');
+
+    function getOrange() {
+      const gram = prompt('몇 그램?');
+      let orangeWeight = 0;
+      let html = '';
+
+      while (gram - orangeWeight >= 10) {
+        orangeWeight += 10;
+
+        html += '<div>';
+        html += `<p>귤 ${orangeWeight}g</p>`;
+        html += '<img src="images/gyul.png" alt="귤">';
+        html += '</div>';
+      }
+      basketDiv.innerHTML = html;
+    }
+  </script>
+</body>
+</html>

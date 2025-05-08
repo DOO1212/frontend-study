@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+
+  </style>
+</head>
+<body>
+  <!-- 1번 -->
+  <h1>홀수? 짝수?</h1>
+  <button type="button" class="btn-add">구슬 추가</button>
+  <button type="button" class="btn-count">홀짝</button>
+  <button type="button" class="btn-clear">초기화</button>
+  <div class="plate">
+    <!-- 구슬이 들어갈 자리 -->
+  </div>
+
+  <script>
+    // 1번
+    const plate = document.querySelector('.plate');
+    const addBtn = document.querySelector('.btn-add');
+    const countBtn = document.querySelector('.btn-count');
+    const clearBtn = document.querySelector('.btn-clear');
+    
+    addBtn.addEventListener('click', function () {
+      console.log(plate.innerHTML);
+      plate.innerHTML += '<div class="marble"></div>';
+    });
+
+    countBtn.addEventListener('click', function () {
+      const marble = document.querySelectorAll('.marble');
+      console.log(marble); // length 속성 확인
+
+      const result = marble.length % 2 === 0 ? '짝수' : '홀수';
+      alert(result);
+    });
+
+    clearBtn.addEventListener('click', function () {
+      plate.innerHTML = '';
+    });
+  </script>
+
+  <!-- 4번 -->
+  <h1>문자 누적하기</h1>
+  <input type="text" id="stackData">
+  <button type="button" class="btn-stack">누적</button>
+  <br><br>
+  <textarea id="resultArea" cols="30" rows="5"></textarea>
+
+  <script>
+    // 4번
+    const stackDataInput = document.querySelector('#stackData');
+    const stackBtn = document.querySelector('.btn-stack');
+    const resultArea = document.querySelector('#resultArea');
+
+    stackBtn.addEventListener('click', function () {
+      resultArea.value += stackDataInput.value;
+      stackDataInput.value = '';
+    });
+  </script>
+</body>
+</html>

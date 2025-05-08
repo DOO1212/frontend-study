@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <img src="images/logo_resize.png" alt="로고" class="logo">
+
+  <h3>자라나라 로고로고</h3>
+  <button type="button" class="btn-sizeup">+</button>
+
+  <h3>이미지 크기 조정</h3>
+  <label for="widthValue">가로: </label>
+  <input type="number" id="widthValue">
+  <br>
+  <label for="heightValue">세로: </label>
+  <input type="number" id="heightValue">
+  <button type="button" class="btn-change">변경</button>
+
+  <script>
+    // 1번
+    const logo = document.querySelector('.logo');
+    const sizeupBtn = document.querySelector('.btn-sizeup');
+
+    sizeupBtn.addEventListener('click', function () {
+      console.log(logo.width, logo.height);
+      
+      const imgWidth = logo.width;
+      const imgHeight = logo.height;
+
+      // 방법1
+      // logo.width = imgWidth + 100;
+      // logo.height = imgHeight + 100;
+
+      // 방법2
+      logo.style.width = `${imgWidth + 100}px`;
+      logo.style.height = `${imgHeight + 100}px`;
+    });
+
+    // 2번
+    const widthInput = document.querySelector('#widthValue');
+    const heightInput = document.querySelector('#heightValue');
+    const changeBtn = document.querySelector('.btn-change');
+
+    changeBtn.addEventListener('click', function () {
+      console.log(widthInput.value, heightInput.value);
+      
+      // 방법1
+      // logo.width = widthInput.value;
+      // logo.height = heightInput.value;
+
+      // 방법2
+      logo.style.width = `${widthInput.value}px`;
+      logo.style.height = `${heightInput.value}px`;
+    });
+  </script>
+</body>
+</html>
