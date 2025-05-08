@@ -18,7 +18,19 @@
     const result = [];
 
     // 풀이5
-    
+    // for (let i = 0; i < str.length; i++) {
+    //   if (str[i] % 2 === 0) {
+    //     result.push('-');
+    //   }
+    //   result.push(str[i]);
+    // }
+    for (const s of str) {
+      if (s % 2 === 0) {
+        result.push('-');
+      }
+      result.push(s);
+    }
+    console.log(result);
   </script>
 </head>
 <body>

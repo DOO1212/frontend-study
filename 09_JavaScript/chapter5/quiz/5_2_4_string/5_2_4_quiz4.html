@@ -19,7 +19,7 @@
     // (아래 샘플 코드의 주석을 해제하고 이어서 풀면 됩니다.)
 
     // 샘플 코드
-    const imgFileExt = ['jpg', 'png', 'gif'];
+    const imgFileExt = ['jpg', 'jpeg', 'png', 'gif'];
     const fileInput = document.querySelector('input[type="file"]');
 
     // 첨부된 파일에 변화가 감지되었을때 'change' 이벤트 발생
@@ -28,9 +28,26 @@
       console.log(fileInput); // file input DOM 요소
       console.log(fileInput.files); // FileList 객체
       console.log(fileInput.files[0]); // File 객체
+      console.log(fileInput.files[0].name); // File name
 
       // 풀이4
-      
+      const fileName = fileInput.files[0].name;
+      const fileExt = fileName.substring(fileName.lastIndexOf('.') + 1).toLowerCase();
+      console.log(fileExt);
+
+      // 하드 코딩 = 관리 불편
+      // if (!(fileExt === 'jpg' || 
+      //     fileExt === 'png' ||
+      //     fileExt === 'gif')) {
+      //   alert('이미지 파일이 아닙니다!');
+      //   this.value = ''; // 파일 선택 초기화
+      // }
+
+      // 배열로 관리하면 편함!
+      if (!imgFileExt.includes(fileExt)) {
+        alert('이미지 파일이 아닙니다!');
+        this.value = ''; // 파일 선택 초기화
+      }
     });
   </script>
 </body>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- * -->
+  <h2>setTimeout() 동작을 취소하려면 5초 안에 버튼을 클릭하세요.</h2>
+	<p>콘솔 패널을 열어 확인하세요.</p>
+  <button type="button" onclick="clearTimeout(myTimeout)">멈추기</button>
+
+  <!-- ** -->
+  <h2>일정 시간 간격으로 값 증감시키기</h2>
+	<p>콘솔 패널을 열어 확인하세요.</p>
+	<button type="button" onclick="clearInterval(counter)">증가 정지</button>
+	<button type="button" onclick="clearInterval(timer)">감소 정지</button>
+
+  <script>
+    // 브라우저 객체 모델(BOM)
+    // 브라우저에 내장된 객체를 가리키고 브라우저를 제어 및 조작 가능
+    // window: 브라우저 객체의 최상위 객체, 아래와 같은 하위 객체를 계층 구조로 포함
+    // - screen: 스크린 관련된 정보 제공(화면 정보)
+    // - location: 현재 브라우저의 위치 정보(URL 정보)
+    // - history: 브라우저에서 웹 서핑을 할 때 기록들을 가짐
+    // - navigator: OS, 브라우저에 대한 다양한 정보를 가짐
+    // - document(DOM): 문서 객체, 웹 문서 관련
+
+
+    // 1. window 객체
+    document.write('<h1>window 객체</h1>');
+
+    // 1) alert()
+    // 경고창을 띄워 경고 메시지를 출력
+    // alert('이것은 alert 창입니다.');
+
+    // 2) confirm()
+    // 확인창을 띄워 진행할지, 종료할지에 대한 진행 여부를 확인
+    // 확인을 누르면 true를 반환
+    // 취소를 누르면 false를 반환
+    // if (confirm('정말 삭제하시겠습니까?')) {
+    //   document.write('삭제 실행<br>');
+    // }
+
+    // 3) prompt()
+    // 질의응답 창을 띄워 문자열을 입력받음
+    // 확인을 누르면 입력한 값을 반환
+    // 취소를 누르면 null을 반환
+    // const txt = prompt('비밀번호를 입력하세요.');
+
+    // if (txt === null) {
+    //   document.write('취소 버튼을 클릭했을 때<br>');
+    // } else if (txt === '') {
+    //   document.write('어떤 값도 입력하지 않고 확인 버튼을 클릭했을 때<br>');
+    // } else if (txt !== '') {
+    //   document.write('값을 입력하고 확인 버튼을 클릭했을 때<br>');
+    // }
+
+    // 4) window.open()
+    // 팝업창(브라우저 새 창/새 탭)을 띄워 지정한 url을 오픈
+    // 예: 광고 팝업 등 - 브라우저에서 팝업 차단을 할 수 있어 open()을 활용한 광고 팝업은 이제 잘 안쓰임
+    // window.open('https://www.google.com', 'googleTab');
+    // window.open('https://www.google.com', 'googleWindow', 'popup');
+    // window.open('https://www.google.com', 'googleWindow', 'width=300, height=400, left=300, top=50');
+
+    // 팝업 창 열고 닫기 예제
+    // open('URL 또는 웹문서', '타겟 또는 이름', '창 옵션');
+    // window.open('winpopup.html', '팝업', 'width=300, height=400, left=300, top=50');
+
+    // 5) setTimeout(), clearTimeout() 
+    // id = setTimeout(): 지정한 시간 뒤에 정의한 함수를 실행
+    // clearTimeout(id): setTimeout으로 설정된 타이머를 지움(위에 * 참조)
+    const myTimeout = setTimeout(function () {
+      console.log('5초 후 프로그램 실행');
+    }, 5000);
+
+    // 6) setInterval(), clearInterval()
+    // id = setInterval(): 지정한 시간 간격마다 정의한 함수를 반복적으로 실행
+    // clearInterval(id): setInterval로 설정된 타이머를 지움(위에 ** 참조)
+    let addNum = 0;
+    let subNum = 1000;
+    
+    const counter = setInterval(function () {
+      addNum++;
+      console.log('addNum: ' + addNum);
+    }, 1000);
+
+    const timer = setInterval(function () {
+      subNum--;
+      console.log('subNum: ' + subNum);
+    }, 1000);
+
+
+    // 2. screen 객체(활용도 낮음)
+    // 사용자의 모니터(화면) 정보를 제공
+    // 예: 모니터 너비나 높이 등
+    document.write('<h1>screen 객체</h1>');
+    document.write(screen.width, '<br>');
+    document.write(screen.height, '<br>');
+    document.write(screen.availWidth, '<br>'); // 작업 표시줄을 제외한 값
+    document.write(screen.availHeight, '<br>'); // 작업 표시줄을 제외한 값
+  </script>
+
+  <!-- *** -->
+  <h2>리다이렉트 하기</h2>
+  <button type="button" onclick="href()">Naver로 이동<br>(href 속성)</button>
+  <button type="button" onclick="assign()">Naver로 이동<br>(assign() 메소드)</button>
+  <button type="button" onclick="replace()">Naver로 이동<br>(replace() 메소드)</button>
+
+  <script>
+    // 3. location 객체
+    // 현재 URL과 관련된 속성과 메소드 제공
+    // 예: 현재 URL 정보(속성), 새로고침(메소드)
+    document.write('<h1>location 객체</h1>');
+    document.write(`origin: ${location.origin}<br>`);
+    document.write(`protocol: ${location.protocol}<br>`);
+    document.write(`host: ${location.host}<br>`);
+    document.write(`hostname: ${location.hostname}<br>`);
+    document.write(`port: ${location.port}<br>`);
+    document.write(`href: ${location.href}<br>`);
+    document.write(`search: ${location.search}<br>`); // 쿼리 스트링 반환
+
+    // location.reload(); // 새로고침
+
+    // 리다이렉트 하기(위에 *** 참조)
+    // 다른 주소나 페이지로 보내기
+    function href() {
+      // 현재 URL을 설정
+      location.href = 'https://www.naver.com';
+    }
+    function assign() {
+      // 새 문서를 로드
+      // 히스토리 쌓임
+      location.assign('https://www.naver.com');
+    }
+    function replace() {
+      // 현재 문서를 새 문서로 교체
+      // 히스토리에서 현재 URL을 제거, 원래 문서로 back 불가
+      location.replace('https://www.naver.com');
+    }
+  </script>
+
+  <!-- **** -->
+  <h2>이전, 다음 페이지로 이동</h2>
+  <button type="button" onclick="">뒤로 가기</button>
+  <button type="button" onclick="">앞으로 가기</button>
+
+  <script>
+    // 4. history 객체
+    // 사용자가 방문한 사이트의 기록을 남기고, 이전과 다음 페이지로 다시 돌아갈 수 있도록 제공
+    document.write('<h1>history 객체</h1>');
+
+    // 이전, 다음 페이지로 이동
+    // 브라우저 뒤로 가기, 앞으로 가기와 동일(위에 **** 참조)
+
+  </script>
+
+  <!-- ***** -->
+  <h2>HTML Geolocation API</h2>
+  <button type="button" onclick="">좌표 얻기</button>
+
+  <script>
+    // 5. navigator 객체
+    // 현재 방문자가 사용하는 브라우저와 운영체제 정보를 제공
+    document.write('<h1>navigator 객체</h1>');
+    document.write(`userAgent: ${navigator.userAgent}<br>`); // 브라우저 및 운영체제에 대한 종합 정보
+
+
+    // Tip! 위치 정보(좌표) 가져오기(위에 ***** 참조)
+    // HTML Geolocation API는 사용자의 위치를 찾는 데 사용
+    // (참고) 위치정보는 스마트폰과 같이 GPS가 탑재된 기기에서 가장 정확함
+    
+    // (참고) watchPosition(), clearWatch()
+    // 사용자의 현재 위치를 반환하고 사용자가 움직일 때마다 업데이트된 위치를 계속해서 반환
+    // (지속적으로 확인하여 사용자의 위치가 변경될 때마다 지정된 콜백 함수를 호출)
+    // 이를 테스트하려면 정확한 GPS 장치(예: 스마트폰)가 필요
+    // navigator.geolocation.watchPosition();
+  </script>
+</body>
+</html>

@@ -11,7 +11,13 @@
     // 연락처를 입력받은 후 정보가 노출되지 않도록 뒤의 네자리는 ****로 출력하세요.
 
     // 풀이2
-    
+    const userName = prompt('당신의 영문 이름은?');
+    const upperName = userName.toUpperCase();
+    document.write(upperName, '<br>');
+
+    const userNum = prompt('당신의 연락처는?');
+    const maskNum = userNum.substring(0, userNum.length - 4) + '****';
+    document.write(maskNum, '<br>');
   </script>
 </head>
 <body>
