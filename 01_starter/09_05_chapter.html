@@ -2,14 +2,6 @@
     // 1. 객체의 정의
     // 여러 데이터들의 묶음
     // 멤버로 속성(데이터, property)과 기능(동작, method)을 가짐
-    // 예: 
-    // 1) 차 - 속성(색상, 배기량, 가격), 기능(달리다, 멈추다, 후진하다)
-    // 2) 사람 - 속성(이름, 나이, 주민번호), 기능(말하다, 걷다, 달리다, 먹다)
-
-    // 이미 쓰고 있던 객체들
-    document.write('데이터'); // document 객체의 write 메소드
-    window.document.write('데이터'); // window 객체: document의 상위 객체(생략 가능)
-    document.write(Math.PI); // Math 객체의 PI 속성
 
     // 2. 자바스크립트 객체의 종류
     // 1) 사용자 정의 객체: 
@@ -21,10 +13,6 @@
     // 예: 브라우저 환경에서는 브라우저 객체(BOM), 문서 객체(DOM), Canvas 등
 
     // 3. 사용자 정의 객체 만들기(2가지 방법)
-    // 1) Object 내장 객체 이용
-    // 변수 = new 객체 생성자 함수();
-    // new: 객체 생성 키워드
-    // 생성한 객체를 사용하기 위해 변수에 저장
 
     // 2) 리터럴 방식을 이용
     const car = {
@@ -34,7 +22,6 @@
         return `car 색상: ${this.color}, 가격: ${this.price}`;
       }
     };
-    document.write('<h1>car 객체 메소드 호출</h1>');
     document.write(car.info(), '<br>');
 
     // 4. 객체 속성 추가, 수정, 삭제
@@ -62,7 +49,6 @@
     console.log(obj.key3.key5()); // key5의 메소드 호출
 
     // 6. 대괄호 표기법으로 속성 값 얻기(특징 2가지)
-    document.write('<h1>대괄호 표기법</h1>');
     const user = {
       name: 'goni',
       age: 30,
@@ -76,10 +62,6 @@
     // 키 값을 변수로 받아 접근하기
     const key = prompt('사용자의 어떤 정보를 얻고 싶으신가요?', 'name');
     document.write(user[key]); // 특징2: 변수나 복잡한 표현식 사용 가능
-
-    // 정리: 대괄호 표기법을 쓰는 이유?
-    // 1) 여러 단어로 이루어진 키에 접근할 때
-    // 2) 키 값을 변수로 받아올 때
 
     // 7. const? 변하지 않는 객체??
     const testUser = {
@@ -168,11 +150,6 @@
     // 2. Math 객체
     // 수학적인 상수와 내장 함수를 가진 객체로 수학 관련 속성과 함수를 제공
     // 다른 객체와 달리 Math는 생성자가 아님. 즉, 객체 생성을 하지 않고 사용 가능 => 정적(static)
-    // Math.속성명;
-    // Math.함수명();
-
-    // 속성
-    document.write(Math.PI, '<br>');
 
     // 1) Math.round()
     // 숫자에 대한 반올림 처리(소수점 첫째 자리 반올림)
@@ -183,21 +160,22 @@
     // 숫자에 대한 무조건 올림 처리(소수점 첫째 자리 올림)
     document.write(Math.ceil(4.9), '<br>');
     document.write(Math.ceil(-4.2), '<br>');
+
     // 실무 사용 사례
-    // - 게시판처럼 페이징 처리가 필요한 곳에서 한 페이지에 보이는 아이템 수를 조절하게 될 때
+    // 게시판처럼 페이징 처리가 필요한 곳에서 한 페이지에 보이는 아이템 수를 조절하게 될 때
     // 전체 아이템이 총 몇 페이지가 되는지 총 페이지 수를 계산해야 하는데
-    // 이때 총 페이지 수 = Math.ceil(총 아이템 수/한 페이지당 보이는 아이템 수);
-    // 예: 50 / 15 = 3.3333333333333335, Math.ceil(3.3333333333333335) = 4
+    // 이때 총 페이지 수 = Math.ceil (총 아이템 수/한 페이지당 보이는 아이템 수);
+    // 예: 50 / 15 = 3.3333333333333335
+    Math.ceil(3.3333333333333335) = 4
 
     // 3) Math.floor()
     // 숫자에 대한 무조건 내림 처리(소수점 첫째 자리 내림)
-    document.write('<h4>floor</h4>');
     document.write(Math.floor(4.9), '<br>');
     document.write(Math.floor(-4.2), '<br>');
+
     // 실무 사용 사례
-    // - 예: 7 * 0.1 !== 0.7
     // 정확한 결과를 얻으려면 아래와 같이 계산
-    // Math.floor(7 * 0.1 * 10) / 10
+    Math.floor(7 * 0.1 * 10) / 10
 
     // 4) Math.trunc()
     // 소수 부분은 무조건 버리고 정수 부분만 반환
@@ -216,41 +194,36 @@
     document.write(Math.pow(8, 2), '<br>');
 
     // (ES7차) 지수 연산자
-    // **은 지수를 뜻함
-    document.write(8 ** 2, '<br>');
-
     // 거듭제곱 연산을 여러 번 결합할 때 유용
     // document.write(Math.pow(Math.pow(2, 2), 2), '<br>');
-    document.write(2 ** 2 ** 2, '<br>');
+    document.write(2 ** 2 ** 2, '<br>'); // 16
 
     // 7) Math.sqrt()
     // 제곱근(square root) 값을 반환
-    document.write(Math.sqrt(64), '<br>');
+    document.write(Math.sqrt(64), '<br>'); // 8
 
     // 8) Math.abs()
     // 절대값(absolute)을 반환. 즉, 무조건 양수로 반환
-    document.write(Math.abs(-4.7), '<br>');
+    document.write(Math.abs(-4.7), '<br>'); // 4.7
 
-    // 9) Math.min(), Math.max()
+    // 9) Math.min(), Math.max() (최소값, 최대값)
     // min()은 가장 작은 값을 반환하고, max()는 가장 큰 값을 반환
-    // 최소값, 최대값
     document.write(Math.min(0, 150, 30, 20, -8, -200), '<br>');
     document.write(Math.max(0, 150, 30, 20, -8, -200), '<br>');
 
     // 10) Math.random()
-    // 0보다 크거나 같고 1보다 작은 범위에서 숫자형 값을 반환
-    // 0.0 이상 1.0 미만의 부동소수점(실수 표현 방법) 난수를 반환
+    // 0.0 이상 1.0 미만의 부동소수점(실수 표현 방법) 난수를 반환(숫자형 값을 반환)
 
-    // 0.0 <= Math.random() < 1.0 (0.0 이상 1.0 미만의 랜덤한 실수)
+    // 0.0 <= Math.random() < 1.0
     document.write(Math.random(), '<br>');
 
-    // 0.0 <= Math.random() * 10 < 10.0 (0.0 이상 10.0 미만의 랜덤한 실수)
+    // 0.0 <= Math.random() * 10 < 10.0
     document.write(Math.random() * 10, '<br>');
 
-    // 0 <= Math.floor(Math.random() * 10) < 10 (0 이상 10 미만의 랜덤한 정수)
+    // 0 <= Math.floor(Math.random() * 10) < 10
     document.write(Math.floor(Math.random() * 10), '<br>');
 
-    // 1 <= Math.floor(Math.random() * 10) + 1 < 11 (1 이상 11 미만(10이하) 의 랜덤한 정수)
+    // 1 <= Math.floor(Math.random() * 10) + 1 < 11
     document.write(Math.floor(Math.random() * 10) + 1, '<br>');
 
     // 실제 실무에서 특정 범위의 랜덤 정수값을 생성하는 경우가 많음
@@ -280,9 +253,8 @@
         break;
     }
 
-    // 1~3 사이의 랜덤한 정수 생성
+    // 1 <= Math.floor(Math.random() * 3) + 1 < 4
     const com = Math.floor(Math.random() * 3) + 1;
-    document.write(`<img src="images/math_img_${com}.jpg">`);
 
     // 컴퓨터가 낸 것 이미지 출력
     document.write(`<img src="images/math_img_${com}.jpg">`);
@@ -290,19 +262,6 @@
     // 내가 낸 것 이미지 출력
     document.write(`<img src="images/math_img_${player}.jpg">`);
 
-    // Quiz: 누가 이겼는지 출력하기
-    // player와 com의 차를 이용
-    // 0이면 비김
-    // 1 또는 -2 이면 내가 이김
-    // 그 외는 내가 짐
-    const whoWin = player - com;
-    if (whoWin === 0) {
-      document.write('비김');
-    } else if (whoWin === 1 || whoWin === -2) {
-      document.write('내가 이겼다!');
-    } else {
-      document.write('내가 졌다!');
-    }
   </script>
 
 ================================================================================  3
@@ -311,37 +270,16 @@
     // 3. Array 객체
     // 여러 데이터를 순차적으로 저장 가능한 객체로 배열을 다룰 때 유용한 속성과 함수를 제공
     // 배열 객체 생성 3가지 방식
-    // 첫번째 방식
-    // 변수 = new Array(값1, 값2, 값3);
-    // const arr1 = new Array(1, 2, 3);
-    
-    // 두번째 방식
-    // 변수 = new Array();
-    // 변수[0] = 값1;
-    // 변수[1] = 값2;
-    // 변수[2] = 값3;
-    // const arr2 = new Array();
-    // arr2[0] = 1;
-    // arr2[1] = 2;
-    // arr2[2] = 3;
     
     // 세번째 방식
     // 변수 = [값1, 값2, 값3]; => 리터럴 방식 (-> 편의성을 위해)
     // const arr3 = [1, 2, 3];
 
-    document.write('<h1>Array 객체</h1>');
     const arr = ['Apple', 'Banana', 'Mango'];
 
     // 배열 요소 변경
     // 인덱스로 접근해서 새로운 요소를 할당
-    arr[0] = 'Kiwi';
-    console.log(arr);
-
-    // 배열 요소 접근
-    document.write('<h4>배열값 가져오기-1</h4>');
-    document.write(arr[0], '<br>');
-    document.write(arr[1], '<br>');
-    document.write(arr[2], '<br>');
+    arr[0] = 'Kiwi'; // ['Kiwi', 'Banana', 'Mango'];
 
     document.write('<h4>배열값 가져오기-2</h4>');
     // Quiz: 일반 for문

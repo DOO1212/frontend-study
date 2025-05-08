@@ -141,10 +141,19 @@
 
 
 
-const ssn = prompt('주민등록번호를 입력하세요.');
-const a = ssn.slice(6,-7);
 
-document.write(a);
+
+const arr = ['Apple', 'Banana', 'Mango'];
+
+// 배열 요소 변경
+// 인덱스로 접근해서 새로운 요소를 할당
+arr[0] = 'Kiwi'; // ['Kiwi', 'Banana', 'Mango'];
+
+// 배열 요소 접근
+document.write('<h4>배열값 가져오기-1</h4>');
+document.write(arr[0], '<br>');
+document.write(arr[1], '<br>');
+document.write(arr[2], '<br>');
 
 
 
