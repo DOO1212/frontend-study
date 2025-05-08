@@ -144,22 +144,28 @@
 
   <!-- **** -->
   <h2>이전, 다음 페이지로 이동</h2>
-  <button type="button" onclick="">뒤로 가기</button>
-  <button type="button" onclick="">앞으로 가기</button>
+  <button type="button" onclick="back()">뒤로 가기</button>
+  <button type="button" onclick="forward()">앞으로 가기</button>
 
   <script>
     // 4. history 객체
     // 사용자가 방문한 사이트의 기록을 남기고, 이전과 다음 페이지로 다시 돌아갈 수 있도록 제공
     document.write('<h1>history 객체</h1>');
+    document.write(`length: ${history.length}`); // 방문 기록에 저장된 URL(페이지) 개수
 
     // 이전, 다음 페이지로 이동
     // 브라우저 뒤로 가기, 앞으로 가기와 동일(위에 **** 참조)
-
+    function back() {
+      history.back();
+    }
+    function forward() {
+      history.forward();
+    }
   </script>
 
   <!-- ***** -->
   <h2>HTML Geolocation API</h2>
-  <button type="button" onclick="">좌표 얻기</button>
+  <button type="button" onclick="getLocation()">좌표 얻기</button>
 
   <script>
     // 5. navigator 객체
@@ -167,11 +173,34 @@
     document.write('<h1>navigator 객체</h1>');
     document.write(`userAgent: ${navigator.userAgent}<br>`); // 브라우저 및 운영체제에 대한 종합 정보
 
+    const info = navigator.userAgent.toLowerCase();
+    let osImg = null;
+    if (info.includes('windows')) {
+      osImg = 'windows.png';
+    } else if (info.includes('macintosh')) {
+      osImg = 'macintosh.png';
+    } else if (info.includes('iphone')) {
+      osImg = 'iphone.png';
+    } else if (info.includes('android')) {
+      osImg = 'android.png';
+    }
+    document.write(`<img src="images/${osImg}">`);
 
     // Tip! 위치 정보(좌표) 가져오기(위에 ***** 참조)
     // HTML Geolocation API는 사용자의 위치를 찾는 데 사용
     // (참고) 위치정보는 스마트폰과 같이 GPS가 탑재된 기기에서 가장 정확함
-    
+    function getLocation() {
+      if (navigator.geolocation) {
+        // getCurrentPosition(): 사용자의 위치를 반환
+        navigator.geolocation.getCurrentPosition(function (position) {
+          console.log(position);
+
+          alert(`위도: ${position.coords.latitude}, 경도: ${position.coords.longitude}`);
+        });
+      } else {
+        alert('이 브라우저에서는 위치정보가 지원되지 않습니다.');
+      }
+    }
     // (참고) watchPosition(), clearWatch()
     // 사용자의 현재 위치를 반환하고 사용자가 움직일 때마다 업데이트된 위치를 계속해서 반환
     // (지속적으로 확인하여 사용자의 위치가 변경될 때마다 지정된 콜백 함수를 호출)

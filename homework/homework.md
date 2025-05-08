@@ -28,3 +28,5 @@ https://devkgn24.notion.site/17dfda8bae57806aa576c71290475235
 5. 함수 과제(2번, 3번 문제 제외(1번 문제만 풀어보세요))
 https://devkgn24.notion.site/17dfda8bae5780b5a52fdfa5f8a8bd2b
 
+6. 내장 객체 과제
+https://devkgn24.notion.site/182fda8bae57805cb227f7d252f3d9cd

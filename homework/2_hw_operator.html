@@ -21,7 +21,27 @@
 
   <script>
     // 1번
+    const plate = document.querySelector('.plate');
+    const addBtn = document.querySelector('.btn-add');
+    const countBtn = document.querySelector('.btn-count');
+    const clearBtn = document.querySelector('.btn-clear');
     
+    addBtn.addEventListener('click', function () {
+      console.log(plate.innerHTML);
+      plate.innerHTML += '<div class="marble"></div>';
+    });
+
+    countBtn.addEventListener('click', function () {
+      const marble = document.querySelectorAll('.marble');
+      console.log(marble); // length 속성 확인
+
+      const result = marble.length % 2 === 0 ? '짝수' : '홀수';
+      alert(result);
+    });
+
+    clearBtn.addEventListener('click', function () {
+      plate.innerHTML = '';
+    });
   </script>
 
   <!-- 4번 -->
@@ -33,7 +53,14 @@
 
   <script>
     // 4번
-    
+    const stackDataInput = document.querySelector('#stackData');
+    const stackBtn = document.querySelector('.btn-stack');
+    const resultArea = document.querySelector('#resultArea');
+
+    stackBtn.addEventListener('click', function () {
+      resultArea.value += stackDataInput.value;
+      stackDataInput.value = '';
+    });
   </script>
 </body>
 </html>

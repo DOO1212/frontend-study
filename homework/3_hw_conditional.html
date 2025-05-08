@@ -34,7 +34,32 @@
 
   <script>
     // 1번
-    
+    const tempInput = document.querySelector('#temp');
+    function checkSeason() {
+      const season = document.querySelector('input[name="season"]:checked').value;
+      const temp = tempInput.value;
+      let msg = '';
+
+      if (season === '봄' || season === '가을') {
+        msg += season;
+      } else if (season === '여름') {
+        msg += season;
+        if (temp >= 35) {
+          msg += ' 폭염 경보';
+        } else if (temp >= 33) {
+          msg += ' 폭염 주의보';
+        }
+      } else if (season === '겨울') {
+        msg += season;
+        if (temp <= -15) {
+          msg += ' 한파 경보';
+        } else if (temp <= -12) {
+          msg += ' 한파 주의보';
+        }
+      }
+
+      alert(msg);
+    }
   </script>
 
   <!-- 2번 -->
@@ -48,7 +73,27 @@
 
   <script>
     // 2번
-    
+    const charSelect = document.querySelector('#charSelect');
+    const charImg = document.querySelector('#charImg');
+
+    function changeCharacter() {
+      console.log(charSelect.value);
+      console.log(typeof charSelect.value);
+
+      let imagePath = '';
+      switch (charSelect.value) {
+        case '1':
+          imagePath = 'images/sponge.png';
+          break;
+        case '2':
+          imagePath = 'images/dung.png';
+          break;
+        case '3':
+          imagePath = 'images/human.png';
+          break;
+      }
+      charImg.src = imagePath;
+    }
   </script>
 </body>
 </html>

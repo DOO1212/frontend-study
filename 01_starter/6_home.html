@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+
+</head>
+<body>
+
+  <button class="change" onclick="changes()">바꾸기</button>
+
+  <script>
+
+    const button = document.querySelector('.change');
+    const bodyTag = document.querySelector('body');
+    
+    function changes() {
+      const color1 = Math.floor(Math.random() * 255);
+      const color2 = Math.floor(Math.random() * 255);
+      const color3 = Math.floor(Math.random() * 255);
+      bodyTag.style.backgroundColor = `rgb(${color1}, ${color2}, ${color3})`;
+    }
+
+  </script>
+</body>
+</html>

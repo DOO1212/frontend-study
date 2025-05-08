@@ -18,7 +18,22 @@
 
   <script>
     // 1번
-    
+    const countInput = document.querySelector('#setCnt');
+    const comboList = document.querySelector('.combo-list');
+
+    document.querySelector('.btn-order').addEventListener('click', function () {
+      let imgHtml = '';
+
+      for (let i = 0; i < countInput.value; i++) {
+        imgHtml += '<div>';
+        imgHtml += '<img src="images/popcorn.png" alt="팝콘">';
+        for (let j = 0; j < 2; j++) {
+          imgHtml += '<img src="images/coke.png" alt="콜라">';
+        }
+        imgHtml += '</div>';
+      }
+      comboList.innerHTML = imgHtml;
+    });
   </script>
 
   <!-- 2번 -->
@@ -30,7 +45,24 @@
 
   <script>
     // 2번
-    
+    const tableArea = document.querySelector('.table-area');
+
+    function createTable() {
+      const row = prompt('테이블 행의 개수는?');
+      const column = prompt('테이블 열의 개수는?');
+
+      let num = 1;
+      let html = '<table border="1">';
+      for (let i = 0; i < row; i++) {
+        html += '<tr>';
+        for (let j = 0; j < column; j++) {
+          html += `<td>${num++}</td>`;
+        }
+        html += '</tr>';
+      }
+      html += '</table>';
+      tableArea.innerHTML = html;
+    }
   </script>
 
   <!-- 3번 -->
@@ -42,7 +74,23 @@
 
   <script>
     // 3번
-    
+    const basketDiv = document.querySelector('.basket');
+
+    function getOrange() {
+      const gram = prompt('몇 그램?');
+      let orangeWeight = 0;
+      let html = '';
+
+      while (gram - orangeWeight >= 10) {
+        orangeWeight += 10;
+
+        html += '<div>';
+        html += `<p>귤 ${orangeWeight}g</p>`;
+        html += '<img src="images/gyul.png" alt="귤">';
+        html += '</div>';
+      }
+      basketDiv.innerHTML = html;
+    }
   </script>
 </body>
 </html>
