@@ -329,8 +329,11 @@
 
 let str = 'Please locate where "locate" occurs!';
 
-pos = str.lastIndexOf('locate'); // 21
-document.write(pos, '<br>');
+
+
+  let  has = str.includes('locate', 15);
+    document.write(has, '<br>');
+    
 
 
 

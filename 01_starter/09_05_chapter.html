@@ -458,7 +458,7 @@
 
     index = fruits.indexOf('Apple', 3); // 4 (검색 시작 위치 지정)
 
-    index = fruits.lastIndexOf('Apple'); // 4 (뒤에서부터 시작)
+    index = fruits.lastIndexOf('Apple'); // 4 (뒤에서부터 시작)(앞에서부터 카운트)
 
     // (ES7차) includes()
     // 지정된 값이 포함된 경우 true를 반환
@@ -505,53 +505,47 @@
     // 문자열 안에 특정 문자열이 존재하는지를 찾는 것은 동일
     // 문자열이 둘 이상 발견되면 제일 마지막에 발견된 문자열의 index를 반환(문자열 끝에서부터 검색)
     // 발견하지 못하면 -1을 반환
-    pos = str.lastIndexOf('locate'); // 21
-    document.write(pos, '<br>');
+    pos = str.lastIndexOf('locate'); // 21 (뒤에서부터 시작)(앞에서부터 카운트)
 
     // 실무 사용 사례: 
     // 파일 확장자 추출을 위한 index를 알아내기 위해
 
     // 검색 시작 위치(index) 지정 가능
-    pos = str.indexOf('locate', 15); // 15번째 index부터 찾기 시작
-    document.write(pos, '<br>');
-    pos = str.lastIndexOf('locate', 15);
-    document.write(pos, '<br>');
+    pos = str.indexOf('locate', 15); // 21 (15번째 index부터 찾기 시작)
+    pos = str.lastIndexOf('locate', 15); // 7 (뒤에서부터 시작)(앞에서부터 카운트)
 
     // (ES6차) includes()
     // 지정된 문자열이 포함된 경우 true를 반환
     // 그렇지 않으면 false를 반환
-    let has = str.includes('locate');
-    document.write(has, '<br>');
-    has = str.includes('locate', 15);
-    document.write(has, '<br>');
+    let has3 = str.includes('locate'); // true
+    let has4 = str.includes('locate', 15); // true
 
     // 실습: 사용자로부터 입력받은 이메일 주소 유효성 검사(정규표현식을 안쓰는 경우)
     // 실무에서는 복잡한 패턴의 경우 정규식 사용!!(사용 시 가독성↓, 간결함↑)
-    document.write('<h4>실습: 이메일 주소 유효성 검사</h4>');
-    // const userEmail = prompt('당신의 이메일 주소는?');
-    // const arrUrl = ['.co.kr', '.com', '.net', '.or.kr', '.go.kr'];
+    const userEmail = prompt('당신의 이메일 주소는?');
+    const arrUrl = ['.co.kr', '.com', '.net', '.or.kr', '.go.kr'];
 
-    // let check1 = false;
-    // let check2 = false;
+    let check1 = false;
+    let check2 = false;
 
-    // // @가 있는지 검사
-    // if (userEmail.indexOf('@') > 0) {
-    //   check1 = true;
-    // }
+    // @가 있는지 검사
+    if (userEmail.indexOf('@') > 0) {
+      check1 = true;
+    }
 
-    // // 도메인 검사
-    // for (let i = 0; i < arrUrl.length; i++) {
-    //   if (userEmail.indexOf(arrUrl[i]) > 2) {
-    //     check2 = true;
-    //     break; // 1개라도 일치하면 멈춤
-    //   }
-    // }
+    // 도메인 검사
+    for (let i = 0; i < arrUrl.length; i++) {
+      if (userEmail.indexOf(arrUrl[i]) > 2) {
+        check2 = true;
+        break; // 1개라도 일치하면 멈춤
+      }
+    }
 
-    // if (check1 && check2) {
-    //   document.write(userEmail, '<br>');
-    // } else {
-    //   alert('이메일 형식이 잘못되었습니다.');
-    // }
+    if (check1 && check2) {
+      document.write(userEmail, '<br>');
+    } else {
+      alert('이메일 형식이 잘못되었습니다.');
+    }
 
     // 4) slice()
     // 시작 위치와 종료 위치를 주면, 문자열에서 해당 부분을 잘라내서 반환
