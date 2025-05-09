@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 새로운 문자열 메소드
+
+    // 1. startsWith()
+    // 전달한 값으로 문자열이 시작하는지 확인
+    const code = 'ABCDEFG';
+
+    console.log(code.startsWith('ABB'));
+    console.log(code.startsWith('abc')); // 대소문자를 구별함
+    console.log(code.startsWith('ABC'));
+    console.log(code.startsWith('DEF', 3)); // 검사 시작점 지정
+
+    // 실무 사용 사례
+    // - 사용자에게 웹사이트 주소를 입력받는 필드가 있고
+    // 사용자가 입력한 웹사이트 주소가 "http"로 시작하는지 확인하고자 할 때 사용하면
+    // 올바른 url 형식으로 입력되었는지 쉽게 확인할 수 있음
+    const url = 'http://website.com';
+    if (url.startsWith('http://') || url.startsWith('https://')) {
+      // 올바른 형식의 웹사이트 url
+      console.log('올바른 형식의 웹사이트 url');
+    } else {
+      // 잘못된 형식의 웹사이트 url
+      console.log('잘못된 형식의 웹사이트 url');
+    }
+
+    // 2. endsWith()
+    // 전달한 값으로 문자열이 끝나는지 확인
+    console.log(code.endsWith('DDD'));
+    console.log(code.endsWith('efg')); // 대소문자를 구별함
+    console.log(code.endsWith('EFG'));
+    console.log(code.endsWith('EF', 6)); // 문자열의 얼마만큼만을 확인할지 길이 지정
+    // 첫 6개 문자인 'ABCDEF'만을 고려, EF로 끝나므로 true
+
+    // 실무 사용 사례
+    // - 게시판에서 새 글 작성 시 첨부파일은 pdf 파일만 첨부할 수 있음
+    // 사용자가 업로드한 파일의 확장자가 pdf인지 확인하고자 할 때 사용하면
+    // pdf 파일인지를 쉽게 확인할 수 있음
+    const file = 'abc.pdf';
+    if (file.endsWith('.pdf')) {
+      console.log('pdf 파일');
+    } else {
+      console.log('다른 형식의 파일');
+    }
+
+    // 3. includes()
+    // 전달한 값이 문자열에 포함되어 있는지 확인
+    console.log(code.includes('ABB'));
+    console.log(code.includes('abc')); // 대소문자를 구별함
+    console.log(code.includes('CDE'));
+    
+    // 4. repeat()
+    // 문자열을 지정한 횟수만큼 반복
+    const hello = 'hi';
+    console.log(hello.repeat(10));
+
+    // 5. padStart(), padEnd()
+    // padStart(문자열의 총 길이, 추가할 문자): 문자열 앞에 지정된 문자를 지정된 길이만큼 추가
+    const text = '5';
+    console.log(text.padStart(4, '0')); // 0005, 총 길이는 4이기 때문에 0이 3개 추가됨
+
+    // padEnd(문자열의 총 길이, 추가할 문자): 문자열 뒤에 지정된 문자를 지정된 길이만큼 추가
+    console.log(text.padEnd(4, '0')); // 5000, 총 길이는 4이기 때문에 0이 3개 추가됨
+    
+    // 실무 사용 사례
+    // - 연(4자리), 월(2자리), 일(2자리) 형식으로 날짜를 구현할 때 Date 객체를 사용하게 됨
+    // 이때 월은 10월 이전, 일은 10일 이전이면 한자리수로 값을 가져오는데,
+    // 사용자에게 보여줘야 하는 날짜 포맷은 월 과일을 2자리로 표현해야 할 때(예: 8월이면 08로 표기)
+    // 이때 padStart(2, '0') 함수를 사용하면 월, 일이 1자리이면 자동으로 0을 앞에 채우기 때문에 쉽게 포맷 처리
+    // - 대학 학번 형태: "입학년도+학과번호+개인번호(순번)"
+    // 예: 21학년도 01번 학과에 입학한 개인번호 004번 학생 => "2101004"
+    // 이때 개인번호(순번)의 경우 실질적으로는 4번인데 학번 체계인 7자리 구성을 위해서 004로 변경되어야 함
+    // 순번.padStart(3, '0')을 사용하면 순번 앞에 자동으로 0이 채워지면서 총 3자리를 만들어 줌
+
+
+    // Quiz 
+    // 1. 다음 코드의 올바른 출력은? 1
+    const code1 = 'ABCDEFGHI';
+    code1.startsWith('EFG', 4);
+
+    // 1) true
+    // 2) false
+
+    // 2. 다음 코드의 올바른 출력은? 2
+    const code2 = 'ABCDEF';
+    code2.endsWith('def');
+
+    // 1) true
+    // 2) false
+
+    // 3. 원하는 값을 출력하도록 코드의 구현을 완성하자.
+    let str = 'Na';
+    let bat = 'BatMan';
+
+    let batman = `${str.repeat(8)} ${bat}`;
+    console.log(batman);
+    // 예상 결과: NaNaNaNaNaNaNaNa BatMan
+
+    // 4. 날짜 포맷을 연(4자리)-월(2자리)-일(2자리) 형식으로 출력하도록 코드의 구현을 완성하자.
+    const now = new Date();
+
+    const year = now.getFullYear();
+    const month = now.getMonth() + 1;
+    const day = now.getDate();
+
+    // const formatMonth = (month + '').padStart(2, '0');
+    const formatMonth = String(month).padStart(2, '0');
+    // const formatMonth = new String(month).padStart(2, '0');
+    // const formatMonth = month.toString().padStart(2, '0');
+    const formatDay = String(day).padStart(2, '0');
+    const formatDate = `${year}-${formatMonth}-${formatDay}`;
+    console.log(formatDate);
+    // 예상 결과: 2025-05-09
+  </script>
+</body>
+</html>

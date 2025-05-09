@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 함수 매개변수의 기본값
+
+    // ES5
+    function getLocation(city, country, continent) {
+      // 전달 받은 값이 없는 경우에 기본값을 제공하는 코드
+      if (country === undefined) {
+      // if (typeof country === 'undefined') {
+        country = '대한민국';
+      }
+      if (continent === undefined) {
+        continent = '아시아';
+      }
+
+      console.log(continent, country, city);
+    }
+
+    getLocation('서울');
+    getLocation('도쿄', '일본');
+
+    // ES6
+    const getLocation2 = (city, country = '대한민국', continent = '아시아') => {
+      console.log(continent, country, city);
+    };
+
+    getLocation2('서울');
+    getLocation2('도쿄', '일본');
+
+
+    // Quiz 
+    // 1. 다음 작업을 수행하는 코드를 작성해보자.
+    // 다음 코드에서 arg1과 arg2를 변경하여 첫 번째는 tax를 나타내고 두 번째는 tip의 값을 나타내게 만들어보자.
+    // tax에는 기본값 0.1을 지정하고 tip에는 기본값 0.05를 지정하자.
+
+    // function calculatePrice(total, arg1, arg2) {
+    //   return total + (total * tax) + (total * tip);
+    // }
+    // calculatePrice(10);
+    // 예상 결과: 11.5
+
+    const calculatePrice = (total, tax = 0.1, tip = 0.05) => {
+      return total + (total * tax) + (total * tip);
+    };
+    console.log(calculatePrice(10));
+
+    // 2. 다음 코드의 올바른 출력은? 3
+    const b = 3;
+    function multiply(a, b = 2) {
+      return a * b;
+    }
+    console.log(multiply(5));
+
+    // 1) 2
+    // 2) 5
+    // 3) 10
+    // 4) 15
+  </script>
+</body>
+</html>
