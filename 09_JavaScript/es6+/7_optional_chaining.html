@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // ?. 옵셔널 체이닝 연산자(ES2020)
+    // 예제1: 사용자를 나타내는 간단한 객체
+    const user1 = {
+      name: 'Goni',
+      age: 37,
+      work: {
+        title: 'IT teacher',
+        location: 'Korea'
+      }
+    };
+
+    const user2 = {
+      name: 'Tom',
+      age: 28
+    };
+
+    // 위 예제에서 사용자의 직업명(title)에 접근하고 싶을 때
+    // work는 선택적 속성(있을수도 있고 없을수도 있는)이므로 다음과 같이 작성
+    let jobTitle;
+    jobTitle = user1.work.title;
+    console.log(jobTitle);
+    // jobTitle = user2.work.title; // 에러 발생
+    console.log(jobTitle);
+
+    // if문 사용
+    // if (user2.work) {
+    //   jobTitle = user2.work.title;
+    // }
+    // 또는 삼항(조건) 연산자 사용
+    // jobTitle = user2.work ? user2.work.title : '';
+    // 또는 논리 연산자 사용
+    jobTitle = user2.work && user2.work.title;
+
+    // 즉, work의 title 속성에 접근하기 전에 user 객체가 실제로 work 속성을 가지고 있는지 확인해야 함
+    // 접근하려는 속성이 깊게 중첩되어 있는 경우 코드가 복잡해지는데
+    // 이 때 옵셔널 체이닝 연산자(?.)를 사용하면 간결함
+    jobTitle = user1.work?.title;
+    console.log(jobTitle);
+    jobTitle = user2.work?.title;
+    console.log(jobTitle);
+    // user 객체가 work 속성의 존재 여부를 묻는 것처럼 읽히고
+    // 존재한다면 title 속성에 접근
+    // 존재하지 않으면(즉, nullish[null | undefined] 이라면) 에러가 발생하는 대신에 undefined를 반환
+
+    // 예제2: 선택적 속성이 깊게 중첩된 경우
+    const ceos = [
+      {
+        name: 'Elon Musk',
+        education: {
+          primary_school: { /* 초등학교 관련 데이터 */ },
+          middle_school: { /* 중학교 관련 데이터 */ },
+          high_school: { /* 고등학교 관련 데이터 */ },
+          university: {
+            name: 'University of Pennsylvania',
+            graduation: {
+              year: 1995
+            }
+          }
+        }
+      },
+      {
+        name: 'Mark Zuckerberg',
+        education: {
+          primary_school: { /* 초등학교 관련 데이터 */ },
+          middle_school: { /* 중학교 관련 데이터 */ },
+          high_school: { /* 고등학교 관련 데이터 */ },
+          university: {
+            name: 'Harvard University'
+          }
+        }
+      }
+    ];
+    // 선택적 속성: education, university, graduation 이라고 가정
+
+    // 대학 졸업 연도에 접근하고 싶다면..?
+    let graduationYear;
+    for (const ceo of ceos) {
+      if (ceo.education &&
+          ceo.education.university &&
+          ceo.education.university.graduation) {
+        graduationYear = ceo.education.university.graduation.year;
+        console.log(graduationYear);
+      }
+    }
+
+    // 옵셔널 체이닝 사용
+    for (const ceo of ceos) {
+      graduationYear = ceo.education?.university?.graduation?.year || '정보 없음';
+      console.log(graduationYear);
+    }
+
+
+    // Quiz
+    // 1. 다음 코드의 올바른 출력은? 3
+    const user = {
+      name: 'Goni',
+      age: 27,
+      work: {
+        title: 'software developer'
+      }
+    };
+
+    const res = user?.work?.location ? user?.work?.location : user?.work?.title;
+    console.log(res);
+
+    // 1) location
+    // 2) title
+    // 3) 'software developer'
+    // 4) undefined
+
+    // 2. 아래와 같은 객체 구조에서 옵셔널 체이닝을 사용하여 대학 전공에 접근해보세요.
+    // (optional 이라는 주석이 붙은 속성은 있을 수도 있고, 없을 수도 있는 선택적 속성임)
+    const person = {
+      name: 'JH Kim',
+      job: 'teacher',
+      education: { // optional
+        high_school: { // optional 
+          name: 'Songdo'
+        },
+        university: { // optional
+          name: 'Incheon Hawaii',
+          major: 'ICE'
+        }
+      }
+    };
+
+    // 옵셔널 체이닝 미사용시
+    let universityMajor;
+    if (person.education && 
+        person.education.university) {
+      universityMajor = person.education.university.major;
+    }
+    console.log(universityMajor);
+    
+    // 옵셔널 체이닝 사용
+    universityMajor = person.education?.university?.major;
+    console.log(universityMajor);
+  </script>
+</body>
+</html>
