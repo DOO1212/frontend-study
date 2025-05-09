@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 1. for of 루프 (ES6차)
+    // 반복 가능한 객체(iterable)의 값을 반복
+    // 예: Array, String, NodeList 등과 같이 반복 가능한 데이터 구조를 반복할 수 있음
+
+    // for (const element of object) {
+    //   실행코드;
+    // }
+    // object: 반복 가능한 객체
+    // element: 객체 속성의 값이 변수에 할당
+
+    // 1) 배열에 대한 반복
+    const fruits = ['apple', 'banana', 'orange'];
+
+    // 일반적인 for문 사용
+    for (let i = 0; i < fruits.length; i++) {
+      console.log(fruits[i]);
+    }
+
+    // for of 루프 사용
+    for (const fruit of fruits) {
+      console.log(fruit);
+    }
+    // => index 값이 굳이 필요하지 않을 때는 for of 자주 사용함
+
+    // 2) 문자열에 대한 반복
+    const language = 'JavaScript';
+
+    for (const str of language) {
+      console.log(str);
+    }
+
+    // 3) 객체에 대한 반복
+    // Object 객체는 iterable이 아니다.
+    const car = {
+      maker: 'BMW',
+      color: 'white',
+      year: '2020'
+    };
+
+    // for (const prop of car) { // TypeError: car is not iterable
+    //   console.log(prop);
+    // }
+
+    // 그럼 for of 루프를 이용한 Object 객체에 대한 반복은 어떻게 구현할까?
+    console.log(Object.keys(car)); // ['maker', 'color', 'year']
+    for (const key of Object.keys(car)) {
+      const value = car[key];
+      console.log(key, value);
+    }
+
+    // (참고) Object.entries(): 객체의 모든 키/값을 쌍을 배열로 가져옴
+    console.log(Object.entries(car));
+    
+    // (참고) 반복 가능한 객체를 구분하는 법
+    // 반복 가능한 객체: Symbol.iterator가 구현된 객체를 말함
+    // Symbol.iterator 메소드가 있는지 확인
+    // 확인 실습:
+    console.log([1, 2, 3]);
+    console.log(new String('abc'));
+
+    // 2. for in 루프 (ES1차)
+    // (순서 없이) 객체의 키를 반복
+    // for (const key in object) {
+    //   실행코드;
+    // }
+    for (const key in car) {
+      const value = car[key];
+      console.log(key, value);
+    }
+
+    // 3. for of와 for in의 차이 정리
+    const list = [4, 5, 6];
+
+    // for in은 키를 반환
+    for (const key in list) {
+      console.log(key); // '0', '1', '2'
+      // console.log(typeof key);
+    }
+
+    // for of는 값을 반환
+    for (const value of list) {
+      console.log(value); // 4, 5, 6
+    }
+
+    // (참고) 배열에는 for in 루프 사용을 지양
+    // 1) 배열에 사용 시 성능이 떨어짐
+    // (객체와 함께 사용할 때 최적화되어 있어서 객체 대비 10~100배 정도 느리다.)
+    // (반복문의 속도가 대체로 빠른 편이기 때문에 병목 지점에서만 문제가 되긴 하지만 이런 차이를 알고 적절히 사용)
+    // 2) 인덱스 순서가 중요한 경우 순서를 보장할 수 없음
+    // 배열 값이 예상한 순서대로 액세스 되지 않을 수 있다.
+    // 순서가 중요한 경우 for 루프, for of 루프 또는 Array.forEach()를 사용 권장
+  </script>
+</body>
+</html>
