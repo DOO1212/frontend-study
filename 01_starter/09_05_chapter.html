@@ -12,18 +12,6 @@
     // 실행 환경에서 추가로 제공되는 객체
     // 예: 브라우저 환경에서는 브라우저 객체(BOM), 문서 객체(DOM), Canvas 등
 
-    // 3. 사용자 정의 객체 만들기(2가지 방법)
-
-    // 2) 리터럴 방식을 이용
-    const car = {
-      color: 'black',
-      price: 50000000,
-      info: function () {
-        return `car 색상: ${this.color}, 가격: ${this.price}`;
-      }
-    };
-    document.write(car.info(), '<br>');
-
     // 4. 객체 속성 추가, 수정, 삭제
     document.write(`제조사: ${car.company}<br>`);
     car.company = 'Hyundai';
@@ -44,20 +32,15 @@
         }
       }
     };
-    // Quiz
-    console.log(obj.key3.key4); // key4의 값 출력
-    console.log(obj.key3.key5()); // key5의 메소드 호출
 
     // 6. 대괄호 표기법으로 속성 값 얻기(특징 2가지)
     const user = {
       name: 'goni',
       age: 30,
-      'my hobby': ['배드민턴', '싸이클', '스노우보드'] // Key값을 띄어쓰기 넣은 형태로는 잘 안씀..
+      'my hobby': ['배드민턴', '싸이클', '스노우보드']
     };
 
-    document.write(`name: ${user.name}<br>`);
-    document.write(`age: ${user['age']}<br>`);
-    document.write(`my hobby: ${user['my hobby']}<br>`); // 특징1: 여러 단어로 이루어진 Key값 사용 가능
+    document.write(`age: ${user['age']}<br>`); //  배열의 [] 가 아님 (배열 아님!!)
 
     // 키 값을 변수로 받아 접근하기
     const key = prompt('사용자의 어떤 정보를 얻고 싶으신가요?', 'name');
@@ -111,21 +94,6 @@
     const nowDate = today.getDate();
     const nowDay = today.getDay(); // 0~6: 일 ~ 토
 
-    // 실습: 특정 날짜까지 D-day 구하기
-    // 남은 일 수(밀리초) = 특정 날짜 객체 시간 - 현재 날짜 객체 시간
-    // 1초 = 1000ms
-    // 1분(60초) = 1000 * 60ms
-    // 1시간(60분) = 1000 * 60 * 60ms
-    // 1일(24시간) = 1000 * 60 * 60 * 24ms
-    const classEndDate = new Date(2025, 9, 24);
-    // const diffTime = classEndDate.getTime() - today.getTime();
-    const diffTime = classEndDate - today; // 내부적으로 시간으로 변환해서 동작
-    // getTime(): 1970년 1월 1일 0시 0분 0초로부터 시작해서 지금까지 몇 ms가 지났는지
-    document.write(`${diffTime}ms<br>`);
-    document.write(`${diffTime / (1000 * 60 * 60 * 24)}일<br>`);
-    const diffDate = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    document.write(`D-day: ${diffDate}일 남았습니다.<br>`);
-
     // 3) Set 함수
     let d = new Date();
     document.write(d, '<br>');
@@ -147,120 +115,10 @@
 ================================================================================  5-2
 
   <script>
+
     // 2. Math 객체
     // 수학적인 상수와 내장 함수를 가진 객체로 수학 관련 속성과 함수를 제공
     // 다른 객체와 달리 Math는 생성자가 아님. 즉, 객체 생성을 하지 않고 사용 가능 => 정적(static)
-
-    // 1) Math.round()
-    // 숫자에 대한 반올림 처리(소수점 첫째 자리 반올림)
-    document.write(Math.round(4.9), '<br>');
-    document.write(Math.round(-4.2), '<br>');
-
-    // 2) Math.ceil()
-    // 숫자에 대한 무조건 올림 처리(소수점 첫째 자리 올림)
-    document.write(Math.ceil(4.9), '<br>');
-    document.write(Math.ceil(-4.2), '<br>');
-
-    // 실무 사용 사례
-    // 게시판처럼 페이징 처리가 필요한 곳에서 한 페이지에 보이는 아이템 수를 조절하게 될 때
-    // 전체 아이템이 총 몇 페이지가 되는지 총 페이지 수를 계산해야 하는데
-    // 이때 총 페이지 수 = Math.ceil (총 아이템 수/한 페이지당 보이는 아이템 수);
-    // 예: 50 / 15 = 3.3333333333333335
-    Math.ceil(3.3333333333333335) = 4
-
-    // 3) Math.floor()
-    // 숫자에 대한 무조건 내림 처리(소수점 첫째 자리 내림)
-    document.write(Math.floor(4.9), '<br>');
-    document.write(Math.floor(-4.2), '<br>');
-
-    // 실무 사용 사례
-    // 정확한 결과를 얻으려면 아래와 같이 계산
-    Math.floor(7 * 0.1 * 10) / 10
-
-    // 4) Math.trunc()
-    // 소수 부분은 무조건 버리고 정수 부분만 반환
-    document.write(Math.trunc(4.9), '<br>');
-    document.write(Math.trunc(-4.2), '<br>');
-
-    // 5) Math.sign()
-    // 숫자가 양수인지 음수인지 확인하는 용도로 사용
-    // 양수이면 1, 음수이면 -1, 0이면 0을 반환
-    document.write(Math.sign(-4), '<br>');
-    document.write(Math.sign(0), '<br>');
-    document.write(Math.sign(4), '<br>');
-
-    // 6) Math.pow()
-    // 거듭제곱(power)한 값을 반환
-    document.write(Math.pow(8, 2), '<br>');
-
-    // (ES7차) 지수 연산자
-    // 거듭제곱 연산을 여러 번 결합할 때 유용
-    // document.write(Math.pow(Math.pow(2, 2), 2), '<br>');
-    document.write(2 ** 2 ** 2, '<br>'); // 16
-
-    // 7) Math.sqrt()
-    // 제곱근(square root) 값을 반환
-    document.write(Math.sqrt(64), '<br>'); // 8
-
-    // 8) Math.abs()
-    // 절대값(absolute)을 반환. 즉, 무조건 양수로 반환
-    document.write(Math.abs(-4.7), '<br>'); // 4.7
-
-    // 9) Math.min(), Math.max() (최소값, 최대값)
-    // min()은 가장 작은 값을 반환하고, max()는 가장 큰 값을 반환
-    document.write(Math.min(0, 150, 30, 20, -8, -200), '<br>');
-    document.write(Math.max(0, 150, 30, 20, -8, -200), '<br>');
-
-    // 10) Math.random()
-    // 0.0 이상 1.0 미만의 부동소수점(실수 표현 방법) 난수를 반환(숫자형 값을 반환)
-
-    // 0.0 <= Math.random() < 1.0
-    document.write(Math.random(), '<br>');
-
-    // 0.0 <= Math.random() * 10 < 10.0
-    document.write(Math.random() * 10, '<br>');
-
-    // 0 <= Math.floor(Math.random() * 10) < 10
-    document.write(Math.floor(Math.random() * 10), '<br>');
-
-    // 1 <= Math.floor(Math.random() * 10) + 1 < 11
-    document.write(Math.floor(Math.random() * 10) + 1, '<br>');
-
-    // 실제 실무에서 특정 범위의 랜덤 정수값을 생성하는 경우가 많음
-    // 자주 쓰면 함수로 만들어 놓기
-    function getRandom(min, max) {
-      return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
-    document.write(getRandom(1, 10), '<br>');
-
-    // 실습: 가위, 바위, 보 맞추기
-    const select = prompt('가위, 바위, 보 중 선택하세요.', '가위');
-    let player;
-
-    switch (select) {
-      case '가위':
-        player = 1;
-        break;
-      case '바위':
-        player = 2;
-        break;
-      case '보':
-        player = 3;
-        break;
-      default:
-        alert('잘못 작성하셨습니다.');
-        location.reload(); // 새로고침
-        break;
-    }
-
-    // 1 <= Math.floor(Math.random() * 3) + 1 < 4
-    const com = Math.floor(Math.random() * 3) + 1;
-
-    // 컴퓨터가 낸 것 이미지 출력
-    document.write(`<img src="images/math_img_${com}.jpg">`);
-
-    // 내가 낸 것 이미지 출력
-    document.write(`<img src="images/math_img_${player}.jpg">`);
 
   </script>
 
@@ -268,13 +126,6 @@
 
   <script>
     // 3. Array 객체
-
-    // 여러 데이터를 순차적으로 저장 가능한 객체로 배열을 다룰 때 유용한 속성과 함수를 제공
-    // 배열 객체 생성 3가지 방식
-    
-    // 세번째 방식
-    // 변수 = [값1, 값2, 값3]; => 리터럴 방식 (-> 편의성을 위해)
-    // const arr3 = [1, 2, 3];
 
     const arr = ['Apple', 'Banana', 'Mango'];
 
@@ -295,51 +146,6 @@
       document.write(element + i + '<br>');
     });
 
-    // 1) toString()
-    // 배열 안의 모든 요소를 쉼표(,)를 이용해 결합해서 하나의 문자열로 반환
-    let fruits = ['Banana', 'Orange', 'Apple', 'Mango']; // Banana,Orange,Apple,Mango
-    
-    // 2) join()
-    // 배열 안의 모든 요소를 지정한 문자를 이용해 결합해서 하나의 문자열로 반환
-    console.log(fruits.join(' * ')); // Banana * Orange * Apple * Mango
-
-    // 3) pop()
-    // 배열에서 마지막 요소를 제거하고, 마지막 요소를 반환
-    // 원본 배열이 변경됨
-    let x = fruits.pop();
-    console.log(x); // Mango
-    console.log(fruits); // ['Banana', 'Orange', 'Apple']
-
-    // 4) shift()
-    // 배열에서 첫 번째 요소를 제거하고, 첫 번째 요소를 반환
-    // 원본 배열이 변경됨
-    x = fruits.shift();
-    console.log(x); // Banana
-    console.log(fruits); // ['Orange', 'Apple', 'Mango']
-
-    // 5) push()
-    // 배열에 새로운 요소를 추가하고, 배열의 길이를 반환
-    // 원본 배열이 변경됨
-    let ln = fruits.push('Mango');
-    console.log(fruits); // (5) ['Banana', 'Orange', 'Apple', 'Mango', 'Mango']
-    console.log(ln); // 5
-
-    // 실무 사용 사례: 
-    // - 쇼핑몰에서 장바구니 기능을 구현할 때 장바구니에 제품 목록을 배열로 저장할 수 있음
-    // 고객이 제품을 선택하고 장바구니 추가 버튼을 누를 때마다 배열의 push() 함수를 이용해서 추가
-
-    // 6) unshift()
-    // 배열의 맨 앞에 요소를 추가하고, 배열의 길이를 반환
-    // 원본 배열이 변경됨
-    ln = fruits.unshift('Banana');
-    console.log(fruits); // (5) ['Banana', 'Banana', 'Orange', 'Apple', 'Mango']
-    console.log(ln); // 5
-
-    // 실무 사용 사례: 
-    // - 데이터베이스에서 지역 목록을 가져온 후, 가져온 지역 목록을 <select> 태그의 <option> 태그로 추가하려고 할 때
-    // 사용자에게 제일 먼저 보이는 옵션은 '지역을 선택하세요'라는 정보성 옵션을 구성하는 경우가 많음
-    // 이럴 때 데이터베이스에서 가져온 목록의 배열 첫 요소로 '선택하세요'라는 정보성 옵션을 unshift() 함수로 쉽게 추가
-
     // 7) splice()
     // 새로운 요소를 특정 위치에 추가하거나 기존 요소를 삭제할 수도 있음
     // 원본 배열이 변경됨
@@ -353,15 +159,6 @@
     // - 일반적으로 테이블 목록 같은 데이터는 배열 형태로 관리됨
     // 테이블에서 특정 행을 선택하고 '행 추가' 버튼을 누르면 현재 선택된 행의 인덱스 번호를 기준으로 새로운 행을 추가해야 함
     // 이때 splice() 함수를 사용
-
-    // 8) concat()
-    // 2개 이상의 배열을 하나의 배열로 결합
-    // 새로운 배열로 반환
-    const arr1 = ['Cecilie', 'Lone'];
-    const arr2 = ['Emil', 'Tobias', 'Linus'];
-    const arr3 = ['Robin', 'Morgan'];
-    const myChildren = arr1.concat(arr2, arr3);
-    console.log(myChildren); // (7) ['Cecilie', 'Lone', 'Emil', 'Tobias', 'Linus', 'Robin', 'Morgan']
 
     // 9) slice()
     // 지정된 시작과 끝 위치(전까지) 구간만큼 잘라내서 반환

@@ -375,7 +375,7 @@
     result = number % 2 === 0 ? '짝수' : '홀수';
 
   </script>
-  
+
 ================================================================================
 
   <script>
@@ -740,18 +740,6 @@
       bodyTag.style.backgroundColor = colors[i];
     }
 
-    // 함수(인자값1, 인자값2, ...);
-    const a = function (name, area) { // 외부에서 받을 데이터가 있으면 매개변수 선언
-
-    document.write(`${name}<br>`);
-    document.write(`${area}<br><br>`);
-
-    }
-
-    a('김재현', '영등포'); // 인수(인자값, 매개값)을 넘겨줌
-    a('김재현'); // 꼭 인자값 수를 맞출 필요는 없음!
-    a('김재현', '영등포', '무의미한 데이터');
-
     // 로그인 함수 만들기 실습
     const dbUser = {
       id: 'goni',
@@ -786,26 +774,18 @@
     // 데이터(결과값)를 반환
     // 함수를 강제 종료
 
-    //   실행코드2; (실행X)
-    // }
-    function sum(num1, num2) {
-      return num1 + num2;
-    }
-    const result = sum(10, 20);
-    document.write(`두 수의 합은 ${result}<br>`);
-
     // 여러 과목의 점수를 입력받아 평균 점수 구하기
     // const subjects = ['국어', '영어', '수학'];
 
-    // function testAvg(arrData) {
-    //   let sum = 0;
-    //   for (let i = 0; i < arrData.length; i++) {
-    //     sum += Number(prompt(arrData[i] + ' 점수는?', '0'));
-    //   }
+    function testAvg(arrData) {
+      let sum = 0;
+      for (let i = 0; i < arrData.length; i++) {
+        sum += Number(prompt(arrData[i] + ' 점수는?', '0'));
+      }
 
-    //   return sum / arrData.length;
-    // }
-    // document.write(`평균 점수는 ${testAvg(subjects)}점 입니다.<br>`);
+      return sum / arrData.length;
+    }
+    document.write(`평균 점수는 ${testAvg(subjects)}점 입니다.<br>`);
 
     // Quiz: 이전/다음 버튼으로 이미지를 넘기는 gallery() 함수 만들기
     // 위 *** 참조
