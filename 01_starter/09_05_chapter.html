@@ -170,44 +170,20 @@
     const citrus2 = fruits.slice(1, 3); // 1 ~ 2
     console.log(citrus2); // (2) ['Orange', 'Lemon']
 
-    // 10) sort()
-    // 배열에 문자형 데이터가 있는 경우 오름차순으로 정렬
-    // 원본 배열이 변경됨
-    fruits = ['Banana', 'Orange', 'Apple', 'Mango'];
-    fruits.sort(); // (4) ['Apple', 'Banana', 'Mango', 'Orange']
-
     // 배열 안에 숫자형 데이터가 있더라도 기본적으로는 문자로 인식해서 오름차순으로 정렬
     const points = [40, 100, 1, 5, 25, 10];
-    points.sort();
-    console.log(points); // [1, 10, 100, 25, 40, 5]
-    // '25'는 '100'보다 크다. 왜냐하면 '2'가 '1'보다 크기 때문
+
     // 그래서 숫자 값으로 정렬하려면 정렬 (비교) 함수를 정의해서 사용해야 함
     points.sort(function(a, b) {
       return a - b;
-    });
-    console.log(points); // [1, 5, 10, 25, 40, 100]
+    }); // [1, 5, 10, 25, 40, 100]
 
-    // 정렬 원리
-    // returned (negative, zero, positive) value
-    // 음수가 나오면 a, b 순으로 두 요소의 위치를 바꾸지 않음
-    // 양수가 나오면 b, a 순으로 두 요소의 위치를 바꿈
-    // 0이 나오면 변화 없음
-    // Step 1: 첫 번째와 두 번째 요소를 비교. 40 - 100 = -60 음수이므로 두 요소의 위치를 바꾸지 않음
-    // Step 2: 두 번째와 세 번째 요소를 비교. 100 - 1 = 99 양수이므로 두 요소의 위치를 바꿈
-    // Step 3: 세 번째와 네 번째 요소를 비교. 100 - 5 = 95 양수이므로 두 요소의 위치를 바꿈
-    // Step 4: 네 번째와 다섯 번째 요소를 비교. 100 - 25 = 75 양수이므로 두 요소의 위치를 바꿈
-    // Step 5: 다섯 번째와 여섯 번째 요소를 비교. 100 - 10 = 90 양수이므로 두 요소의 위치를 바꿈
-    // Step 6: 1번에서 5번 과정을 반복적으로 수행하면서 더 이상 요소 간의 위치 변경이 없을 때까지 진행
-    // Step 7: 최종적으로 [1, 5, 10, 25, 40, 100] 결과를 얻음
-
-    // Quiz: 숫자 데이터 내림차순 정렬하기
+    // 숫자 데이터 내림차순 정렬하기
     points.sort(function(a, b) {
       return b - a;
     });
 
     // 활용 Tip!
-    // 실무에서는 Object의 특정 키를 기준으로 sort() 함수를 사용하는 경우가 많음
-    // 예: 쇼핑몰 상품 목록에서 가격 높은 순, 낮은 순, 리뷰 많은 순, 누적 판매 순
     // Quiz: 아래 사람들을 점수가 높은 순으로 정렬하기
     const persons = [
       {
@@ -236,14 +212,6 @@
       return b.point - a.point;
     });
     console.log(persons); // point 높은 순으로 정렬
-
-    // 11) reverse()
-    // 배열의 순서를 반대로 바꿈
-    // 원본 배열이 변경됨
-    // 보통 정렬된 배열을 역순으로 정렬할 때 사용
-    fruits = ['Banana', 'Orange', 'Apple', 'Mango'];
-    fruits.sort(); // (4) ['Apple', 'Banana', 'Mango', 'Orange']
-    fruits.reverse(); // (4) ['Orange', 'Mango', 'Banana', 'Apple']
 
     // 12) indexOf(), lastIndexOf()
     // 배열 안에 특정 요소가 존재하는지를 찾고, 
