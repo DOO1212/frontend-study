@@ -1,0 +1,761 @@
+  <script>
+
+    // var, let, const
+    
+  </script>
+
+================================================================================ 1
+
+  <script>
+    // 화살표 함수
+    // 화살표(=>)를 사용해서 함수를 선언하는 방법
+    // () => {};
+
+    // ES5에서 일반적인 방법
+    // 함수 선언문
+    function hello(name) {
+      return 'hello ' + name;
+    }
+
+    // 함수 표현식
+    const hello2 = function (name) {
+      return 'hello ' + name;
+    };
+
+    // 화살표 함수로 바꾸면
+    const hello3 = (name) => {
+      return 'hello ' + name;
+    };
+
+    // 매개변수가 하나만 있으면 괄호 생략
+    const hello4 = name => {
+      return 'hello ' + name;
+    };
+
+    // 매개변수가 전혀 없으면 빈 괄호
+    const hello5 = () => {
+      return 'hello';
+    };
+
+    // 암시적 반환
+    // 리턴문 한 줄만 있을 경우 중괄호(함수 블록)랑 return 키워드 둘 다 생략 가능
+    const hello6 = name => 'hello ' + name; // hello 재현
+
+    // 객체를 암시적으로 반환하기
+    function getFavoriteMovie() {
+      return {
+        title: 'Inception',
+        year: '2010',
+        director: 'Nolan',
+        rating: 9.6
+      };
+    }
+    console.log(getFavoriteMovie());
+    
+    // 객체를 소괄호로 감싸야한다.
+    // 그렇지 않으면 {}를 함수의 실행 블록으로 인식해서 에러가 발생함
+    const getFavoriteMovie2 = () => ({
+      title: 'Inception',
+      year: '2010',
+      director: 'Nolan',
+      rating: 9.6
+    });
+    console.log(getFavoriteMovie2());
+
+    // Quiz: 화살표 함수로 변경하기
+    // Quiz1
+    function add(num1, num2) {
+      return num1 + num2;
+    }
+    
+    // 풀이1
+    const add2 = (num1, num2) => num1 + num2;
+
+    // Quiz2
+    function ask(question, yes, no) {
+      if (confirm(question)) yes();
+      else no();
+    }
+
+    ask(
+      '동의하십니까?',
+      function() { alert('동의하셨습니다.'); },
+      function() { alert('취소 버튼을 누르셨습니다.'); }
+    );
+    
+    // 풀이2
+    const ask2 = (question, yes, no) => {
+      if (confirm(question)) yes();
+      else no();
+    };
+
+    ask2(
+      '동의하십니까?',
+      () => alert('동의하셨습니다.'),
+      () => alert('취소 버튼을 누르셨습니다.')
+    );
+    // 동작에 영향을 미치지 않기에 {} 생략 가능
+  </script>
+
+================================================================================ 2
+
+  <script>
+    // 함수 매개변수의 기본값
+
+    // ES5
+    function getLocation(city, country, continent) {
+      // 전달 받은 값이 없는 경우에 기본값을 제공하는 코드
+      if (country === undefined) {
+      // if (typeof country === 'undefined') {
+        country = '대한민국';
+      }
+      if (continent === undefined) {
+        continent = '아시아';
+      }
+
+      console.log(continent, country, city);
+    }
+
+    getLocation('서울');
+    getLocation('도쿄', '일본');
+
+    // ES6
+    const getLocation2 = (city, country = '대한민국', continent = '아시아') => {
+      console.log(continent, country, city);
+    };
+
+    getLocation2('서울');
+    getLocation2('도쿄', '일본');
+
+
+    // Quiz 
+    // 1. 다음 작업을 수행하는 코드를 작성해보자.
+    // 다음 코드에서 arg1과 arg2를 변경하여 첫 번째는 tax를 나타내고 두 번째는 tip의 값을 나타내게 만들어보자.
+    // tax에는 기본값 0.1을 지정하고 tip에는 기본값 0.05를 지정하자.
+
+    // function calculatePrice(total, arg1, arg2) {
+    //   return total + (total * tax) + (total * tip);
+    // }
+    // calculatePrice(10);
+    // 예상 결과: 11.5
+
+    const calculatePrice = (total, tax = 0.1, tip = 0.05) => {
+      return total + (total * tax) + (total * tip);
+    };
+    console.log(calculatePrice(10));
+
+    // 2. 다음 코드의 올바른 출력은? 3
+    const b = 3;
+    function multiply(a, b = 2) {
+      return a * b;
+    }
+    console.log(multiply(5));
+
+    // 1) 2
+    // 2) 5
+    // 3) 10
+    // 4) 15
+  </script>
+
+================================================================================ 3
+
+  <script>
+    // 새로운 문자열 메소드
+
+    // 1. startsWith()
+    // 전달한 값으로 문자열이 시작하는지 확인
+    const code = 'ABCDEFG';
+
+    console.log(code.startsWith('ABB'));
+    console.log(code.startsWith('abc')); // 대소문자를 구별함
+    console.log(code.startsWith('ABC'));
+    console.log(code.startsWith('DEF', 3)); // 검사 시작점 지정
+
+    // 실무 사용 사례
+    // - 사용자에게 웹사이트 주소를 입력받는 필드가 있고
+    // 사용자가 입력한 웹사이트 주소가 "http"로 시작하는지 확인하고자 할 때 사용하면
+    // 올바른 url 형식으로 입력되었는지 쉽게 확인할 수 있음
+    const url = 'http://website.com';
+    if (url.startsWith('http://') || url.startsWith('https://')) {
+      // 올바른 형식의 웹사이트 url
+      console.log('올바른 형식의 웹사이트 url');
+    } else {
+      // 잘못된 형식의 웹사이트 url
+      console.log('잘못된 형식의 웹사이트 url');
+    }
+
+    // 2. endsWith()
+    // 전달한 값으로 문자열이 끝나는지 확인
+    console.log(code.endsWith('DDD'));
+    console.log(code.endsWith('efg')); // 대소문자를 구별함
+    console.log(code.endsWith('EFG'));
+    console.log(code.endsWith('EF', 6)); // 문자열의 얼마만큼만을 확인할지 길이 지정
+    // 첫 6개 문자인 'ABCDEF'만을 고려, EF로 끝나므로 true
+
+    // 실무 사용 사례
+    // - 게시판에서 새 글 작성 시 첨부파일은 pdf 파일만 첨부할 수 있음
+    // 사용자가 업로드한 파일의 확장자가 pdf인지 확인하고자 할 때 사용하면
+    // pdf 파일인지를 쉽게 확인할 수 있음
+    const file = 'abc.pdf';
+    if (file.endsWith('.pdf')) {
+      console.log('pdf 파일');
+    } else {
+      console.log('다른 형식의 파일');
+    }
+
+    // 3. includes()
+    // 전달한 값이 문자열에 포함되어 있는지 확인
+    console.log(code.includes('ABB'));
+    console.log(code.includes('abc')); // 대소문자를 구별함
+    console.log(code.includes('CDE'));
+    
+    // 4. repeat()
+    // 문자열을 지정한 횟수만큼 반복
+    const hello = 'hi';
+    console.log(hello.repeat(10));
+
+    // 5. padStart(), padEnd()
+    // padStart(문자열의 총 길이, 추가할 문자): 문자열 앞에 지정된 문자를 지정된 길이만큼 추가
+    const text = '5';
+    console.log(text.padStart(4, '0')); // 0005, 총 길이는 4이기 때문에 0이 3개 추가됨
+
+    // padEnd(문자열의 총 길이, 추가할 문자): 문자열 뒤에 지정된 문자를 지정된 길이만큼 추가
+    console.log(text.padEnd(4, '0')); // 5000, 총 길이는 4이기 때문에 0이 3개 추가됨
+    
+    // 실무 사용 사례
+    // - 연(4자리), 월(2자리), 일(2자리) 형식으로 날짜를 구현할 때 Date 객체를 사용하게 됨
+    // 이때 월은 10월 이전, 일은 10일 이전이면 한자리수로 값을 가져오는데,
+    // 사용자에게 보여줘야 하는 날짜 포맷은 월 과일을 2자리로 표현해야 할 때(예: 8월이면 08로 표기)
+    // 이때 padStart(2, '0') 함수를 사용하면 월, 일이 1자리이면 자동으로 0을 앞에 채우기 때문에 쉽게 포맷 처리
+    // - 대학 학번 형태: "입학년도+학과번호+개인번호(순번)"
+    // 예: 21학년도 01번 학과에 입학한 개인번호 004번 학생 => "2101004"
+    // 이때 개인번호(순번)의 경우 실질적으로는 4번인데 학번 체계인 7자리 구성을 위해서 004로 변경되어야 함
+    // 순번.padStart(3, '0')을 사용하면 순번 앞에 자동으로 0이 채워지면서 총 3자리를 만들어 줌
+
+
+    // Quiz 
+    // 1. 다음 코드의 올바른 출력은? 1
+    const code1 = 'ABCDEFGHI';
+    code1.startsWith('EFG', 4);
+
+    // 1) true
+    // 2) false
+
+    // 2. 다음 코드의 올바른 출력은? 2
+    const code2 = 'ABCDEF';
+    code2.endsWith('def');
+
+    // 1) true
+    // 2) false
+
+    // 3. 원하는 값을 출력하도록 코드의 구현을 완성하자.
+    let str = 'Na';
+    let bat = 'BatMan';
+
+    let batman = `${str.repeat(8)} ${bat}`;
+    console.log(batman);
+    // 예상 결과: NaNaNaNaNaNaNaNa BatMan
+
+    // 4. 날짜 포맷을 연(4자리)-월(2자리)-일(2자리) 형식으로 출력하도록 코드의 구현을 완성하자.
+    const now = new Date();
+
+    const year = now.getFullYear();
+    const month = now.getMonth() + 1;
+    const day = now.getDate();
+
+    // const formatMonth = (month + '').padStart(2, '0');
+    const formatMonth = String(month).padStart(2, '0');
+    // const formatMonth = new String(month).padStart(2, '0');
+    // const formatMonth = month.toString().padStart(2, '0');
+    const formatDay = String(day).padStart(2, '0');
+    const formatDate = `${year}-${formatMonth}-${formatDay}`;
+    console.log(formatDate);
+    // 예상 결과: 2025-05-09
+  </script>
+
+================================================================================ 4
+
+  <script>
+    // 1. for of 루프 (ES6차)
+    // 반복 가능한 객체(iterable)의 값을 반복
+    // 예: Array, String, NodeList 등과 같이 반복 가능한 데이터 구조를 반복할 수 있음
+
+    // for (const element of object) {
+    //   실행코드;
+    // }
+    // object: 반복 가능한 객체
+    // element: 객체 속성의 값이 변수에 할당
+
+    // 1) 배열에 대한 반복
+    const fruits = ['apple', 'banana', 'orange'];
+
+    // 일반적인 for문 사용
+    for (let i = 0; i < fruits.length; i++) {
+      console.log(fruits[i]);
+    }
+
+    // for of 루프 사용
+    for (const fruit of fruits) {
+      console.log(fruit);
+    }
+    // => index 값이 굳이 필요하지 않을 때는 for of 자주 사용함
+
+    // 2) 문자열에 대한 반복
+    const language = 'JavaScript';
+
+    for (const str of language) {
+      console.log(str);
+    }
+
+    // 3) 객체에 대한 반복
+    // Object 객체는 iterable이 아니다.
+    const car = {
+      maker: 'BMW',
+      color: 'white',
+      year: '2020'
+    };
+
+    // for (const prop of car) { // TypeError: car is not iterable
+    //   console.log(prop);
+    // }
+
+    // 그럼 for of 루프를 이용한 Object 객체에 대한 반복은 어떻게 구현할까?
+    console.log(Object.keys(car)); // ['maker', 'color', 'year']
+    for (const key of Object.keys(car)) {
+      const value = car[key];
+      console.log(key, value);
+    }
+
+    // (참고) Object.entries(): 객체의 모든 키/값을 쌍을 배열로 가져옴
+    console.log(Object.entries(car));
+    
+    // (참고) 반복 가능한 객체를 구분하는 법
+    // 반복 가능한 객체: Symbol.iterator가 구현된 객체를 말함
+    // Symbol.iterator 메소드가 있는지 확인
+    // 확인 실습:
+    console.log([1, 2, 3]);
+    console.log(new String('abc'));
+
+    // 2. for in 루프 (ES1차)
+    // (순서 없이) 객체의 키를 반복
+    // for (const key in object) {
+    //   실행코드;
+    // }
+    for (const key in car) {
+      const value = car[key];
+      console.log(key, value);
+    }
+
+    // 3. for of와 for in의 차이 정리
+    const list = [4, 5, 6];
+
+    // for in은 키를 반환
+    for (const key in list) {
+      console.log(key); // '0', '1', '2'
+      // console.log(typeof key);
+    }
+
+    // for of는 값을 반환
+    for (const value of list) {
+      console.log(value); // 4, 5, 6
+    }
+
+    // (참고) 배열에는 for in 루프 사용을 지양
+    // 1) 배열에 사용 시 성능이 떨어짐
+    // (객체와 함께 사용할 때 최적화되어 있어서 객체 대비 10~100배 정도 느리다.)
+    // (반복문의 속도가 대체로 빠른 편이기 때문에 병목 지점에서만 문제가 되긴 하지만 이런 차이를 알고 적절히 사용)
+    // 2) 인덱스 순서가 중요한 경우 순서를 보장할 수 없음
+    // 배열 값이 예상한 순서대로 액세스 되지 않을 수 있다.
+    // 순서가 중요한 경우 for 루프, for of 루프 또는 Array.forEach()를 사용 권장
+  </script>
+
+================================================================================ 5
+
+<body>
+  <!-- * -->
+  <h2>입력한 값보다 나이가 많은 사람 찾기</h2>
+  <input type="number" id="ageToCheck" value="30">
+  <button type="button" onclick="searchFunc()">검색</button>
+
+  <script>
+    // 유용한 배열 메소드(ES5)
+
+    // 1. array.map(function (currentValue, index) {})
+    // 기존 배열의 요소를 이용하여 새로운 배열을 만듦
+    // 기존 배열의 각 요소에 대해 한 번씩 함수를 호출하고 반환하는 값으로 새로운 배열을 만듦
+    // 원래 배열을 변경하지 않음
+
+    // 배열의 모든 값에 10을 곱한 새 배열 만들기
+    const numbers = [65, 44, 12, 4];
+    // 예상 결과: [650, 440, 120, 40]
+    const newNumbers = numbers.map((num, index) => {
+      return num * 10;
+    });
+    // const newNumbers = numbers.map(num => num * 10);
+    console.log(newNumbers);
+
+    // Quiz
+    // 각 사람의 전체 이름을 가진 새 배열 만들기
+    // 예상 결과: ['Goni Kim', 'Zero Cho', 'Velopert Kim']
+    const persons = [
+      { firstName: 'Goni', lastName: 'Kim' },
+      { firstName: 'Zero', lastName: 'Cho' },
+      { firstName: 'Velopert', lastName: 'Kim' }
+    ];
+    
+    const newPersons = persons.map((item) => {
+      console.log(item);
+      // return item.firstName + ' ' + item.lastName;
+      return `${item.firstName} ${item.lastName}`;
+    });
+    // const newPersons = persons.map(item => `${item.firstName} ${item.lastName}`);
+    console.log(newPersons);
+
+    // 2. array.filter(function(currentValue, index))
+    // 제공된 테스트 함수를 통과하는 요소들만 따로 추출하여 새 배열을 만듦
+    // 테스트 함수에서는 true 또는 false를 반환해야 하며, 여기서 true를 반환하는 경우만 새로운 배열에 포함됨
+    // 원래 배열을 변경하지 않음
+    
+    // ages 배열에서 19세 이상인 모든 값들로 새 배열 만들기
+    const ages = [32, 33, 16, 40];
+    // 예상 결과: [32, 33, 40]
+    // const newAges = ages.filter((age) => {
+    //   return age >= 19;
+    // });
+    const newAges = ages.filter(age => age >= 19);
+    console.log(newAges);
+    
+    // 활용 Tip1: 검색 또는 필터링 기능 만들기
+    const students = [
+      { name: 'Goni', age: 36 },
+      { name: 'Pony', age: 32 },
+      { name: 'Tony', age: 12 },
+      { name: 'Moly', age: 24 },
+      { name: 'Noni', age: 45 },
+    ];
+
+    // * 참조
+    const searchFunc = () => {
+      const ageValue = document.querySelector('#ageToCheck').value;
+      // console.log(typeof ageValue);
+      const searchStudents = students.filter((student) => {
+        return student.age > ageValue;
+      });
+      console.log(searchStudents);
+    };
+
+    // 활용 Tip2: 삭제 기능 만들기
+    // filter는 걸러내는 기능인데 어떻게 걸러내느냐에 따라 검색뿐만 아니라 삭제할 때도 유용
+    const products = [
+      { id: '1', title: 'snack', price: 1000 },
+      { id: '2', title: 'pen', price: 2000 },
+      { id: '3', title: 'candy', price: 500 },
+      { id: '4', title: 'note', price: 1800 },
+      { id: '5', title: 'case', price: 2300 },
+    ];
+
+    // Quiz: 배열의 filter()를 사용하여 id 값이 '2'인 상품을 제거해보세요.
+    // const newProducts = products.filter((product) => {
+    //   return product.id !== '2';
+    // });
+    const newProducts = products.filter(product => product.id !== '2');
+    console.log(newProducts);
+
+
+    // 새로운 배열 메소드(ES6)
+
+    // 3. array.find(function(currentValue, index))
+    // 제공된 테스트 함수를 충족하는 배열의 첫번째 요소를 반환
+    // 충족하는 요소가 없으면 undefined를 반환
+    // 원래 배열을 변경하지 않음
+
+    // 배열의 요소 중 3보다 큰 첫번째 요소를 반환
+    const array = [1, 2, 3, 4, 5];
+    const found = array.find((e) => {
+      return e > 3;
+    });
+    console.log(found);
+    console.log(array.find(e => e > 10)); // 없으면 undefined
+    
+    // 사용 예: 배열에서 고유한 값(예: id값)으로 특정 요소를 찾을 때 유용
+    // Quiz: products 배열에서 상품 id가 '3'인 상품을 찾으세요.
+    const foundProduct = products.find((product) => {
+      return product.id === '3';
+    });
+    console.log(foundProduct);
+
+    // 4. array.findIndex(function(currentValue, index))
+    // 제공된 테스트 함수를 충족하는 배열의 첫번째 요소의 인덱스를 반환
+    // 충족하는 요소가 없으면 -1을 반환
+    // 원래 배열을 변경하지 않음
+    const greetings = ['hello', 'hi', 'byebye', 'goodbye', 'hi'];
+
+    const hiIndex = greetings.findIndex((e) => {
+      return e === 'hi';
+    });
+    console.log(hiIndex);
+    console.log(greetings.findIndex(e => e === 'hey')); // 없으면 -1
+  </script>
+</body>
+
+================================================================================ 6
+
+  <script>
+    // ?. 옵셔널 체이닝 연산자(ES2020)
+    // 예제1: 사용자를 나타내는 간단한 객체
+    const user1 = {
+      name: 'Goni',
+      age: 37,
+      work: {
+        title: 'IT teacher',
+        location: 'Korea'
+      }
+    };
+
+    const user2 = {
+      name: 'Tom',
+      age: 28
+    };
+
+    // 위 예제에서 사용자의 직업명(title)에 접근하고 싶을 때
+    // work는 선택적 속성(있을수도 있고 없을수도 있는)이므로 다음과 같이 작성
+    let jobTitle;
+    jobTitle = user1.work.title;
+    console.log(jobTitle);
+    // jobTitle = user2.work.title; // 에러 발생
+    console.log(jobTitle);
+
+    // if문 사용
+    // if (user2.work) {
+    //   jobTitle = user2.work.title;
+    // }
+    // 또는 삼항(조건) 연산자 사용
+    // jobTitle = user2.work ? user2.work.title : '';
+    // 또는 논리 연산자 사용
+    jobTitle = user2.work && user2.work.title;
+
+    // 즉, work의 title 속성에 접근하기 전에 user 객체가 실제로 work 속성을 가지고 있는지 확인해야 함
+    // 접근하려는 속성이 깊게 중첩되어 있는 경우 코드가 복잡해지는데
+    // 이 때 옵셔널 체이닝 연산자(?.)를 사용하면 간결함
+    jobTitle = user1.work?.title;
+    console.log(jobTitle);
+    jobTitle = user2.work?.title;
+    console.log(jobTitle);
+    // user 객체가 work 속성의 존재 여부를 묻는 것처럼 읽히고
+    // 존재한다면 title 속성에 접근
+    // 존재하지 않으면(즉, nullish[null | undefined] 이라면) 에러가 발생하는 대신에 undefined를 반환
+
+    // 예제2: 선택적 속성이 깊게 중첩된 경우
+    const ceos = [
+      {
+        name: 'Elon Musk',
+        education: {
+          primary_school: { /* 초등학교 관련 데이터 */ },
+          middle_school: { /* 중학교 관련 데이터 */ },
+          high_school: { /* 고등학교 관련 데이터 */ },
+          university: {
+            name: 'University of Pennsylvania',
+            graduation: {
+              year: 1995
+            }
+          }
+        }
+      },
+      {
+        name: 'Mark Zuckerberg',
+        education: {
+          primary_school: { /* 초등학교 관련 데이터 */ },
+          middle_school: { /* 중학교 관련 데이터 */ },
+          high_school: { /* 고등학교 관련 데이터 */ },
+          university: {
+            name: 'Harvard University'
+          }
+        }
+      }
+    ];
+    // 선택적 속성: education, university, graduation 이라고 가정
+
+    // 대학 졸업 연도에 접근하고 싶다면..?
+    let graduationYear;
+    for (const ceo of ceos) {
+      if (ceo.education &&
+          ceo.education.university &&
+          ceo.education.university.graduation) {
+        graduationYear = ceo.education.university.graduation.year;
+        console.log(graduationYear);
+      }
+    }
+
+    // 옵셔널 체이닝 사용
+    for (const ceo of ceos) {
+      graduationYear = ceo.education?.university?.graduation?.year || '정보 없음';
+      console.log(graduationYear);
+    }
+
+
+    // Quiz
+    // 1. 다음 코드의 올바른 출력은? 3
+    const user = {
+      name: 'Goni',
+      age: 27,
+      work: {
+        title: 'software developer'
+      }
+    };
+
+    const res = user?.work?.location ? user?.work?.location : user?.work?.title;
+    console.log(res);
+
+    // 1) location
+    // 2) title
+    // 3) 'software developer'
+    // 4) undefined
+
+    // 2. 아래와 같은 객체 구조에서 옵셔널 체이닝을 사용하여 대학 전공에 접근해보세요.
+    // (optional 이라는 주석이 붙은 속성은 있을 수도 있고, 없을 수도 있는 선택적 속성임)
+    const person = {
+      name: 'JH Kim',
+      job: 'teacher',
+      education: { // optional
+        high_school: { // optional 
+          name: 'Songdo'
+        },
+        university: { // optional
+          name: 'Incheon Hawaii',
+          major: 'ICE'
+        }
+      }
+    };
+
+    // 옵셔널 체이닝 미사용시
+    let universityMajor;
+    if (person.education && 
+        person.education.university) {
+      universityMajor = person.education.university.major;
+    }
+    console.log(universityMajor);
+    
+    // 옵셔널 체이닝 사용
+    universityMajor = person.education?.university?.major;
+    console.log(universityMajor);
+  </script>
+
+================================================================================ 7
+
+  <script>
+    // AJAX란?
+    // Asynchronous JavaScript and XML의 약자, 비동기 자바스크립트와 XML
+    // 자바스크립트를 이용해서 비동기식으로 서버와 통신하는 방식. 이 때 XML을 이용
+    // 꼭 XML을 이용할 필요는 없고, 최근에는 json을 더 많이 이용
+    // 비동기식이란 여러가지 일이 동시적으로 발생한다는 뜻으로, 서버와 통신하는 동안 다른 작업을 할 수 있다는 의미
+
+    // 기존에는 XMLHttpRequest를 사용해 AJAX 요청을 처리했지만, 다음과 같은 단점이 존재
+    // 1) 문법이 복잡하고 가독성이 떨어짐
+    // 2) Promise 기반이 아님
+    // 3) JSON, Blob, FormData 등 현대적 데이터 처리에 불편
+
+    // 이를 개선한 Fetch API
+    // 1) Promise 기반 비동기 처리
+    // 2) 더 깔끔하고 선언적인 문법
+    // 3) JSON, 텍스트, 스트림 등 다양한 응답 처리 지원
+
+    // 주요 속성
+    // method: HTTP 요청 메소드(GET, POST, PUT, DELETE 등)
+    // body: 서버로 전송할 데이터
+    // content-type 정의: 서버에 전송하는 데이터의 타입을 지정
+
+    // GET - id가 1인 데이터 조회
+    fetch('https://jsonplaceholder.typicode.com/posts/1')
+      .then((response) => {
+        console.log(response);
+        return response.json(); // 응답받은 데이터(문자열)를 파싱해 JS 객체로 반환함
+      })
+      .then((data) => { console.log(data); });
+
+    // (참고) 프로미스: "결과를 약속합니다!"
+    // 예: 네트워크 요청 같은 시간이 걸리는 로직을 통해 데이터를 받아오면 그 때 네가 then()에 등록한 콜백 함수를 실행할 것을 약속할게
+
+    // POST - 데이터 생성
+    fetch('https://jsonplaceholder.typicode.com/posts', {
+      method: 'POST',
+      body: JSON.stringify({
+        title: 'foo',
+        body: 'bar',
+        userId: 1,
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      }
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+
+    // PUT - 데이터 수정
+    fetch('https://jsonplaceholder.typicode.com/posts/1', {
+      method: 'PUT',
+      body: JSON.stringify({
+        id: 1,
+        title: 'foo',
+        body: 'bar',
+        userId: 1,
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    })
+      .then((response) => response.json())
+      .then((json) => console.log(json));
+
+    // DELETE - 데이터 삭제
+    fetch('https://jsonplaceholder.typicode.com/posts/1', {
+      method: 'DELETE',
+    });
+  </script>
+
+<!-- 동기식과 비동기식의 가장 큰 차이는
+  동기식은 응답 올 때까지 멈춤,
+  비동기식은 기다리지 않고 진행
+
+  1) 동기식 요청(Synchronous Request)
+  요청을 보낸 뒤, 응답이 올 때까지 브라우저가 멈춤
+  응답이 올 때까지 다른 작업을 할 수 없음
+  사용성, 퍼포먼스 모두 떨어져 현대 웹에서는 거의 사용 안 함
+
+  예시:
+  전통적인 <form> 전송
+  과거 결제 모듈에서 사용
+
+  2) 비동기식 요청(Asynchronous Request)
+  요청을 보낸 뒤에도 브라우저는 멈추지 않고 다른 작업을 계속할 수 있음
+  서버 응답이 도착하면 그때 처리함
+  사용자가 화면 조작을 계속할 수 있어서 UX가 좋음
+
+  예시:
+  검색 자동완성
+  댓글 달기
+  쇼핑몰 장바구니 추가
+  무한 스크롤
+-->
+
+<!-- 
+  🚫 사용 자제 이유
+  메인 작업이 블로킹되며 UI가 멈춤(웹에서는 브라우저가 멈춤)
+  사용자 경험(UX) 저하
+  최신 브라우저에서는 사용을 권장하지 않거나 경고 출력
+  Service Worker, Fetch API, async/await 등으로 대체 가능
+
+  🔴 동기식 요청이 응답을 기다리는 동안의 브라우저 상태
+  UI가 완전히 멈춤
+  브라우저는 해당 요청이 타임아웃되거나 수동으로 중단될 때까지 대기
+  사용자는 브라우저가 먹통이 된 것처럼 느낌
+  로딩 인디케이터나 알림조차 나타나지 않음
+  일정 시간 동안 아무 응답 없이 멈춰 있으면 크롬, 엣지 등은
+  “페이지가 응답하지 않습니다. 종료하시겠습니까?” 같은 경고를 띄울 수 있음
+
+  ✅ 결론
+  실무에서는 거의 대부분 비동기 요청이 사용되며,
+  동기 요청은 아주 특수한 경우나 과거 코드 호환용으로만 남아 있음
+-->
+
+================================================================================ 8
+

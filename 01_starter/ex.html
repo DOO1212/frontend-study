@@ -217,7 +217,11 @@
 
 
 
+const arr = ['Apple', 'Banana', 'Mango'];
 
+for (const el of arr) { // Value 값을 가져옴, ES6차 문법
+      document.write(el, '<br>');
+    }
 
 
 
@@ -327,19 +331,12 @@
 
 
 
-let str = 'Please locate where "locate" occurs!';
 
 
 
-  let  has = str.includes('locate', 15);
-    document.write(has, '<br>');
-    
 
 
 
-function name(params) {
-  
-}(ddd < 0 && a > 1 )
 
 
 
@@ -434,6 +431,105 @@ function name(params) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const user = {
+//       name: 'goni',
+//       age: 30,
+//       'my hobby': ['배드민턴', '싸이클', '스노우보드']
+//     };
+
+//     const key = prompt('사용자의 어떤 정보를 얻고 싶으신가요?', 'name');
+//     // user랑 key랑 어떤 연관이 있는지? key는 user의 하위가 아닌 것으로 보임
+//     document.write(user[key]);
+
+
+
+
+
+
+    // // 콜백함수 만들어봄 맞는지??
+    // const a = function (name, area) {
+
+    // name();
+    // area();
+
+    // }
+
+    // a(function () {
+    //   const na = prompt('이름은?');
+    //   document.write(na);
+    //   },
+    //   function () {
+    //   const lo = prompt('지역은?');
+    //   document.write(lo);
+    //   });
+
+
+
+
+
+    // function ask(question, yes, no) {
+    // ------ 여기 구문도 줄인건지?
+    //   if (confirm(question)) yes();
+    //   else no();
+    // }
+
+    // ask(
+    //   // question
+    //   '동의하십니까?',
+    //   // yes
+    //   function() { alert('동의하셨습니다.'); },
+    //   // no
+    //   function() { alert('취소 버튼을 누르셨습니다.'); }
+    // );
+
+
+
+
+    // 여러 과목의 점수를 입력받아 평균 점수 구하기
+    // 구조가 잘 이해가지 않음 다른 구조로는 어려운지?
+    // const subjects = ['국어', '영어', '수학'];
+
+    // let sum = 0;
+
+    // function test(arr) {
+
+    //   for (let i = 0; i < arr.length; i++) {
+    //     sum += Number(prompt(arr[i]));
+    //   }
+
+    //   return sum / arr.length;
+
+    // }
+
+    // document.write(`평균 점수는 ${test(subjects)}점 입니다.<br>`);
 
 
 
