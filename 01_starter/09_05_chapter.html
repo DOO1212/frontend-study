@@ -549,7 +549,7 @@
 	<button type="button" onclick="clearInterval(counter)">증가 정지</button>
 	<button type="button" onclick="clearInterval(timer)">감소 정지</button>
 
-  <script>
+  <scr>
     // 브라우저 객체 모델(BOM)
     // 브라우저에 내장된 객체를 가리키고 브라우저를 제어 및 조작 가능
     // window: 브라우저 객체의 최상위 객체, 아래와 같은 하위 객체를 계층 구조로 포함
@@ -559,80 +559,21 @@
     // - navigator: OS, 브라우저에 대한 다양한 정보를 가짐
     // - document(DOM): 문서 객체, 웹 문서 관련
 
-
-    // 1. window 객체
-    document.write('<h1>window 객체</h1>');
-
-    // 1) alert()
-    // 경고창을 띄워 경고 메시지를 출력
-    // alert('이것은 alert 창입니다.');
-
-    // 2) confirm()
-    // 확인창을 띄워 진행할지, 종료할지에 대한 진행 여부를 확인
-    // 확인을 누르면 true를 반환
-    // 취소를 누르면 false를 반환
-    // if (confirm('정말 삭제하시겠습니까?')) {
-    //   document.write('삭제 실행<br>');
-    // }
-
     // 3) prompt()
     // 질의응답 창을 띄워 문자열을 입력받음
     // 확인을 누르면 입력한 값을 반환
     // 취소를 누르면 null을 반환
-    // const txt = prompt('비밀번호를 입력하세요.');
+    const txt = prompt('비밀번호를 입력하세요.');
 
-    // if (txt === null) {
-    //   document.write('취소 버튼을 클릭했을 때<br>');
-    // } else if (txt === '') {
-    //   document.write('어떤 값도 입력하지 않고 확인 버튼을 클릭했을 때<br>');
-    // } else if (txt !== '') {
-    //   document.write('값을 입력하고 확인 버튼을 클릭했을 때<br>');
-    // }
+    if (txt === null) {
+      document.write('취소 버튼을 클릭했을 때<br>');
+    } else if (txt === '') {
+      document.write('어떤 값도 입력하지 않고 확인 버튼을 클릭했을 때<br>');
+    } else if (txt !== '') {
+      document.write('값을 입력하고 확인 버튼을 클릭했을 때<br>');
+    }
 
-    // 4) window.open()
-    // 팝업창(브라우저 새 창/새 탭)을 띄워 지정한 url을 오픈
-    // 예: 광고 팝업 등 - 브라우저에서 팝업 차단을 할 수 있어 open()을 활용한 광고 팝업은 이제 잘 안쓰임
-    // window.open('https://www.google.com', 'googleTab');
-    // window.open('https://www.google.com', 'googleWindow', 'popup');
-    // window.open('https://www.google.com', 'googleWindow', 'width=300, height=400, left=300, top=50');
-
-    // 팝업 창 열고 닫기 예제
-    // open('URL 또는 웹문서', '타겟 또는 이름', '창 옵션');
-    // window.open('winpopup.html', '팝업', 'width=300, height=400, left=300, top=50');
-
-    // 5) setTimeout(), clearTimeout() 
-    // id = setTimeout(): 지정한 시간 뒤에 정의한 함수를 실행
-    // clearTimeout(id): setTimeout으로 설정된 타이머를 지움(위에 * 참조)
-    const myTimeout = setTimeout(function () {
-      console.log('5초 후 프로그램 실행');
-    }, 5000);
-
-    // 6) setInterval(), clearInterval()
-    // id = setInterval(): 지정한 시간 간격마다 정의한 함수를 반복적으로 실행
-    // clearInterval(id): setInterval로 설정된 타이머를 지움(위에 ** 참조)
-    let addNum = 0;
-    let subNum = 1000;
-    
-    const counter = setInterval(function () {
-      addNum++;
-      console.log('addNum: ' + addNum);
-    }, 1000);
-
-    const timer = setInterval(function () {
-      subNum--;
-      console.log('subNum: ' + subNum);
-    }, 1000);
-
-
-    // 2. screen 객체(활용도 낮음)
-    // 사용자의 모니터(화면) 정보를 제공
-    // 예: 모니터 너비나 높이 등
-    document.write('<h1>screen 객체</h1>');
-    document.write(screen.width, '<br>');
-    document.write(screen.height, '<br>');
-    document.write(screen.availWidth, '<br>'); // 작업 표시줄을 제외한 값
-    document.write(screen.availHeight, '<br>'); // 작업 표시줄을 제외한 값
-  </script>
+  </scr
 
   <!-- *** -->
   <h2>리다이렉트 하기</h2>

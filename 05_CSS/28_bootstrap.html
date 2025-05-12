@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <!-- 1. Bootstrap이란?
+    CSS와 JS 기반의 프론트엔드 UI 프레임워크로, 정해진 규칙에 따라 빠르게 반응형 웹 UI를 만들 수 있게 도와줌
+
+    - 특징 및 장점
+    1) 미리 디자인된 UI 컴포넌트(요소)를 제공함
+    2) 레이아웃을 복사 붙여넣기 식으로 편하게 개발 가능
+    3) 빠르고 쉽게 웹 사이트를 제작할 수 있도록 도와줌
+    4) 강력한 레이아웃 시스템 제공하여 디바이스에 구애받지 않는 디자인 템플릿 제공
+    5) 다양한 JavaScript 플러그인 지원
+  -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+</head>
+<body>
+  <!-- 2. Bootstrap 사용법
+    - 특징
+    Bootstrap은 HTML요소에 특정 클래스를 추가하는 것만으로 디자인을 적용할 수 있음
+    미리 정의된 클래스만 적절하게 적용하면 됨(=> utility class라 부름)
+
+    - 방법
+    1) Bootstrap Docs(공식 문서)에서 원하는 Components찾기
+    2) 가이드에 따라 요소 생성하기
+    3) 적절한 클래스 부여하기
+
+    - 실습
+    버튼 스타일 적용해보기
+    주의! 존재하지 않는 클래스(예: btn-blue)를 지어내면 안됨 
+  -->
+  <button type="button" class="btn">Base class</button>
+
+  <button type="button" class="btn btn-primary">Primary</button>
+  <button type="button" class="btn btn-secondary">Secondary</button>
+  <button type="button" class="btn btn-success">Success</button>
+  <button type="button" class="btn btn-danger">Danger</button>
+  <button type="button" class="btn btn-warning">Warning</button>
+  <button type="button" class="btn btn-info">Info</button>
+  <button type="button" class="btn btn-light">Light</button>
+  <button type="button" class="btn btn-dark">Dark</button>
+
+  <button type="button" class="btn btn-link">Link</button>
+
+  <!-- 3. 컨테이너
+    - 정의
+    레이아웃을 구성하는 기본적인 요소(=div 박스 영역)
+    웹 페이지의 내용을 감싸고 브라우저 너비에 맞게 정렬하거나 여백 조정
+    Bootstrap에서 모든 콘텐츠는 컨테이너 안에서 시작됨
+
+    - 종류
+    1) container: 화면 크기에 따라 너비 자동 조절
+    2) container-fluid: 브라우저 전체 너비 차지
+    3) container-{breakpoint}: 특정 해상도 이상에서 고정 너비 적용 (sm, md, lg, xl, xxl 사용 가능) 
+  -->
+  <div class="container bg-light border p-3 mt-3">
+    <h4>고정 너비 컨테이너 (container)</h4>
+    <p>화면 크기에 따라 너비 자동 조절</p>
+  </div>
+
+  <div class="container-fluid bg-secondary text-white p-3 mt-3">
+    <h4>전체 너비 컨테이너 (container-fluid)</h4>
+    <p>항상 브라우저의 전체 너비 차지</p>
+  </div>
+
+  <div class="container-md bg-warning p-3 mt-3">
+    <h4>반응형 컨테이너 (container-md)</h4>
+    <p>
+      화면이 md(768px) 이상이면 고정 너비를 가지지만,<br>
+      그보다 작으면 전체 너비를 차지함
+    </p>
+  </div>
+
+  <!-- 4. 그리드(12등분 시스템)
+    - 특징
+    모바일 화면에 최적화하기 위해서 만들어진 레이아웃
+    가로는 row, 세로는 col이라고 부름
+
+    - row 클래스
+    페이지를 수평으로 분할
+    한 페이지에 행의 개수만큼 생성
+
+    - col 클래스
+    row로 공간을 수평으로 나눈 다음
+    각 row 영역을 수직으로 분할
+    총 12개의 컬럼으로 분할 가능
+  -->
+
+  <!-- 실습1: 동일한 너비 -->
+  <div class="container text-center mt-5">
+    <div class="row">
+      <div class="col border border-dark">1</div>
+      <div class="col border border-dark">2</div>
+    </div>
+    <div class="row">
+      <div class="col border border-dark">1</div>
+      <div class="col border border-dark">2</div>
+      <div class="col border border-dark">3</div>
+    </div>
+  </div>
+
+  <!-- 실습2: 한 열 너비 설정
+    첫번째 row는 3/12, 6/12, 3/12 차지하는 영역 3개  
+    두번째 row는 5/12만큼 공간을 차지
+  -->
+  <div class="container text-center mt-5">
+    <div class="row">
+      <div class="col border border-dark">1</div>
+      <div class="col-6 border border-dark">2 (col-6)</div>
+      <div class="col border border-dark">3</div>
+    </div>
+    <div class="row">
+      <div class="col border border-dark">1</div>
+      <div class="col-5 border border-dark">2 (col-5)</div>
+      <div class="col border border-dark">3</div>
+    </div>
+  </div>
+
+  <!-- 실습3: 반응형 -->
+  <div class="container text-center mt-5">
+    <div class="row">
+      <div class="col-8 border border-dark">col-8</div>
+      <div class="col-4 border border-dark">col-4</div>
+    </div>
+    <div class="row">
+      <div class="col-sm-8 border border-dark">col-sm-8</div>
+      <div class="col-sm-4 border border-dark">col-sm-4</div>
+    </div>
+    <div class="row">
+      <div class="col-sm border border-dark">col-sm</div>
+      <div class="col-sm border border-dark">col-sm</div>
+      <div class="col-sm border border-dark">col-sm</div>
+    </div>
+  </div>
+
+  <!-- 5. 기타 용어
+    - 컴포넌트
+    부트스트랩에서 미리 정의한 UI 요소
+    버튼, 경고창, form 등 화면 구성에 자주 사용되는 요소
+    Bootstrap 공식 문서에서 추가하고자 하는 컴포넌트 명 검색하여 나오는 규칙을 따라서 작성
+
+    - 유틸리티
+    색상, 여백, 요소의 너비 등 자주 사용되는 CSS 속성 정의
+    사용하기에는 편리하지만 미리 정의된 값만 쓸 수 있음 
+  -->
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+</body>
+</html>
