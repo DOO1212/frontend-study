@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>        
+    #target {
+      width: 80px;
+      height: 80px;
+      margin: 3px;
+      background-color: #f00;
+    }
+
+    #block {
+      width: 100px;
+      border: 1px solid green;
+      background-color: #bca;
+    }
+  </style>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+  <button type="button" id="fadeout">fade out</button>
+  <button type="button" id="fadein">fade in</button>
+  <button type="button" id="hide">hide</button>
+  <button type="button" id="show">show</button>
+  <button type="button" id="slidedown">slide down</button>
+  <button type="button" id="slideup">slide up</button>
+  <button type="button" id="mix">mix</button>
+  <div id="target">target</div>
+
+  <script>
+    // 제이쿼리 효과 참고: https://api.jquery.com/category/effects/
+
+    $('button').on('click', function (e) {
+      // this: 이벤트 리스너에서의 this는 이벤트가 바인딩된 요소를 가리킴
+      // e.target: 이벤트의 대상, 실제로 클릭된 DOM 요소
+      switch ($(e.target).attr('id')) {
+        case 'fadeout':
+          $('#target').fadeOut('slow');
+          break;
+        case 'fadein':
+          $('#target').fadeIn('slow');
+          break;
+        case 'hide':
+          $('#target').hide();
+          break;
+        case 'show':
+          $('#target').show();
+          break;
+        case 'slidedown':
+          $('#target').hide().slideDown('slow');
+          break;
+        case 'slideup':
+          $('#target').slideUp('slow');
+          break;
+        case 'mix':
+        $('#target').fadeOut('slow').fadeIn('slow').delay(1000).slideUp().slideDown('slow', function () { alert('end'); });
+          // 콜백 함수는 애니메이션 효과가 끝난 뒤 실행시킬 함수를 전달
+          break;
+      }
+    });
+  </script>
+
+  <button type="button" id="go">Run</button>
+  <div id="block">Hello!</div>
+
+  <script>
+    // 제이쿼리가 제공하는 효과 외에 자유롭게 지정하고 싶을 때
+    $('#go').on('click', function () {
+      $('#block').animate({
+        // 최종 상태
+        width: '300px',
+        opacity: 0.4,
+        marginLeft: '50px',
+        fontSize: '30px',
+        borderWidth: '10px'
+      }, 3000);
+    });
+  </script>
+</body>
+</html>

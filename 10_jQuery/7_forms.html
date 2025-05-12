@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    p {
+      margin:0;
+      color:blue;
+    }
+    div, p {
+      margin-left:10px;
+    }
+    span {
+      color:red;
+    }
+  </style>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+  <p>
+    <input type="text">
+    <span></span>
+  </p>
+
+  <script>
+    // 제이쿼리 폼 참고: https://api.jquery.com/category/forms/
+
+    $('input').on('focus', function () {
+      $(this).next().text('focus');
+    }).on('blur', function () {
+      $(this).next().text('blur');
+    }).on('change', function () {
+      alert('change!! ' + $(this).val());
+    }).on('select', function () { // 일부 텍스트가 선택됐을 때 발생
+      $(this).next().text('select');
+    });
+  </script>
+
+  <p>Type 'correct' to validate.</p>
+  <form action="javascript:alert('success!');">
+    <div>
+      <input type="text">
+      <button type="submit">제출</button>
+    </div>
+  </form>
+  <span></span>
+
+  <script>
+    $('form').on('submit', function (e) {
+      const value = $('form input:first-child').val();
+      if (value === 'correct') {
+        $('span').text('Validated...');
+        // return true;
+        return;
+      }
+
+      $('span').text('Not Valid!');
+      // return false; // jQuery에서만 동작하는 방식, 기본 동작 방지
+      e.preventDefault(); // 표준 JS 방식, 기본 동작 방지
+    });
+  </script>
+</body>
+</html>

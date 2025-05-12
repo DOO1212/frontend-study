@@ -40,19 +40,30 @@
     // 제이쿼리 엘리먼트 조작 참고: https://api.jquery.com/category/manipulation/
     
     // 1) 자식으로 삽입 (.append(), .appendTo(), .html(), .prepend(), .prependTo(), .text())
-
+    // $('.inner').append('<p>Test</p>');
+    // $('<p>Test</p>').appendTo('.inner'); // 같은 동작
+    
+    // $('.inner').prepend('<p>Test</p>');
+    // $('<p>Test</p>').prependTo('.inner'); // 같은 동작
 
     // 2) 형제로 삽입 (.after(), .before(), .insertAfter(), .insertBefore())
+    // $('.inner').after('<p>Test</p>');
+    // $('<p>Test</p>').insertAfter('.inner'); // 같은 동작
 
+    // $('.inner').before('<p>Test</p>');
+    // $('<p>Test</p>').insertBefore('.inner'); // 같은 동작
 
     // 3) 부모로 감싸기 (.unwrap(), .wrap(), .wrapAll(), .wrapInner())
-
+    // $('.inner').wrap('<div class="new"></div>');
+    // $('.inner').unwrap();
 
     // 4) 삭제 (.detach(), .empty(), .remove(), .unwrap())
-
+    // $('.hello').remove(); // 선택한 요소를 제거
+    // $('.hello').empty(); // 선택한 요소의 모든 자식 요소들을 제거
 
     // 5) 치환 (.replaceAll(), .replaceWith())
-
+    // $('<h2>New heading</h2>').replaceAll('.inner'); // 새로운 요소가 기준, "내가 쟤네들을 다 바꿔치기할게"
+    $('.inner').replaceWith('<h2>New heading</h2>'); // 기존 요소가 기준, "나를 이걸로 바꿔줘"
   </script>
 
   <p class="blue">Click to toggle</p>
@@ -62,7 +73,9 @@
 
   <script>
     // 6) 클래스 (.addClass(), .hasClass(), .removeClass(), .toggleClass())
-
+    $('p').on('click', function () {
+      $(this).toggleClass('highlight');
+    });
   </script>
 
   <input type="text" value="some text">
@@ -72,7 +85,18 @@
 
   <script>
     // 7) 속성제어 (.attr(), .prop(), .removeAttr(), .removeProp(), .val())
+    $('input[type="text"]').on('keyup', function () {
+      const value = $(this).val();
+      $('p.target').text(value);
+    })
+    .trigger('keyup');
 
+    // attr(): HTML 속성(attribute), 원래 설정된 초기 HTML 속성의 값
+    // prop(): DOM 속성(property), 현재 DOM 객체의 실시간 상태 반영(주로 checked, selected, disabled 등에 쓰임)
+    $('#chk').on('change', function () {
+      console.log($(this).attr('checked')); // 'checked'(초기 HTML에 있는 속성값을 그대로 읽음)
+      console.log($(this).prop('checked')); // true 또는 false(실제 체크 상태를 반영)
+    });
   </script>
 </body>
 </html>
