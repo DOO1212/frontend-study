@@ -28,20 +28,20 @@
 
   <script>
     // 제이쿼리 탐색 참고: https://api.jquery.com/category/traversing/
-    // 1)
+
+    // 1) find(): 현재 선택된 요소 내부의 모든 자손 요소 중 일치하는 요소를 찾음
     // $('li.item-ii').find('li').css('background-color', 'red');
 
-    // 2)
+    // 2) parent(): 직접 부모 요소 하나만 선택(한 단계 위의 부모만 찾음)
     // $('li.item-a').parent().css('background-color', 'red');
 
-    // 3)
+    // 3) closest(): 가장 가까운 상위 요소중에서 해당 셀렉터와 일치하는 조상을 찾음(자기 자신 포함)
+    // 사용 예: 어떤 버튼 클릭 시 그 버튼이 속한 div(.card)요소만 찾아서 조작
     // $('li.item-a').closest('ul').css('background-color', 'red');
+    // $('li.item-a').closest('li').css('background-color', 'red'); // 자기 자신 포함
 
-    // 4)
-    // $('ul.level-2').children().css('background-color', 'red');
-
-
-
+    // 4) children(): 직계 자식 요소만 선택(모든 하위 요소가 아니라, 한 단계 아래의 자식만 탐색)
+    $('ul.level-2').children().css('background-color', 'red');
   </script>
 
   <hr>
@@ -56,30 +56,30 @@
   </ul>
 
   <script>
-    // 5)
+    // 5) first(): 선택된 요소 집합 중 첫 번째 요소만 선택
     // $('#two li').first().css('background-color', 'red');
-
-    // 6)
+    
+    // 6) last(): 선택된 요소 집합 중 마지막 요소만 선택
     // $('#two li').last().css('background-color', 'red');
-
-    // 7)
+    
+    // 7) eq(): 선택된 요소 집합 중 지정한 인덱스의 요소만 선택
     // $('#two li').eq(2).css('background-color', 'red');
 
-    // 8)
+    // 8) filter(): 조건에 맞는 요소만 선택
+    // (참고) 제이쿼리의 :nth-child()는 인덱스가 1부터 시작
     // $('#two li').filter(':nth-child(2n)').css('background-color', 'red');
 
-    // 9)
+    // 9) siblings(): 같은 부모를 공유하는 형제 요소들 모두 선택(자기 자신은 제외)
+    // 사용 예: 메뉴나 탭 전환 기능에서 .addClass()와 .removeClass() 조합으로 자주 쓰임
     // $('li.third-item').siblings().css('background-color', 'red');
 
-    // 10)
+    // 10) next(): 현재 요소의 다음 형제 요소 하나를 선택
     // $('li.third-item').next().css('background-color', 'red');
     // $('li.third-item').nextAll().css('background-color', 'red');
 
-    // 10)
+    // 11) prev(): 현재 요소의 이전 형제 요소 하나를 선택
     // $('li.third-item').prev().css('background-color', 'red');
-    // $('li.third-item').prevAll().css('background-color', 'red');
-
-
+    $('li.third-item').prevAll().css('background-color', 'red');
   </script>
 
   <hr>
@@ -96,10 +96,13 @@
   </ul>
 
   <script>
-    // 12)
-    $('ul.first').find('.foo').css('background-color', 'red').end().find('.bar')
-    .css('background-color', 'green');
-
+    // 12) end(): 바로 이전 선택 상태로 돌아감
+    // $('ul.first').find('.foo').css('background-color', 'red').end().find('.bar').css('background-color', 'green');
+    // 여러 조작을 연달아 체이닝해야 할 경우 유리
+    // But, 너무 복잡한 체이닝은 코드의 가독성을 떨어뜨릴 수 있음
+    // 단순한 구조에서는 직접 선택이 더 깔끔함
+    $('ul.first .foo').css('background-color', 'red');
+    $('ul.first .bar').css('background-color', 'green');
   </script>
 </body>
 </html>

@@ -32,15 +32,15 @@
   </ul>
 
   <script>
-    // java vs jq
+    // JavaScript VS jQuery
+    // 1) JavaScript
+    // const navItems = document.querySelectorAll('#navigation li');
+    // console.log(navItems);
 
-    // // 1. JavaScript
-    // const nav = document.querySelectorAll('#navigation li');
-
-    // nav.forEach((item) => {
+    // navItems.forEach((item) => {
     //   item.addEventListener('click', () => {
-    //     // 모든 li selected 클래스 제거
-    //     nav.forEach((el) => {
+    //     // 모든 li에서 selected 클래스 제거
+    //     navItems.forEach((el) => {
     //       el.classList.remove('selected');
     //     });
 
@@ -48,13 +48,12 @@
     //     item.classList.add('selected');
     //   });
     // });
-    
-    // 2. jQuery
+
+    // 2) jQuery
     $('#navigation li').click(function () {
       $('#navigation li').removeClass('selected');
       $(this).addClass('selected');
     });
-
   </script>
 </body>
 </html>
