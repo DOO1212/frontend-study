@@ -7,34 +7,58 @@
 </head>
 <body>
   <script>
+    // 서버에 데이터 요청하기
+    // 서버: 데이터 달라고 하면 데이터 주는 애
+    // 데이터: html, css, js 또는 JSON 데이터 등
+    // 요청: 서버에 정해놓은 규격대로 맞춰서 보내야 됨, 어디(URL 주소)로 어떤 방법(GET/POST 등)으로 보낼지 등
+    // 일반적으로 데이터를 가져올 때(검색, 조회)는 GET 요청
+    // 데이터를 보낼 때(추가, 수정, 삭제)는 POST 방식 사용
+    // 그 외 PUT(전체 수정), PATCH(부분 수정), DELETE(삭제) 등도 있음
+
+    // 자바스크립트를 이용하여 서버 쪽 데이터 요청 가능 = AJAX 사용하면 됨(비동기 방식, 새로고침 안됨)
+
     // AJAX란?
     // Asynchronous JavaScript and XML의 약자, 비동기 자바스크립트와 XML
     // 자바스크립트를 이용해서 비동기식으로 서버와 통신하는 방식. 이 때 XML을 이용
     // 꼭 XML을 이용할 필요는 없고, 최근에는 json을 더 많이 이용
     // 비동기식이란 여러가지 일이 동시적으로 발생한다는 뜻으로, 서버와 통신하는 동안 다른 작업을 할 수 있다는 의미
 
+    // AJAX 쓰는 다양한 방법
+    // 1. XMLHttpRequest(XHR) 객체 - (잘안씀)
+    // 이름에 XML이 들어가긴 하지만, XML 뿐만 아니라 다양한 종류의 데이터를 가져올 수 있음
+    // 2. fetch() 함수 - ES6차의 HTTP 요청 함수
+    // 3. axios - 외부 라이브러리(많이 씀)
+
     // 기존에는 XMLHttpRequest를 사용해 AJAX 요청을 처리했지만, 다음과 같은 단점이 존재
     // 1) 문법이 복잡하고 가독성이 떨어짐
     // 2) Promise 기반이 아님
-    // 3) JSON, Blob, FormData 등 현대적 데이터 처리에 불편
+    // 3) JSON, FormData, Blob 등 현대적 데이터 처리에 불편
 
     // 이를 개선한 Fetch API
-    // 1) Promise 기반 비동기 처리
-    // 2) 더 깔끔하고 선언적인 문법
-    // 3) JSON, 텍스트, 스트림 등 다양한 응답 처리 지원
+    // 1) 더 깔끔하고 선언적인 문법
+    // 2) Promise 기반 비동기 처리
+    // 3) JSON, FormData, Blob, 텍스트, 스트림 등 다양한 응답 처리 지원
 
     // 주요 속성
     // method: HTTP 요청 메소드(GET, POST, PUT, DELETE 등)
     // body: 서버로 전송할 데이터
     // content-type 정의: 서버에 전송하는 데이터의 타입을 지정
 
+    // Content-Type 정리(HTTP POST 요청 시 주요 데이터 형식)
+    // Content-Type                      | 전송 형식 예시         | 설명
+    // application/json                  | JSON.stringify(data)  | JSON 포맷(대부분의 API가 선호함)
+    // application/x-www-form-urlencoded | key=value&key2=value2 | HTML form 방식(기본 form 전송)
+    // multipart/form-data               | FormData(파일 포함)    | 파일 업로드나 복합 데이터 전송에 사용(boundary 자동 생성됨)
+    // text/plain                        | "단순 텍스트"          | 순수 텍스트 문자열 전송. 텍스트 자체를 전달
+
     // GET - id가 1인 데이터 조회
     fetch('https://jsonplaceholder.typicode.com/posts/1')
       .then((response) => {
-        console.log(response);
-        return response.json(); // 응답받은 데이터(문자열)를 파싱해 JS 객체로 반환함
+        console.log(response); // Response 객체
+        // Response 객체는 본문(body)을 포함하고 있지만, 그 자체로는 내용을 바로 사용할 수 없음
+        return response.json(); // 응답받은 데이터가 JSON 포맷일 경우, JSON 문자열을 JS 객체로 변환
       })
-      .then((data) => { console.log(data); });
+      .then((data) => { console.log(data); }); // 실제 사용할 수 있는 JS 객체
 
     // (참고) 프로미스: "결과를 약속합니다!"
     // 예: 네트워크 요청 같은 시간이 걸리는 로직을 통해 데이터를 받아오면 그 때 네가 then()에 등록한 콜백 함수를 실행할 것을 약속할게

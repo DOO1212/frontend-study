@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    ul {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+    }
+    #navigation li {
+      padding: 5px;
+    }
+    #navigation .selected {
+      background-color: red;
+      color: white;
+    }
+  </style>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+  <ul id="navigation">
+    <li>HTML5</li>
+    <li>CSS3</li>
+    <li>JavaScript</li>
+    <li class="selected">jQuery</li>
+    <li>Bootstrap</li>
+  </ul>
+
+  <script>
+    // java vs jq
+
+    // // 1. JavaScript
+    // const nav = document.querySelectorAll('#navigation li');
+
+    // nav.forEach((item) => {
+    //   item.addEventListener('click', () => {
+    //     // 모든 li selected 클래스 제거
+    //     nav.forEach((el) => {
+    //       el.classList.remove('selected');
+    //     });
+
+    //     // 클릭한 요소에 selected 클래스 추가
+    //     item.classList.add('selected');
+    //   });
+    // });
+    
+    // 2. jQuery
+    $('#navigation li').click(function () {
+      $('#navigation li').removeClass('selected');
+      $(this).addClass('selected');
+    });
+
+  </script>
+</body>
+</html>
