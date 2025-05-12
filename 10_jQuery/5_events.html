@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+  <button type="button" id="bind">Add Click</button>
+  <button type="button" id="unbind">Remove Click</button>
+  <button type="button" id="trigger">trigger</button>
+
+  <script>
+    // 제이쿼리 이벤트 참고: https://api.jquery.com/category/events/
+
+    function clickHandler() {
+      alert('thank you');
+    }
+
+    $('#bind').on('click', clickHandler);
+    
+    $('#unbind').on('click', function () {
+      $('#bind').off('click', clickHandler);
+    });
+
+    // trigger()
+    $('#trigger').on('click', function () {
+      $('#bind').trigger('click');
+    });
+  </script>
+</body>
+</html>

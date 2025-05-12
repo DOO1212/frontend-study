@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    p {
+      margin: 4px;
+      font-size: 16px;
+      font-weight: bolder;
+      cursor: pointer;
+    }
+    .blue {
+      color: blue;
+    }
+    .highlight {
+      background: yellow;
+    }
+  </style>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+  <h2>Greetings</h2>
+  <div class="container">
+    <div class="inner">Hello</div>
+    <div class="inner">Goodbye</div>
+  </div>
+
+  <div class="container">
+    <div class="hello">
+      Hello, <span>Person</span> <em>and person</em>.
+    </div>
+    <div class="goodbye">Goodbye</div>
+  </div>
+
+  <script>
+    // 제이쿼리 엘리먼트 조작 참고: https://api.jquery.com/category/manipulation/
+    
+    // 1) 자식으로 삽입 (.append(), .appendTo(), .html(), .prepend(), .prependTo(), .text())
+    // $('.inner').append('<p>Test</p>');
+    // $('.inner').prepend('<p>Test</p>');
+    // $('<p>Test</p>').appendTo('.inner');
+
+    // 2) 형제로 삽입 (.after(), .before(), .insertAfter(), .insertBefore())
+    // $('.inner').after('<p>Test</p>');
+    // $('<p>Test</p>').insertAfter('.inner');
+
+    // 3) 부모로 감싸기 (.unwrap(), .wrap(), .wrapAll(), .wrapInner())
+
+
+    // 4) 삭제 (.detach(), .empty(), .remove(), .unwrap())
+    // $('.hello').empty();
+
+    // 5) 치환 (.replaceAll(), .replaceWith())
+    // $('<h2>New heading</h2>').replaceAll('.inner');
+    // $('.inner').replaceWith('<h2>New heading</h2>');
+
+  </script>
+
+  <p class="blue">Click to toggle</p>
+  <p class="blue highlight">highlight</p>
+  <p class="blue">on these</p>
+  <p class="blue">paragraphs</p>
+
+  <script>
+    // 6) 클래스 (.addClass(), .hasClass(), .removeClass(), .toggleClass())
+    $('p').on('click',function () {
+      $(this).toggleClass('highlight');
+    });
+
+  </script>
+
+  <input type="text" value="some text">
+  <p class="target"></p>
+
+  <input type="checkbox" id="chk" checked>
+
+  <script>
+    // 7) 속성제어 (.attr(), .prop(), .removeAttr(), .removeProp(), .val())
+    $('input[type="text"]').on('keyup', function () {
+      const value = $(this).val();
+      $('p.target').text(value);
+    })
+    .trigger('keyup');
+
+    // attr()
+    // prop()
+    $('#chk').on('change', function () {
+      // console.log($(this).attr('checked'));
+      console.log($(this).prop('checked'));
+      
+    });
+
+  </script>
+</body>
+</html>
